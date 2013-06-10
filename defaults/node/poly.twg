@@ -1,0 +1,8 @@
+@include        "common.twg"
+
+-- Number of sides of the regular polygon
+numSides        6
+
+-- Rotation around the center point
+rotation        0
+

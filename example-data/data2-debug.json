@@ -1,0 +1,62 @@
+[{
+    "Metrics": [
+        {"Tools": [
+            "Jira",
+            {"IT BI (SpagoBI)": [
+                "Reports",
+                "Dashboards",
+                "KPI"
+            ]},
+            "Hudson"
+        ]},
+        {"Time spend on issues": [
+            "Minimum",
+            "Average",
+            "Maximum"
+        ]},
+        {"Time spent on releases": [
+            {" Total points  of estimation remaining": [
+                 "In each of the states"
+            ]},
+            "Total time spent in man hours",
+            {"Number of test of estimation remaining -": [
+                 "Should be near the same as the number of issues in release"
+            ]}
+        ]},
+        {"Number of times": [
+            "Issues which return to in progress",
+            "Issues which need rework",
+            "Issues which don\"t have fit criteria before coming to in progress",
+            " Issue comes in when sprint is already ongoing",
+            "The build has failed during release",
+            "Issues are not estimated",
+            "Issues don\"t have an understandable description",
+            "Test completed per release",
+            "Defects found per release"
+        ]},
+        {"States": [
+            "Unscheduled",
+            "Todo",
+            "Analysis",
+            "In Progress",
+            "QA",
+            "UAT",
+            "Done"
+        ]},
+        {"Processes": [
+            {"Bugs": [
+                "Time ellapsed before a bug is reported",
+                "Time bug is open based on priority",
+                "Time spent on fixing the bug"
+            ]}
+        ]},
+        {"Testing coverage": [
+            "Sonar"
+        ]},
+        {"Other": [
+            "Defects/KLOC",
+            "Number of remarks"
+        ]}
+    ]
+}]
+

@@ -1,0 +1,39 @@
+[{
+    "My Goals": [
+        {"Health": [
+            {"Current": [
+                "20% overweight"
+            ]},
+            {"Target": [
+                "Normal weight",
+                "Ideal weight"
+            ]},
+            {"Exercise": [
+                "Hiking",
+                "Gym"
+            ]}
+        ]},
+        {"Charity": [
+            "Volunteer work",
+            "Donations"
+        ]},
+        {"Learning": [
+            "Learning Spanish",
+            "Learning graphic design asdfasdf f sadf asdf asdfsdf sdf sd asdfasdf asdfasdfiopiuwqer qwerpwer"
+        ]},
+        {"Career": [
+            {"Now": [
+                "Project Analyst"
+            ]},
+            {"Promotion": [
+                "Program Manager"
+            ]}
+        ]},
+        {"Family": [
+            "Family dinner",
+            "Split chores",
+            "Daily playtime",
+            "Bedtime reading"
+        ]}
+    ]        
+}]

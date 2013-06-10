@@ -1,0 +1,6 @@
+levelDepthMin           0
+levelDepthMax           999999999
+levelNumChildrenMin     0
+levelNumChildrenMax     999999999
+levelOrientation        any
+

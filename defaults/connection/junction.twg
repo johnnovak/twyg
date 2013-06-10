@@ -1,0 +1,16 @@
+linewidth          4.0
+junctionXFactor    0.4
+
+cornerStyle        rounded
+cornerRadius       12.0
+
+junctionStyle           disc
+junctionRadius          10.0
+-- junctionFillColor  
+junctionStrokeWidth     2.0
+-- junctionStrokeColor  
+junctionSign            none
+junctionSignSize        10.0
+-- junctionSignColor  
+junctionSignStrokeWidth 2.0
+

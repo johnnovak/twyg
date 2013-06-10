@@ -1,0 +1,36 @@
+[layout]
+style                layout
+horizontalBalance    0.5
+rootPadX             120
+nodePadX             100
+nodePadY             12
+branchPadY           15
+radialMinNodes       1000
+snapParentToChildren yes
+--    snapToHalfPositions  yes
+verticalAlignFactor  0.5
+
+[node]
+style                rect
+fontsizes            [21, 15, 13]
+maxTextWidth         230
+nodeTextPadXFactor   1.0
+nodeTextPadYFactor   0.7
+roundness            0.8
+
+[connection]
+style                junction
+cornerStyle          rounded
+cornerRadius         40
+junctionStyle        disc
+junctionRadius       17
+junctionStrokeWidth  2.5
+junctionSign         plus
+junctionSignSize     10
+junctionSignStrokeWidth  3
+
+[color]
+style                colorizer
+boxDepthMin          10
+boxDepthMax          10
+

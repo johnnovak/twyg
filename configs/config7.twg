@@ -1,0 +1,32 @@
+[layout]
+    style                layout
+    horizontalBalance    0.5
+    -- TODO remove
+    rootPadX             30
+    nodePadX             25
+    nodePadY             14
+    branchPadY           20
+
+[node]
+    style                poly
+    fontsizes            [25, 15, 14, 12]
+    textAlign            justify
+    hyphenate            yes
+    nodeTextPadXFactor   .7
+    rotation             30
+
+[connection]
+    style                curve
+    rootLineWidth        4
+    nodeLineWidth        2.5
+    rootStartWidthFactor 6
+    nodeStartWidthFactor 1
+    rootCx1Factor        0
+    nodeCx1Factor        0
+    nodeCx2Factor        0
+
+[color]
+    style                colorizer
+    boxDepthMin          10
+    boxDepthMax          10
+

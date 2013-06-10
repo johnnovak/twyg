@@ -1,0 +1,13 @@
+[layout]
+    style       layout
+    nodePadX    80
+
+[node]
+    style       rect
+
+[connection]
+    style       curve
+
+[color]
+    style       colorizer
+

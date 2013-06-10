@@ -1,0 +1,10 @@
+[{
+    "Metrics": [
+        {"Time spend on issues": [
+            "Minimum",
+            {"Average": ["Some test node with long text"]},
+            {"Maximum": ["1", "2", "3", "4", "5", "6"]},
+            "Totals"
+        ]}
+    ]
+}]

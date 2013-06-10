@@ -1,0 +1,9 @@
+@include        "common.twg"
+
+-- Initial aspect ratio of the oval
+aspectRatio     1.0
+
+-- Maximum width of the oval (the initial aspect ration is kept until
+-- this width is reached)
+maxWidth        400.0
+

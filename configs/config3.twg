@@ -1,0 +1,34 @@
+[layout]
+    style                   layout
+    horizontalBalance       0.5
+    rootPadX                30
+    nodePadY                8
+    branchPadY              15
+
+[node]
+    style                   box
+    maxTextWidth            140
+    nodeTextPadXFactor      1
+    nodeTextPadYFactor      0.45
+    boxOrientation          bottomright
+    boxDepth                16
+    boxDepthScaleFactor     0.7
+    horizSideColorFactor    -0.34
+    vertSideColorFactor     -0.12
+
+[connection]
+    style                   curve
+    rootLineWidth           3.3
+    nodeLineWidth           2
+    rootStartWidthFactor    1
+    nodeStartWidthFactor    1
+    nodeCx1Factor           0.6
+    nodeCx2Factor           0.0
+    rootCx1Factor           0.0
+
+[color]
+    style                   colorizer
+    boxDepthMin             10
+    boxDepthMax             10
+    textColorFactor         2.00
+

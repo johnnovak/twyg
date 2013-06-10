@@ -1,0 +1,476 @@
+[{
+    "Google Analytics": [
+        {"why you need it": [
+            {"problem": [
+                "hits are meaningless",
+                "you don\"t know what you don\"t know",
+                "before you change it - measure it"
+            ]},
+
+            {"solution": [
+                "need some sort of analytics",
+                "GA just gives reports, need to understand them, and some more text to test line wrapping with nodebox, just a few more characters to make this even longer",
+                "then, need to take action"
+            ]},
+
+            {"benefits": [
+                "it\"s free!",
+                "see where visitors leave your site - so you know what to improve",
+                "see which pages are the most popular - so you know what to create more of",
+                {"for webmasters": [
+                    "see browser versions",
+                    "resolutions",
+                    "connection speeds",
+                    "flash & java % used"
+                ]}
+            ]},
+
+            {"benefits if you use AdWords": [
+                "know which keyword makes most sales",
+                "track ROI of each group or keyword",
+                "compare AdWords with other marketing"
+            ]}
+        ]},
+
+        {"how to set up GA": [
+            {"sign up": [
+                "note to AdWords account holders"
+            ]},
+            "your tracking code",
+            "make sure code is installed",
+            "sit back & wait"
+        ]},
+
+        {"a quick tour of GA": [
+            {"settings": [
+                "adding more sites",
+                "adding more users",
+                "filters"
+            ]},
+            {"the main screen": [
+                "dashboards",
+                "all reports",
+                "date range",
+                "main report info",
+                "useful help"
+            ]}
+        ]},
+
+        "common questions",
+        "glossary",
+
+        {"exercise": [
+            "set up your Google Analytics account",
+            "install your code (hint: outsource!)",
+            "wait for stats to come through - about a week",
+            "looking at your first reports",
+            "write the numbers down",
+            "share the numbers with your staff/partner",
+            "think of 3 changes to make to your site",
+            "implement! it\"s all useless until you make *** changes GA just gives reports, need to understand them, and some more text to test line wrapping with nodebox, just a few more characters to make this even longer"
+        ]},
+
+        {"filters": [
+            "exclude or include data from various places",
+            "e.g. exclude all traffic from your company"
+        ]},
+
+        {"goals & funnels": [
+            "introduction",
+            "setting up a simple goal",
+            "setting up a defined funnel",
+            "using date range"
+        ]},
+
+        {"most useful reports": [
+            "introduction",
+
+            {"marketing optimization": [
+                {"unique visitor tracking": [
+                    "daily visitors",
+                    "visitor loyalty"
+                ]},
+                {"view segment performance": [
+                    "new vs returning",
+                    "referreing sourcee",
+                    "geo location"
+                ]},
+                "marketing campaign results",
+                "search engine marketing"
+            ]},
+
+            {"content optimization": [
+                "ad version testing",
+                {"content performance": [
+                    "top content",
+                    "depth of visit",
+                    "length of visit"
+                ]},
+                {"navigational analysis": [
+                    "entrance bounce rates",
+                    "site overlay"
+                ]},
+                "goals & funnel process",
+                {"web design parameters": [
+                    "screen resolutions",
+                    "connection speed"
+                ]}
+            ]}
+        ]},
+
+        {"why you need it": [
+            {"problem": [
+                "hits are meaningless",
+                "you don\"t know what you don\"t know",
+                "before you change it - measure it"
+            ]},
+
+            {"solution": [
+                "need some sort of analytics",
+                "GA just gives reports, need to understand them, and some more text to test line wrapping with nodebox, just a few more characters to make this even longer",
+                "then, need to take action"
+            ]},
+
+            {"benefits": [
+                "it\"s free!",
+                "see where visitors leave your site - so you know what to improve",
+                "see which pages are the most popular - so you know what to create more of",
+                {"for webmasters": [
+                    "see browser versions",
+                    "resolutions",
+                    "connection speeds",
+                    "flash & java % used"
+                ]}
+            ]},
+
+            {"benefits if you use AdWords": [
+                "know which keyword makes most sales",
+                "track ROI of each group or keyword",
+                "compare AdWords with other marketing"
+            ]}
+        ]},
+
+        {"how to set up GA": [
+            {"sign up": [
+                "note to AdWords account holders"
+            ]},
+            "your tracking code",
+            "make sure code is installed",
+            "sit back & wait"
+        ]},
+
+        {"a quick tour of GA": [
+            {"settings": [
+                "adding more sites",
+                "adding more users",
+                "filters"
+            ]},
+            {"the main screen": [
+                "dashboards",
+                "all reports",
+                "date range",
+                "main report info",
+                "useful help"
+            ]}
+        ]},
+
+        "common questions",
+        "glossary",
+
+        {"exercise": [
+            "set up your Google Analytics account",
+            "install your code (hint: outsource!)",
+            "wait for stats to come through - about a week",
+            "looking at your first reports",
+            "write the numbers down",
+            "share the numbers with your staff/partner",
+            "think of 3 changes to make to your site",
+            "implement! it\"s all useless until you make *** changes GA just gives reports, need to understand them, and some more text to test line wrapping with nodebox, just a few more characters to make this even longer"
+        ]},
+
+        {"filters": [
+            "exclude or include data from various places",
+            "e.g. exclude all traffic from your company"
+        ]},
+
+        {"goals & funnels": [
+            "introduction",
+            "setting up a simple goal",
+            "setting up a defined funnel",
+            "using date range"
+        ]},
+
+        {"most useful reports": [
+            "introduction",
+
+            {"marketing optimization": [
+                {"unique visitor tracking": [
+                    "daily visitors",
+                    "visitor loyalty"
+                ]},
+                {"view segment performance": [
+                    "new vs returning",
+                    "referreing sourcee",
+                    "geo location"
+                ]},
+                "marketing campaign results",
+                "search engine marketing"
+            ]},
+
+            {"content optimization": [
+                "ad version testing",
+                {"content performance": [
+                    "top content",
+                    "depth of visit",
+                    "length of visit"
+                ]},
+                {"navigational analysis": [
+                    "entrance bounce rates",
+                    "site overlay"
+                ]},
+                "goals & funnel process",
+                {"web design parameters": [
+                    "screen resolutions",
+                    "connection speed"
+                ]}
+            ]}
+        ]},
+        
+        {"why you need it": [
+            {"problem": [
+                "hits are meaningless",
+                "you don\"t know what you don\"t know",
+                "before you change it - measure it"
+            ]},
+
+            {"solution": [
+                "need some sort of analytics",
+                "GA just gives reports, need to understand them, and some more text to test line wrapping with nodebox, just a few more characters to make this even longer",
+                "then, need to take action"
+            ]},
+
+            {"benefits": [
+                "it\"s free!",
+                "see where visitors leave your site - so you know what to improve",
+                "see which pages are the most popular - so you know what to create more of",
+                {"for webmasters": [
+                    "see browser versions",
+                    "resolutions",
+                    "connection speeds",
+                    "flash & java % used"
+                ]}
+            ]},
+
+            {"benefits if you use AdWords": [
+                "know which keyword makes most sales",
+                "track ROI of each group or keyword",
+                "compare AdWords with other marketing"
+            ]}
+        ]},
+
+        {"how to set up GA": [
+            {"sign up": [
+                "note to AdWords account holders"
+            ]},
+            "your tracking code",
+            "make sure code is installed",
+            "sit back & wait"
+        ]},
+
+        {"a quick tour of GA": [
+            {"settings": [
+                "adding more sites",
+                "adding more users",
+                "filters"
+            ]},
+            {"the main screen": [
+                "dashboards",
+                "all reports",
+                "date range",
+                "main report info",
+                "useful help"
+            ]}
+        ]},
+
+        "common questions",
+        "glossary",
+
+        {"exercise": [
+            "set up your Google Analytics account",
+            "install your code (hint: outsource!)",
+            "wait for stats to come through - about a week",
+            "looking at your first reports",
+            "write the numbers down",
+            "share the numbers with your staff/partner",
+            "think of 3 changes to make to your site",
+            "implement! it\"s all useless until you make *** changes GA just gives reports, need to understand them, and some more text to test line wrapping with nodebox, just a few more characters to make this even longer"
+        ]},
+
+        {"filters": [
+            "exclude or include data from various places",
+            "e.g. exclude all traffic from your company"
+        ]},
+
+        {"goals & funnels": [
+            "introduction",
+            "setting up a simple goal",
+            "setting up a defined funnel",
+            "using date range"
+        ]},
+
+        {"most useful reports": [
+            "introduction",
+
+            {"marketing optimization": [
+                {"unique visitor tracking": [
+                    "daily visitors",
+                    "visitor loyalty"
+                ]},
+                {"view segment performance": [
+                    "new vs returning",
+                    "referreing sourcee",
+                    "geo location"
+                ]},
+                "marketing campaign results",
+                "search engine marketing"
+            ]},
+
+            {"content optimization": [
+                "ad version testing",
+                {"content performance": [
+                    "top content",
+                    "depth of visit",
+                    "length of visit"
+                ]},
+                {"navigational analysis": [
+                    "entrance bounce rates",
+                    "site overlay"
+                ]},
+                "goals & funnel process",
+                {"web design parameters": [
+                    "screen resolutions",
+                    "connection speed"
+                ]}
+            ]}
+        ]},
+
+        {"why you need it": [
+            {"problem": [
+                "hits are meaningless",
+                "you don\"t know what you don\"t know",
+                "before you change it - measure it"
+            ]},
+
+            {"solution": [
+                "need some sort of analytics",
+                "GA just gives reports, need to understand them, and some more text to test line wrapping with nodebox, just a few more characters to make this even longer",
+                "then, need to take action"
+            ]},
+
+            {"benefits": [
+                "it\"s free!",
+                "see where visitors leave your site - so you know what to improve",
+                "see which pages are the most popular - so you know what to create more of",
+                {"for webmasters": [
+                    "see browser versions",
+                    "resolutions",
+                    "connection speeds",
+                    "flash & java % used"
+                ]}
+            ]},
+
+            {"benefits if you use AdWords": [
+                "know which keyword makes most sales",
+                "track ROI of each group or keyword",
+                "compare AdWords with other marketing"
+            ]}
+        ]},
+
+        {"how to set up GA": [
+            {"sign up": [
+                "note to AdWords account holders"
+            ]},
+            "your tracking code",
+            "make sure code is installed",
+            "sit back & wait"
+        ]},
+
+        {"a quick tour of GA": [
+            {"settings": [
+                "adding more sites",
+                "adding more users",
+                "filters"
+            ]},
+            {"the main screen": [
+                "dashboards",
+                "all reports",
+                "date range",
+                "main report info",
+                "useful help"
+            ]}
+        ]},
+
+        "common questions",
+        "glossary",
+
+        {"exercise": [
+            "set up your Google Analytics account",
+            "install your code (hint: outsource!)",
+            "wait for stats to come through - about a week",
+            "looking at your first reports",
+            "write the numbers down",
+            "share the numbers with your staff/partner",
+            "think of 3 changes to make to your site",
+            "implement! it\"s all useless until you make *** changes GA just gives reports, need to understand them, and some more text to test line wrapping with nodebox, just a few more characters to make this even longer"
+        ]},
+
+        {"filters": [
+            "exclude or include data from various places",
+            "e.g. exclude all traffic from your company"
+        ]},
+
+        {"goals & funnels": [
+            "introduction",
+            "setting up a simple goal",
+            "setting up a defined funnel",
+            "using date range"
+        ]},
+
+        {"most useful reports": [
+            "introduction",
+
+            {"marketing optimization": [
+                {"unique visitor tracking": [
+                    "daily visitors",
+                    "visitor loyalty"
+                ]},
+                {"view segment performance": [
+                    "new vs returning",
+                    "referreing sourcee",
+                    "geo location"
+                ]},
+                "marketing campaign results",
+                "search engine marketing"
+            ]},
+
+            {"content optimization": [
+                "ad version testing",
+                {"content performance": [
+                    "top content",
+                    "depth of visit",
+                    "length of visit"
+                ]},
+                {"navigational analysis": [
+                    "entrance bounce rates",
+                    "site overlay"
+                ]},
+                "goals & funnel process",
+                {"web design parameters": [
+                    "screen resolutions",
+                    "connection speed"
+                ]}
+            ]}
+        ]}
+    ]
+}]
+

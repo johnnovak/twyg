@@ -1,0 +1,20 @@
+@include        "common.twg"
+
+-- 3D depth orientation
+boxOrientation  topright
+
+-- 3D depth of the root node
+boxDepth        7.0
+
+-- 3D depth scaling applied to each node depth step
+boxDepthScaleFactor     0.7
+
+-- Color scale factor of the horizontal side of the 3D box
+horizSideColorFactor    0.34
+
+-- Color scale factor of the vertical side of the 3D box
+vertSideColorFactor     0.12
+
+-- 3D box stroke color scale factor
+strokeColorFactor       0.0
+

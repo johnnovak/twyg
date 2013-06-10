@@ -1,0 +1,66 @@
+-- Font used for displaying the text inside the nodes
+fontname            "Gill Sans"
+
+-- Node text font sizes at different node depths
+-- (root, level1, level2, ..., levelN)
+fontsizes           [20.0, 15.0, 14.0, 12.0]
+
+-- Line height of the node text
+lineheight          1.3
+
+-- Text alignment within the box. Possible values are left,
+-- right, center, justify and auto (aligns the text
+-- depending on node orientation)
+textAlign           auto
+
+-- Controls whether the node text is hyphenated
+hyphenate           yes
+
+-- Max text width inside nodes
+maxTextWidth        240.0
+
+-- Padding between the bounding box of the node text and the outline of
+-- the node, expressed as a proportion of the font size
+nodeTextPadX        fontSize * 1.0
+nodeTextPadY        fontSize * 0.45
+
+-- Additional root node pad y factor
+rootTextPadY        fontSize * 2.5
+
+-- Node text baseline correction factor
+textBaselineCorrection  -0.2
+--textBaselineCorrection    0
+
+-- Rectangle stroke width
+strokeWidth         1.3
+
+-- Controls whether the node shapes cast a shadow
+nodeDrawShadow      no
+
+-- Node shadow color
+nodeShadowColor     rgba(0, 0, 0, 0.2)
+
+-- Node shadow blur radius
+-- nodeShadowBlur      5.0
+nodeShadowBlur      2.0
+
+-- Horizontal offset of the node shadow from the node
+nodeShadowOffsX     2.5
+
+-- Vertical offset of the node shadow from the node
+nodeShadowOffsY     2.5
+
+-- Controls whether the node shape should be filled using a linear
+-- top-down gradient
+drawGradient        no
+
+-- Color factor of the top of the node if the node shade is filled with a
+-- gradient
+-- nodebox->cairo magic factor 0.12
+gradientTopColor    #000
+
+-- Color factor of the bottom of the node if the node shade is filled
+-- with a gradient
+-- nodebox->cairo magic factor -0.04
+gradientBottomColor #000
+

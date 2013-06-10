@@ -1,0 +1,25 @@
+[layout]
+    style                layout
+    horizontalBalance    0.2
+    nodePadY             10
+    nodePadX             100
+    branchPadY           40
+    verticalAlignFactor  0.5
+
+[node]
+    style                rect
+    roundness            0
+
+[connection]
+    style                curve 
+    rootLineWidthEnd     1.4
+    nodeLineWidthEnd     2
+    rootLineWidthStart   14
+    nodeLineWidthStart   2
+    rootCx1Factor        0
+    nodeCx1Factor        0.6
+    nodeCx2Factor        0
+
+[color]
+    style                colorizer
+
