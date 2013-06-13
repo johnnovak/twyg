@@ -1,9 +1,8 @@
 try:
-    # Included in Python 2.6 by default
+    # Python 2.6+
     import json
-
 except ImportError:
-    # simplejson is required for Python 2.5
+    # Python 2.5 & Nodebox 1
     import simplejson as json
 
 
@@ -14,11 +13,12 @@ import twyg.node
 from twyg.config import (NODE_CONFIG, CONNECTION_CONFIG, LAYOUT_CONFIG,
                          COLOR_CONFIG, STYLE, Level, SectionLevel, ConfigError,
                          get_stylename, loadconfig, createlevel)
+
 from twyg.layout import layout_by_name
 from twyg.tree import Tree
 
 
-# TODO remove
+# TODO remove - for NodeBox testing only
 reload(twyg.colorizer)
 reload(twyg.connection)
 reload(twyg.node)
@@ -28,6 +28,7 @@ _initialized = False
 
 
 def _fullname(o):
+    """ Get the fully qualified class name of an object. """
     module = o.__class__.__module__
     if module is None or module == str.__class__.__module__:
         return o.__class__.__name__
@@ -35,6 +36,7 @@ def _fullname(o):
 
 
 def _detect_nodebox():
+    """ Return True if NodeBox 1 is available. """
     try:
         return _fullname(_ctx) == 'nodebox.graphics.Context'
     except NameError:
@@ -42,6 +44,10 @@ def _detect_nodebox():
 
 
 def _init():
+    """
+    Autodetect the available drawing backend and initialize the system
+    with the correct backend (PyCairo or NodeBox1).
+    """
     global _initialized
     if _initialized:
         return
@@ -54,9 +60,9 @@ def _init():
 
     twyg.common.init(nodebox=nodebox, ctx=_ctx)
 
-    # Pass drawing context to the modules that need access to drawing
-    # functions (we need to it this way to keep compatibility with
-    # NodeBox)
+    # Inject the drawing context manually into the modules that need
+    # access to the drawing functions (we need to it this way to keep
+    # the NodeBox1 compatibility).
     twyg.colorizer._ctx = _ctx
     twyg.common._ctx = _ctx
     twyg.connection._ctx = _ctx
@@ -66,29 +72,37 @@ def _init():
     _initialized = True
 
 
-def _loadjson(fname):
-    fp = file(fname)
+def _loadjson(path):
+    """ Loads a JSON file. """
+    fp = file(path)
     data = json.load(fp)
+    # TODO error reporting
     fp.close()
     return data
 
 
-def _has_levels(d):
+def _has_levels(section):
+    """ Check if a given configuration section has levels or not. """
     # TODO bit of a hack...
-    num_dicts = [x for x in d.values() if type(x) == dict]
-    return len(num_dicts) == len(d)
+    num_dicts = [x for x in section.values() if type(x) == dict]
+    return len(num_dicts) == len(section)
 
 
 def _get_style(section, config):
+    """
+    Get the style name associated with a given configuration
+    section.
+    """
     style = get_stylename(section, config)
     del config[STYLE]
     return style
 
 
 def _create_drawers(config, section, factory_func, constr_args=()):
-    """ Create a list of SectionLevel objects for a given configuration
-    section from a full configuration. """
-
+    """
+    Create a list of SectionLevel objects for a given configuration
+    section from a full configuration.
+    """
     c = config[section]
     level_dict = c if _has_levels(c) else {'defaultLevel': c}
     drawers = []
@@ -103,12 +117,30 @@ def _create_drawers(config, section, factory_func, constr_args=()):
     return drawers
 
 
-def buildtree(data_fname, config_fname, colorscheme_fname):
+def buildtree(data_path, config_path, colorscheme_path):
+    """
+    Build a `Tree` object from a JSON data file according to the rules
+    specified in the configuration and apply a colorscheme.
+
+    This method does not perform the actual tree layouting and drawing;
+    it stops after creating a ``Tree`` object initialized with the
+    correct drawer objects.
+
+    `data_path`
+        Path to the JSON data file that describes the tree structure.
+
+    `config_path'
+        Path to the configuration file.
+
+    `colorscheme_path`
+        Path to the colorscheme file.
+    """
+
     _init()
 
-    data = _loadjson(data_fname)
-    config = loadconfig(config_fname)
-    colorscheme = loadconfig(colorscheme_fname, flat=True)
+    data = _loadjson(data_path)
+    config = loadconfig(config_path)
+    colorscheme = loadconfig(colorscheme_path, flat=True)
 
     # Layout section
     section = LAYOUT_CONFIG

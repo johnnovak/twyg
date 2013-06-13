@@ -1,13 +1,8 @@
--- TODO remove root properties when levels are introduced
--- Connection end width
-rootLineWidthEnd   2.5
-nodeLineWidthEnd   1.4
-
 -- Connection start width
-rootLineWidthStart 20.0
 nodeLineWidthStart 9.8
 
-rootCx1Factor   1.7
+-- Connection end width
+nodeLineWidthEnd   1.4
 
 -- Line spline control point 1 X-factor
 nodeCx1Factor   0.7

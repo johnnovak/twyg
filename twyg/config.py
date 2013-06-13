@@ -4,7 +4,12 @@ import os
 import re
 import sys
 
-from collections import OrderedDict
+try:
+    # Python 2.7+
+    from collections import OrderedDict
+except ImportError:
+    # Python 2.4-2.6 & Nodebox 1
+    from twyg.ordereddict import OrderedDict
 
 from twyg.css3colors import color_to_rgba, colornames
 from twyg.tree import Direction
@@ -30,7 +35,7 @@ from twyg.cairowrapper import color
 #        is loaded and tokenized by ``_tokenize_file`` and then recursively
 #        parsed by ``buildconfig``.
 # 
-# 2.   
+# 2.   TODO
 #
 
 

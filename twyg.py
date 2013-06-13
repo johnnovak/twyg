@@ -101,6 +101,10 @@ def main():
     # Set actual size later on
     ctx.initsurface(1, 1, options.outformat, outfile, scale)
 
+    options.datafile = 'example-data/data3.json'
+    options.configfile = 'configs/config4.twg'
+    options.colorschemefile = 'colors/colors6.twg'
+
     #options.datafile = 'example-data/data4.json'
     #options.configfile = 'configs/config3.twg'
     #options.colorschemefile = 'colors/colors11.twg'
@@ -115,18 +119,18 @@ def main():
     #options.colorschemefile = 'colors/colors6b.twg'
 
     # TODO error, empty page outputted
-    options.datafile = 'example-data/data1-big.json'
+    #options.datafile = 'example-data/data1-big.json'
 
     # TODO
-    options.datafile = 'example-data/data1-big.json'
-    options.datafile = 'example-data/data1.json'
-    options.datafile = 'example-data/data1-debug4.json'
+    #options.datafile = 'example-data/data1-big.json'
+    #options.datafile = 'example-data/data1.json'
+    #options.datafile = 'example-data/data1-debug4.json'
 
     #TODO
     #options.configfile = 'configs/config6.twg'
 
-    options.configfile = 'configs/config11.twg'
-    options.colorschemefile = 'colors/colors6.twg'
+#    options.configfile = 'configs/config11.twg'
+#    options.colorschemefile = 'colors/colors6.twg'
 
 #    options.configfile = 'configs/config2.twg'
 #    options.colorschemefile = 'colors/colors6.twg'

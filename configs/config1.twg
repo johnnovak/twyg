@@ -6,8 +6,26 @@
     style       rect
 
 [connection]
-    style       curve
+    {default}
+        style       curve
+
+    {root}
+        @copy default
+        levelDepthMax       0
+
+        nodeLineWidthEnd    2.5
+        nodeLineWidthStart  30.0
+        nodeCx1Factor       1.2
 
 [color]
-    style       colorizer
+    {default}
+        style          colorizer
+
+    {leaf}
+        @copy default
+        levelNumChildrenMax     0
+
+        fillColor      baseColor.blend(bgColor, .7)
+        strokeColor    baseColor.blend(bgColor, .2)
+        fontColor      baseColor.darken(.25)
 

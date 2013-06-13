@@ -10,11 +10,9 @@ class CurveConnectionDrawer(object):
 
     def __init__(self, config={}):
         properties = {
-            'rootLineWidthStart': (NumberProperty, {'min': 0.0}),
+            # TODO remove 'node' previx from property names?
             'nodeLineWidthStart': (NumberProperty, {'min': 0.0}),
-            'rootLineWidthEnd':   (NumberProperty, {'min': 0.0}),
             'nodeLineWidthEnd':   (NumberProperty, {'min': 0.0}),
-            'rootCx1Factor':      (NumberProperty, {}),
             'nodeCx1Factor':      (NumberProperty, {}),
             'nodeCx2Factor':      (NumberProperty, {}),
             'nodeCy1Factor':      (NumberProperty, {}),
@@ -45,11 +43,7 @@ class CurveConnectionDrawer(object):
         children = node.children
 
         for child in children:
-            # TODO remove when levels are introduced
-            if node.isroot():
-                linewidth = E('rootLineWidthEnd')
-            else:
-                linewidth = E('nodeLineWidthEnd')
+            linewidth = E('nodeLineWidthEnd')
 
             _ctx.strokewidth(linewidth)
 
@@ -73,28 +67,14 @@ class CurveConnectionDrawer(object):
                 cy1 = (y2 - y1) * E('nodeCy1Factor')
                 cy2 = (y2 - y1) * E('nodeCy2Factor')
 
-                if node.isroot():
-                    startwidth = linewidth - E('rootLineWidthStart')
-                else:
-                    startwidth = E('nodeLineWidthStart') - 1
+                startwidth = E('nodeLineWidthStart') - 1
 
-                # TODO remove isroot stuff when levels are introduced
-                if not node.isroot():
-                    sw = startwidth / 2.
+                sw = startwidth / 2.
 
-                    _ctx.beginpath(x1, y1 - sw)
-                    _ctx.curveto(x1 + cx1, y1 + cy1, x2 - cx2, y2 - cy2, x2, y2)
-                    _ctx.curveto(x2 - cx2, y2 - cy2, x1 + cx1, y1 + cy1, x1, y1 + sw)
-                    _ctx.endpath()
-
-                else:
-                    cx1 *= E('rootCx1Factor')
-                    sw = startwidth * 2.
-
-                    _ctx.beginpath(x1 - sw, y1)
-                    _ctx.curveto(x1, y1, x2 - cx1, y2, x2, y2)
-                    _ctx.curveto(x2 - cx1, y2, x1, y1, x1 + sw, y1)
-                    _ctx.endpath()
+                _ctx.beginpath(x1, y1 - sw)
+                _ctx.curveto(x1 + cx1, y1 + cy1, x2 - cx2, y2 - cy2, x2, y2)
+                _ctx.curveto(x2 - cx2, y2 - cy2, x1 + cx1, y1 + cy1, x1, y1 + sw)
+                _ctx.endpath()
 
 
 class JunctionConnectionDrawer(object):

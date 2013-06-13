@@ -11,14 +11,20 @@
     roundness            0
 
 [connection]
-    style                curve 
-    rootLineWidthEnd     1.4
-    nodeLineWidthEnd     2
-    rootLineWidthStart   14
-    nodeLineWidthStart   2
-    rootCx1Factor        0
-    nodeCx1Factor        0.6
-    nodeCx2Factor        0
+    {default}
+        style               curve
+        nodeLineWidthStart  2
+        nodeLineWidthEnd    2
+        nodeCx1Factor       0.6
+        nodeCx2Factor       0
+
+    {root}
+        @copy default
+        levelDepthMax       0
+
+        nodeLineWidthStart  14
+        nodeLineWidthEnd    1.4
+        nodeCx1Factor       0
 
 [color]
     style                colorizer

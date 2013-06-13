@@ -9,8 +9,6 @@ class Colorizer(object):
 
     def __init__(self, config, colorscheme):
         properties = {
-            'boxDepthMin': (NumberProperty, {'min': 0.0}),
-            'boxDepthMax': (NumberProperty, {'min': 0.0}),
             'fillColor':   (ColorProperty, {}),
             'strokeColor': (ColorProperty, {}),
             'fontColor':   (ColorProperty, {})

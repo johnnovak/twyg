@@ -34,7 +34,6 @@ class NodeDrawer(object):
 
             'nodeTextPadX':           (NumberProperty,  {'min': 0.0}),
             'nodeTextPadY':           (NumberProperty,  {'min': 0.0}),
-            'rootTextPadY':           (NumberProperty,  {'min': 0.0}),
 
             'strokeWidth':            (NumberProperty,  {'min': 0.0}),
 
@@ -75,11 +74,7 @@ class NodeDrawer(object):
         E = self._eval_func(node)
 
         padx = E('nodeTextPadX')
-
-        if (node.isroot()):
-            pady = E('rootTextPadY')
-        else:
-            pady = E('nodeTextPadY')
+        pady = E('nodeTextPadY')
 
         node.width  = node.textwidth  + padx * 2
         node.height = node.textheight + pady * 2
@@ -90,16 +85,16 @@ class NodeDrawer(object):
         node._textyoffs = pady
 
     def connection_point(self, node, direction):
-        # TODO remove when levels are introduced
-#        if node.isroot():
-#            x = node.bboxwidth / 2
-#        else:
-
-        # TODO implement Top & Bottom directions
-        if direction == Direction.Left:
-            x = 0
+        # TODO make connection point location configurable per node
+        # (center, auto, etc)
+        if node.isroot():
+            x = node.bboxwidth / 2
         else:
-            x = node.bboxwidth
+            # TODO implement Top & Bottom directions
+            if direction == Direction.Left:
+                x = 0
+            else:
+                x = node.bboxwidth
 
 #            x = node.bboxwidth / 2
         y = node.bboxheight / 2

@@ -24,9 +24,6 @@ maxTextWidth        240.0
 nodeTextPadX        fontSize * 1.0
 nodeTextPadY        fontSize * 0.45
 
--- Additional root node pad y factor
-rootTextPadY        fontSize * 2.5
-
 -- Node text baseline correction factor
 textBaselineCorrection  -0.2
 --textBaselineCorrection    0
