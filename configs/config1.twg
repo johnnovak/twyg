@@ -9,5 +9,14 @@
     style       curve
 
 [color]
-    style       colorizer
+    {default}
+        style          colorizer
+
+    {leaf}
+        @copy default
+        levelNumChildrenMax     0
+
+        fillColor      baseColor.blend(bgColor, .7)
+        strokeColor    baseColor.blend(bgColor, .2)
+        fontColor      baseColor.darken(.25)
 

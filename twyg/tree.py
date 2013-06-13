@@ -195,9 +195,9 @@ class Tree(object):
         self._draw_nodes()
 
     def background_color(self):
-        # TODO implement proper bg color handling
-        # return self._colorizer.background_color()
-        return None
+        # The background color for the canvas is always taken from the first
+        # colorizer object.
+        return  self._colorizers[0].drawer.background_color()
 
     def _assign_drawers(self):
         """ Assign the correct drawer objects for each node as specified

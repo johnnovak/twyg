@@ -1,10 +1,4 @@
--- Above this depth leaves will be drawn as text
-boxDepthMin    1
-
--- Draw nodes as solid boxes up to this depth
-boxDepthMax    3
-
-fillColor      baseColor.blend(bgColor, .5)
+fillColor      baseColor
 strokeColor    baseColor
 fontColor      color.white
 

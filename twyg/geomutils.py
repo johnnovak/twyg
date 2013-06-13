@@ -53,13 +53,13 @@ def slice_shape(points, y, h, ystep):
     Calculate the intersections of a convex shape and a set of
     equidistant horizontal lines.
 
-    ``points``
-        points defining the shape segments
-    ``y``
-        topmost (lowest value) y coordinate of the original shape
-    ``h``
-        height of the original shape
-    ``ystep``
+    `points`
+       points defining the shape segments
+    `y`
+       topmost (lowest value) y coordinate of the original shape
+    `h`
+       height of the original shape
+    `ystep`
         vertical distance between horizontal lines
 
     Only point-pairs are returned, single-point intersections are
