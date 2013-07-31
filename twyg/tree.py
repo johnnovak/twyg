@@ -36,6 +36,8 @@ class Node(object):
         self.x = 0
         self.y = 0
 
+        # Property name (Python classes) to variable name (config expressions)
+        # mappings
         self.property_mappings = {
             'x':              'x',
             'y':              'y',

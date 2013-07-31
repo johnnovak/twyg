@@ -1069,6 +1069,11 @@ class Properties(object):
             for propname, varname in scope.property_mappings.iteritems():
                 if hasattr(scope, propname):
                     vars[varname] = getattr(scope, propname)
+                # TODO triggered by 'basecolor' -- why?
+#                else:
+#                    raise ConfigError("Variable '%s' is not evaluated "
+#                                      "at this point" % (varname))
+
         return p.eval(vars)
 
 
