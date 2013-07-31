@@ -1,7 +1,6 @@
 [layout]
 style                layout
 horizontalBalance    0.5
-rootPadX             100
 nodePadX             50
 nodePadY             10
 branchPadY           15
@@ -11,22 +10,26 @@ radialMinNodes       1000
 style                rect
 fontsizes            [21, 15, 13]
 maxTextWidth         230
-nodeTextPadXFactor   1.0
-nodeTextPadYFactor   0.7
+nodeTextPadY         fontSize * 0.7
 roundness            0.8
 
 [connection]
-style                curve
-rootLineWidth        2.5
-nodeLineWidth        1.5
-rootStartWidthFactor 1
-nodeStartWidthFactor 1
-rootCx1Factor        2.0
-nodeCx1Factor        0.6
-nodeCx2Factor        0
+    {default}
+        style               curve
+        nodeLineWidthStart  1.5
+        nodeLineWidthEnd    1.5
+        nodeCx1Factor       0.6
+        nodeCx2Factor       0
+
+    {root}
+        @copy default
+        levelDepthMax       0
+
+        nodeCx1Factor       0
+        nodeCx2Factor       1
+        nodeLineWidthEnd    2.5
+        nodeLineWidthStart  2.5
 
 [color]
-style                colorizer
-boxDepthMin          10
-boxDepthMax          10
+style       colorizer
 

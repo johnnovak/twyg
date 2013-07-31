@@ -7,8 +7,15 @@
     verticalAlignFactor  0.5
 
 [node]
-    style                rect
-    roundness            0
+    {default}
+        style                rect
+        roundness            0
+
+    {root}
+        @copy default
+        levelDepthMax       0
+
+        nodeTextPadY        fontSize * 2
 
 [connection]
     {default}
@@ -22,9 +29,12 @@
         @copy default
         levelDepthMax       0
 
-        nodeLineWidthStart  14
-        nodeLineWidthEnd    1.4
+        nodeLineWidthStart  100
+        nodeLineWidthEnd    2.5
         nodeCx1Factor       0
+        nodeCx2Factor       0
+        nodeCy1Factor       0
+        nodeCy2Factor       0
 
 [color]
     style                colorizer
