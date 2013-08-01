@@ -34,9 +34,10 @@
 
         nodeLineWidthStart  2.5
         nodeLineWidthEnd    2.5
-        nodeCx1Factor       2.3
+        nodeCx1Factor       0
+        nodeCy1Factor       1
 
 [color]
     style           colorizer
-    strokeColor     baseColor.darken(.15)
+    strokeColor     baseColor.darken(0.15)
 

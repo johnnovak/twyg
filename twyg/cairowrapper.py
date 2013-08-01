@@ -102,7 +102,7 @@ class Context(object):
         self._fontsize = 12.0
         self._lineheight = 1.5
 
-        self._drawshadow = False
+        self._shadow = False
         self._shadow_dx = 0
         self._shadow_dy = 0
         self._shadow_radius = 3
@@ -381,6 +381,9 @@ class Context(object):
         pat.add_color_stop_rgba(1, *clr1.rgba())
         pat.add_color_stop_rgba(0, *clr2.rgba())
 
+        if self._shadow:
+            self._draw_shadow()
+
         c.set_source(pat)
         if self._strokecolor:
             c.fill_preserve()
@@ -395,10 +398,10 @@ class Context(object):
         # TODO conversion from NodeBox blur params
         self._shadow_radius = blur
         self._shadow_color = clr
-        self._drawshadow = True
+        self._shadow = True
 
     def noshadow(self):
-        self._drawshadow = False
+        self._shadow = False
 
     #=========================================================================#
     #=  HELPER FUNCTIONS                                                     =#
@@ -449,19 +452,8 @@ class Context(object):
     def _draw(self):
         c = self._ctx
         if self._fillcolor:
-            if self._drawshadow:
-                img, padding = self._shadow()
-                x1, y1, x2, y2 = c.fill_extents()
-
-                dpi_scale = 72.0 / self._bitmap_dpi
-
-                c.save()
-                c.set_source_rgba(*self._shadow_color.rgba())
-                c.translate(x1 + self._shadow_dx, y1 + self._shadow_dy)
-                c.scale(dpi_scale, dpi_scale)
-                c.translate(-padding, -padding)
-                c.mask_surface(img, 0, 0)
-                c.restore()
+            if self._shadow:
+                self._draw_shadow()
 
             c.set_source_rgba(*self._fillcolor.rgba())
             if self._strokecolor:
@@ -473,7 +465,22 @@ class Context(object):
         else:
             self._draw_stroke()
 
-    def _shadow(self):
+    def _draw_shadow(self):
+        c = self._ctx
+        img, padding = self._render_bitmap_shadow()
+        x1, y1, x2, y2 = c.fill_extents()
+
+        dpi_scale = 72.0 / self._bitmap_dpi
+
+        c.save()
+        c.set_source_rgba(*self._shadow_color.rgba())
+        c.translate(x1 + self._shadow_dx, y1 + self._shadow_dy)
+        c.scale(dpi_scale, dpi_scale)
+        c.translate(-padding, -padding)
+        c.mask_surface(img, 0, 0)
+        c.restore()
+
+    def _render_bitmap_shadow(self):
         # TODO reference (ryg blog)
         # TODO constant for 72.0 dpi
         # TODO shadow doesn't work properly for SVG output (shadow
