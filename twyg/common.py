@@ -12,7 +12,7 @@ def init(nodebox=False, ctx=None):
         # so the likelihood that future updates will break this is very
         # slim."
         #   -- Excerpt from Famous Last Words, vol 42.
-        ctx.rgba_color = lambda(c): colors.rgb(*c)
+        ctx.color = lambda r, g, b, a: colors.rgb(r, g, b, a)
         ctx.gradientfill = colors.gradientfill
 
 

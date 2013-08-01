@@ -1,7 +1,7 @@
 ximport('twyg')
 
 datafile = 'example-data/data3.json'
-configfile = 'configs/config6.twg'
+configfile = 'configs/config4.twg'
 colorschemefile = 'colors/colors10.twg'
 
 tree = twyg.buildtree(datafile, configfile, colorschemefile)
