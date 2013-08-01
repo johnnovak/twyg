@@ -1,37 +1,40 @@
 [layout]
-style                layout
-horizontalBalance    0.5
-rootPadX             100
-nodePadXRatio        .14
-nodePadY             20
-branchPadY           40
-radialMinNodes       1000
-verticalAlignFactor  0.5
-sameWidthSiblings    no
+    style               layout
+    horizontalBalance   0.5
+    nodePadXRatio       .14
+    nodePadY            20
+    branchPadY          40
+    radialMinNodes      1000
+    verticalAlignFactor 0.5
+    sameWidthSiblings   no
 
 [node]
-style                line
-fontsizes            [21, 15, 13]
-strokeWidth          1.5
-maxTextWidth         230
-nodeTextPadXFactor   0.6
-nodeTextPadYFactor   0.2
+    style               line
+    fontsizes           [21, 15, 13]
+    strokeWidth         1.5
+    maxTextWidth        230
+    nodeTextPadX        fontSize * .6
+    nodeTextPadY        fontSize * .2
 
 [connection]
-style                curve
-rootLineWidth        1.5
-nodeLineWidth        1.5
-rootStartWidthFactor 1
-nodeStartWidthFactor 1
-rootCx1Factor        5
-nodeCx1Factor        0.15
-nodeCx2Factor        0.55
-nodeCy1Factor        0.4
-nodeCy2Factor        0.0
+    {default}
+        style               curve
+        nodeLineWidthStart  1.5
+        nodeLineWidthEnd    1.5
+        nodeCx1Factor       0.15
+        nodeCx2Factor       0.55
+        nodeCy1Factor       0.4
+        nodeCy2Factor       0.0
+
+    {root}
+        @copy default
+        levelDepthMax       0
+
+        nodeLineWidthStart  1.5
+        nodeLineWidthEnd    1.5
+        nodeCx1Factor       0
 
 [color]
-style                colorizer
-boxDepthMin          10
-boxDepthMax          10
-textColorFactor      1.9
+    style       colorizer
+    fontColor   baseColor.blend(color.white, .9)
 

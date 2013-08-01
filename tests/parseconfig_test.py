@@ -444,3 +444,8 @@ nodeCx2Factor           0
 if __name__ == '__main__':
     unittest.main()
 
+# TODO
+# this is valid:
+#   someColor #fff
+# ...but this should trigger an error:
+#   some Color #fff
