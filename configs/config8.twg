@@ -1,7 +1,7 @@
 [layout]
     style               layout
     horizontalBalance   0.5
-    nodePadXRatio       .14
+    nodePadXRatio       0.14
     nodePadY            20
     branchPadY          40
     radialMinNodes      1000
@@ -24,7 +24,7 @@
         nodeCx1Factor       0.15
         nodeCx2Factor       0.55
         nodeCy1Factor       0.4
-        nodeCy2Factor       0.0
+        nodeCy2Factor       0
 
     {root}
         @copy default
@@ -32,9 +32,9 @@
 
         nodeLineWidthStart  1.5
         nodeLineWidthEnd    1.5
-        nodeCx1Factor       0
+        nodeCx1Factor       5
 
 [color]
     style       colorizer
-    fontColor   baseColor.blend(color.white, .9)
+    fontColor   baseColor.blend(color.white, 0.9)
 
