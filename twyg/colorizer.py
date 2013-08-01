@@ -1,8 +1,5 @@
-from twyg.common import scalecolor
-from twyg.config import (COLOR_CONFIG, Properties, NumberProperty,
-                         ColorProperty, ArrayProperty)
-
-from twyg.css3colors import color_to_rgba
+from twyg.config import (Properties, NumberProperty, ColorProperty,
+                         ArrayProperty)
 
 
 class Colorizer(object):

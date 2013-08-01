@@ -8,6 +8,7 @@ from optparse import OptionParser
 from twyg import buildtree
 from twyg.cairowrapper import context as ctx
 from twyg.common import validate_margins, calculate_margins
+from twyg.css3colors import color_to_rgba
 
 
 def exit_error(msg):
@@ -16,10 +17,19 @@ def exit_error(msg):
 
 
 def main():
-    usage = 'Usage: %prog [OPTIONS] INFILE OUTFILE'
+    usage = 'Usage: %prog [OPTIONS] DATAFILE OUTFILE'
     parser = OptionParser(usage=usage)
     parser.add_option('-c', '--config',
                       dest='configfile', metavar='FILE', help='config file')
+
+    parser.add_option('-o', '--colorscheme',
+                      dest='colorschemefile', metavar='FILE',
+                      help='colorscheme file')
+
+    parser.add_option('-b', '--background-color',
+                      dest='bgcolor', metavar='COLOR',
+                      help=('override background color; must be '
+                            'specified in CSS3 format'))
 
     parser.add_option('-d', '--dpi',
                       default='150.0', type='float',
@@ -28,7 +38,7 @@ def main():
 
     parser.add_option('-i', '--input-format',
                       dest='informat', default='auto', metavar='FORMAT',
-                      help=('input format: auto, json or text '
+                      help=('input format; auto, json or text '
                             '[default: %default]'))
 
     parser.add_option('-m', '--margin',
@@ -43,7 +53,7 @@ def main():
 
     parser.add_option('-s', '--scale',
                       default='1.0', type='float',
-                      help='scale factor [default: %default]')
+                      help='scale factor as multiplier or percentage [default: %default]')
 
     options, args = parser.parse_args()
 
@@ -59,12 +69,14 @@ def main():
         parser.error('output file must be specified')
         return 2
 
-    infile = args[0]
+    datafile = args[0]
     outfile = args[1]
 
     if options.informat == 'auto':
-        ext = os.path.splitext(infile)[1][1:].lower()
+        ext = os.path.splitext(datafile)[1][1:].lower()
         options.informat = 'json' if ext == 'json' else 'text'
+
+    # TODO implement text input format parsing
 
     ext = os.path.splitext(outfile)[1][1:].lower()
     if ext in ('pdf', 'png', 'svg'):
@@ -89,15 +101,15 @@ def main():
         parser.error(e)
         return 2
 
+    # TODO interpret scale factor either as a multiplier or a percentage
     # Calculate output scale factor
     scale = options.dpi / 72.0 * options.scale     # 1 point = 1/72 inch
 
     # Set actual size later on
     ctx.initsurface(1, 1, options.outformat, outfile, scale)
 
-    options.datafile = 'example-data/data4.json'
-    options.configfile = 'configs/config11.twg'
-    options.colorschemefile = 'colors/colors6.twg'
+
+    # SAMPLES
 
     #options.datafile = 'example-data/data4.json'
     #options.configfile = 'configs/config3.twg'
@@ -130,7 +142,7 @@ def main():
 #    options.colorschemefile = 'colors/colors6.twg'
 
     try:
-        tree = buildtree(options.datafile,
+        tree = buildtree(datafile,
                          options.configfile,
                          options.colorschemefile)
     except Exception, e:
@@ -138,15 +150,27 @@ def main():
 
     width, height = tree.calclayout()
 
+    # Margins can be given as percentages of the total graph size,
+    # that's why we have to wait with the margin calculations until the
+    # layout is complete
     padtop, padleft, padbottom, padright = calculate_margins(width, height,
                                                              margins)
     width += padleft + padright
     height += padtop + padbottom
 
+    # Center the graph
     tree.shiftnodes(padleft, padtop)
 
     ctx.initsurface(width, height, options.outformat, outfile, scale)
-    ctx.background(tree.background_color())
+
+    # Override background color is specified on the command line
+    if options.bgcolor:
+        # TODO refactor color(*color_to_rgba) to parsecolor in common
+        bgcolor = ctx.color(*color_to_rgba(options.bgcolor))
+    else:
+        bgcolor = tree.background_color()
+
+    ctx.background(bgcolor)
 
     tree.draw()
     ctx.writesurface()

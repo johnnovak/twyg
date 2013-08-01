@@ -1,6 +1,5 @@
-from twyg.common import scalecolor, createpath
-from twyg.config import (CONNECTION_CONFIG, Properties,
-                         NumberProperty, EnumProperty)
+from twyg.common import createpath
+from twyg.config import (Properties, NumberProperty, EnumProperty)
 from twyg.geom import Vector2
 from twyg.geomutils import arcpath
 from twyg.tree import Direction, opposite_dir

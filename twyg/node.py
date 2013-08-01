@@ -1,10 +1,10 @@
 import math
 
 from twyg.common import scalecolor, textwidth, createpath
-from twyg.config import (NODE_CONFIG, Properties,
-                         StringProperty, NumberProperty, ColorProperty,
-                         EnumProperty, BooleanProperty, ArrayProperty)
-from twyg.geom import Vector2
+from twyg.config import (Properties, StringProperty, NumberProperty,
+                         ColorProperty, EnumProperty, BooleanProperty,
+                         ArrayProperty)
+
 import twyg.geomutils as geom
 import twyg.textwrap as textwrap
 from twyg.tree import Direction

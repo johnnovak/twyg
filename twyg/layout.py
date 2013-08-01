@@ -1,9 +1,7 @@
 import math
 import sys
 
-from twyg.config import (LAYOUT_CONFIG, Properties,
-                         StringProperty, NumberProperty, ColorProperty,
-                         EnumProperty, BooleanProperty, ArrayProperty)
+from twyg.config import (Properties, NumberProperty, BooleanProperty)
 from twyg.tree import Direction, opposite_dir
 from twyg.geomutils import halfcircle
 
