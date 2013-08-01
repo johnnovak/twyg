@@ -6,10 +6,6 @@ except ImportError:
     import simplejson as json
 
 
-import twyg.colorizer
-import twyg.connection
-import twyg.node
-
 from twyg.config import (NODE_CONFIG, CONNECTION_CONFIG, LAYOUT_CONFIG,
                          COLOR_CONFIG, STYLE, Level, SectionLevel, ConfigError,
                          get_stylename, loadconfig, createlevel)
@@ -18,11 +14,10 @@ from twyg.layout import layout_by_name
 from twyg.tree import Tree
 
 
-# TODO remove - for NodeBox testing only
-reload(twyg.colorizer)
-reload(twyg.connection)
-reload(twyg.node)
-
+import twyg.config
+import twyg.colorizer
+import twyg.connection
+import twyg.node
 
 _initialized = False
 
@@ -63,11 +58,13 @@ def _init():
     # Inject the drawing context manually into the modules that need
     # access to the drawing functions (we need to it this way to keep
     # the NodeBox1 compatibility).
+
+    twyg.config._ctx = _ctx
+
     twyg.colorizer._ctx = _ctx
     twyg.common._ctx = _ctx
     twyg.connection._ctx = _ctx
     twyg.node._ctx = _ctx
-    twyg.tree._ctx = _ctx
 
     _initialized = True
 

@@ -14,9 +14,6 @@ except ImportError:
 from twyg.css3colors import color_to_rgba, colornames
 from twyg.tree import Direction
 
-# TODO do properly... should work with nodebox too
-from twyg.cairowrapper import color
-
 
 # This is a high-leve description of the config parsing process:
 #
@@ -457,7 +454,7 @@ def parsecolor(mode, *components):
     s = ', '.join([str(a) for a in components])
     if mode:
         s = mode + '(' + s + ')'
-    return color(*color_to_rgba(s))
+    return _ctx.color(*color_to_rgba(s))
 
 
 # Functions that are available in a config file
@@ -479,23 +476,27 @@ function_table = {
 }
 
 
-# Make all named CSS3 colors available as color.<colorname> in the
-# config file
-class Colors:
-    pass
-
-col = Colors()
-for name in colornames.keys():
-    setattr(col, name, parsecolor(None, name))
-
 variable_table_defaults = {
-    'color': col
 }
 
 variable_table = {
 }
 
-del Colors, col
+def init_variable_table_defaults():
+    # Make all named CSS3 colors available as color.<colorname> in the
+    # config file
+    def inject_css3_colors():
+        global variable_table_defaults
+
+        class Colors:
+            pass
+
+        col = Colors()
+        for name in colornames.keys():
+            setattr(col, name, parsecolor(None, name))
+        variable_table_defaults['color'] = col
+
+    inject_css3_colors()
 
 
 class SymbolBase(object):
@@ -798,6 +799,8 @@ def parse_expr(expr):
 
 def eval_expr(expr, vars={}):
     global variable_table
+    if not variable_table_defaults:
+        init_variable_table_defaults()
     variable_table = dict(variable_table_defaults)
     variable_table.update(vars)
     return expr.eval()
