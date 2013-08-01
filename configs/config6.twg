@@ -1,42 +1,41 @@
 [layout]
-style                layout
-horizontalBalance    0.5
-rootPadX             100
-nodePadX             50
-nodePadY             7
-branchPadY           15
-radialMinNodes       1000
+    style               layout
+    horizontalBalance   0.5
+    nodePadX            50
+    nodePadY            7
+    branchPadY          15
+    radialMinNodes      1000
 
 [node]
-style                rect
-fontname             "Trebuchet MS"
-fontsizes            [21, 15, 13]
-maxTextWidth         230
-textAlign            center
-nodeTextPadXFactor   0.9
-nodeTextPadYFactor   0.7
-strokeWidth          1.3
-roundness            0.8
-nodeShadowColor      rgba(0, 0, 0, 0.2)
-drawGradient         yes
--- TODO
-gradientBottomColorFactor  -0.04
-gradientTopColorFactor     0.12
+    style               rect
+    fontname            "Trebuchet MS"
+    fontsizes           [21, 15, 13]
+    maxTextWidth        230
+    textAlign           center
+    nodeTextPadX        fontSize * 0.9
+    nodeTextPadY        fontSize * 0.7
+    strokeWidth         1.3
+    roundness           0.8
+    nodeShadowColor     rgba(0, 0, 0, 0.2)
+    drawGradient        yes
 
 [connection]
-style                curve
-rootLineWidth        2.5
-nodeLineWidth        1.5
-rootStartWidthFactor 1
-nodeStartWidthFactor 1
-rootCx1Factor        2.3
-nodeCx1Factor        0.6
-nodeCx2Factor        0
+    {default}
+        style               curve
+        nodeLineWidthStart  1.5
+        nodeLineWidthEnd    1.5
+        nodeCx1Factor       0.6
+        nodeCx2Factor       0
+
+    {root}
+        @copy default
+        levelDepthMax       0
+
+        nodeLineWidthStart  2.5
+        nodeLineWidthEnd    2.5
+        nodeCx1Factor       2.3
 
 [color]
-style                colorizer
-boxDepthMin          10
-boxDepthMax          10
-boxFillColorFactor   0
-boxBorderColorFactor -0.15
+    style           colorizer
+    strokeColor     baseColor.darken(.15)
 

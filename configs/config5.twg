@@ -1,17 +1,17 @@
 [layout]
-style                layout
-horizontalBalance    0.5
-nodePadX             50
-nodePadY             10
-branchPadY           15
-radialMinNodes       1000
+    style                layout
+    horizontalBalance    0.5
+    nodePadX             50
+    nodePadY             10
+    branchPadY           15
+    radialMinNodes       1000
 
 [node]
-style                rect
-fontsizes            [21, 15, 13]
-maxTextWidth         230
-nodeTextPadY         fontSize * 0.7
-roundness            0.8
+    style                rect
+    fontsizes            [21, 15, 13]
+    maxTextWidth         230
+    nodeTextPadY         fontSize * 0.7
+    roundness            0.8
 
 [connection]
     {default}
@@ -31,5 +31,5 @@ roundness            0.8
         nodeLineWidthStart  2.5
 
 [color]
-style       colorizer
+    style       colorizer
 
