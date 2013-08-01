@@ -8,14 +8,14 @@
 
 [node]
     {default}
-        style                rect
-        roundness            0
+        style           rect
+        roundness       0
 
     {root}
         @copy default
-        levelDepthMax       0
+        levelDepthMax   0
 
-        textPadY            fontSize * 2
+        textPadY        fontSize * 2
 
 [connection]
     {default}
@@ -37,5 +37,5 @@
         nodeCy2Factor       0
 
 [color]
-    style                colorizer
+    style   colorizer
 

@@ -6,9 +6,10 @@ class Colorizer(object):
 
     def __init__(self, config, colorscheme):
         properties = {
-            'fillColor':   (ColorProperty, {}),
-            'strokeColor': (ColorProperty, {}),
-            'fontColor':   (ColorProperty, {})
+            'fillColor':       (ColorProperty, {}),
+            'strokeColor':     (ColorProperty, {}),
+            'connectionColor': (ColorProperty, {}),
+            'fontColor':       (ColorProperty, {})
         }
 
         colorscheme_properties = {
@@ -57,6 +58,8 @@ class Colorizer(object):
         node.fontcolor = E('fontColor')
 
         # TODO remove when levels are introduced
+        # TODO the isroot() branch is probably unnecessary -- should be
+        # tested
         if node.isroot():
             node.basecolor = C('rootColor')
             node.fillcolor = node.basecolor
@@ -65,8 +68,7 @@ class Colorizer(object):
         else:
             node.fillcolor = E('fillColor')
             node.strokecolor = E('strokeColor')
-            # TODO connection color property
-            node.connectioncolor = node.basecolor
+            node.connectioncolor = E('connectionColor')
 
     def background_color(self):
         C = self._colorscheme_props.eval

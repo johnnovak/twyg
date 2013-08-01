@@ -155,7 +155,7 @@ class NodeDrawer(object):
         node.fontname       = E('fontname')
         node.lineheight     = E('lineheight')
         node.max_text_width = E('maxTextWidth')
-        #TODO should be node property?
+        #TODO should be a node property?
         node.hyphenate      = E('hyphenate')
 
         _ctx.font(node.fontname, node.fontsize)
@@ -221,7 +221,7 @@ class NodeDrawer(object):
 
         _ctx.fill(node.fontcolor)
 
-        # TODO make this a config parameter
+        # TODO make justify_min_lines a config parameter
         justify_min_lines = 5
         ystep = node._textrects[0].h
 
@@ -379,6 +379,8 @@ class BoxNodeDrawer(NodeDrawer):
     def __init__(self, config={}):
         orientation = ('topleft', 'topright', 'bottomleft', 'bottomright')
 
+        # TODO convert ColorFactor properties to Color
+        # TODO convert ScaleFactor?
         properties = {
             'boxOrientation':       (EnumProperty,   {'values': orientation}),
             'boxDepth':             (NumberProperty, {'min': 0.0}),
@@ -393,8 +395,6 @@ class BoxNodeDrawer(NodeDrawer):
 
         # Determine 3D depth orientation
         E = self._eval_func(None)
-        # TODO shouldn't contain any useful vars at this point
-#        vars = self.vars()
 
         orientation = E('boxOrientation')
         self._horiz_dir = 0
@@ -542,8 +542,6 @@ class PolyNodeDrawer(NodeDrawer):
         super(PolyNodeDrawer, self).__init__(properties, defaults, config)
 
         E = self._eval_func(None)
-        # TODO shouldn't contain any useful vars at this point
-        #vars = self.vars()
 
         self._wraprect = False
         self._shapefunc = geom.calc_regular_polygon_intersections

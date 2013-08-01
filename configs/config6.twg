@@ -40,4 +40,5 @@
 [color]
     style           colorizer
     strokeColor     baseColor.darken(0.15)
+    connectionColor baseColor.darken(0.15)
 

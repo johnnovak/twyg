@@ -1,4 +1,5 @@
-fillColor      baseColor
-strokeColor    baseColor
-fontColor      color.white
+fillColor       baseColor
+strokeColor     baseColor
+connectionColor baseColor
+fontColor       color.white
 
