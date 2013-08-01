@@ -124,6 +124,7 @@ class Layout(object):
                 child_conn_ybottom = lastchild.connection_point(child_dir)[1]
                 child_conn_height = child_conn_ybottom - child_conn_ytop
 
+                #TODO make child_conn_height available as config param?
                 xpad = child_conn_height * node_padx_ratio
         else:
             xpad = E('nodePadX')

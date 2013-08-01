@@ -10,7 +10,7 @@
         @copy default
         levelDepthMax       0
 
-        nodeTextPadY        fontSize * 2
+        textPadY    fontSize * 2
 
 [connection]
     {default}

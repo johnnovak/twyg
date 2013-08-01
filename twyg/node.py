@@ -32,8 +32,8 @@ class NodeDrawer(object):
             'maxTextWidth':           (NumberProperty,  {'min': 0.0}),
             'hyphenate':              (BooleanProperty, {}),
 
-            'nodeTextPadX':           (NumberProperty,  {'min': 0.0}),
-            'nodeTextPadY':           (NumberProperty,  {'min': 0.0}),
+            'textPadX':               (NumberProperty,  {'min': 0.0}),
+            'textPadY':               (NumberProperty,  {'min': 0.0}),
 
             'strokeWidth':            (NumberProperty,  {'min': 0.0}),
 
@@ -73,8 +73,8 @@ class NodeDrawer(object):
 
         E = self._eval_func(node)
 
-        padx = E('nodeTextPadX')
-        pady = E('nodeTextPadY')
+        padx = E('textPadX')
+        pady = E('textPadY')
 
         node.width  = node.textwidth  + padx * 2
         node.height = node.textheight + pady * 2

@@ -13,7 +13,7 @@
     style           rect
     fontsizes       [21, 15, 13]
     maxTextWidth    230
-    nodeTextPadY    fontSize * 0.7
+    textPadY        fontSize * 0.7
     roundness       0.8
 
 [connection]

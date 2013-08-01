@@ -10,7 +10,7 @@
     fontsizes           [25, 15, 14, 12]
     textAlign           justify
     hyphenate           yes
-    nodeTextPadX        fontSize * .7
+    textPadX            fontSize * .7
     rotation            30
 
 [connection]

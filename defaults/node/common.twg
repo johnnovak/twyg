@@ -21,8 +21,8 @@ maxTextWidth        240.0
 
 -- Padding between the bounding box of the node text and the outline of
 -- the node, expressed as a proportion of the font size
-nodeTextPadX        fontSize * 1.0
-nodeTextPadY        fontSize * 0.45
+textPadX            fontSize * 1.0
+textPadY            fontSize * 0.45
 
 -- Node text baseline correction factor
 textBaselineCorrection  -0.2

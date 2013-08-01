@@ -11,8 +11,8 @@
         maxTextWidth        135
         textAlign           justify
         hyphenate           yes
-        nodeTextPadX        fontSize * .6
-        nodeTextPadY        fontSize * .4
+        textPadX            fontSize * .6
+        textPadY            fontSize * .4
         aspectRatio         2.5
         maxWidth            200
 
@@ -20,7 +20,7 @@
         @copy default
         levelDepthMax       0
 
-        nodeTextPadY        fontSize * 4
+        textPadY            fontSize * 4
 
 [connection]
     {default}

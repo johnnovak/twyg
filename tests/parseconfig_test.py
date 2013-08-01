@@ -41,8 +41,8 @@ percentColorHSLA        hsla(99, 12%, 74%, 0.330)
     fontsizes          [21, 15, 13]
     maxTextWidth      230
     textAlign           center
-    nodeTextPadX        nodeWidth * 0.9
-    nodeTextPadY            nodeHeight * 0.7
+    textPadX            nodeWidth * 0.9
+    textPadY            nodeHeight * 0.7
     strokeWidth             depth
     roundness               0.4
     nodeShadowColor         rgba(0, 0, 0, 0.2) -- asdf
