@@ -1,11 +1,5 @@
 #!/usr/bin/env python
 
-# TODO remove debug
-from twyg.geom import *
-from twyg.geomutils import *
-from time import time
-################################
-
 import os.path
 import sys
 import traceback
@@ -102,7 +96,7 @@ def main():
     ctx.initsurface(1, 1, options.outformat, outfile, scale)
 
     options.datafile = 'example-data/data4.json'
-    options.configfile = 'configs/config9.twg'
+    options.configfile = 'configs/config11.twg'
     options.colorschemefile = 'colors/colors6.twg'
 
     #options.datafile = 'example-data/data4.json'
@@ -153,37 +147,6 @@ def main():
 
     ctx.initsurface(width, height, options.outformat, outfile, scale)
     ctx.background(tree.background_color())
-
-# TODO remove debug
-##############
-#    ctx.stroke(0)
-#
-#    r = 10
-#    p1 = Vector2(100, 100)
-#    p15 = Vector2(200, 100)
-#    p2 = Vector2(300, 100)
-#    p3 = Vector2(300, 200)
-#    p4 = Vector2(100, 200)
-#
-#    n = 1
-#    t1 = time()
-#    for i in range(n):
-#        path = round_poly([p1, p2, p3, p4], r, close=True)
-#    print 'round_poly: %s' % (time() - t1)
-#
-#    ctx.nofill()
-#    ctx.stroke(.5)
-#    ctx.strokewidth(1)
-#
-#    ctx.stroke(1,0,0)
-#    ctx.strokewidth(1.5)
-#
-#    ctx.autoclosepath(False)
-#    ctx.beginpath(path[0][0].x, path[0][0].y)
-#    for p in path:
-#        ctx.curveto(p[1].x, p[1].y, p[2].x, p[2].y, p[3].x, p[3].y)
-#    ctx.endpath()
-##############
 
     tree.draw()
     ctx.writesurface()

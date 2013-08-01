@@ -36,5 +36,5 @@
 
 [color]
     style       colorizer
-    fontColor   baseColor.blend(color.white, 0.9)
+    fontColor   baseColor.blend(bgColor, 0.9)
 
