@@ -102,8 +102,8 @@ def main():
     ctx.initsurface(1, 1, options.outformat, outfile, scale)
 
     options.datafile = 'example-data/data4.json'
-    options.configfile = 'configs/config8.twg'
-    options.colorschemefile = 'colors/colors6b.twg'
+    options.configfile = 'configs/config9.twg'
+    options.colorschemefile = 'colors/colors6.twg'
 
     #options.datafile = 'example-data/data4.json'
     #options.configfile = 'configs/config3.twg'
