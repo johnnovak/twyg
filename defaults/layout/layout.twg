@@ -1,8 +1,8 @@
 -- Controls the left-right distribution of the root node's
 -- children:
---   0.0 - all right
---   0.5 - evenly balanced
---   1.0 - all left
+--   0.0 - all nodes to the right
+--   0.5 - nodes evenly balanced to left and right
+--   1.0 - all nodes to the left
 horizontalBalance       0.5
 
 -- Vertical align factor:
@@ -20,9 +20,14 @@ nodePadX                30.0
 -- Vertical padding between the nodes
 nodePadY                8.0
 
+-- Controls whether all sibling nodes should have the same width.
 sameWidthSiblings       yes
 
+-- Controls whether the connection point of the child nodes should be snapped
+-- to the parent's connection point.
 snapParentToChildren    no
+
+-- Controls whether snapping halfway between two connection points is allowed.
 snapToHalfPositions     no
 
 -- Vertical padding between child node groups
@@ -31,5 +36,6 @@ branchPadY              25.0
 -- Minimum number of siblings for arc node placement
 radialMinNodes          3
 
+-- Roundness of the arc node placement
 radialFactor            2.2
 

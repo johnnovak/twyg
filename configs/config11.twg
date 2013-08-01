@@ -32,8 +32,6 @@
     style                   junction 
     lineWidth               3
     cornerRadius            10
-    cornerStyle             rounded
-    junctionStyle           disc
     junctionRadius          8
 
 [color]

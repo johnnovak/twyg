@@ -1,18 +1,18 @@
--- Connection start width
-nodeLineWidthStart 9.8
+-- Start width of the connection curve
+nodeLineWidthStart      9.8
 
--- Connection end width
-nodeLineWidthEnd   1.4
+-- End width of the connection curve
+nodeLineWidthEnd        1.4
 
--- Line spline control point 1 X-factor
-nodeCx1Factor   0.7
+-- Control point 1 X-factor of the connection curve
+nodeCx1Factor           0.7
 
--- Line spline control point 2 X-factor
-nodeCx2Factor   0.28
+-- Control point 2 X-factor of the connection curve
+nodeCx2Factor           0.28
 
--- Line spline control point 1 Y-factor
-nodeCy1Factor   0.0
+-- Control point 1 Y-factor of the connection curve
+nodeCy1Factor           0.0
 
--- Line spline control point 2 Y-factor
-nodeCy2Factor   0.0
+-- Control point 2 Y-factor of the connection curve
+nodeCy2Factor           0.0
 

@@ -2,7 +2,10 @@
 
 -- Rectangle roundess (should be between 0.0 and 1.0)
 roundness       1.0
+
+--
 cornerRadius    5.0
 
+--
 roundingStyle   screen
 

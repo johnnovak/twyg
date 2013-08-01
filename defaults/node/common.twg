@@ -1,15 +1,15 @@
--- Font used for displaying the text inside the nodes
+-- Font used for displaying the text inside the nodes.
 fontName            "Gill Sans"
 
--- Node text font size
+-- Node text font size.
 fontSize            max(10, 21 * 1 / pow(depth + 1, .5))
 
--- Line height of the node text
+-- Line height of the node text.
 lineHeight          1.3
 
--- Text alignment within the box. Possible values are left,
--- right, center, justify and auto (aligns the text
--- depending on node orientation)
+-- Text alignment within the box.
+-- Possible values: left, right, center, justify, auto
+-- ('auto' aligns the text depending on node orientation)
 textAlign           auto
 
 -- Minimum number of lines for the 'justify' text alignment to take
@@ -17,50 +17,48 @@ textAlign           auto
 -- text will be centered instead.
 justifyMinLines     5
 
--- Controls whether the node text is hyphenated
+-- Controls whether the node text is hyphenated.
 hyphenate           yes
 
 -- Max text width inside nodes
 maxTextWidth        240.0
 
--- Padding between the bounding box of the node text and the outline of
--- the node, expressed as a proportion of the font size
+-- Horizontal padding around the bounding box of the node text.
 textPadX            fontSize * 1.0
+
+-- Vertical padding around the bounding box of the node text.
 textPadY            fontSize * 0.45
 
--- Node text baseline correction factor
+-- Node text baseline correction factor.
 textBaselineCorrection  -0.2
 
--- Rectangle stroke width
+-- Stroke width of the outline of the node shape.
 strokeWidth         1.3
 
--- Controls whether the node shapes cast a shadow
+-- Controls whether the node shape casts a shadow.
 nodeDrawShadow      no
 
--- Node shadow color
+-- Node shadow color.
 nodeShadowColor     rgba(0, 0, 0, 0.2)
 
--- Node shadow blur radius
--- nodeShadowBlur      5.0
+-- Node shadow blur radius.
 nodeShadowBlur      2.0
 
--- Horizontal offset of the node shadow from the node
+-- Horizontal offset of the node shadow.
 nodeShadowOffsX     2.5
 
--- Vertical offset of the node shadow from the node
+-- Vertical offset of the node shadow.
 nodeShadowOffsY     2.5
 
 -- Controls whether the node shape should be filled using a linear
--- top-down gradient
+-- top-down gradient.
 drawGradient        no
 
--- Color factor of the top of the node if the node shade is filled with a
--- gradient
+-- Color of the top of the node if the node shade is filled with a gradient.
 -- nodebox->cairo magic factor 0.12
 gradientTopColor    baseColor.lighten(.12)
 
--- Color factor of the bottom of the node if the node shade is filled
--- with a gradient
+-- Color of the bottom of the node if the node shade is filled with a gradient.
 -- nodebox->cairo magic factor -0.04
 gradientBottomColor baseColor.darken(.04)
 
