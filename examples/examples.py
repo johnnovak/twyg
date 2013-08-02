@@ -12,19 +12,83 @@ TWYG_CMD = os.path.join(TWYG_HOME, 'twyg.py')
 
 examples = [
    { # 0
-    'config': 'configs/config3.twg',
-    'color':  'colors/colors11.twg',
-    'data':   'examples/data/data4.json'
+    'config': 'configs/config1.twg',
+    'color':  'colors/colors4.twg',
+    'data':   'examples/data/data1.json'
 
 }, { # 1
+    'config': 'configs/config2.twg',
+    'color':  'colors/colors6.twg',
+    'data':   'examples/data/data1.json'
+
+}, { # 2
+    'config': 'configs/config3.twg',
+    'color':  'colors/colors1.twg',
+    'data':   'examples/data/data4.json'
+
+}, { # 3
+    'config': 'configs/config4.twg',
+    'color':  'colors/colors9.twg',
+    'data':   'examples/data/data5.json'
+
+}, { # 5
+    'config': 'configs/config6.twg',
+    'color':  'colors/colors10.twg',
+    'data':   'examples/data/data4.json'
+
+}, { # 6
+    'config': 'configs/config7.twg',
+    'color':  'colors/colors4.twg',
+    'data':   'examples/data/data3.json'
+
+}, { # 7
     'config': 'configs/config8.twg',
-    'color':  'colors/colors12.twg',
-    'data':   'examples/data/data2.json'
+    'color':  'colors/colors6b.twg',
+    'data':   'examples/data/data5.json'
+
+}, { # 0
+    'config': 'configs/config9.twg',
+    'color':  'colors/colors6.twg',
+    'data':   'examples/data/data5.json'
+
+}, { # 0
+    'config': 'configs/config10.twg',
+    'color':  'colors/colors6.twg',
+    'data':   'examples/data/data5.json'
+
+}, { # 0
+    'config': 'configs/config11.twg',
+    'color':  'colors/colors6.twg',
+    'data':   'examples/data/data5.json'
+
+
+
+
+
+}, { # 0
+    'config': 'configs/config3.twg',
+    'color':  'colors/colors2.twg',
+    'data':   'examples/data/data3.json'
+
+}, { # 0
+    'config': 'configs/config1.twg',
+    'color':  'colors/colors4.twg',
+    'data':   'examples/data/data5.json'
+
+}, { # 1
+    'config': 'configs/config2.twg',
+    'color':  'colors/colors3.twg',
+    'data':   'examples/data/data2-debug3.json'
 
 }, { # 2
     'config': 'configs/config8.twg',
+    'color':  'colors/colors12.twg',
+    'data':   'examples/data/data4.json'
+
+}, { # 3
+    'config': 'configs/config8.twg',
     'color':  'colors/colors6b.twg',
-    'data':   'examples/data/data2.json'
+    'data':   'examples/data/data5.json'
 
 }, { # 3
     'config': 'configs/config11.twg',
@@ -60,6 +124,6 @@ def generate_all_examples(format):
 
 if __name__ == '__main__':
     generate_all_examples('pdf')
-    generate_all_examples('png')
-    generate_all_examples('svg')
+#    generate_all_examples('png')
+#    generate_all_examples('svg')
 
