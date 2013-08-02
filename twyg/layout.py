@@ -1,7 +1,9 @@
 import math
 import sys
 
-from twyg.config import (Properties, NumberProperty, BooleanProperty)
+from twyg.config import (defaults_path, Properties,
+                         NumberProperty, BooleanProperty)
+
 from twyg.tree import Direction, opposite_dir
 from twyg.geomutils import halfcircle
 
@@ -23,8 +25,9 @@ class Layout(object):
             'verticalAlignFactor':     (NumberProperty,  {'min': 0.0, 'max': 1.0})
         }
 
-        defaults = 'defaults/layout/layout.twg'
-        self._props = Properties(properties, defaults, config)
+        self._props = Properties(properties,
+                                 defaults_path('layout/layout.twg'),
+                                 config)
 
         self._leftnodes = ()
         self._rightnodes = ()

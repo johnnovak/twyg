@@ -1,5 +1,7 @@
 from twyg.common import createpath
-from twyg.config import (Properties, NumberProperty, EnumProperty)
+from twyg.config import (defaults_path, Properties, NumberProperty,
+                         EnumProperty)
+
 from twyg.geom import Vector2
 from twyg.geomutils import arcpath
 from twyg.tree import Direction, opposite_dir
@@ -18,8 +20,9 @@ class CurveConnectionDrawer(object):
             'nodeCy2Factor':      (NumberProperty, {})
         }
 
-        defaults = 'defaults/connection/curve.twg'
-        self._props = Properties(properties, defaults, config)
+        self._props = Properties(properties,
+                                 defaults_path('connection/curve.twg'),
+                                 config)
 
     def _eval_func(self, node):
         return lambda name: self._props.eval(name, node)
@@ -96,8 +99,9 @@ class JunctionConnectionDrawer(object):
             'junctionSignStrokeWidth': (NumberProperty, {'min': 0.0})
         }
 
-        defaults = 'defaults/connection/junction.twg'
-        self._props = Properties(properties, defaults, config)
+        self._props = Properties(properties,
+                                 defaults_path('connection/junction.twg'),
+                                 config)
 
     def _eval_func(self, node):
         return lambda name: self._props.eval(name, node)

@@ -1,5 +1,5 @@
-from twyg.config import (Properties, NumberProperty, ColorProperty,
-                         ArrayProperty)
+from twyg.config import (defaults_path, Properties, NumberProperty,
+                         ColorProperty, ArrayProperty)
 
 
 class Colorizer(object):
@@ -19,10 +19,12 @@ class Colorizer(object):
         }
 
         self._props = Properties(properties,
-                                 'defaults/colorizer/colorizer.twg', config)
+                                 defaults_path('colorizer/colorizer.twg'),
+                                 config)
 
         self._colorscheme_props = Properties(
-                colorscheme_properties, 'defaults/colorizer/colorscheme.twg',
+                colorscheme_properties,
+                defaults_path('colorizer/colorscheme.twg'),
                 colorscheme)
 
         self._colorindex = 0

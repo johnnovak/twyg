@@ -11,6 +11,10 @@ from twyg.common import validate_margins, calculate_margins
 from twyg.css3colors import color_to_rgba
 
 
+import twyg.common
+twyg.common.TWYG_HOME = os.path.dirname(os.path.realpath(sys.argv[0]))
+
+
 def exit_error(msg):
     print >>sys.stderr, sys.argv[0] + ': ' + msg
     sys.exit(1)
@@ -107,39 +111,6 @@ def main():
 
     # Set actual size later on
     ctx.initsurface(1, 1, options.outformat, outfile, scale)
-
-
-    # SAMPLES
-
-    #options.datafile = 'example-data/data4.json'
-    #options.configfile = 'configs/config3.twg'
-    #options.colorschemefile = 'colors/colors11.twg'
-
-    #options.datafile = 'example-data/data2-debug3.json'
-    #options.configfile = 'configs/config8.twg'
-    #options.colorschemefile = 'colors/colors12.twg'
-
-    # with light grey bg
-    #options.datafile = 'example-data/data2-debug.json'
-    #options.configfile = 'configs/config8.twg'
-    #options.colorschemefile = 'colors/colors6b.twg'
-
-    # TODO error, empty page outputted
-    #options.datafile = 'example-data/data1-big.json'
-
-    # TODO
-    #options.datafile = 'example-data/data1-big.json'
-    #options.datafile = 'example-data/data1.json'
-    #options.datafile = 'example-data/data1-debug4.json'
-
-    #TODO
-    #options.configfile = 'configs/config6.twg'
-
-#    options.configfile = 'configs/config11.twg'
-#    options.colorschemefile = 'colors/colors6.twg'
-
-#    options.configfile = 'configs/config2.twg'
-#    options.colorschemefile = 'colors/colors6.twg'
 
     try:
         tree = buildtree(datafile,

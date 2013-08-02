@@ -439,6 +439,11 @@ def loadconfig(file, flat=False):
     return config
 
 
+def defaults_path(configname):
+    basepath = os.path.dirname(os.path.realpath(sys.argv[0]))
+    return os.path.join(basepath, 'defaults', configname)
+
+
 ##############################################################################
 # Pratt expression parser
 ##############################################################################
@@ -826,7 +831,7 @@ class Level(object):
             'levelOrientation':    (EnumProperty,   {'values': Level.orientation})
         }
 
-        defaults = 'defaults/level.twg'
+        defaults = defaults_path('level.twg')
         self._props = Properties(properties, defaults, config,
                                  extra_prop_warning=False)
         self._eval()

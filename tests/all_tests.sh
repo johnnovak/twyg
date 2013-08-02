@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/bash
 
 python css3colors_test.py
 python geom_test.py
