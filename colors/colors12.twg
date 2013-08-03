@@ -1,3 +1,3 @@
-backgroundColor #4f4f4f
-rootColor       #8f8f8f
-nodeColors      [#8f8f8f, ]
+backgroundColor #ffffff
+rootColor       #587b82
+nodeColors      [#c8d6d2, #a3b2b3, #cdb797, #bfa687]
