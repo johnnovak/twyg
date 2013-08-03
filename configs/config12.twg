@@ -1,0 +1,35 @@
+[layout]
+    style               layout
+    horizontalBalance   0
+    nodePadY            10
+    branchPadY          20
+    radialMinNodes      1000
+    verticalAlignFactor 0.0
+    sameWidthSiblings   yes
+
+[node]
+    style               line
+    fontsizes           [21, 15, 13]
+    strokeWidth         2
+    maxTextWidth        230
+    textPadX            fontSize * .6
+    textPadY            fontSize * .2
+
+[connection]
+    {default}
+        style           junction
+        cornerStyle     square
+        linewidth       2
+        junctionStyle   none
+        junctionXFactor .7
+
+    {root}
+        @copy default
+        levelDepthMax   0
+
+        nodeCx1Factor   0
+
+[color]
+    style       colorizer
+    fontColor   baseColor
+
