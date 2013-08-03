@@ -99,6 +99,11 @@ examples = [
     'config': 'configs/config2.twg',
     'color':  'colors/colors6.twg',
     'data':   'examples/data/data5.json'
+
+}, { # 4
+    'config': 'configs/config12.twg',
+    'color':  'colors/colors6.twg',
+    'data':   'examples/data/cocoa.json'
 }]
 
 

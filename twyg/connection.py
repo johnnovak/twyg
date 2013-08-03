@@ -83,7 +83,7 @@ class JunctionConnectionDrawer(object):
 
     def __init__(self, config={}):
         corner_styles = ('square', 'beveled', 'rounded')
-        junction_styles = ('square', 'disc', 'diamond')
+        junction_styles = ('none', 'square', 'disc', 'diamond')
         junction_sign = ('none', 'plus', 'minus')
 
         properties = {
