@@ -14,7 +14,7 @@ examples = [
    { # 0
     'config': 'configs/config1.twg',
     'color':  'colors/colors4.twg',
-    'data':   'examples/data/data1.json'
+    'data':   'examples/data/data7.json'
 
 }, { # 1
     'config': 'configs/config2.twg',

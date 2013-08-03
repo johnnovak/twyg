@@ -1,0 +1,4 @@
+KNOWN BUG
+---------
+
+Certain font and UTF8 character combinations can cause the process to hang. The font and character combinations seem to be different for NodeBox and Cairo. The problem seems to happen more often with more "exotic" (non-European) languages.

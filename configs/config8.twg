@@ -32,9 +32,9 @@
 
         nodeLineWidthStart  1.5
         nodeLineWidthEnd    1.5
-        nodeCx1Factor       5
+        nodeCx1Factor       0
 
 [color]
     style       colorizer
-    fontColor   baseColor.blend(bgColor, 0.9)
+    fontColor   baseColor
 
