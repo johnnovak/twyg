@@ -84,6 +84,9 @@ class NodeDrawer(object):
         node._textxoffs = padx
         node._textyoffs = pady
 
+        # TODO do somewhere else?
+        node.text_has_background = True
+
     def connection_point(self, node, direction):
         # TODO make connection point location configurable per node
         # (center, auto, etc)
@@ -512,6 +515,16 @@ class LineNodeDrawer(NodeDrawer):
         super(LineNodeDrawer, self).__init__(properties,
                                              defaults_path('node/line.twg'),
                                              config)
+
+    def precalc_node(self, node):
+        """
+        Precalculate node properties that are needed by the layout and
+        colorizer algorithms.
+        """
+        super(LineNodeDrawer, self).precalc_node(node)
+
+        # TODO do somewhere else?
+        node.text_has_background = False
 
     def draw(self, node):
         E = self._eval_func(node)

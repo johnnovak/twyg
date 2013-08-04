@@ -1,5 +1,12 @@
-fillColor       baseColor
-strokeColor     baseColor
-connectionColor baseColor
-fontColor       color.white
+fillColor           baseColor
+strokeColor         baseColor
+connectionColor     baseColor
+
+-- TODO comments
+fontColor           bgColor
+
+-- TODO comments
+fontColorAuto       yes
+fontColorAutoDark   baseColor.darken(.35)
+fontColorAutoLight  baseColor.blend(color.white, .8)
 

@@ -1,15 +1,19 @@
-from twyg.config import (defaults_path, Properties, NumberProperty,
-                         ColorProperty, ArrayProperty)
+from twyg.common import brightness
+from twyg.config import (defaults_path, Properties, BooleanProperty,
+                         NumberProperty, ColorProperty, ArrayProperty)
 
 
 class Colorizer(object):
 
     def __init__(self, config, colorscheme):
         properties = {
-            'fillColor':       (ColorProperty, {}),
-            'strokeColor':     (ColorProperty, {}),
-            'connectionColor': (ColorProperty, {}),
-            'fontColor':       (ColorProperty, {})
+            'fillColor':          (ColorProperty,   {}),
+            'strokeColor':        (ColorProperty,   {}),
+            'connectionColor':    (ColorProperty,   {}),
+            'fontColor':          (ColorProperty,   {}),
+            'fontColorAuto':      (BooleanProperty, {}),
+            'fontColorAutoDark':  (ColorProperty,   {}),
+            'fontColorAutoLight': (ColorProperty,   {})
         }
 
         colorscheme_properties = {
@@ -57,8 +61,6 @@ class Colorizer(object):
 
         E = self._eval_func(node)
 
-        node.fontcolor = E('fontColor')
-
         # TODO remove when levels are introduced
         # TODO the isroot() branch is probably unnecessary -- should be
         # tested
@@ -71,6 +73,29 @@ class Colorizer(object):
             node.fillcolor = E('fillColor')
             node.strokecolor = E('strokeColor')
             node.connectioncolor = E('connectionColor')
+
+        # Determine font color
+        if E('fontColorAuto'):
+            text_bgcolor = (node.fillcolor if node.text_has_background
+                                           else self.background_color())
+            textcolor = node.fillcolor
+
+            if brightness(text_bgcolor) - brightness(textcolor) < .3:
+                textcolor_dark  = E('fontColorAutoDark')
+                textcolor_light = E('fontColorAutoLight')
+
+                b = brightness(text_bgcolor)
+
+                if (  abs(b - brightness(textcolor_dark))
+                    > abs(b - brightness(textcolor_light))):
+                    textcolor = textcolor_dark
+                else:
+                    textcolor = textcolor_light
+
+            node.fontcolor = textcolor
+        else:
+            node.fontcolor = E('fontColor')
+
 
     def background_color(self):
         C = self._colorscheme_props.eval

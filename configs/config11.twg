@@ -23,9 +23,9 @@
     cornerRadius            80
 
   {leaf}
-    @copy normal
     levelNumChildrenMax     0
-    cornerRadius            1
+    style                   line
+    strokeWidth             3
 
 [connection]
     style                   junction 
