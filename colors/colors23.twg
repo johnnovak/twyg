@@ -1,3 +1,5 @@
+-- bookworm
+
 backgroundColor #fff
 rootColor       #5D585F
 nodeColors      [#96AAB1, #B3BAB2, #DBD3B8, #DBCAB8]

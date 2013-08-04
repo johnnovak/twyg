@@ -1,3 +1,5 @@
-backgroundColor #ffe
-rootColor       #59A80F
-nodeColors      [#9ED54C, #C4ED68, #E2FF9E]
+-- recycled
+
+backgroundColor #fffae0
+rootColor       #398820
+nodeColors      [#7ec52c, #b4dd48, #d2ef7e]

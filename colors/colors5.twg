@@ -1,3 +1,5 @@
+-- cool purple
+
 backgroundColor #ffffff
 rootColor       #1f436f
 nodeColors      [#ca8eaa, #21447d, #6d2b7d, #b3a2bb]

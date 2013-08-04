@@ -1,3 +1,4 @@
+-- darkmint
 backgroundColor #555
 rootColor       #847A5F
 nodeColors      [#9F9176, #CBC092, #98DC47, #D4FF63]

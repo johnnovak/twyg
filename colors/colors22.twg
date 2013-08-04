@@ -1,3 +1,5 @@
+-- rose
+
 backgroundColor #fed
 rootColor       #F40257
 nodeColors      [#FF6979, #DFA1A7, #B9055B, #99566D]

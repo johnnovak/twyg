@@ -1,3 +1,5 @@
-backgroundColor #fff
-rootColor       #544
-nodeColors      [#FF604A, #1EBBF0, #A9D118, #E76281]
+-- ?
+
+backgroundColor #ffe
+rootColor       #6f6567
+nodeColors      [#ff604a, #1ebbf0, #a9d118, #e76281]

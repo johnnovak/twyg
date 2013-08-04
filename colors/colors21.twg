@@ -1,3 +1,5 @@
+-- pinkblue
+
 backgroundColor #fff
 rootColor       #F05189
 nodeColors      [#A8A5A5, #4780BA, #dBcD97]
