@@ -1,0 +1,84 @@
+[{
+    "Animals": [
+        {"Invertebrates": [
+            "Arthropods",
+            "Cnidarians",
+            "Echinoderms",
+            "Molluscs",
+            "Segmented Worms",
+            "Sponges"
+        ]},
+        {"Fish": [
+            "Bony Fish",
+            "Cartilaginous Fish"
+        ]},
+        {"Amphibians": [
+            "Newts and Salamanders",
+            "Frogs and Toads",
+            "Caecilians"
+        ]},
+        {"Reptiles": [
+            "Crocodilians",
+            "Squamates",
+            "Tuataras",
+            "Turtles"
+        ]},
+        {"Mammals": [
+            "Aardvark",
+            "Anteaters and Relatives",
+            "Bats",
+            "Carnivores",
+            "Cetaceans",
+            "Colugos",
+            "Elephant Shrews",
+            "Elephants",
+            "Hares, Rabbits and Pikas",
+            {"Hoofed Mammals": [
+                "Even-Toed",
+                "Odd-Toed"
+            ]},
+            "Hyraxes",
+            "Insectivores",
+            "Marsupials",
+            "Monotremes",
+            "Pangolins",
+            "Primates",
+            "Rodents",
+            "Seals and Sea Lions",
+            "Sirenians",
+            "Treeshrews",
+        ]},
+        {"Birds": [
+            "Albatrosses and Petrels",
+            "Birds of Prey",
+            "Buttonquail",
+            "Cassowaries and Emus",
+            "Cranes, Coots and Rails",
+            "Cuckoos and Turacos",
+            "Flamingos",
+            "Gamebirds",
+            "Grebes",
+            "Herons, Storks and Relatives",
+            "Hummingbirds and Swifts",
+            "Kingfishers",
+            "Kiwis",
+            "Loons",
+            "Mousebirds",
+            "Nightjars and Frogmouths",
+            "Ostrich",
+            "Owls",
+            "Parrots",
+            "Pelicans and Relatives",
+            "Penguins",
+            "Perching Birds",
+            "Pigeons and Doves",
+            "Rheas",
+            "Sandgrouse",
+            "Shorebirds",
+            "Tinamous",
+            "Trogons",
+            "Waterfowl",
+            "Woodpeckers and Relatives"
+        ]}
+    ]
+}]
