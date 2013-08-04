@@ -104,7 +104,13 @@ examples = [
     'config': 'configs/config12.twg',
     'color':  'colors/colors6.twg',
     'data':   'examples/data/cocoa.json'
+
+}, { # 4
+    'config': 'configs/config11.twg',
+    'color':  'colors/colors19.twg',
+    'data':   'examples/data/data4.json'
 }]
+
 
 
 def generate_example(n, outfile, format):
