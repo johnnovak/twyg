@@ -80,7 +80,7 @@ class Colorizer(object):
                                            else self.background_color())
             textcolor = node.fillcolor
 
-            if brightness(text_bgcolor) - brightness(textcolor) < .3:
+            if abs(brightness(text_bgcolor) - brightness(textcolor)) < .3:
                 textcolor_dark  = E('fontColorAutoDark')
                 textcolor_light = E('fontColorAutoLight')
 
