@@ -1,3 +1,5 @@
+-- TODO make bgColor available as a variable
+
 -- Font used for displaying the text inside the nodes
 fontname            "Gill Sans"
 

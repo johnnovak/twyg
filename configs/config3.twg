@@ -12,8 +12,8 @@
         boxOrientation          bottomright
         boxDepth                16
         boxDepthScaleFactor     0.7
-        horizSideColorFactor    -0.34
-        vertSideColorFactor     -0.12
+        horizSideColor          baseColor.darken(0.34)
+        vertSideColor           baseColor.darken(-0.12)
 
     {root}
         @copy default

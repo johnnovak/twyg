@@ -370,9 +370,9 @@ class BoxNodeDrawer(NodeDrawer):
             'boxOrientation':      (EnumProperty,   {'values': orientation}),
             'boxDepth':            (NumberProperty, {'min': 0.0}),
             'boxDepthScaleFactor': (NumberProperty, {'min': 0.0}),
-            'horizSideColor':      (ColorProperty,  {),
-            'vertSideColor':       (ColorProperty, {}),
-            'strokeColor':         (ColorProperty, {})
+            'horizSideColor':      (ColorProperty,  {}),
+            'vertSideColor':       (ColorProperty,  {}),
+            'strokeColor':         (ColorProperty,  {})
         }
 
         super(BoxNodeDrawer, self).__init__(properties,
