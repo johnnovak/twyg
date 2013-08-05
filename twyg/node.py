@@ -24,9 +24,9 @@ class NodeDrawer(object):
         align = ('auto', 'left', 'right', 'center', 'justify')
 
         properties = {
-            'fontname':               (StringProperty,  {}),
-            'fontsizes':              (ArrayProperty,   {'type': NumberProperty}),
-            'lineheight':             (NumberProperty,  {'min': 0.0}),
+            'fontName':               (StringProperty,  {}),
+            'fontSizes':              (ArrayProperty,   {'type': NumberProperty}),
+            'lineHeight':             (NumberProperty,  {'min': 0.0}),
             'textAlign':              (EnumProperty,    {'values': align}),
             'textBaselineCorrection': (NumberProperty,  {}),
             'maxTextWidth':           (NumberProperty,  {'min': 0.0}),
@@ -139,7 +139,7 @@ class NodeDrawer(object):
 
         E = self._eval_func(node)
 
-        fs = E('fontsizes')
+        fs = E('fontSizes')
         depth = node.depth()
         idx = depth if depth < len(fs) else -1
         return fs[idx]
@@ -147,8 +147,8 @@ class NodeDrawer(object):
     def _precalc_text(self, node):
         E = self._eval_func(node)
 
-        node.fontname       = E('fontname')
-        node.lineheight     = E('lineheight')
+        node.fontname       = E('fontName')
+        node.lineheight     = E('lineHeight')
         node.max_text_width = E('maxTextWidth')
         node.hyphenate      = E('hyphenate')
 

@@ -1,8 +1,6 @@
 [layout]
     style                   layout
-    horizontalBalance       0.5
-    nodePadX                120
-    nodePadY                12
+    horizontalBalance       0
     branchPadY              15
     radialMinNodes          1000
     snapParentToChildren    yes
@@ -11,8 +9,6 @@
 
 [node]
     style           rect
-    fontsizes       [21, 15, 13]
-    maxTextWidth    230
     textPadY        fontSize * 0.7
     roundness       0.8
 

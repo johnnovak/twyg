@@ -1,14 +1,14 @@
 -- TODO make bgColor available as a variable
 
 -- Font used for displaying the text inside the nodes
-fontname            "Gill Sans"
+fontName            "Gill Sans"
 
 -- Node text font sizes at different node depths
 -- (root, level1, level2, ..., levelN)
-fontsizes           [20.0, 15.0, 14.0, 12.0]
+fontSizes           [21, 15, 13, 12]
 
 -- Line height of the node text
-lineheight          1.3
+lineHeight          1.3
 
 -- Text alignment within the box. Possible values are left,
 -- right, center, justify and auto (aligns the text

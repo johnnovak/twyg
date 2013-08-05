@@ -1,6 +1,6 @@
 -- TODO make bgColor available as a variable
 
-linewidth          4.0
+lineWidth          4.0
 junctionXFactor    0.4
 
 cornerStyle        rounded

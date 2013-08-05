@@ -1,27 +1,32 @@
 [layout]
     style                   layout
-    horizontalBalance       0.6
-    rootPadX                160
+    horizontalBalance       0.5
+    rootPadX                200
     nodePadX                70
     nodePadY                10
     branchPadY              21
-    verticalAlignFactor     0.7
+    verticalAlignFactor     0.5
     radialMinNodes          1000
     sameWidthSiblings       no
     snapParentToChildren    yes
 
 [node]
     {normal}
-        style                   rect
-        strokeWidth             3
-        roundness               1.0
-        roundingStyle           arc
-        cornerRadius            40
+        style           rect
+        fontSizes       [28, 17, 14, 12]
+        strokeWidth     3
+        roundness       1.0
+        roundingStyle   arc
+        cornerRadius    40
 
     {root}
         @copy normal
-        levelDepthMax           0
-        cornerRadius            80
+        levelDepthMax   0
+
+        style           poly
+        textAlign       center
+        textPadX        fontSize * .5
+        rotation        30
 
     {leaf}
         levelNumChildrenMax     0
@@ -37,5 +42,6 @@
     junctionRadius  8
 
 [color]
-    style   colorizer
+    style       colorizer
+    fillColor   bgColor
 

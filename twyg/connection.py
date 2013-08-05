@@ -85,7 +85,7 @@ class JunctionConnectionDrawer(object):
         junction_sign = ('none', 'plus', 'minus')
 
         properties = {
-            'linewidth':           (NumberProperty, {'min': 0.0}),
+            'lineWidth':           (NumberProperty, {'min': 0.0}),
             'junctionXFactor':     (NumberProperty, {}),
             'cornerStyle':         (EnumProperty,   {'values': corner_styles}),
             'cornerRadius':        (NumberProperty, {'min': 0.0}),
@@ -127,7 +127,7 @@ class JunctionConnectionDrawer(object):
         if not children:
             return
 
-        linewidth = E('linewidth')
+        linewidth = E('lineWidth')
 
         _ctx.autoclosepath(True)
         _ctx.stroke(node.connectioncolor)

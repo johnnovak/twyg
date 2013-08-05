@@ -1020,8 +1020,8 @@ class Properties(object):
         e.g. ArrayProperty). For example:
 
         {
-            'fontname':  (StringProperty, {}),
-            'fontsizes': (ArrayProperty,  {'type': NumberProperty})
+            'fontName':  (StringProperty, {}),
+            'fontSizes': (ArrayProperty,  {'type': NumberProperty})
         }
 
         Warn on property names that are not listed in the ``properties``

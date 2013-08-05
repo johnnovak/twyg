@@ -1,10 +1,10 @@
 [layout]
     style                   layout
-    horizontalBalance       0.5
+    horizontalBalance       0.6
     nodePadY                10
     nodePadX                70
     branchPadY              21
-    verticalAlignFactor     0.5
+    verticalAlignFactor     0.7
     radialMinNodes          1000
     sameWidthSiblings       no
     snapParentToChildren    yes
@@ -14,11 +14,11 @@
     strokeWidth             3
     roundness               1.0
     roundingStyle           arc
-    cornerRadius            10
+    cornerRadius            7
 
 [connection]
     style                   junction 
-    linewidth               3
+    lineWidth               3
     cornerRadius            10
     cornerStyle             rounded
     junctionStyle           disc

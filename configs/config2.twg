@@ -1,10 +1,10 @@
 [layout]
-    style                layout
-    horizontalBalance    0.2
-    nodePadY             10
-    nodePadX             100
-    branchPadY           40
-    verticalAlignFactor  0.5
+    style               layout
+    horizontalBalance   0.2
+    nodePadY            10
+    nodePadX            100
+    branchPadY          40
+    verticalAlignFactor 0.5
 
 [node]
     {default}

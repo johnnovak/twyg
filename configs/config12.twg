@@ -9,9 +9,7 @@
 
 [node]
     style               line
-    fontsizes           [21, 15, 13]
-    strokeWidth         2
-    maxTextWidth        230
+    strokeWidth         3
     textPadX            fontSize * .6
     textPadY            fontSize * .2
 
@@ -19,7 +17,7 @@
     {default}
         style           junction
         cornerStyle     square
-        linewidth       2
+        lineWidth       3
         junctionStyle   none
         junctionXFactor .7
 

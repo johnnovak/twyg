@@ -4,17 +4,16 @@
 
 [node]
     {default}
-        style       rect
+        style   rect
 
     {root}
         @copy default
-        levelDepthMax       0
-
-        textPadY    fontSize * 2
+        levelDepthMax   0
+        textPadY        fontSize * 2
 
 [connection]
     {default}
-        style       curve
+        style   curve
 
     {root}
         @copy default
