@@ -14,6 +14,7 @@
         boxDepthScaleFactor 0.7
         horizSideColor      baseColor.darken(0.34)
         vertSideColor       baseColor.darken(-0.12)
+        strokeWidth         0 
 
     {root}
         @copy default

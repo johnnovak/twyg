@@ -453,7 +453,6 @@ class BoxNodeDrawer(NodeDrawer):
             ox = x1
 
         # Draw box
-        _ctx.nostroke()
         path = _ctx.rect(ox, oy, node.width, node.height, draw=False)
         self._draw_gradient_shape(node, path, node.fillcolor)
 

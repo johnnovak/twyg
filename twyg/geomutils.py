@@ -10,7 +10,7 @@ def calc_regular_polygon_points(cx, cy, r, numsides, rotation=0):
     a = 2 * math.pi / numsides
     sa = math.radians(rotation)
 
-    for i in range(numsides):
+    for i in range(numsides + 1):
         x = cx + r * math.cos(sa + a * i)
         y = cy - r * math.sin(sa + a * i)
         points.append(Vector2(x, y))

@@ -77,22 +77,6 @@ def calculate_margins(width, height, margins):
     return top_margin, right_margin, bottom_margin, left_margin
 
 
-###############################################################################
-
-def scalecolor(col, factor):
-    if factor == 0:
-        return col
-
-    elif factor > 0 and factor <= 1:
-        return col.lighten(factor)
-
-    elif factor > 1:
-        return col.blend(_ctx.color(1), factor - 1)
-
-    elif factor < 0:
-        return col.darken(-factor)
-
-
 def brightness(col):
     # TODO from http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
     return math.sqrt(  .241 * pow(col.r, 2)
