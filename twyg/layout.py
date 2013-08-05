@@ -14,7 +14,6 @@ class Layout(object):
         properties = {
             'horizontalBalance':       (NumberProperty,  {}),
             'nodePadX':                (NumberProperty,  {}),
-            'nodePadXRatio':           (NumberProperty,  {}),
             'sameWidthSiblings':       (BooleanProperty, {}),
             'snapParentToChildren':    (BooleanProperty, {}),
             'snapToHalfPositions':     (BooleanProperty, {}),
@@ -32,8 +31,14 @@ class Layout(object):
         self._leftnodes = ()
         self._rightnodes = ()
 
-    def _eval_func(self, node):
-        return lambda name: self._props.eval(name, node)
+    def _eval_func(self, node=None, direction=None):
+        if node:
+            vars = {
+                'childrenHeight': self.childrenheight(node, direction)
+            }
+        else:
+            vars = {}
+        return lambda name: self._props.eval(name, node, vars)
 
     def precalc_layout(self, root):
         self.root = root
@@ -52,7 +57,7 @@ class Layout(object):
         Split the first level nodes into left and right directed nodes.
         """
 
-        E = self._eval_func(None)
+        E = self._eval_func()
 
         children = self.root.children
         n = int((len(children) + 1) * E('horizontalBalance'))
@@ -107,30 +112,11 @@ class Layout(object):
             p.child_bboxwidth_max = max(p.child_bboxwidth_max, node.bboxwidth)
 
     def _calc_x(self, node, direction, x):
-        E = self._eval_func(node)
+        E = self._eval_func(node, direction)
 
         children = self._getchildren(node, direction)
 
-        node_padx_ratio = E('nodePadXRatio')
-
-        # TODO config expr
-        if node_padx_ratio > 0:
-            if not children or node.isleaf():
-                xpad = 0
-            else:
-                firstchild = children[0]
-                lastchild = children[-1]
-                height = lastchild.y + lastchild.bboxheight - firstchild.y
-
-                child_dir = opposite_dir(direction)
-                child_conn_ytop = firstchild.connection_point(child_dir)[1]
-                child_conn_ybottom = lastchild.connection_point(child_dir)[1]
-                child_conn_height = child_conn_ybottom - child_conn_ytop
-
-                #TODO make child_conn_height available as config param?
-                xpad = child_conn_height * node_padx_ratio
-        else:
-            xpad = E('nodePadX')
+        xpad = E('nodePadX')
 
         if E('sameWidthSiblings'):
             if not node.isroot() and not node.isleaf():
@@ -293,6 +279,24 @@ class Layout(object):
             # Calculate the bounding box of the branch
             node._branch_bboxtop = min(children_bboxtop, node_ytop)
             node._branch_bboxbottom = max(children_bboxbottom, node_ybottom)
+
+    def childrenheight(self, node, direction):
+        # TODO
+        if direction == None:
+            return 0
+
+        children = self._getchildren(node, direction)
+        if not children or node.isleaf():
+            return 0
+
+        firstchild = children[0]
+        lastchild = children[-1]
+
+        child_dir = opposite_dir(direction)
+        child_conn_ytop = firstchild.connection_point(child_dir)[1]
+        child_conn_ybottom = lastchild.connection_point(child_dir)[1]
+
+        return child_conn_ybottom - child_conn_ytop
 
 
 _layout_map = {

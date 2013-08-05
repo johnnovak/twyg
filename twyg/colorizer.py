@@ -96,7 +96,6 @@ class Colorizer(object):
         else:
             node.fontcolor = E('fontColor')
 
-
     def background_color(self):
         C = self._colorscheme_props.eval
         return C('backgroundColor')

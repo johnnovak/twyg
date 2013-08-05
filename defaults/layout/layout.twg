@@ -5,16 +5,8 @@
 --   1.0 - all left
 horizontalBalance       0.5
 
--- TODO remove later
--- Additional horizontal padding between the root node and
--- its children
--- rootPadX                40.0
-
--- TODO config expr
--- Base horizontal padding between the nodes (varies with the
--- depth algorithmically)
+-- Horizontal padding between the nodes
 nodePadX                30.0
-nodePadXRatio           0.0
 
 sameWidthSiblings       yes
 
@@ -27,10 +19,6 @@ nodePadY                8.0
 -- Vertical padding between child node groups
 branchPadY              25.0
 
--- TODO remove
--- nodePadXFactor1         0.1
--- nodePadXFactor2         0.4
-
 -- Minimum number of siblings for arc node placement
 radialMinNodes          3
 
@@ -41,7 +29,4 @@ radialFactor            2.2
 --   0.5 - center
 --   1.0 - bottom
 verticalAlignFactor     0.5
-
--- TODO remove? investigate
--- distributeNodes         no
 

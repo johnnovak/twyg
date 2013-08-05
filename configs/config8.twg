@@ -1,7 +1,7 @@
 [layout]
     style               layout
     horizontalBalance   0.5
-    nodePadXRatio       0.14
+    nodePadX            childrenHeight * 0.3
     nodePadY            20
     branchPadY          40
     radialMinNodes      1000
@@ -21,7 +21,7 @@
         style               curve
         nodeLineWidthStart  1.5
         nodeLineWidthEnd    1.5
-        nodeCx1Factor       0.15
+        nodeCx1Factor       0
         nodeCx2Factor       0.55
         nodeCy1Factor       0.4
         nodeCy2Factor       0
@@ -32,7 +32,6 @@
 
         nodeLineWidthStart  1.5
         nodeLineWidthEnd    1.5
-        nodeCx1Factor       0
 
 [color]
     style       colorizer
