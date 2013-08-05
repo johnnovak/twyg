@@ -30,11 +30,6 @@ def main():
                       dest='colorschemefile', metavar='FILE',
                       help='colorscheme file')
 
-    parser.add_option('-b', '--background-color',
-                      dest='bgcolor', metavar='COLOR',
-                      help=('override background color; must be '
-                            'specified in CSS3 format'))
-
     parser.add_option('-d', '--dpi',
                       default='150.0', type='float',
                       help=('output resolution (PNG) or shadow rasterisation '
@@ -133,19 +128,9 @@ def main():
     tree.shiftnodes(padleft, padtop)
 
     ctx.initsurface(width, height, options.outformat, outfile, scale)
-
-    # Override background color is specified on the command line
-    if options.bgcolor:
-        # TODO refactor color(*color_to_rgba) to parsecolor in common
-        bgcolor = ctx.color(*color_to_rgba(options.bgcolor))
-    else:
-        bgcolor = tree.background_color()
-
-    ctx.background(bgcolor)
-
+    ctx.background(tree.background_color())
     tree.draw()
     ctx.writesurface()
-
     return 0
 
 
