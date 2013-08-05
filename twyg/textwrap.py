@@ -78,6 +78,8 @@ def _wraptext(words, wordwidths, spacewidth, textwidth_func, rects=None,
         raise (ValueError,
                'maxwidth must be greater than 0 if no rects are provided')
 
+    maxwidth = max(maxwidth, max(wordwidths))
+
     lines = ['']         # wrapped text per each line
     linewidths = [0]     # linewidth of each line (including spaces)
 
