@@ -1,8 +1,9 @@
 [layout]
     style                   layout
     horizontalBalance       0.5
-    nodePadY                10
+    rootPadX                160
     nodePadX                70
+    nodePadY                10
     branchPadY              21
     verticalAlignFactor     0.5
     radialMinNodes          1000

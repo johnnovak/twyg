@@ -14,7 +14,7 @@
     strokeWidth         1.5
     maxTextWidth        230
     textPadX            fontSize * .6
-    textPadY                fontSize * .2
+    textPadY            fontSize * .2
 
 [connection]
     {default}

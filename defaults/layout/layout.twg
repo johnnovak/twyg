@@ -5,16 +5,25 @@
 --   1.0 - all left
 horizontalBalance       0.5
 
--- Horizontal padding between the nodes
+-- Vertical align factor:
+--   0.0 - top
+--   0.5 - center
+--   1.0 - bottom
+verticalAlignFactor     0.5
+
+-- Horizontal padding around the root node
+rootPadX                160
+
+-- Horizontal padding between the non-root nodes
 nodePadX                30.0
+
+-- Vertical padding between the nodes
+nodePadY                8.0
 
 sameWidthSiblings       yes
 
 snapParentToChildren    no
 snapToHalfPositions     no
-
--- Vertical padding between the nodes
-nodePadY                8.0
 
 -- Vertical padding between child node groups
 branchPadY              25.0
@@ -23,10 +32,4 @@ branchPadY              25.0
 radialMinNodes          3
 
 radialFactor            2.2
-
--- Vertical align factor:
---   0.0 - top
---   0.5 - center
---   1.0 - bottom
-verticalAlignFactor     0.5
 

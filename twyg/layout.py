@@ -13,15 +13,17 @@ class Layout(object):
     def __init__(self, config):
         properties = {
             'horizontalBalance':       (NumberProperty,  {}),
+            'verticalAlignFactor':     (NumberProperty,  {'min': 0.0,
+                                                          'max': 1.0}),
+            'rootPadX':                (NumberProperty,  {}),
             'nodePadX':                (NumberProperty,  {}),
+            'nodePadY':                (NumberProperty,  {}),
+            'branchPadY':              (NumberProperty,  {}),
             'sameWidthSiblings':       (BooleanProperty, {}),
             'snapParentToChildren':    (BooleanProperty, {}),
             'snapToHalfPositions':     (BooleanProperty, {}),
-            'nodePadY':                (NumberProperty,  {}),
-            'branchPadY':              (NumberProperty,  {}),
             'radialMinNodes':          (NumberProperty,  {'min': 0.0}),
-            'radialFactor':            (NumberProperty,  {}),
-            'verticalAlignFactor':     (NumberProperty,  {'min': 0.0, 'max': 1.0})
+            'radialFactor':            (NumberProperty,  {})
         }
 
         self._props = Properties(properties,
@@ -116,7 +118,7 @@ class Layout(object):
 
         children = self._getchildren(node, direction)
 
-        xpad = E('nodePadX')
+        xpad = E('rootPadX') if node.isroot() else E('nodePadX')
 
         if E('sameWidthSiblings'):
             if not node.isroot() and not node.isleaf():
