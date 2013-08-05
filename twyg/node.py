@@ -1,6 +1,6 @@
 import math
 
-from twyg.common import scalecolor, textwidth, createpath
+from twyg.common import textwidth, createpath
 from twyg.config import (defaults_path, Properties, StringProperty,
                          NumberProperty, ColorProperty, EnumProperty,
                          BooleanProperty, ArrayProperty)
@@ -67,7 +67,6 @@ class NodeDrawer(object):
         Precalculate node properties that are needed by the layout algorithms.
         """
 
-        # TODO fontsize per level, when levels are introduced
         node.fontsize = self._font_size(node)
         self._precalc_text(node)
 
@@ -84,7 +83,6 @@ class NodeDrawer(object):
         node._textxoffs = padx
         node._textyoffs = pady
 
-        # TODO do somewhere else?
         node.text_has_background = True
 
     def connection_point(self, node, direction):
@@ -93,13 +91,11 @@ class NodeDrawer(object):
         if node.isroot():
             x = node.bboxwidth / 2
         else:
-            # TODO implement Top & Bottom directions
             if direction == Direction.Left:
                 x = 0
             else:
                 x = node.bboxwidth
 
-#            x = node.bboxwidth / 2
         y = node.bboxheight / 2
         return node.x + x, node.y + y
 
@@ -122,11 +118,7 @@ class NodeDrawer(object):
                         blur=E('nodeShadowBlur'), clr=E('nodeShadowColor'))
 
         self._draw_gradient_shape(node, path, node.fillcolor)
-
-        # TODO add text shadow option
-        #        colors.shadow(alpha=.3, dx=3, dy=3, blur=5)
         self._drawtext(node, node._textxoffs, node._textyoffs)
-        #        colors.noshadow()
 
     def _draw_gradient_shape(self, node, path, basecolor):
         E = self._eval_func(node)
@@ -158,13 +150,11 @@ class NodeDrawer(object):
         node.fontname       = E('fontname')
         node.lineheight     = E('lineheight')
         node.max_text_width = E('maxTextWidth')
-        #TODO should be a node property?
         node.hyphenate      = E('hyphenate')
 
         _ctx.font(node.fontname, node.fontsize)
         _ctx.lineheight(node.lineheight)
 
-        # TODO review line height calculation
         lineheight = node.lineheight * node.fontsize
         textwidth_func = lambda(txt): textwidth(_ctx, txt,
                                                 node.fontname, node.fontsize)
@@ -190,7 +180,6 @@ class NodeDrawer(object):
     def _drawtext(self, node, xoffs, yoffs):
         E = self._eval_func(node)
 
-        # TODO poly error... sometimes... investigate
         if not node._textrects:
             return
 
@@ -214,13 +203,7 @@ class NodeDrawer(object):
         baseline_corr = E('textBaselineCorrection')
 
         _ctx.font(node.fontname, node.fontsize)
-        # TODO really needed?
         _ctx.lineheight(node.lineheight)
-
-        # TODO text shadow implementation comes here?
-        # if C['textShadow']:
-        # fill(color(C['textShadowColor']))
-        # text(node.label, tx + 3, ty + 5, node._textwidth)
 
         _ctx.fill(node.fontcolor)
 
@@ -383,15 +366,13 @@ class BoxNodeDrawer(NodeDrawer):
     def __init__(self, config={}):
         orientation = ('topleft', 'topright', 'bottomleft', 'bottomright')
 
-        # TODO convert ColorFactor properties to Color
-        # TODO convert ScaleFactor?
         properties = {
-            'boxOrientation':       (EnumProperty,   {'values': orientation}),
-            'boxDepth':             (NumberProperty, {'min': 0.0}),
-            'boxDepthScaleFactor':  (NumberProperty, {'min': 0.0}),
-            'horizSideColorFactor': (NumberProperty, {'min': 0.0}),
-            'vertSideColorFactor':  (NumberProperty, {'min': 0.0}),
-            'strokeColorFactor':    (NumberProperty, {'min': 0.0})
+            'boxOrientation':      (EnumProperty,   {'values': orientation}),
+            'boxDepth':            (NumberProperty, {'min': 0.0}),
+            'boxDepthScaleFactor': (NumberProperty, {'min': 0.0}),
+            'horizSideColor':      (ColorProperty,  {),
+            'vertSideColor':       (ColorProperty, {}),
+            'strokeColor':         (ColorProperty, {})
         }
 
         super(BoxNodeDrawer, self).__init__(properties,
@@ -443,8 +424,8 @@ class BoxNodeDrawer(NodeDrawer):
 
         E = self._eval_func(node)
 
-        if E('strokeColorFactor'):
-            _ctx.stroke(scalecolor(node.strokecolor, E('strokeColorFactor')))
+        if E('strokeColor'):
+            _ctx.stroke(E('strokeColor'))
             _ctx.strokewidth(E('strokeWidth'))
 
         d = node._boxdepth
@@ -485,7 +466,7 @@ class BoxNodeDrawer(NodeDrawer):
         _ctx.lineto(ox, y1)
 
         path = _ctx.endpath(draw=False)
-        col = scalecolor(node.fillcolor, E('horizSideColorFactor'))
+        col = E('horizSideColor')
         self._draw_gradient_shape(node, path, col)
 
         # Draw vertical side
@@ -496,7 +477,7 @@ class BoxNodeDrawer(NodeDrawer):
         _ctx.lineto(x1, oy)
 
         path = _ctx.endpath(draw=False)
-        col = scalecolor(node.fillcolor, E('vertSideColorFactor'))
+        col = E('vertSideColor')
         self._draw_gradient_shape(node, path, col)
 
         tx = node._textxoffs - (node.x - ox)
@@ -523,7 +504,6 @@ class LineNodeDrawer(NodeDrawer):
         """
         super(LineNodeDrawer, self).precalc_node(node)
 
-        # TODO do somewhere else?
         node.text_has_background = False
 
     def draw(self, node):

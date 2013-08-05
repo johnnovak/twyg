@@ -68,7 +68,6 @@ class Layout(object):
         self._rightnodes = children[n:]
 
     def calclayout(self, root):
-        # TODO remove root param?
         self.root = root
 
         # Vertical layout

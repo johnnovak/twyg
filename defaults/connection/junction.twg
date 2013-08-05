@@ -6,11 +6,11 @@ cornerRadius       12.0
 
 junctionStyle           disc
 junctionRadius          10.0
--- junctionFillColor  
+junctionFillColor       baseColor
 junctionStrokeWidth     2.0
--- junctionStrokeColor  
+junctionStrokeColor     baseColor
 junctionSign            none
 junctionSignSize        10.0
--- junctionSignColor  
 junctionSignStrokeWidth 2.0
+junctionSignColor       bgColor
 

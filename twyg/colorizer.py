@@ -61,18 +61,9 @@ class Colorizer(object):
 
         E = self._eval_func(node)
 
-        # TODO remove when levels are introduced
-        # TODO the isroot() branch is probably unnecessary -- should be
-        # tested
-        if node.isroot():
-            node.basecolor = C('rootColor')
-            node.fillcolor = node.basecolor
-            node.strokecolor = node.basecolor
-            node.connectioncolor = node.basecolor
-        else:
-            node.fillcolor = E('fillColor')
-            node.strokecolor = E('strokeColor')
-            node.connectioncolor = E('connectionColor')
+        node.fillcolor = E('fillColor')
+        node.strokecolor = E('strokeColor')
+        node.connectioncolor = E('connectionColor')
 
         # Determine font color
         if E('fontColorAuto'):

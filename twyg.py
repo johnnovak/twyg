@@ -35,11 +35,6 @@ def main():
                       help=('output resolution (PNG) or shadow rasterisation '
                             'resolution (PDF and SVG) [default: %default]'))
 
-    parser.add_option('-i', '--input-format',
-                      dest='informat', default='auto', metavar='FORMAT',
-                      help=('input format; auto, json or text '
-                            '[default: %default]'))
-
     parser.add_option('-m', '--margin',
                       default='10%,5%',
                       help=('margins in TOP,RIGHT,BOTTOM,LEFT or VERT,HORIZ '
@@ -52,13 +47,10 @@ def main():
 
     parser.add_option('-s', '--scale',
                       default='1.0', type='float',
-                      help='scale factor as multiplier or percentage [default: %default]')
+                      help=('scale factor (absolute value or percentage) '
+                          '[default: %default]'))
 
     options, args = parser.parse_args()
-
-    if options.informat not in ('auto', 'json', 'text'):
-        parser.error("input format '%s' is invalid" % options.input_format)
-        return 2
 
     if len(args) == 0:
         parser.error('input and output files must be specified')
@@ -70,12 +62,6 @@ def main():
 
     datafile = args[0]
     outfile = args[1]
-
-    if options.informat == 'auto':
-        ext = os.path.splitext(datafile)[1][1:].lower()
-        options.informat = 'json' if ext == 'json' else 'text'
-
-    # TODO implement text input format parsing
 
     ext = os.path.splitext(outfile)[1][1:].lower()
     if ext in ('pdf', 'png', 'svg'):
@@ -100,8 +86,6 @@ def main():
         parser.error(e)
         return 2
 
-    # TODO interpret scale factor either as a multiplier or a percentage
-    # Calculate output scale factor
     scale = options.dpi / 72.0 * options.scale     # 1 point = 1/72 inch
 
     # Set actual size later on

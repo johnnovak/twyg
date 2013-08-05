@@ -482,7 +482,6 @@ class Context(object):
 
     def _render_bitmap_shadow(self):
         # TODO reference (ryg blog)
-        # TODO constant for 72.0 dpi
         # TODO shadow doesn't work properly for SVG output (shadow
         # bitmaps don't get translated but are all drawn at the origin)
         dpi_scale = self._bitmap_dpi / 72.0

@@ -1,6 +1,6 @@
 from twyg.common import createpath
 from twyg.config import (defaults_path, Properties, NumberProperty,
-                         EnumProperty)
+                         EnumProperty, ColorProperty)
 
 from twyg.geom import Vector2
 from twyg.geomutils import arcpath
@@ -11,7 +11,6 @@ class CurveConnectionDrawer(object):
 
     def __init__(self, config={}):
         properties = {
-            # TODO remove 'node' previx from property names?
             'nodeLineWidthStart': (NumberProperty, {'min': 0.0}),
             'nodeLineWidthEnd':   (NumberProperty, {'min': 0.0}),
             'nodeCx1Factor':      (NumberProperty, {}),
@@ -37,7 +36,6 @@ class CurveConnectionDrawer(object):
         if node.isleaf():
             return
 
-        # TODO necessary?
         _ctx.autoclosepath(True)
         _ctx.stroke(node.connectioncolor)
         _ctx.fill(node.connectioncolor)
@@ -91,12 +89,17 @@ class JunctionConnectionDrawer(object):
             'junctionXFactor':     (NumberProperty, {}),
             'cornerStyle':         (EnumProperty,   {'values': corner_styles}),
             'cornerRadius':        (NumberProperty, {'min': 0.0}),
-            'junctionStyle':       (EnumProperty,   {'values': junction_styles}),
+            'junctionStyle':       (EnumProperty,
+                                    {'values': junction_styles}),
+
             'junctionRadius':      (NumberProperty, {'min': 0.0}),
+            'junctionFillColor':   (ColorProperty,  {}),
             'junctionStrokeWidth': (NumberProperty, {'min': 0.0}),
+            'junctionStrokeColor': (ColorProperty,  {}),
             'junctionSign':        (EnumProperty,   {'values': junction_sign}),
             'junctionSignSize':    (NumberProperty, {'min': 0.0}),
-            'junctionSignStrokeWidth': (NumberProperty, {'min': 0.0})
+            'junctionSignStrokeWidth': (NumberProperty, {'min': 0.0}),
+            'junctionSignColor':   (ColorProperty,  {})
         }
 
         self._props = Properties(properties,
@@ -126,7 +129,6 @@ class JunctionConnectionDrawer(object):
 
         linewidth = E('linewidth')
 
-        # TODO necessary?
         _ctx.autoclosepath(True)
         _ctx.stroke(node.connectioncolor)
         _ctx.fill(node.connectioncolor)
@@ -264,14 +266,9 @@ class JunctionConnectionDrawer(object):
         r = E('junctionRadius')
         r2 = r / 2.
 
+        _ctx.fill(E('junctionFillColor'))
+        _ctx.stroke(E('junctionStrokeColor'))
         _ctx.strokewidth(E('junctionStrokeWidth'))
-
-        # TODO junctionFillColor
-        _ctx.fill(node.connectioncolor)
-
-        # TODO junctionStrokeColor
-        #_ctx.stroke( )
-        _ctx.stroke(node.connectioncolor)
 
         if style == 'square':
             _ctx.rect(jx - r2, jy - r2, r, r)
@@ -292,11 +289,10 @@ class JunctionConnectionDrawer(object):
         if sign == 'none':
             return
 
+        _ctx.stroke(E('junctionSignColor'))
+
         d = E('junctionSignSize') / 2.
         _ctx.strokewidth(E('junctionSignStrokeWidth'))
-
-        # TODO junctionSignColor
-        _ctx.stroke(1)
 
         if sign in ('minus', 'plus'):
             _ctx.line(jx - d, jy, jx + d, jy)
