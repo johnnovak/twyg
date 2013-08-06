@@ -1,43 +1,39 @@
 [layout]
     style               layout
-    horizontalBalance   0.5
-    nodePadX            30
-    nodePadY            8
     branchPadY          15
 
 [node]
-    {default}
-        style               box
-        maxTextWidth        140
-        boxOrientation      bottomright
-        boxDepth            16
-        boxDepthScaleFactor 0.7
-        horizSideColor      baseColor.darken(0.34)
-        vertSideColor       baseColor.darken(-0.12)
-        strokeWidth         0 
+  {default}
+    style               box
+    maxTextWidth        140
+    boxOrientation      bottomright
+    boxDepth            16
+    horizSideColor      baseColor.darken(0.34)
+    vertSideColor       baseColor.darken(-0.12)
+    strokeWidth         0 
 
-    {root}
-        @copy default
-        levelDepthMax   0
+  {root}
+    @copy default
+    levelDepthMax       0
 
-        textPadY        fontSize * 2
+    textPadY            fontSize * 2
 
 [connection]
-    {default}
-        style               curve
-        nodeLineWidthStart  2
-        nodeLineWidthEnd    2
-        nodeCx1Factor       0.6
-        nodeCx2Factor       0
+  {default}
+    style               curve
+    nodeLineWidthStart  2
+    nodeLineWidthEnd    2
+    nodeCx1Factor       0.6
+    nodeCx2Factor       0
 
-    {root}
-        @copy default
-        levelDepthMax       0
+  {root}
+    @copy default
+    levelDepthMax       0
 
-        nodeLineWidthStart  3.3
-        nodeLineWidthEnd    3.3
-        nodeCx1Factor       0
+    nodeLineWidthStart  3.3
+    nodeLineWidthEnd    3.3
+    nodeCx1Factor       0
 
 [color]
-    style   colorizer
+    style               colorizer
 

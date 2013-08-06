@@ -1,7 +1,6 @@
 [layout]
     style                   layout
     horizontalBalance       0.6
-    nodePadY                10
     nodePadX                70
     branchPadY              21
     verticalAlignFactor     0.7

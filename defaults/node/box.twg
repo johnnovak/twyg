@@ -4,10 +4,7 @@
 boxOrientation          topright
 
 -- 3D depth of the root node
-boxDepth                7.0
-
--- 3D depth scaling applied to each node depth step
-boxDepthScaleFactor     0.7
+boxDepth                7.0 * pow(0.7, depth)
 
 -- Color scale factor of the horizontal side of the 3D box
 horizSideColor          baseColor.lighten(0.34)

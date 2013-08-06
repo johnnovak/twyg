@@ -1,41 +1,41 @@
 [layout]
-    style       layout
-    nodePadX    80
+    style               layout
+    nodePadX            80
 
 [node]
-    {default}
-        style   rect
+  {default}
+    style               rect
 
-    {root}
-        @copy default
-        levelDepthMax   0
-        textPadY        fontSize * 2
+  {root}
+    @copy default
+    levelDepthMax       0
+    textPadY            fontSize * 2
 
 [connection]
-    {default}
-        style   curve
+  {default}
+    style   curve
 
-    {root}
-        @copy default
-        levelDepthMax       0
+  {root}
+    @copy default
+    levelDepthMax       0
 
-        nodeLineWidthEnd    2
-        nodeLineWidthStart  90
-        nodeCx1Factor       .3
-        nodeCx2Factor       .6
-        nodeCy1Factor       .6
-        nodeCy2Factor       0
+    nodeLineWidthEnd    2
+    nodeLineWidthStart  90
+    nodeCx1Factor       0.3
+    nodeCx2Factor       0.6
+    nodeCy1Factor       0.6
+    nodeCy2Factor       0
 
 [color]
-    {default}
-        style   colorizer
+  {default}
+    style               colorizer
 
-    {leaf}
-        @copy default
-        levelNumChildrenMax 0
+  {leaf}
+    @copy default
+    levelNumChildrenMax 0
 
-        fillColor           baseColor.blend(bgColor, .7)
-        strokeColor         baseColor.blend(bgColor, .2)
-        connectionColor     baseColor.blend(bgColor, .2)
-        fontColor           baseColor.darken(.25)
+    fillColor           baseColor.blend(bgColor, 0.7)
+    strokeColor         baseColor.blend(bgColor, 0.2)
+    connectionColor     baseColor.blend(bgColor, 0.2)
+    fontColor           baseColor.darken(0.25)
 

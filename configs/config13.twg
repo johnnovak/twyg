@@ -11,37 +11,37 @@
     snapParentToChildren    yes
 
 [node]
-    {normal}
-        style           rect
-        fontSizes       [28, 17, 14, 12]
-        strokeWidth     3
-        roundness       1.0
-        roundingStyle   arc
-        cornerRadius    40
+  {normal}
+    style                   rect
+    fontSizes               [28, 17, 14, 12]
+    strokeWidth             3
+    roundness               1.0
+    roundingStyle           arc
+    cornerRadius            40
 
-    {root}
-        @copy normal
-        levelDepthMax   0
+  {root}
+    @copy normal
+    levelDepthMax           0
 
-        style           poly
-        textAlign       center
-        textPadX        fontSize * .5
-        rotation        30
+    style                   poly
+    textAlign               center
+    textPadX                fontSize * .5
+    rotation                30
 
-    {leaf}
-        levelNumChildrenMax     0
-        style                   line
-        strokeWidth             3
+  {leaf}
+    levelNumChildrenMax     0
+    style                   line
+    strokeWidth             3
 
 [connection]
-    style           junction 
-    lineWidth       3
-    cornerRadius    10
-    cornerStyle     rounded
-    junctionStyle   disc
-    junctionRadius  8
+    style                   junction 
+    lineWidth               3
+    cornerRadius            10
+    cornerStyle             rounded
+    junctionStyle           disc
+    junctionRadius          8
 
 [color]
-    style       colorizer
-    fillColor   bgColor
+    style                   colorizer
+    fillColor               bgColor
 

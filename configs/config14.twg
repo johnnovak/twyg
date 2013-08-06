@@ -1,34 +1,31 @@
 [layout]
     style                   layout
-    horizontalBalance       0.5
     rootPadX                200
     nodePadX                70
-    nodePadY                10
     branchPadY              21
-    verticalAlignFactor     0.5
     radialMinNodes          1000
     sameWidthSiblings       no
     snapParentToChildren    yes
 
 [node]
-    style           box
-    fontSizes       [28, 17, 14, 12]
-    textAlign       center
-    textPadX        fontSize * .5
-    strokeColor     strokeColor
-    strokeWidth     3
-    horizSideColor  baseColor
-    horizSideColor  baseColor
+    style                   box
+    fontSizes               [28, 17, 14, 12]
+    textAlign               center
+    textPadX                fontSize * .5
+    strokeColor             strokeColor
+    strokeWidth             3
+    horizSideColor          baseColor
+    horizSideColor          baseColor
 
 [connection]
-    style           junction 
-    lineWidth       3
-    cornerRadius    10
-    cornerStyle     rounded
-    junctionStyle   disc
-    junctionRadius  8
+    style                   junction 
+    lineWidth               3
+    cornerRadius            10
+    cornerStyle             rounded
+    junctionStyle           disc
+    junctionRadius          8
 
 [color]
-    style       colorizer
-    fillColor   bgColor
+    style                   colorizer
+    fillColor               bgColor
 

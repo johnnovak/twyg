@@ -1,6 +1,5 @@
 [layout]
     style               layout
-    horizontalBalance   0.5
     nodePadX            50
     nodePadY            7
     branchPadY          15
@@ -18,24 +17,24 @@
     drawGradient        yes
 
 [connection]
-    {default}
-        style               curve
-        nodeLineWidthStart  1.5
-        nodeLineWidthEnd    1.5
-        nodeCx1Factor       0.6
-        nodeCx2Factor       0
+  {default}
+    style               curve
+    nodeLineWidthStart  1.5
+    nodeLineWidthEnd    1.5
+    nodeCx1Factor       0.6
+    nodeCx2Factor       0
 
-    {root}
-        @copy default
-        levelDepthMax       0
+  {root}
+    @copy default
+    levelDepthMax       0
 
-        nodeLineWidthStart  2.5
-        nodeLineWidthEnd    2.5
-        nodeCx1Factor       0
-        nodeCy1Factor       1
+    nodeLineWidthStart  2.5
+    nodeLineWidthEnd    2.5
+    nodeCx1Factor       0
+    nodeCy1Factor       1
 
 [color]
-    style           colorizer
-    strokeColor     baseColor.darken(0.15)
-    connectionColor baseColor.darken(0.15)
+    style               colorizer
+    strokeColor         baseColor.darken(0.15)
+    connectionColor     baseColor.darken(0.15)
 

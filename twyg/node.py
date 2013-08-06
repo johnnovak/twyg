@@ -367,7 +367,6 @@ class BoxNodeDrawer(NodeDrawer):
         properties = {
             'boxOrientation':      (EnumProperty,   {'values': orientation}),
             'boxDepth':            (NumberProperty, {'min': 0.0}),
-            'boxDepthScaleFactor': (NumberProperty, {'min': 0.0}),
             'horizSideColor':      (ColorProperty,  {}),
             'vertSideColor':       (ColorProperty,  {}),
             'strokeColor':         (ColorProperty,  {})
@@ -405,8 +404,7 @@ class BoxNodeDrawer(NodeDrawer):
 
         E = self._eval_func(node)
 
-        node._boxdepth = (E('boxDepth')
-                          * math.pow(E('boxDepthScaleFactor'), node.depth()))
+        node._boxdepth = E('boxDepth')
 
         # Make the bounding box big enough so that the shadow can fit in
         # too -- the actual coordinate calculations will happen later

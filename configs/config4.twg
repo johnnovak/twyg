@@ -1,46 +1,41 @@
 [layout]
-    style               layout
-    horizontalBalance   0.5
-    nodePadX            30
-    nodePadY            10
-    branchPadY          16
+  style                 layout
+  branchPadY            16
 
 [node]
-    {default}
-        style           oval
-        maxTextWidth    135
-        textAlign       justify
-        hyphenate       yes
-        textPadX        fontSize * .6
-        textPadY        fontSize * .4
-        aspectRatio     2.5
-        maxWidth        200
+  {default}
+    style               oval
+    maxTextWidth        135
+    textAlign           justify
+    textPadX            fontSize * 0.6
+    textPadY            fontSize * 0.4
+    aspectRatio         2.5
+    maxWidth            200
 
-    {root}
-        @copy default
-        levelDepthMax   0
-
-        textPadY        fontSize * 4
+  {root}
+    @copy default
+    levelDepthMax       0
+    textPadY            fontSize * 4
 
 [connection]
-    {default}
-        style               curve
-        nodeLineWidthStart  2
-        nodeLineWidthEnd    2
-        nodeCx1Factor       -1
-        nodeCx2Factor       0
+  {default}
+    style               curve
+    nodeLineWidthStart  2
+    nodeLineWidthEnd    2
+    nodeCx1Factor       -1
+    nodeCx2Factor       0
 
-    {root}
-        @copy default
-        levelDepthMax       0
+  {root}
+    @copy default
+    levelDepthMax       0
 
-        nodeLineWidthEnd    2
-        nodeLineWidthStart  90
-        nodeCx1Factor       .3
-        nodeCx2Factor       .6
-        nodeCy1Factor       .6
-        nodeCy2Factor       0
+    nodeLineWidthEnd    2
+    nodeLineWidthStart  90
+    nodeCx1Factor       0.3
+    nodeCx2Factor       0.6
+    nodeCy1Factor       0.6
+    nodeCy2Factor       0
 
 [color]
-    style                   colorizer
+  style                 colorizer
 

@@ -33,7 +33,6 @@ textPadY            fontSize * 0.45
 
 -- Node text baseline correction factor
 textBaselineCorrection  -0.2
---textBaselineCorrection    0
 
 -- Rectangle stroke width
 strokeWidth         1.3
