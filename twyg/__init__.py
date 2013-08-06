@@ -1,9 +1,7 @@
 try:
-    # Python 2.6+
-    import json
+    import json                 # Python 2.6+
 except ImportError:
-    # Python 2.5 & Nodebox 1
-    import simplejson as json
+    import simplejson as json   # Python 2.5 & Nodebox 1
 
 
 from twyg.config import (NODE_CONFIG, CONNECTION_CONFIG, LAYOUT_CONFIG,
@@ -73,14 +71,13 @@ def _loadjson(path):
     """ Loads a JSON file. """
     fp = file(path)
     data = json.load(fp)
-    # TODO error reporting
     fp.close()
     return data
 
 
 def _has_levels(section):
     """ Check if a given configuration section has levels or not. """
-    # TODO bit of a hack...
+    # Bit of a hack...
     num_dicts = [x for x in section.values() if type(x) == dict]
     return len(num_dicts) == len(section)
 
@@ -143,7 +140,7 @@ def buildtree(data_path, config_path, colorscheme_path):
     section = LAYOUT_CONFIG
     c = config[section]
     if _has_levels(c):
-        # TODO more detail
+        # TODO more detailed error message
         raise Exception('Layout section cannot have levels')
     style = _get_style(section, c)
     layout_cls = layout_by_name(style)

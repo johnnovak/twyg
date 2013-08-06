@@ -54,10 +54,11 @@ class Colorizer(object):
         else:
             nodecolors = C('nodeColors')
             node.basecolor = nodecolors[self._colorindex]
-            self._colorindex = (self._colorindex + 1) % len(nodecolors)
 
-            if node.parent.basecolor == node.basecolor:
-                self.colorize(node)
+            if len(nodecolors) > 1:
+                self._colorindex = (self._colorindex + 1) % len(nodecolors)
+                if node.parent.basecolor == node.basecolor:
+                    self.colorize(node)
 
         E = self._eval_func(node)
 

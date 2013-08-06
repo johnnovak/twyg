@@ -282,7 +282,7 @@ class Layout(object):
             node._branch_bboxbottom = max(children_bboxbottom, node_ybottom)
 
     def childrenheight(self, node, direction):
-        # TODO
+        # direction is None for leaf nodes
         if direction == None:
             return 0
 

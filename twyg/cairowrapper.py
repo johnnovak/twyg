@@ -110,9 +110,10 @@ class Context(object):
         self._shadow_blur_passes = 2
         self._bitmap_dpi = 40
 
-        # TODO should init
-#        self.font(self._fontname, self._fontsize)
-#        self.strokewidth(self._strokewidth)
+    # TODO call on init
+    def init():
+        self.font(self._fontname, self._fontsize)
+        self.strokewidth(self._strokewidth)
 
     ### SHAPE #################################################################
 

@@ -96,7 +96,6 @@ def slice_shape(points, y, h, ystep):
 
     intersections = []
 
-    # TODO make algorithm linear complexity? (probably irrelevant)
     for l in range(numlines):
         pointpair = []
 
@@ -108,7 +107,7 @@ def slice_shape(points, y, h, ystep):
                 p1, p2 = p2, p1
 
             if y >= p1.y and y < p2.y:
-                # TODO special case for p1.x = p2.x (vertical line)
+                # Special case for p1.x = p2.x (vertical line)
                 dx = p2.x - p1.x + 1e-5
 
                 # Calculate the intersection of a horizontal line and a

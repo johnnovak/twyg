@@ -78,7 +78,8 @@ def calculate_margins(width, height, margins):
 
 
 def brightness(col):
-    # TODO from http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
+    # Formula from from:
+    # http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
     return math.sqrt(  .241 * pow(col.r, 2)
                      + .691 * pow(col.g, 2)
                      + .068 * pow(col.b, 2))

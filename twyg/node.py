@@ -28,6 +28,7 @@ class NodeDrawer(object):
             'fontSizes':              (ArrayProperty,   {'type': NumberProperty}),
             'lineHeight':             (NumberProperty,  {'min': 0.0}),
             'textAlign':              (EnumProperty,    {'values': align}),
+            'justifyMinLines':        (NumberProperty,  {'min': 0.0}),
             'textBaselineCorrection': (NumberProperty,  {}),
             'maxTextWidth':           (NumberProperty,  {'min': 0.0}),
             'hyphenate':              (BooleanProperty, {}),
@@ -86,8 +87,6 @@ class NodeDrawer(object):
         node.text_has_background = True
 
     def connection_point(self, node, direction):
-        # TODO make connection point location configurable per node
-        # (center, auto, etc)
         if node.isroot():
             x = node.bboxwidth / 2
         else:
@@ -207,8 +206,7 @@ class NodeDrawer(object):
 
         _ctx.fill(node.fontcolor)
 
-        # TODO make justify_min_lines a config parameter
-        justify_min_lines = 5
+        justify_min_lines = E('justifyMinLines')
         ystep = node._textrects[0].h
 
         nonblank_lines = 0

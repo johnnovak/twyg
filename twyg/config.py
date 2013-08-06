@@ -998,7 +998,7 @@ class ArrayProperty(Property):
         self.type = type
 
     def _validate(self):
-        #TODO add array element type validation
+        # TODO array element type validation
         if type(self.value) != list:
             raise ValueError
 

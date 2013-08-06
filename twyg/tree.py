@@ -229,7 +229,6 @@ class Tree(object):
         nodelist.append(node)
 
     def _draw_nodes(self):
-        # TODO different sorting options for different node drawers?
         self._nodelist.sort(key=lambda x: x.y, reverse=False)
         for node in self._nodelist:
             node.nodedrawer.drawer.draw(node)
