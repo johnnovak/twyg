@@ -7,13 +7,14 @@ class Colorizer(object):
 
     def __init__(self, config, colorscheme):
         properties = {
-            'fillColor':          (ColorProperty,   {}),
-            'strokeColor':        (ColorProperty,   {}),
-            'connectionColor':    (ColorProperty,   {}),
-            'fontColor':          (ColorProperty,   {}),
-            'fontColorAuto':      (BooleanProperty, {}),
-            'fontColorAutoDark':  (ColorProperty,   {}),
-            'fontColorAutoLight': (ColorProperty,   {})
+            'fillColor':              (ColorProperty,   {}),
+            'strokeColor':            (ColorProperty,   {}),
+            'connectionColor':        (ColorProperty,   {}),
+            'fontColor':              (ColorProperty,   {}),
+            'fontColorAuto':          (BooleanProperty, {}),
+            'fontColorAutoDark':      (ColorProperty,   {}),
+            'fontColorAutoLight':     (ColorProperty,   {}),
+            'fontColorAutoThreshold': (NumberProperty,  {'min': 0.0})
         }
 
         colorscheme_properties = {
@@ -74,7 +75,8 @@ class Colorizer(object):
                                            else self.background_color())
             textcolor = node.fillcolor
 
-            if abs(brightness(text_bgcolor) - brightness(textcolor)) < .3:
+            if abs(  brightness(text_bgcolor)
+                   - brightness(textcolor)) < E('fontColorAutoThreshold'):
                 textcolor_dark  = E('fontColorAutoDark')
                 textcolor_light = E('fontColorAutoLight')
 

@@ -1,9 +1,10 @@
-fillColor           baseColor
-strokeColor         baseColor
-connectionColor     baseColor
+fillColor               baseColor
+strokeColor             baseColor
+connectionColor         baseColor
 
-fontColor           bgColor
-fontColorAuto       yes
-fontColorAutoDark   baseColor.darken(.35)
-fontColorAutoLight  baseColor.blend(color.white, .8)
+fontColor               bgColor
+fontColorAuto           yes
+fontColorAutoDark       baseColor.darken(.35)
+fontColorAutoLight      baseColor.blend(color.white, .8)
+fontColorAutoThreshold  0.3
 
