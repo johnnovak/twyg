@@ -1,64 +1,64 @@
 -- Font used for displaying the text inside the nodes.
-fontName            "Gill Sans"
+fontName                "Gill Sans"
 
 -- Node text font size.
-fontSize            max(10, 21 * 1 / pow(depth + 1, .5))
+fontSize                max(10, 21 * 1 / pow(depth + 1, .5))
 
 -- Line height of the node text.
-lineHeight          1.3
+lineHeight              1.3
 
 -- Text alignment within the box.
 -- Possible values: left, right, center, justify, auto
 -- ('auto' aligns the text depending on node orientation)
-textAlign           auto
+textAlign               auto
 
 -- Minimum number of lines for the 'justify' text alignment to take
 -- effect. If the total number of lines is less than this value, the
 -- text will be centered instead.
-justifyMinLines     5
+justifyMinLines         5
 
 -- Controls whether the node text is hyphenated.
-hyphenate           yes
+hyphenate               yes
 
 -- Max text width inside nodes
-maxTextWidth        240.0
+maxTextWidth            240.0
 
 -- Horizontal padding around the bounding box of the node text.
-textPadX            fontSize * 1.0
+textPadX                fontSize * 1.0
 
 -- Vertical padding around the bounding box of the node text.
-textPadY            fontSize * 0.45
+textPadY                fontSize * 0.45
 
 -- Node text baseline correction factor.
 textBaselineCorrection  -0.2
 
 -- Stroke width of the outline of the node shape.
-strokeWidth         1.3
+strokeWidth             1.3
 
 -- Controls whether the node shape casts a shadow.
-nodeDrawShadow      no
+nodeDrawShadow          no
 
 -- Node shadow color.
-nodeShadowColor     rgba(0, 0, 0, 0.2)
+nodeShadowColor         rgba(0, 0, 0, 0.2)
 
 -- Node shadow blur radius.
-nodeShadowBlur      2.0
+nodeShadowBlur          2.0
 
 -- Horizontal offset of the node shadow.
-nodeShadowOffsX     2.5
+nodeShadowOffsX         2.5
 
 -- Vertical offset of the node shadow.
-nodeShadowOffsY     2.5
+nodeShadowOffsY         2.5
 
 -- Controls whether the node shape should be filled using a linear
 -- top-down gradient.
-drawGradient        no
+drawGradient            no
 
 -- Color of the top of the node if the node shade is filled with a gradient.
 -- nodebox->cairo magic factor 0.12
-gradientTopColor    baseColor.lighten(.12)
+gradientTopColor        baseColor.lighten(.12)
 
 -- Color of the bottom of the node if the node shade is filled with a gradient.
 -- nodebox->cairo magic factor -0.04
-gradientBottomColor baseColor.darken(.04)
+gradientBottomColor     baseColor.darken(.04)
 

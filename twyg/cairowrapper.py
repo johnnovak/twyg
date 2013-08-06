@@ -219,9 +219,14 @@ class Context(object):
         self._ctx.append_path(path)
         self._draw()
 
-    # NOT IMPLEMENTED:
-    #   beginclip(path) 
-    #   endclip(path) 
+    def beginclip(self, path):
+        self._ctx.save()
+        self._ctx.new_path()
+        self._ctx.append_path(path)
+        self._ctx.clip()
+
+    def endclip(self):
+        self._ctx.restore()
 
     def autoclosepath(self, close=True):
         self._autoclosepath = close

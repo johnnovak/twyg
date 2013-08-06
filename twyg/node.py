@@ -405,13 +405,46 @@ class BoxNodeDrawer(NodeDrawer):
         Relies on internal properties precalculated by precalc_node.
         """
 
+        d = node._boxdepth
+
+        # Set up clip path
+        cx1 = cx6 = node.x
+        cy2 = node.y
+        cx3 = cx4 = cx1 + node.width + d
+        cy5 = cy2 + node.height + d
+
+        if self._vert_dir == self._horiz_dir:
+            cy1 = node.y + d
+            cx2 = node.x + d
+            cy3 = node.y
+            cy4 = cy3 + node.height
+            cx5 = node.x + node.width
+            cy6 = cy4 + d
+
+        elif self._vert_dir != self._horiz_dir:
+            cy1 = node.y
+            cx2 = node.x + node.width
+            cy3 = node.y + d
+            cy4 = cy3 + node.height
+            cx5 = node.x + d
+            cy6 = cy4 - d
+
+        _ctx.beginpath(cx1, cy1)
+        _ctx.lineto(cx2, cy2)
+        _ctx.lineto(cx3, cy3)
+        _ctx.lineto(cx4, cy4)
+        _ctx.lineto(cx5, cy5)
+        _ctx.lineto(cx6, cy6)
+
+        clippath = _ctx.endpath(draw=False)
+        _ctx.beginclip(clippath)
+
+        # Box drawing stuff
         E = self._eval_func(node)
 
         if E('strokeColor'):
             _ctx.stroke(E('strokeColor'))
             _ctx.strokewidth(E('strokeWidth'))
-
-        d = node._boxdepth
 
         if self._vert_dir == 1:
             y1 = node.y + d
@@ -466,6 +499,8 @@ class BoxNodeDrawer(NodeDrawer):
         ty = node._textyoffs - (node.y - oy)
 
         self._drawtext(node, tx, ty)
+
+        _ctx.endclip()
 
 
 class LineNodeDrawer(NodeDrawer):

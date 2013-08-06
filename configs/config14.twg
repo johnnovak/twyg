@@ -9,20 +9,22 @@
 
 [node]
     style                   box
+    boxDepth                20 * pow(0.7, depth)
+    boxOrientation          bottomright
     textAlign               center
     textPadX                fontSize * .5
     strokeColor             strokeColor
     strokeWidth             3
-    horizSideColor          baseColor
-    horizSideColor          baseColor
+    horizSideColor          bgColor
+    vertSideColor           bgColor
 
 [connection]
     style                   junction 
     lineWidth               3
-    cornerRadius            10
-    cornerStyle             rounded
-    junctionStyle           disc
-    junctionRadius          8
+    cornerRadius            90
+    cornerStyle             beveled
+    junctionStyle           square
+    junctionRadius          10
 
 [color]
     style                   colorizer
