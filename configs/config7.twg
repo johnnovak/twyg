@@ -6,7 +6,6 @@
 
 [node]
     style               poly
-    fontSizes           [25, 15, 14, 12]
     textAlign           justify
     textPadX            fontSize * 0.7
     rotation            30

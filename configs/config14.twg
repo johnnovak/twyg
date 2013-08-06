@@ -9,7 +9,6 @@
 
 [node]
     style                   box
-    fontSizes               [28, 17, 14, 12]
     textAlign               center
     textPadX                fontSize * .5
     strokeColor             strokeColor

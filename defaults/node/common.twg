@@ -3,9 +3,8 @@
 -- Font used for displaying the text inside the nodes
 fontName            "Gill Sans"
 
--- Node text font sizes at different node depths
--- (root, level1, level2, ..., levelN)
-fontSizes           [21, 15, 13, 12]
+-- Node text font size
+fontSize            max(10, 21 * 1 / pow(depth + 1, .5))
 
 -- Line height of the node text
 lineHeight          1.3

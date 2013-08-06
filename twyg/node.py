@@ -25,7 +25,7 @@ class NodeDrawer(object):
 
         properties = {
             'fontName':               (StringProperty,  {}),
-            'fontSizes':              (ArrayProperty,   {'type': NumberProperty}),
+            'fontSize':               (NumberProperty,  {'min': 0.0}),
             'lineHeight':             (NumberProperty,  {'min': 0.0}),
             'textAlign':              (EnumProperty,    {'values': align}),
             'justifyMinLines':        (NumberProperty,  {'min': 0.0}),
@@ -68,10 +68,10 @@ class NodeDrawer(object):
         Precalculate node properties that are needed by the layout algorithms.
         """
 
-        node.fontsize = self._font_size(node)
-        self._precalc_text(node)
-
         E = self._eval_func(node)
+
+        node.fontsize = E('fontSize')
+        self._precalc_text(node)
 
         padx = E('textPadX')
         pady = E('textPadY')
@@ -129,19 +129,6 @@ class NodeDrawer(object):
         else:
             _ctx.fill(basecolor)
             _ctx.drawpath(path)
-
-    def _font_size(self, node):
-        """
-        Get the font size associated with the node. The font size is
-        dependent on the depth of the node.
-        """
-
-        E = self._eval_func(node)
-
-        fs = E('fontSizes')
-        depth = node.depth()
-        idx = depth if depth < len(fs) else -1
-        return fs[idx]
 
     def _precalc_text(self, node):
         E = self._eval_func(node)

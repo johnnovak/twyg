@@ -13,7 +13,6 @@
 [node]
   {normal}
     style                   rect
-    fontSizes               [28, 17, 14, 12]
     strokeWidth             3
     roundness               1.0
     roundingStyle           arc
