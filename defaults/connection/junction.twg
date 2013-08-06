@@ -1,5 +1,3 @@
--- TODO make bgColor available as a variable
-
 lineWidth          4.0
 junctionXFactor    0.4
 
@@ -14,5 +12,5 @@ junctionStrokeColor     baseColor
 junctionSign            none
 junctionSignSize        10.0
 junctionSignStrokeWidth 2.0
-junctionSignColor       baseColor.blend(#fff, .7)
+junctionSignColor       baseColor.blend(bgColor, .7)
 

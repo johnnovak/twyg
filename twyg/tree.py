@@ -50,6 +50,7 @@ class Node(object):
             'textwidth':      'textWidth',
             'textheight':     'textHeight',
             'max_text_width': 'maxTextWidth',
+            'bgcolor':        'bgColor',
             'basecolor':      'baseColor',
             'fillcolor':      'fillColor',
             'strokecolor':    'strokeColor',
@@ -198,7 +199,7 @@ class Tree(object):
 
     def background_color(self):
         # The background color for the canvas is always taken from the first
-        # colorizer object.
+        # colorizer instance.
         return  self._colorizers[0].drawer.background_color()
 
     def _assign_drawers(self):

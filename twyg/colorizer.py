@@ -47,6 +47,8 @@ class Colorizer(object):
 
         C = self._colorscheme_props.eval
 
+        node.bgcolor = self.background_color()
+
         if node.isroot():
             node.basecolor = C('rootColor')
         elif node.isleaf():

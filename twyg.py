@@ -8,7 +8,6 @@ from optparse import OptionParser
 from twyg import buildtree
 from twyg.cairowrapper import context as ctx
 from twyg.common import validate_margins, calculate_margins
-from twyg.css3colors import color_to_rgba
 
 
 import twyg.common
