@@ -472,8 +472,7 @@ class BoxNodeDrawer(NodeDrawer):
         path = _ctx.rect(ox, oy, node.width, node.height, draw=False)
         self._draw_gradient_shape(node, path, node.fillcolor)
 
-        # Draw 3D depth
-        # Draw horizontal side
+        # Draw horizontal 3D side
         _ctx.beginpath(ox, y1)
         _ctx.lineto(ox + node.width, y1)
         _ctx.lineto(ox + node.width + dh, y2)
@@ -484,7 +483,7 @@ class BoxNodeDrawer(NodeDrawer):
         col = E('horizSideColor')
         self._draw_gradient_shape(node, path, col)
 
-        # Draw vertical side
+        # Draw vertical 3D side
         _ctx.beginpath(x1, oy)
         _ctx.lineto(x1, oy + node.height)
         _ctx.lineto(x2, oy + node.height + dv)
