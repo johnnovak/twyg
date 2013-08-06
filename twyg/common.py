@@ -13,6 +13,7 @@ def init(nodebox=False, ctx=None):
         # so the likelihood that future updates will break this is very
         # slim."
         #   -- Excerpt from Famous Last Words, vol 42.
+
         ctx.color = lambda r, g, b, a: colors.rgb(r, g, b, a)
         ctx.gradientfill = colors.gradientfill
         ctx.shadow = colors.shadow
@@ -80,7 +81,7 @@ def calculate_margins(width, height, margins):
 
 
 def brightness(col):
-    # Formula from from:
+    # Formula from:
     # http://www.nbdtech.com/Blog/archive/2008/04/27/Calculating-the-Perceived-Brightness-of-a-Color.aspx
     return math.sqrt(  .241 * pow(col.r, 2)
                      + .691 * pow(col.g, 2)

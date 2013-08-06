@@ -1,8 +1,7 @@
 import math
 import sys
 
-from twyg.config import (defaults_path, Properties,
-                         NumberProperty, BooleanProperty)
+from twyg.config import Properties, NumberProperty, BooleanProperty
 
 from twyg.tree import Direction, opposite_dir
 from twyg.geomutils import halfcircle
@@ -26,9 +25,7 @@ class Layout(object):
             'radialFactor':            (NumberProperty,  {})
         }
 
-        self._props = Properties(properties,
-                                 defaults_path('layout/layout.twg'),
-                                 config)
+        self._props = Properties(properties, 'layout/layout.twg', config)
 
         self._leftnodes = ()
         self._rightnodes = ()

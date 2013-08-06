@@ -1,9 +1,9 @@
 import math
 
 from twyg.common import textwidth, createpath, brightness
-from twyg.config import (defaults_path, Properties, StringProperty,
-                         NumberProperty, ColorProperty, EnumProperty,
-                         BooleanProperty, ArrayProperty)
+from twyg.config import (Properties, StringProperty, NumberProperty,
+                         ColorProperty, EnumProperty, BooleanProperty,
+                         ArrayProperty)
 
 import twyg.geomutils as geom
 import twyg.textwrap as textwrap
@@ -328,9 +328,7 @@ class RectNodeDrawer(NodeDrawer):
             'roundingStyle': (EnumProperty,   {'values': ('screen', 'arc')})
         }
 
-        super(RectNodeDrawer, self).__init__(properties,
-                                             defaults_path('node/rect.twg'),
-                                             config)
+        super(RectNodeDrawer, self).__init__(properties, 'node/rect.twg', config)
 
     def _calc_shape_path(self, node):
         E = self._eval_func(node)
@@ -367,9 +365,7 @@ class BoxNodeDrawer(NodeDrawer):
             'strokeColor':         (ColorProperty,  {})
         }
 
-        super(BoxNodeDrawer, self).__init__(properties,
-                                            defaults_path('node/box.twg'),
-                                            config)
+        super(BoxNodeDrawer, self).__init__(properties, 'node/box.twg', config)
 
         # Determine 3D depth orientation
         E = self._eval_func(None)
@@ -518,9 +514,7 @@ class LineNodeDrawer(NodeDrawer):
             'maxTextWidth': (NumberProperty, {'min': 0.0})
         }
 
-        super(LineNodeDrawer, self).__init__(properties,
-                                             defaults_path('node/line.twg'),
-                                             config)
+        super(LineNodeDrawer, self).__init__(properties, 'node/line.twg', config)
 
     def precalc_node(self, node):
         """
@@ -561,9 +555,7 @@ class PolyNodeDrawer(NodeDrawer):
             'rotation': (NumberProperty, {})
         }
 
-        super(PolyNodeDrawer, self).__init__(properties,
-                                             defaults_path('node/poly.twg'),
-                                             config)
+        super(PolyNodeDrawer, self).__init__(properties, 'node/poly.twg', config)
 
         E = self._eval_func(None)
 
@@ -598,9 +590,7 @@ class OvalNodeDrawer(NodeDrawer):
             'maxWidth':    (NumberProperty, {'min': 0.0})
         }
 
-        super(OvalNodeDrawer, self).__init__(properties,
-                                             defaults_path('node/oval.twg'),
-                                             config)
+        super(OvalNodeDrawer, self).__init__(properties, 'node/oval.twg', config)
 
         E = self._eval_func(None)
 
@@ -616,9 +606,7 @@ class OvalNodeDrawer(NodeDrawer):
 class CapsuleNodeDrawer(NodeDrawer):
 
     def __init__(self, config={}):
-        super(CapsuleNodeDrawer, self).__init__({},
-                                                defaults_path('node/capsule.twg'),
-                                                config)
+        super(CapsuleNodeDrawer, self).__init__({}, 'node/capsule.twg', config)
 
     def draw(self, node):
         pass

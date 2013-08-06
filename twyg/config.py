@@ -14,6 +14,8 @@ except ImportError:
 from twyg.css3colors import color_to_rgba, colornames
 from twyg.tree import Direction
 
+import twyg.common
+
 
 # This is a high-leve description of the config parsing process:
 #
@@ -323,7 +325,7 @@ def buildconfig(tokens, cwd=None, state='start', config=None, curr=None,
 
                 if name == 'include':
                     try:
-                        tokens, cwd = _tokenize_file(os.path.join(cwd, param),
+                        tokens, cwd = _tokenize_file(include_path(os.path.join(cwd, param)),
                                                      flat=False)
                     except IOError, e:
                         raise ConfigError(
@@ -440,8 +442,23 @@ def loadconfig(file, flat=False):
 
 
 def defaults_path(configname):
-    basepath = os.path.dirname(os.path.realpath(sys.argv[0]))
-    return os.path.join(basepath, 'defaults', configname)
+    return os.path.join(twyg.common.TWYG_HOME, 'defaults', configname)
+
+
+def colors_path(configname):
+    return os.path.join(twyg.common.TWYG_HOME, 'colors', configname) + '.twg'
+
+
+def include_path(configname):
+    paths = [
+        configname,
+        os.path.join(twyg.common.TWYG_USER, 'configs', configname),
+        os.path.join(twyg.common.TWYG_HOME, 'configs', configname)
+    ]
+    for p in paths:
+        if os.path.exists(p):
+            return p
+    raise ConfigError("Cannot open configuration file: '%s'" % configname)
 
 
 ##############################################################################
@@ -831,8 +848,7 @@ class Level(object):
             'levelOrientation':    (EnumProperty,   {'values': Level.orientation})
         }
 
-        defaults = defaults_path('level.twg')
-        self._props = Properties(properties, defaults, config,
+        self._props = Properties(properties, 'level.twg', config,
                                  extra_prop_warning=False)
         self._eval()
 
@@ -1028,7 +1044,7 @@ class Properties(object):
         dict if ``extra_prop_warning`` is True.
         """
 
-        c = loadconfig(defaults, flat=True)
+        c = loadconfig(defaults_path(defaults), flat=True)
         c.update(config)
         config = c
 

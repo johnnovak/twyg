@@ -1,5 +1,5 @@
 from twyg.common import createpath
-from twyg.config import (defaults_path, Properties, NumberProperty,
+from twyg.config import (Properties, NumberProperty,
                          EnumProperty, ColorProperty)
 
 from twyg.geom import Vector2
@@ -19,9 +19,7 @@ class CurveConnectionDrawer(object):
             'nodeCy2Factor':      (NumberProperty, {})
         }
 
-        self._props = Properties(properties,
-                                 defaults_path('connection/curve.twg'),
-                                 config)
+        self._props = Properties(properties, 'connection/curve.twg', config)
 
     def _eval_func(self, node):
         return lambda name: self._props.eval(name, node)
@@ -102,9 +100,7 @@ class JunctionConnectionDrawer(object):
             'junctionSignColor':   (ColorProperty,  {})
         }
 
-        self._props = Properties(properties,
-                                 defaults_path('connection/junction.twg'),
-                                 config)
+        self._props = Properties(properties, 'connection/junction.twg', config)
 
     def _eval_func(self, node):
         return lambda name: self._props.eval(name, node)

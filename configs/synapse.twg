@@ -12,19 +12,7 @@
     textPadY            fontSize * 2
 
 [connection]
-  {default}
-    style   curve
-
-  {root}
-    @copy default
-    levelDepthMax       0
-
-    nodeLineWidthEnd    2
-    nodeLineWidthStart  90
-    nodeCx1Factor       0.3
-    nodeCx2Factor       0.6
-    nodeCy1Factor       0.6
-    nodeCy2Factor       0
+    @include "synapse-connection.twg"
 
 [color]
   {default}

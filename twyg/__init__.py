@@ -111,7 +111,7 @@ def _create_drawers(config, section, factory_func, constr_args=()):
     return drawers
 
 
-def buildtree(data_path, config_path, colorscheme_path):
+def buildtree(data_path, config_path, colorscheme_path=None):
     """
     Build a `Tree` object from a JSON data file according to the rules
     specified in the configuration and apply a colorscheme.
@@ -134,7 +134,6 @@ def buildtree(data_path, config_path, colorscheme_path):
 
     data = _loadjson(data_path)
     config = loadconfig(config_path)
-    colorscheme = loadconfig(colorscheme_path, flat=True)
 
     # Layout section
     section = LAYOUT_CONFIG
@@ -154,7 +153,7 @@ def buildtree(data_path, config_path, colorscheme_path):
 
     colorizers = _create_drawers(config, COLOR_CONFIG,
                                  factory_func=twyg.colorizer.colorizer_by_name,
-                                 constr_args=(colorscheme,))
+                                 constr_args=(colorscheme_path,))
 
     return Tree(layout, nodedrawers, conndrawers, colorizers, data)
 

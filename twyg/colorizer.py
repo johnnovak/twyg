@@ -1,12 +1,14 @@
 from twyg.common import brightness
-from twyg.config import (defaults_path, Properties, BooleanProperty,
-                         NumberProperty, ColorProperty, ArrayProperty)
+from twyg.config import (colors_path, Properties,
+                         BooleanProperty, NumberProperty, ColorProperty,
+                         ArrayProperty, StringProperty, loadconfig)
 
 
 class Colorizer(object):
 
-    def __init__(self, config, colorscheme):
+    def __init__(self, config, colorscheme_path=None):
         properties = {
+            'colorscheme':            (StringProperty,  {}),
             'fillColor':              (ColorProperty,   {}),
             'strokeColor':            (ColorProperty,   {}),
             'connectionColor':        (ColorProperty,   {}),
@@ -23,21 +25,26 @@ class Colorizer(object):
             'nodeColors':      (ArrayProperty, {'type': ColorProperty})
         }
 
-        self._props = Properties(properties,
-                                 defaults_path('colorizer/colorizer.twg'),
-                                 config)
+        self._props = Properties(properties, 'colorizer/colorizer.twg', config)
+
+        E = self._eval_func()
+        if not colorscheme_path:
+            colorscheme_path = E('colorscheme')
+
+        colorscheme = loadconfig(colors_path(colorscheme_path), flat=True)
 
         self._colorscheme_props = Properties(
-                colorscheme_properties,
-                defaults_path('colorizer/colorscheme.twg'),
-                colorscheme)
+                colorscheme_properties, 'colorizer/colorscheme.twg', colorscheme)
 
         self._colorindex = 0
 
-    def _eval_func(self, node):
-        vars = {
-            'bgColor': self.background_color(),
-        }
+    def _eval_func(self, node=None):
+        if node:
+            vars = {
+                'bgColor': self.background_color(),
+            }
+        else:
+            vars = {}
         return lambda name: self._props.eval(name, node, vars)
 
     def colorize(self, node):

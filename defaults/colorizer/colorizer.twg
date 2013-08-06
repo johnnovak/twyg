@@ -1,3 +1,6 @@
+-- Colorscheme to use
+colorscheme             "mint"
+
 -- Fill color of the node shape
 fillColor               baseColor
 
