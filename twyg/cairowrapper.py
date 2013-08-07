@@ -108,7 +108,7 @@ class Context(object):
         self._shadow_radius = 3
         self._shadow_color = color(0, 0, 0, 1)
         self._shadow_blur_passes = 2
-        self._bitmap_dpi = 40
+        self._bitmap_dpi = 150
 
     # TODO call on init
     def init():
@@ -157,7 +157,6 @@ class Context(object):
         r = width / 2.
         yscale = float(height) / width
 
-        # TODO why is new_path() needed?
         c.new_path()
         c.save()
         c.scale(1, yscale)
@@ -401,8 +400,7 @@ class Context(object):
     def shadow(self, dx=0.0, dy=0.0, blur=3.0, clr=color(0, 0, 0, 1)):
         self._shadow_dx = dx
         self._shadow_dy = dy
-        # TODO conversion from NodeBox blur params
-        self._shadow_radius = blur
+        self._shadow_radius = blur / 2
         self._shadow_color = clr
         self._shadow = True
 
@@ -487,9 +485,16 @@ class Context(object):
         c.restore()
 
     def _render_bitmap_shadow(self):
-        # TODO reference (ryg blog)
-        # TODO shadow doesn't work properly for SVG output (shadow
-        # bitmaps don't get translated but are all drawn at the origin)
+        # 'Moving average' subpixel resolution box filter implementation
+        # based on Ryg's posts on fast blurs:
+        #
+        # http://fgiesen.wordpress.com/2012/07/30/fast-blurs-1/
+        # http://fgiesen.wordpress.com/2012/08/01/fast-blurs-2/
+        #
+        # Note: Shadows doesn't work properly for SVG output as shadow
+        # bitmaps don't get translated correctly but are all drawn at
+        # the origin.
+
         dpi_scale = self._bitmap_dpi / 72.0
 
         radius = self._shadow_radius * dpi_scale
@@ -497,9 +502,10 @@ class Context(object):
         # With 3 passes we get a good approximation of Gaussian blur
         # within a 3% error margin (bicubic blur), which is good enough
         # for practical purposes.
-        # 1 - box blur
-        # 2 - triangle blur
-        # 3 - bicubic blur
+        # 1 - box filter
+        # 2 - triangle filter
+        # 3 - piecewise quadratic filter
+        # 4 - piecewise cubic filter
         passes = self._shadow_blur_passes
 
         # Integer part of radius

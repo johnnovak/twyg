@@ -1,5 +1,6 @@
 [layout]
     style               layout
+    rootPadX            70
     nodePadX            50
     branchPadY          15
     radialMinNodes      1000
@@ -28,4 +29,3 @@
 
 [color]
     style               colorizer
-

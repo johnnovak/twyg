@@ -7,7 +7,6 @@
     style               box
     maxTextWidth        140
     boxOrientation      bottomright
-    boxDepth            16
     horizSideColor      baseColor.darken(0.34)
     vertSideColor       baseColor.darken(-0.12)
     strokeWidth         0 

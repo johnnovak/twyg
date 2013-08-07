@@ -456,6 +456,7 @@ def round_poly(points, r, close=True):
         return [[p0, p1]]
 
     # Calculate corner arcs
+    # TODO make a copy of points before appending
     arcs = []
     if close:
         points.append(points[0])
@@ -498,4 +499,45 @@ def rounded_rect(x, y, w, h, r):
               Vector2(x + w, y + h), Vector2(x, y + h)]
 
     return round_poly(points, r)
+
+
+def outline_poly(points, d, close=True):
+    """ Round a polygon defined by connecting segments by a specified
+    radius.
+
+    # TODO points must be specified in CW direction
+    """
+
+    # Handle degenerate cases
+    if len(points) <= 1:
+        return None
+    if len(points) == 2:
+        p0 = points[0]
+        p1 = points[1]
+        return [[p0, p1]]
+
+    # TODO review close stuff
+    if close:
+        points.append(points[0])
+        points.append(points[1])
+
+    outline = []
+
+    for i in range(len(points) - 2):
+        p1 = points[i]
+        p2 = points[i + 1]
+        p3 = points[i + 2]
+
+        # TODO review
+        a1 = (p1 - p2).a
+        a2 = (p3 - p2).a
+        ang = a2 - a1
+        if ang < 0:
+            ang += 2 * math.pi
+
+        pn = Vector2(m=-d, angle=a1 + ang / 2) + p2
+        outline.append(pn)
+
+    outline.insert(0, outline.pop())
+    return outline
 

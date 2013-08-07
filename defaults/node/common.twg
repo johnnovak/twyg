@@ -42,13 +42,13 @@ nodeDrawShadow          no
 nodeShadowColor         rgba(0, 0, 0, 0.2)
 
 -- Node shadow blur radius.
-nodeShadowBlur          2.0
+nodeShadowBlur          3.0
 
 -- Horizontal offset of the node shadow.
-nodeShadowOffsX         2.5
+nodeShadowOffsX         3
 
 -- Vertical offset of the node shadow.
-nodeShadowOffsY         2.5
+nodeShadowOffsY         3
 
 -- Controls whether the node shape should be filled using a linear
 -- top-down gradient.

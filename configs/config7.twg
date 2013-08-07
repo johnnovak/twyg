@@ -9,6 +9,7 @@
     textAlign           justify
     textPadX            fontSize * 0.7
     rotation            30
+    strokeWidth         0
 
 [connection]
   {default}

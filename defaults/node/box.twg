@@ -5,7 +5,7 @@
 boxOrientation          topright
 
 -- 3D depth of the box.
-boxDepth                7.0 * pow(0.7, depth)
+boxDepth                20 * pow(0.7, depth)
 
 -- Color of the horizontal side of the 3D box.
 horizSideColor          baseColor.lighten(0.34)

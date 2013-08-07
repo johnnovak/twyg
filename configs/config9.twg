@@ -1,6 +1,7 @@
 [layout]
     style                   layout
     horizontalBalance       0
+    rootPadX                200
     branchPadY              15
     radialMinNodes          1000
     snapParentToChildren    yes
@@ -9,6 +10,9 @@
     style                   rect
     textPadY                fontSize * 0.7
     roundness               0.8
+    drawGradient            yes
+    strokeWidth             0
+    gradientBottomColor     baseColor.darken(.1)
 
 [connection]
     style                   junction

@@ -15,6 +15,8 @@ def init(nodebox=False, ctx=None):
         #   -- Excerpt from Famous Last Words, vol 42.
         ctx.color = lambda r, g, b, a: colors.rgb(r, g, b, a)
         ctx.gradientfill = colors.gradientfill
+        ctx.shadow = colors.shadow
+        ctx.noshadow = colors.noshadow
 
 
 def validate_margins(margins):

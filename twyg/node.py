@@ -117,6 +117,8 @@ class NodeDrawer(object):
                         blur=E('nodeShadowBlur'), clr=E('nodeShadowColor'))
 
         self._draw_gradient_shape(node, path, node.fillcolor)
+        _ctx.noshadow()
+
         self._drawtext(node, node._textxoffs, node._textyoffs)
 
     def _draw_gradient_shape(self, node, path, basecolor):

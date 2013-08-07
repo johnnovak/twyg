@@ -1,5 +1,6 @@
 [layout]
     style               layout
+    rootPadX            70
     nodePadX            50
     nodePadY            7
     branchPadY          15
@@ -7,12 +8,11 @@
 
 [node]
     style               rect
-    fontName            "Trebuchet MS"
+    fontName            "Arial"
     textAlign           center
     textPadX            fontSize * 0.9
     textPadY            fontSize * 0.7
     roundness           0.8
-    nodeShadowColor     rgba(0, 0, 0, 0.2)
     nodeDrawShadow      yes
     drawGradient        yes
 
