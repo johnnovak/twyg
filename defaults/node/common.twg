@@ -45,10 +45,10 @@ nodeShadowColor         rgba(0, 0, 0, 0.2)
 nodeShadowBlur          3.0
 
 -- Horizontal offset of the node shadow.
-nodeShadowOffsX         3
+nodeShadowOffsX         2.5
 
 -- Vertical offset of the node shadow.
-nodeShadowOffsY         3
+nodeShadowOffsY         2.5
 
 -- Controls whether the node shape should be filled using a linear
 -- top-down gradient.

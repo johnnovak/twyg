@@ -1,6 +1,6 @@
 import math
 
-from twyg.common import textwidth, createpath
+from twyg.common import textwidth, createpath, brightness
 from twyg.config import (defaults_path, Properties, StringProperty,
                          NumberProperty, ColorProperty, EnumProperty,
                          BooleanProperty, ArrayProperty)
@@ -119,6 +119,14 @@ class NodeDrawer(object):
         self._draw_gradient_shape(node, path, node.fillcolor)
         _ctx.noshadow()
 
+        if brightness(node.fontcolor) > .5:
+            _ctx.fill(_ctx.color(0, .5))
+        else:
+            _ctx.fill(_ctx.color(1, .5))
+
+        self._drawtext(node, node._textxoffs - .5, node._textyoffs - .5)
+
+        _ctx.fill(node.fontcolor)
         self._drawtext(node, node._textxoffs, node._textyoffs)
 
     def _draw_gradient_shape(self, node, path, basecolor):
@@ -193,8 +201,6 @@ class NodeDrawer(object):
         _ctx.font(node.fontname, node.fontsize)
         _ctx.lineheight(node.lineheight)
 
-        _ctx.fill(node.fontcolor)
-
         justify_min_lines = E('justifyMinLines')
         ystep = node._textrects[0].h
 
@@ -221,13 +227,13 @@ class NodeDrawer(object):
                 y += ty + baseline_offs + lineheight_offs + ystep
 
                 if DEBUG:
+                    _ctx.save()
                     _ctx.nofill()
                     _ctx.stroke(node.fontcolor)
                     _ctx.rect(x, y - h, w, h)
                     _ctx.stroke(1, 0, 0)
-                    _ctx.nofill()
                     _ctx.rect(tx, ty, node.textwidth, node.textheight)
-                    _ctx.fill(node.fontcolor)
+                    _ctx.restore()
 
                 words = l.split()
                 numspaces = float(l.count(' '))
@@ -255,13 +261,13 @@ class NodeDrawer(object):
                 y += ty + ystep
 
                 if DEBUG:
+                    _ctx.save()
                     _ctx.nofill()
                     _ctx.stroke(node.fontcolor)
                     _ctx.rect(x, y - h, w, h)
                     _ctx.stroke(1, 0, 0)
-                    _ctx.nofill()
                     _ctx.rect(tx, ty, node.textwidth, node.textheight)
-                    _ctx.fill(node.fontcolor)
+                    _ctx.restore()
 
                 y += baseline_offs + lineheight_offs
 
@@ -499,6 +505,7 @@ class BoxNodeDrawer(NodeDrawer):
         tx = node._textxoffs - (node.x - ox)
         ty = node._textyoffs - (node.y - oy)
 
+        _ctx.fill(node.fontcolor)
         self._drawtext(node, tx, ty)
 
         _ctx.endclip()
@@ -533,7 +540,9 @@ class LineNodeDrawer(NodeDrawer):
         _ctx.strokewidth(E('strokeWidth'))
         _ctx.line(node.x, y, node.x + node.width, y)
 
+        _ctx.fill(node.fontcolor)
         self._drawtext(node, node._textxoffs, node._textyoffs)
+
         _ctx.nofill()
         _ctx.stroke(1,0,0)
         _ctx.strokewidth(1)

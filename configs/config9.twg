@@ -10,9 +10,12 @@
     style                   rect
     textPadY                fontSize * 0.7
     roundness               0.8
-    drawGradient            yes
     strokeWidth             0
+    drawGradient            yes
     gradientBottomColor     baseColor.darken(.1)
+    nodeDrawShadow          yes
+    nodeShadowBlur          2.0
+    nodeShadowColor         rgba(0, 0, 0, 0.1)
 
 [connection]
     style                   junction
