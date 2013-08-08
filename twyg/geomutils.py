@@ -501,6 +501,22 @@ def rounded_rect(x, y, w, h, r):
     return round_poly(points, r)
 
 
+def intersect(p1, p2, p3, p4):
+    c = (p1.x - p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x - p4.x)
+
+    # The two lines are parallel
+    if abs(c) < 1e-15:
+        return None
+
+    a = p1.x * p2.y - p1.y * p2.x
+    b = p3.x * p4.y - p3.y * p4.x
+
+    x = (a * (p3.x - p4.x) - (p1.x - p2.x) * b) / c
+    y = (a * (p3.y - p4.y) - (p1.y - p2.y) * b) / c
+
+    return Vector2(x, y)
+
+
 def outline_poly(points, d, close=True):
     """ Round a polygon defined by connecting segments by a specified
     radius.
