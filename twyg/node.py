@@ -5,6 +5,7 @@ from twyg.config import (Properties, StringProperty, NumberProperty,
                          ColorProperty, EnumProperty, BooleanProperty,
                          ArrayProperty)
 
+from twyg.geom import Vector2
 import twyg.geomutils as geom
 import twyg.textwrap as textwrap
 from twyg.tree import Direction
@@ -409,46 +410,55 @@ class BoxNodeDrawer(NodeDrawer):
         Relies on internal properties precalculated by precalc_node.
         """
 
+        E = self._eval_func(node)
+        strokewidth = E('strokeWidth')
+        drawstroke = strokewidth > 0
+
         d = node._boxdepth
 
-        # Set up clip path
-        cx1 = cx6 = node.x
-        cy2 = node.y
-        cx3 = cx4 = cx1 + node.width + d
-        cy5 = cy2 + node.height + d
+        if drawstroke:
+            # Set up clip path
+            cx1 = cx6 = node.x
+            cy2 = node.y
+            cx3 = cx4 = cx1 + node.width + d
+            cy5 = cy2 + node.height + d
 
-        if self._vert_dir == self._horiz_dir:
-            cy1 = node.y + d
-            cx2 = node.x + d
-            cy3 = node.y
-            cy4 = cy3 + node.height
-            cx5 = node.x + node.width
-            cy6 = cy4 + d
+            if self._vert_dir == self._horiz_dir:
+                cy1 = node.y + d
+                cx2 = node.x + d
+                cy3 = node.y
+                cy4 = cy3 + node.height
+                cx5 = node.x + node.width
+                cy6 = cy4 + d
 
-        elif self._vert_dir != self._horiz_dir:
-            cy1 = node.y
-            cx2 = node.x + node.width
-            cy3 = node.y + d
-            cy4 = cy3 + node.height
-            cx5 = node.x + d
-            cy6 = cy4 - d
+            elif self._vert_dir != self._horiz_dir:
+                cy1 = node.y
+                cx2 = node.x + node.width
+                cy3 = node.y + d
+                cy4 = cy3 + node.height
+                cx5 = node.x + d
+                cy6 = cy4 - d
 
-        _ctx.beginpath(cx1, cy1)
-        _ctx.lineto(cx2, cy2)
-        _ctx.lineto(cx3, cy3)
-        _ctx.lineto(cx4, cy4)
-        _ctx.lineto(cx5, cy5)
-        _ctx.lineto(cx6, cy6)
+            outline = [
+                Vector2(cx1, cy1),
+                Vector2(cx2, cy2),
+                Vector2(cx3, cy3),
+                Vector2(cx4, cy4),
+                Vector2(cx5, cy5),
+                Vector2(cx6, cy6)
+            ]
 
-        clippath = _ctx.endpath(draw=False)
-        _ctx.beginclip(clippath)
+            clippath = createpath(_ctx, geom.offset_poly(outline, strokewidth * .5),
+                                  close=True)
+
+            _ctx.beginclip(clippath)
 
         # Box drawing stuff
-        E = self._eval_func(node)
-
-        if E('strokeColor'):
+        if drawstroke:
             _ctx.stroke(E('strokeColor'))
-            _ctx.strokewidth(E('strokeWidth'))
+            _ctx.strokewidth(strokewidth)
+        else:
+            _ctx.nostroke()
 
         if self._vert_dir == 1:
             y1 = node.y + d
@@ -504,7 +514,8 @@ class BoxNodeDrawer(NodeDrawer):
         _ctx.fill(node.fontcolor)
         self._drawtext(node, tx, ty)
 
-        _ctx.endclip()
+        if drawstroke:
+            _ctx.endclip()
 
 
 class LineNodeDrawer(NodeDrawer):

@@ -517,47 +517,6 @@ def intersect(p1, p2, p3, p4):
     return Vector2(x, y)
 
 
-def outline_poly(points, d, close=True):
-    """ Round a polygon defined by connecting segments by a specified
-    radius.
-
-    # TODO points must be specified in CW direction
-    """
-
-    # Handle degenerate cases
-    if len(points) <= 1:
-        return None
-    if len(points) == 2:
-        p0 = points[0]
-        p1 = points[1]
-        return [[p0, p1]]
-
-    # TODO review close stuff
-    if close:
-        points.append(points[0])
-        points.append(points[1])
-
-    outline = []
-
-    for i in range(len(points) - 2):
-        p1 = points[i]
-        p2 = points[i + 1]
-        p3 = points[i + 2]
-
-        # TODO review
-        a1 = (p1 - p2).a
-        a2 = (p3 - p2).a
-        ang = a2 - a1
-        if ang < 0:
-            ang += 2 * math.pi
-
-        pn = Vector2(m=-d, angle=a1 + ang / 2) + p2
-        outline.append(pn)
-
-    outline.insert(0, outline.pop())
-    return outline
-
-
 def offset_poly(points, d, close=True):
     """ Offset polygon defined by ``points`` by amount ``d``.
 
@@ -577,8 +536,8 @@ def offset_poly(points, d, close=True):
 
         # Calculate normal
         n = (p2 - p1).normalize().rotate(math.pi / 2)
-        n *= d
-        lines.append([p1 + n, p2 + n])
+        shift = n * d
+        lines.append([p1 + shift, p2 + shift])
 
     points.pop()
     lines.append(lines[0])
@@ -591,5 +550,4 @@ def offset_poly(points, d, close=True):
 
     offs.insert(0, offs.pop())
     return offs
-
 

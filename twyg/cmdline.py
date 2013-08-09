@@ -102,51 +102,6 @@ def main():
     # output file will be created later.
     ctx.initsurface(1, 1, options.outformat, None, scale)
 
-    ###############
-    ctx.initsurface(100, 150, options.outformat, outfile, scale)
-
-    from twyg.common import createpath
-    from twyg.geom import Vector2
-    from twyg.geomutils import offset_poly
-
-    elements = [
-        Vector2(30, 30),
-        Vector2(50, 40),
-        Vector2(70, 20),
-        Vector2(50, 50),
-        Vector2(80, 60),
-        Vector2(50, 80),
-        Vector2(20, 70),
-        Vector2(10, 40)
-    ]
-    elements = [
-        Vector2(30, 35),
-        Vector2(35, 30),
-        Vector2(60, 30),
-        Vector2(60, 60),
-        Vector2(30, 60)
-    ]
-    elements = [
-        Vector2(30, 30),
-        Vector2(75, 35),
-        Vector2(75, 60),
-        Vector2(30, 90),
-        Vector2(40, 50)
-    ]
-
-    p = createpath(ctx, elements, close=True)
-    ctx.stroke(ctx.color(0))
-    ctx.drawpath(p)
-
-    exp = offset_poly(elements, 5)
-    p = createpath(ctx, exp, close=True)
-    ctx.stroke(ctx.color(1,0,0))
-    ctx.drawpath(p)
-
-    ctx.writesurface()
-    return 0
-    ###############
-
     try:
         tree = buildtree(datafile,
                          options.configfile,
