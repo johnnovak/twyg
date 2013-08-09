@@ -49,6 +49,7 @@ class Vector2(object):
         if m != 0:
             self.x /= m
             self.y /= m
+        return self
 
     def rotate(self, angle):
         angle = -angle
@@ -58,6 +59,7 @@ class Vector2(object):
         y = self.x * sin + self.y * cos
         self.x = x
         self.y = y
+        return self
 
     def __add__(self, s):
         return Vector2(self.x + s.x, self.y + s.y)

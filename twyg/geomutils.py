@@ -557,3 +557,39 @@ def outline_poly(points, d, close=True):
     outline.insert(0, outline.pop())
     return outline
 
+
+def offset_poly(points, d, close=True):
+    """ Offset polygon defined by ``points`` by amount ``d``.
+
+    Works correctly only for small offsets and convex or "not too
+    concave" polygons.
+    """
+    # Handle degenerate cases
+    if len(points) <= 1:
+        return points
+
+    points.append(points[0])
+
+    lines = []
+    for i in range(len(points) - 1):
+        p1 = points[i]
+        p2 = points[i + 1]
+
+        # Calculate normal
+        n = (p2 - p1).normalize().rotate(math.pi / 2)
+        n *= d
+        lines.append([p1 + n, p2 + n])
+
+    points.pop()
+    lines.append(lines[0])
+
+    offs = []
+    for i in range(len(lines) - 1):
+        l1 = lines[i]
+        l2 = lines[i + 1]
+        offs.append(intersect(l1[0], l1[1], l2[0], l2[1]))
+
+    offs.insert(0, offs.pop())
+    return offs
+
+
