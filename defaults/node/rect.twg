@@ -1,11 +1,12 @@
 @include "common.twg"
 
--- Rectangle roundess (should be between 0.0 and 1.0)
+-- Rectangle roundess (must be between 0.0 and 1.0)
 roundness               1.0
 
---
+-- Corner radius if rounding style is 'arc'.
 cornerRadius            5.0
 
---
+-- Rectangle roundng style.
+-- Possible values: screen, arc
 roundingStyle           screen
 

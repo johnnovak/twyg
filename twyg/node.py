@@ -45,6 +45,11 @@ class NodeDrawer(object):
             'nodeShadowOffsX':        (NumberProperty,  {}),
             'nodeShadowOffsY':        (NumberProperty,  {}),
 
+            'textDrawShadow':         (BooleanProperty, {}),
+            'textShadowColor':        (ColorProperty,   {}),
+            'textShadowOffsX':        (NumberProperty,  {}),
+            'textShadowOffsY':        (NumberProperty,  {}),
+
             'drawGradient':           (BooleanProperty, {}),
             'gradientTopColor':       (ColorProperty,   {}),
             'gradientBottomColor':    (ColorProperty,   {})
@@ -120,12 +125,13 @@ class NodeDrawer(object):
         self._draw_gradient_shape(node, path, node.fillcolor)
         _ctx.noshadow()
 
-        if brightness(node.fontcolor) > .5:
-            _ctx.fill(_ctx.color(0, .5))
-        else:
-            _ctx.fill(_ctx.color(1, .5))
+        # Draw text shadow
+        if E('textDrawShadow'):
+            shadowcolor = E('textShadowColor');
+            _ctx.fill(shadowcolor)
 
-        self._drawtext(node, node._textxoffs - .5, node._textyoffs - .5)
+            self._drawtext(node, node._textxoffs - E('textShadowOffsX'),
+                                 node._textyoffs - E('textShadowOffsY'))
 
         _ctx.fill(node.fontcolor)
         self._drawtext(node, node._textxoffs, node._textyoffs)

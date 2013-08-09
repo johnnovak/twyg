@@ -20,7 +20,7 @@ justifyMinLines         5
 -- Controls whether the node text is hyphenated.
 hyphenate               yes
 
--- Max text width inside nodes
+-- Maximum text width inside nodes
 maxTextWidth            240.0
 
 -- Horizontal padding around the bounding box of the node text.
@@ -49,6 +49,18 @@ nodeShadowOffsX         2.5
 
 -- Vertical offset of the node shadow.
 nodeShadowOffsY         2.5
+
+-- Controls whether the node text casts a shadow.
+textDrawShadow          no
+
+-- Text shadow color.
+textShadowColor         rgba(0, 0, 0, 0.5)
+
+-- Horizontal offset of the text shadow.
+textShadowOffsX         -0.6
+
+-- Vertical offset of the text shadow.
+textShadowOffsY         -0.6
 
 -- Controls whether the node shape should be filled using a linear
 -- top-down gradient.

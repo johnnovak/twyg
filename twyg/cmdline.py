@@ -11,6 +11,7 @@ from twyg.common import validate_margins, calculate_margins
 # Determine home directories
 import twyg.common
 
+
 if 'TWYG_HOME' in os.environ:
     twyg.common.TWYG_HOME = os.environ['TWYG_HOME']
 else:

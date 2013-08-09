@@ -1,10 +1,21 @@
+-- Level applies to nodes having a depth greater or equal than the specified
+-- value.
 levelDepthMin           0
 
+-- Level applies to nodes having a depth less or equal than the specified
+-- value.
 levelDepthMax           999999999
 
+-- Level applies to nodes having a greater or equal number of children than
+-- the specified value.
 levelNumChildrenMin     0
 
+-- Level applies to nodes having a less or equal number of children than the
+-- specified value.
 levelNumChildrenMax     999999999
 
+-- Level applies to nodes having the specified orientation relative to their
+-- parents.
+-- Possible values: top, right, bottom, left, any
 levelOrientation        any
 
