@@ -2,7 +2,7 @@
 fontName                "Gill Sans"
 
 -- Node text font size.
-fontSize                max(10, 21 * 1 / pow(depth + 1, .5))
+fontSize                max(10, round(21 / sqrt(depth + 1)))
 
 -- Line height of the node text.
 lineHeight              1.3

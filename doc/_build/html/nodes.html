@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content=".">
+
+    <title>Nodes &mdash; twyg 0.1 documentation</title>
+
+    <link rel="stylesheet" href="_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+    <!--    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600" rel="stylesheet" type="text/css"> -->
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="twyg 0.1 documentation" href="index.html" />
+    <link rel="up" title="Reference" href="reference.html" />
+    <link rel="next" title="Connections" href="connections.html" />
+    <link rel="prev" title="Layout" href="layout.html" />
+  </head>
+
+  <body>
+    <div id="header">
+      <a id="logo" href="/">
+        <img src="_static/twyg-logo.png" alt="twyg - python tree visualisation" />
+      </a>
+
+      <ul id="mainmenu">
+        <li><a href="">Home</a></li>
+        <li><a href="">Get It</a></li>
+        <li class="sel"><a href="">Docs</a></li>
+        <li><a href="">Examples</a></li>
+      </ul>
+    </div>
+
+    <div id="content">
+      <div id="docnav">
+        <ul>
+          <li><a href="index.html">Docs</a></li>
+          <li><a href="reference.html" accesskey="U">Reference</a></li>
+          <li>Nodes</li>
+        </ul>
+        <a class="index">INDEX</a>
+        <a class="index">SEARCH</a>
+      </div>
+
+      <div id="submenu">
+        <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="reference.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="layout.html">Layout</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-properties">Common properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#box-style">&#8216;box&#8217; style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#line-style">&#8216;line&#8217; style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oval-style">&#8216;oval&#8217; style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#poly-style">&#8216;poly&#8217; style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rect-style">&#8216;rect&#8217; style</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colors.html">Colors</a></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+      
+  <div class="section" id="nodes">
+<h1>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">¶</a></h1>
+<p>These properties are common to all node drawers. Lorem ipsum dolor
+sit amet, consectetur adipiscing elit. Etiam cursus sit amet justo nec
+lacinia. Pellentesque id hendrerit eros. Suspendisse a nunc enim.
+Quisque vitae velit dolor.</p>
+<p>Vivamus aliquam fringilla metus, sit amet tempor lectus pretium non.
+Integer et tempor eros. Donec posuere dignissim nulla, non rutrum ipsum
+gravida ut. Maecenas nec lectus eget metus congue blandit. Suspendisse
+sed tortor vel neque vestibulum iaculis nec non mi. Nam porttitor
+vehicula pharetra.</p>
+<div class="section" id="common-properties">
+<h2>Common properties<a class="headerlink" href="#common-properties" title="Permalink to this headline">¶</a></h2>
+<p>The properties below apply to all node styles.</p>
+<div class="section" id="text-properties">
+<h3>Text properties<a class="headerlink" href="#text-properties" title="Permalink to this headline">¶</a></h3>
+<dl class="property">
+<dt id="property-fontName">
+<tt class="descname">fontName</tt><a class="headerlink" href="#property-fontName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the font used to draw the text in the node.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>String</dd>
+<dt>Default</dt>
+<dd>&#8220;Gill Sans&#8221;</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-lineHeight">
+<tt class="descname">lineHeight</tt><a class="headerlink" href="#property-lineHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lineheight of the node text expressed as a multiplier of the font size.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>1.3</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-textAlign">
+<tt class="descname">textAlign</tt><a class="headerlink" href="#property-textAlign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alignment of the text within the node. The value &lt;em&gt;auto&lt;/em&gt;
+aligns the text left, right or center, depending on the node&#8217;s
+orientation (center is used for the root node).</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Enum</dd>
+<dt>Values</dt>
+<dd>left | right | center | justify | auto</dd>
+<dt>Default</dt>
+<dd>auto</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-justifyMinLines">
+<tt class="descname">justifyMinLines</tt><a class="headerlink" href="#property-justifyMinLines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimum number of lines for the &lt;em&gt;justify&lt;/em&gt; text alignment to take
+effect. If the total number of lines is less than this value, the text will
+be centered instead.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>5</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-hyphenate">
+<tt class="descname">hyphenate</tt><a class="headerlink" href="#property-hyphenate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controls whether the node text is hyphenated.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Boolean</dd>
+<dt>Default</dt>
+<dd>yes</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-maxTextWidth">
+<tt class="descname">maxTextWidth</tt><a class="headerlink" href="#property-maxTextWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum text width inside nodes.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>240.0</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-textPadX">
+<tt class="descname">textPadX</tt><a class="headerlink" href="#property-textPadX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Horizontal padding around the bounding box of the node text.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>fontSize * 1.0</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-textPadY">
+<tt class="descname">textPadY</tt><a class="headerlink" href="#property-textPadY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vertical padding around the bounding box of the node text.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>fontSize * 0.45</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-textBaselineCorrection">
+<tt class="descname">textBaselineCorrection</tt><a class="headerlink" href="#property-textBaselineCorrection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Node text baseline correction factor.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>-0.2</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="stroke-properties">
+<h3>Stroke properties<a class="headerlink" href="#stroke-properties" title="Permalink to this headline">¶</a></h3>
+<dl class="property">
+<dt id="property-strokeWidth">
+<tt class="descname">strokeWidth</tt><a class="headerlink" href="#property-strokeWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stroke width of the outline of the node shape.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>1.3</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="node-shadow-properties">
+<h3>Node shadow properties<a class="headerlink" href="#node-shadow-properties" title="Permalink to this headline">¶</a></h3>
+<dl class="property">
+<dt id="property-nodeDrawShadow">
+<tt class="descname">nodeDrawShadow</tt><a class="headerlink" href="#property-nodeDrawShadow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controls whether the node shape casts a shadow.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Boolean</dd>
+<dt>Default</dt>
+<dd>no</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-nodeShadowColor">
+<tt class="descname">nodeShadowColor</tt><a class="headerlink" href="#property-nodeShadowColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Node shadow color.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>rgba(0, 0, 0, 0.2)</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-nodeShadowBlur">
+<tt class="descname">nodeShadowBlur</tt><a class="headerlink" href="#property-nodeShadowBlur" title="Permalink to this definition">¶</a></dt>
+<dd><p>Node shadow blur radius.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>3.0</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-nodeShadowOffsX">
+<tt class="descname">nodeShadowOffsX</tt><a class="headerlink" href="#property-nodeShadowOffsX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Horizontal offset of the node shadow.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>2.5</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-nodeShadowOffsY">
+<tt class="descname">nodeShadowOffsY</tt><a class="headerlink" href="#property-nodeShadowOffsY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vertical offset of the node shadow.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>2.5</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-textDrawShadow">
+<tt class="descname">textDrawShadow</tt><a class="headerlink" href="#property-textDrawShadow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controls whether the node text casts a shadow.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Boolean</dd>
+<dt>Default</dt>
+<dd>no</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="text-shadow-properties">
+<h3>Text shadow properties<a class="headerlink" href="#text-shadow-properties" title="Permalink to this headline">¶</a></h3>
+<dl class="property">
+<dt id="property-textShadowColor">
+<tt class="descname">textShadowColor</tt><a class="headerlink" href="#property-textShadowColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Text shadow color.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>rgba(0, 0, 0, 0.5)</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-textShadowOffsX">
+<tt class="descname">textShadowOffsX</tt><a class="headerlink" href="#property-textShadowOffsX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Horizontal offset of the text shadow.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>-0.6</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-textShadowOffsY">
+<tt class="descname">textShadowOffsY</tt><a class="headerlink" href="#property-textShadowOffsY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Vertical offset of the text shadow.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>-0.6</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-drawGradient">
+<tt class="descname">drawGradient</tt><a class="headerlink" href="#property-drawGradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controls whether the node shape should be filled using a linear top-down
+gradient.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Boolean</dd>
+<dt>Default</dt>
+<dd>no</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-gradientTopColor">
+<tt class="descname">gradientTopColor</tt><a class="headerlink" href="#property-gradientTopColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Color of the top of the node if the node shade is filled with a gradient.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>baseColor.lighten(.12)</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-gradientBottomColor">
+<tt class="descname">gradientBottomColor</tt><a class="headerlink" href="#property-gradientBottomColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Color of the bottom of the node if the node shade is filled with a
+gradient.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>baseColor.darken(.04)</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="box-style">
+<h2>&#8216;box&#8217; style<a class="headerlink" href="#box-style" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="properties">
+<h3>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<dl class="property">
+<dt id="property-boxOrientation">
+<tt class="descname">boxOrientation</tt><a class="headerlink" href="#property-boxOrientation" title="Permalink to this definition">¶</a></dt>
+<dd><p>3D orientation of the box.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Enum</dd>
+<dt>Values</dt>
+<dd>topleft | topright | bottomleft | bottomright</dd>
+<dt>Default</dt>
+<dd>topright</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-boxDepth">
+<tt class="descname">boxDepth</tt><a class="headerlink" href="#property-boxDepth" title="Permalink to this definition">¶</a></dt>
+<dd><p>3D depth of the box.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>20 * pow(0.7, depth)</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-horizSideColor">
+<tt class="descname">horizSideColor</tt><a class="headerlink" href="#property-horizSideColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Color of the horizontal side of the 3D box.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>baseColor.lighten(0.34)</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-vertSideColor">
+<tt class="descname">vertSideColor</tt><a class="headerlink" href="#property-vertSideColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Color of the vertical side of the 3D box.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>baseColor.lighten(0.12)</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-strokeColor">
+<tt class="descname">strokeColor</tt><a class="headerlink" href="#property-strokeColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stroke color of the box.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>baseColor</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="line-style">
+<h2>&#8216;line&#8217; style<a class="headerlink" href="#line-style" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Properties<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>None.</p>
+</div>
+</div>
+<div class="section" id="oval-style">
+<h2>&#8216;oval&#8217; style<a class="headerlink" href="#oval-style" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Properties<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="property">
+<dt id="property-aspectRatio">
+<tt class="descname">aspectRatio</tt><a class="headerlink" href="#property-aspectRatio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initial aspect ratio of the oval.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>1.0</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-maxWidth">
+<tt class="descname">maxWidth</tt><a class="headerlink" href="#property-maxWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum width of the oval (the initial aspect ratio is kept until
+this width is reached).</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>400.0</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="poly-style">
+<h2>&#8216;poly&#8217; style<a class="headerlink" href="#poly-style" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Properties<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<dl class="property">
+<dt id="property-numSides">
+<tt class="descname">numSides</tt><a class="headerlink" href="#property-numSides" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of sides of the regular polygon</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>6</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-rotation">
+<tt class="descname">rotation</tt><a class="headerlink" href="#property-rotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotation around the center point</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>0</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="rect-style">
+<h2>&#8216;rect&#8217; style<a class="headerlink" href="#rect-style" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Properties<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="property">
+<dt id="property-roundness">
+<tt class="descname">roundness</tt><a class="headerlink" href="#property-roundness" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rectangle roundess (must be between 0.0 and 1.0)</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>1.0</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-cornerRadius">
+<tt class="descname">cornerRadius</tt><a class="headerlink" href="#property-cornerRadius" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corner radius if rounding style is &#8216;arc&#8217;.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>5.0</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-roundingStylescreen">
+<tt class="descname">roundingStyle           screen</tt><a class="headerlink" href="#property-roundingStylescreen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rectangle roundng style.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Enum</dd>
+<dt>Values</dt>
+<dd>screen, arc</dd>
+<dt>Default</dt>
+<dd>screen</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+  </body>
+</html>
