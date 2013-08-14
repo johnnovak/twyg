@@ -1,5 +1,6 @@
 $basecolor: #444;
 $accentcolor: #83b69c;
+$linkcolor: #56a3a5;
 
 html {
   overflow: -moz-scrollbars-vertical; 
@@ -14,7 +15,7 @@ body {
   width: 980px;
   font-family: 'Source Sans Pro', Arial, sans-serif;
   font-size: 16px;
-  line-height: 1.3;
+  line-height: 1.4;
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
@@ -28,11 +29,13 @@ img {
 }
 
 a {
+  color: $linkcolor;
   text-decoration: none;
-  color: $basecolor;
+  font-weight: 700;
 
   &:hover {
-    color: #999;
+    text-decoration: underline;
+    color: lighten($linkcolor, 10);
   }
   &.headerlink {
     visibility: hidden;
@@ -40,8 +43,20 @@ a {
 }
 
 em {
-  font-weight: 600;
+  font-weight: 700;
   font-style: normal;
+}
+
+table {
+  border: none;
+  border-collapse: collapse;
+  margin: 1em 0;
+
+  td {
+    padding: 0.2em 0.6em;
+    border: 1px solid #aaa;
+    border-width: 1px 0;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -88,7 +103,7 @@ em {
 
   li {
     float: left;
-    background: #56a3a5;
+    background: $linkcolor;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -103,14 +118,14 @@ em {
       color: #fff;
 
       &:hover {
-        background: #66b3b5;
+        background: lighten($linkcolor, 12);
       }
     }
     &.sel {
-      background: #93c8cc;
+      background: lighten($linkcolor, 24);
 
       a:hover {
-        background: #a0d0d4;
+        background: lighten($linkcolor, 28);
       }
     }
   }
@@ -118,14 +133,29 @@ em {
 
 #submenu {
   position: absolute;
-  top: 60px;
+  top: 80px;
   left: -275px;
-  font-size: 16px;
-  line-height: 1.4;
-  
-  & > ul {
+
+  .wrapper {
     position: fixed;
-    font-weight: 600 !important;
+
+    & > ul > li > a {
+      font-weight: 700;
+    }
+  }
+  a {
+    font-weight: 400;
+  }
+  h3 {
+    margin: 0 0 1em 0;
+    padding: 0;
+    text-align: right;
+    
+    a {
+      color: $linkcolor;
+      font-size: 16px;
+      font-weight: 700;
+    }
   }
   ul {
     width: 210px;
@@ -136,7 +166,7 @@ em {
     font-weight: 400;
 
     a {
-      color: #56a3a5;
+      color: $linkcolor;
 
       &:hover {
         text-decoration: underline;
@@ -153,7 +183,10 @@ em {
 }
 
 #docnav {
-  height: 20px; 
+  width: 800px;
+  height: 41px; 
+  padding-top: 5px;
+  background: #fff;
 
   ul {
     list-style: none;
@@ -170,8 +203,14 @@ em {
       content: "\00a0\00a0\2192\00a0";
     }
   }
+  .search {
+    float: right;
+    padding-right: 15px;
+    cursor: pointer;
+  }
   .index {
     float: right;
+    cursor: pointer;
   }
 
   a {
@@ -241,16 +280,44 @@ em {
       }
     }
   }
-  table {
-    border: none;
-    border-collapse: collapse;
-    margin: 1em 0;
+}
 
-    td {
-      padding: 0.2em 0.6em;
-      border: 1px solid #aaa;
-      border-width: 1px 0;
+#table-of-contents, #indices-and-tables, #reference {
+  ul {
+    list-style: none;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+
+    & > li > a {
+      font-weight: 600;
     }
+
+    ul {
+      font-size: 16px;
+      margin-left: 1.5em;
+      margin-bottom: 1em;
+      font-weight: 400;
+
+      a {
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.genindextable {
+  margin: -30px 0 0 0;
+
+  dl {
+    dl {
+      margin: 0 0 1em 0;
+    }
+  }
+  td {
+    border: none;
+    padding-left: 0;
   }
 }
 

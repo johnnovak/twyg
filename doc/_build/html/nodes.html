@@ -28,6 +28,13 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+
+    <script src="_static/jquery.sticky.js"></script>
+    <script>
+      $(document).ready(function(){
+          $("#docnav").sticky({topSpacing:0});
+      });
+    </script>
     <link rel="top" title="twyg 0.1 documentation" href="index.html" />
     <link rel="up" title="Reference" href="reference.html" />
     <link rel="next" title="Connections" href="connections.html" />
@@ -40,27 +47,31 @@
         <img src="_static/twyg-logo.png" alt="twyg - python tree visualisation" />
       </a>
 
+      
       <ul id="mainmenu">
-        <li><a href="">Home</a></li>
-        <li><a href="">Get It</a></li>
-        <li class="sel"><a href="">Docs</a></li>
-        <li><a href="">Examples</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="install.html">Get It</a></li>
+        <li class="sel"><a href="contents.html">Docs</a></li>
+        <li><a href="examples.html">Examples</a></li>
       </ul>
     </div>
 
     <div id="content">
+      
       <div id="docnav">
         <ul>
-          <li><a href="index.html">Docs</a></li>
+          <li><a href="contents.html">Docs</a></li>
           <li><a href="reference.html" accesskey="U">Reference</a></li>
-          <li>Nodes</li>
+          <li><a href="#">Nodes</a></li>
         </ul>
-        <a class="index">INDEX</a>
-        <a class="index">SEARCH</a>
+        <a class="index" href="genindex.html">INDEX</a>
+        <a class="search" href="search.html">SEARCH</a>
       </div>
 
       <div id="submenu">
-        <ul class="current">
+        <div class="wrapper">
+          <h3><a href="contents.html">Table of contents</a></h3>
+          <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
@@ -81,7 +92,9 @@
 </li>
 </ul>
 
+        </div>
       </div>
+      
 
       
   <div class="section" id="nodes">
