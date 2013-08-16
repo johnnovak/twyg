@@ -1,5 +1,4 @@
-import collections
-import math
+import collections, math
 
 
 def init(nodebox=False, ctx=None):

@@ -4,9 +4,7 @@
 #                                                                             #
 ###############################################################################
 
-import cairo
-import colorsys
-import math
+import cairo, colorsys, math
 
 
 class Color(object):

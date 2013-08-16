@@ -8,21 +8,6 @@ from twyg.cairowrapper import context as ctx
 from twyg.common import validate_margins, calculate_margins
 
 
-# Determine home directories
-import twyg.common
-
-
-if 'TWYG_HOME' in os.environ:
-    twyg.common.TWYG_HOME = os.environ['TWYG_HOME']
-else:
-    twyg.common.TWYG_HOME = os.path.dirname(os.path.realpath(sys.argv[0]))
-
-if 'TWYG_USER' in os.environ:
-    twyg.common.TWYG_USER = os.environ['TWYG_USER']
-else:
-    twyg.common.TWYG_USER = '~/.twyg'
-
-
 def exit_error(msg):
     print >>sys.stderr, sys.argv[0] + ': ' + msg
     sys.exit(1)
@@ -120,12 +105,13 @@ def main():
     width += padleft + padright
     height += padtop + padbottom
 
-    # Center the graph
-    tree.shiftnodes(padleft, padtop)
-
     # Create output file
     ctx.initsurface(width, height, options.outformat, outfile, scale)
     ctx.background(tree.background_color())
+
+    # Center the graph
+    ctx.translate(padleft, padtop)
+
     tree.draw()
     ctx.writesurface()
     return 0

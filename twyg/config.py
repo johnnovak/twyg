@@ -1,8 +1,5 @@
-import math
+import math, os, re, sys
 import operator as _operator
-import os
-import re
-import sys
 
 try:
     # Python 2.7+
@@ -442,6 +439,7 @@ def loadconfig(file, flat=False):
 
 
 def defaults_path(configname):
+    print twyg.common.TWYG_HOME
     return os.path.join(twyg.common.TWYG_HOME, 'defaults', configname)
 
 
@@ -481,20 +479,21 @@ def parsecolor(mode, *components):
 
 # Functions that are available in a config file
 function_table = {
-    'abs':   abs,
-    'min':   min,
-    'max':   max,
-    'sqrt':  math.sqrt,
-    'pow':   pow,
-    'log':   math.log,
-    'log10': math.log10,
-    'ceil':  math.ceil,
-    'floor': math.floor,
+    'abs':      abs,
+    'ceil':     math.ceil,
+    'floor':    math.floor,
+    'log':      math.log,
+    'log10':    math.log10,
+    'max':      max,
+    'min':      min,
+    'pow':      pow,
+    'round':    round,
+    'sqrt':     math.sqrt,
 
-    'rgb':   lambda r, g, b:    parsecolor('rgb',  r, g, b),
-    'rgba':  lambda r, g, b, a: parsecolor('rgba', r, g, b, a),
-    'hsl':   lambda h, s, l:    parsecolor('hsl',  h, s, l),
-    'hsla':  lambda h, s, l, a: parsecolor('hsla', h, s, l, a)
+    'rgb':      lambda r, g, b:    parsecolor('rgb',  r, g, b),
+    'rgba':     lambda r, g, b, a: parsecolor('rgba', r, g, b, a),
+    'hsl':      lambda h, s, l:    parsecolor('hsl',  h, s, l),
+    'hsla':     lambda h, s, l, a: parsecolor('hsla', h, s, l, a)
 }
 
 

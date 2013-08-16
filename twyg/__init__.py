@@ -1,3 +1,5 @@
+import os, sys
+
 try:
     import json                 # Python 2.6+
 except ImportError:
@@ -17,6 +19,30 @@ import twyg.colorizer
 import twyg.connection
 import twyg.node
 
+
+# Detect nodebox
+try:
+    nodebox = _fullname(_ctx) == 'nodebox.graphics.Context'
+except NameError:
+    nodebox = False
+
+
+# Determine home directories
+import twyg.common
+
+
+if 'TWYG_HOME' in os.environ:
+    twyg.common.TWYG_HOME = os.environ['TWYG_HOME']
+else:
+    twyg.common.TWYG_HOME = os.path.dirname(os.path.realpath(sys.argv[0]))
+    twyg.common.TWYG_HOME
+
+if 'TWYG_USER' in os.environ:
+    twyg.common.TWYG_USER = os.environ['TWYG_USER']
+else:
+    twyg.common.TWYG_USER = '~/.twyg'
+
+
 _initialized = False
 
 
@@ -28,14 +54,6 @@ def _fullname(o):
     return module + '.' + o.__class__.__name__
 
 
-def _detect_nodebox():
-    """ Return True if NodeBox 1 is available. """
-    try:
-        return _fullname(_ctx) == 'nodebox.graphics.Context'
-    except NameError:
-        return False
-
-
 def _init():
     """
     Autodetect the available drawing backend and initialize the system
@@ -45,7 +63,6 @@ def _init():
     if _initialized:
         return
 
-    nodebox = _detect_nodebox()
     if nodebox:
         global _ctx
     else:

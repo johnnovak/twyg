@@ -1,5 +1,4 @@
-import math
-import sys
+import math, sys
 
 from twyg.config import Properties, NumberProperty, BooleanProperty
 
