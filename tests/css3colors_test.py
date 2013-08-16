@@ -1,6 +1,5 @@
-import unittest
-import sys
-import os
+import os, sys, unittest
+
 
 sys.path.append(os.path.join('..'))
 

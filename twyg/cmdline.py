@@ -5,22 +5,8 @@ from optparse import OptionParser
 
 from twyg import buildtree
 from twyg.cairowrapper import context as ctx
-from twyg.common import validate_margins, calculate_margins
-
-
-# Determine home directories
-import twyg.common
-
-
-if 'TWYG_HOME' in os.environ:
-    twyg.common.TWYG_HOME = os.environ['TWYG_HOME']
-else:
-    twyg.common.TWYG_HOME = os.path.dirname(os.path.realpath(sys.argv[0]))
-
-if 'TWYG_USER' in os.environ:
-    twyg.common.TWYG_USER = os.environ['TWYG_USER']
-else:
-    twyg.common.TWYG_USER = '~/.twyg'
+from twyg.common import validate_margins, calculate_margins, loadjson
+from twyg.config import loadconfig
 
 
 def exit_error(msg):
@@ -103,10 +89,11 @@ def main():
     # output file will be created later.
     ctx.initsurface(1, 1, options.outformat, None, scale)
 
+    data = loadjson(datafile)
+    config = loadconfig(options.configfile)
+
     try:
-        tree = buildtree(datafile,
-                         options.configfile,
-                         options.colorschemefile)
+        tree = buildtree(data, config, options.colorschemefile)
     except Exception, e:
         exit_error(traceback.format_exc() if options.verbose else str(e))
 
@@ -120,12 +107,13 @@ def main():
     width += padleft + padright
     height += padtop + padbottom
 
-    # Center the graph
-    tree.shiftnodes(padleft, padtop)
-
     # Create output file
     ctx.initsurface(width, height, options.outformat, outfile, scale)
     ctx.background(tree.background_color())
+
+    # Center the graph
+    ctx.translate(padleft, padtop)
+
     tree.draw()
     ctx.writesurface()
     return 0

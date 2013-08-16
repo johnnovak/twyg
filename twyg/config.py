@@ -1,8 +1,5 @@
-import math
+import math, os, re, sys
 import operator as _operator
-import os
-import re
-import sys
 
 try:
     # Python 2.7+
@@ -87,10 +84,12 @@ rules = [
 ]
 
 
-def tokenize(lines, file, flat=False):
-    """ Convert a config file into a list of tokens that can then be
+def tokenize(config, file=None, flat=False):
+    """ Convert a configuration into a list of tokens that can then be
     parsed further.
     """
+
+    lines = config.split('\n');
 
     def linenum(line_nr, flat):
         return line_nr if flat else line_nr + 1
@@ -414,10 +413,10 @@ def _tokenize_file(file, flat=False):
     in (this will be used for processing the @include directives).
     """
     f = open(file)
-    lines = f.readlines()
+    config = f.read()
     if flat:
-        lines.insert(0, '[default]')
-    tokens = tokenize(lines, file, flat=flat)
+        config = '[default]\n' + config
+    tokens = tokenize(config, file, flat=flat)
     cwd = os.path.dirname(file)
     return tokens, cwd
 
@@ -445,8 +444,17 @@ def defaults_path(configname):
     return os.path.join(twyg.common.TWYG_HOME, 'defaults', configname)
 
 
-def colors_path(configname):
-    return os.path.join(twyg.common.TWYG_HOME, 'colors', configname) + '.twg'
+def colors_path(colorscheme):
+    configname = colorscheme + '.twg'
+    paths = [
+        configname,
+        os.path.join(twyg.common.TWYG_USER, 'colors', configname),
+        os.path.join(twyg.common.TWYG_HOME, 'colors', configname)
+    ]
+    for p in paths:
+        if os.path.exists(p):
+            return p
+    raise ConfigError("Cannot open colorscheme file: '%s'" % colorscheme)
 
 
 def include_path(configname):
@@ -481,20 +489,21 @@ def parsecolor(mode, *components):
 
 # Functions that are available in a config file
 function_table = {
-    'abs':   abs,
-    'min':   min,
-    'max':   max,
-    'sqrt':  math.sqrt,
-    'pow':   pow,
-    'log':   math.log,
-    'log10': math.log10,
-    'ceil':  math.ceil,
-    'floor': math.floor,
+    'abs':      abs,
+    'ceil':     math.ceil,
+    'floor':    math.floor,
+    'log':      math.log,
+    'log10':    math.log10,
+    'max':      max,
+    'min':      min,
+    'pow':      pow,
+    'round':    round,
+    'sqrt':     math.sqrt,
 
-    'rgb':   lambda r, g, b:    parsecolor('rgb',  r, g, b),
-    'rgba':  lambda r, g, b, a: parsecolor('rgba', r, g, b, a),
-    'hsl':   lambda h, s, l:    parsecolor('hsl',  h, s, l),
-    'hsla':  lambda h, s, l, a: parsecolor('hsla', h, s, l, a)
+    'rgb':      lambda r, g, b:    parsecolor('rgb',  r, g, b),
+    'rgba':     lambda r, g, b, a: parsecolor('rgba', r, g, b, a),
+    'hsl':      lambda h, s, l:    parsecolor('hsl',  h, s, l),
+    'hsla':     lambda h, s, l, a: parsecolor('hsla', h, s, l, a)
 }
 
 

@@ -1,13 +1,13 @@
-[{
+{
     "Guitars": [
         {"Acoustic": [
             {"Nylon / gut stringed": [
                 "Renaissance",
                 "Baroque",
                 "Romantic",
-                {"Classical": [
+                {"Classical":
                     "Extended-range classical"
-                ]},
+                },
                 "Flamenco"
             ]},
             {"Steel stringed": [
@@ -40,4 +40,4 @@
             "MIDI guitars"
         ]}
     ]
-}]
+}

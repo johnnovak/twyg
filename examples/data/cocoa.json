@@ -1,13 +1,13 @@
-[{
+{
     "NSObject": [
-        {"NSData": [
-            {"NSMutableData": [
+        {"NSData": 
+            {"NSMutableData":
                 "NSPurgeableData"
-            ]}
-        ]},
-        {"NSDate": [
+            }
+        },
+        {"NSDate": 
             "NSCalendarDate"
-        ]},
+        },
         "NSDateComponents",
         "NSDecimalNumberHandler",
         {"NSFormatter": [
@@ -21,11 +21,11 @@
             "NSMessagePortNameServer",
             "NSSocketPortNameServer"
         ]},
-        {"NSValue": [
-            {"NSNumber": [
+        {"NSValue":
+            {"NSNumber":
                 "NSDecimalNumber"
-            ]}
-        ]},
+            }
+        },
         "NSValueTransformer",
         {"NSXMLNode": [
             "NSXMLDocument",
@@ -35,4 +35,4 @@
         ]},
         "NSXMLParser"
     ]
-}]
+}

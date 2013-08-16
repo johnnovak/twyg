@@ -138,23 +138,35 @@ class Node(object):
 class TreeBuilder(object):
 
     def build_tree(self, tree):
-        root = Node(tree[0].keys()[0])
-        self._build_tree(root, tree[0].values()[0])
-        return root
+        #TODO proper error handling
+        if type(tree) != dict:
+            raise ValueError('Invalid JSON structure: Root element must be a dict')
 
-    def _build_tree(self, node, m):
-        for i in m:
-            if type(i) == dict:
-                child = Node(i.keys()[0], parent=node)
-                self._build_tree(child, i.values()[0])
-            else:
-                Node(i, parent=node)
+        root = tree.iteritems().next()
+        root_label = root[0]
+        children = root[1]
+        root_node = Node(root_label)
+        self._build_tree(root_node, children)
+        return root_node
+
+    def _build_tree(self, node, children):
+        if type(children) in (str, unicode):
+            Node(children, parent=node)
+        else:
+            for c in children:
+                if type(c) == dict:
+                    child = Node(c.keys()[0], parent=node)
+                    self._build_tree(child, c.values()[0])
+                elif type(c) in (list, tuple):
+                    #TODO proper error handling
+                    raise ValueError('Invalid JSON structure: Dicts cannot have List siblings')
+                else:
+                    Node(c, parent=node)
 
 
 class Tree(object):
 
-    def __init__(self, layout, nodedrawers, conndrawers, colorizers,
-                 data):
+    def __init__(self, layout, nodedrawers, conndrawers, colorizers, data):
         builder = TreeBuilder()
         self.root = builder.build_tree(data)
 

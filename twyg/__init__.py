@@ -1,12 +1,9 @@
-try:
-    import json                 # Python 2.6+
-except ImportError:
-    import simplejson as json   # Python 2.5 & Nodebox 1
+import os, sys
 
 
 from twyg.config import (NODE_CONFIG, CONNECTION_CONFIG, LAYOUT_CONFIG,
                          COLOR_CONFIG, STYLE, Level, SectionLevel, ConfigError,
-                         get_stylename, loadconfig, createlevel)
+                         get_stylename, createlevel)
 
 from twyg.layout import layout_by_name
 from twyg.tree import Tree
@@ -16,6 +13,38 @@ import twyg.config
 import twyg.colorizer
 import twyg.connection
 import twyg.node
+
+
+# Detect nodebox
+try:
+    nodebox = _fullname(_ctx) == 'nodebox.graphics.Context'
+except NameError:
+    nodebox = False
+
+
+# Determine home directories
+import twyg.common
+
+if nodebox:
+    import inspect, os
+
+    twyg.common.TWYG_HOME = os.path.dirname(os.path.abspath(
+        os.path.join(inspect.getfile(inspect.currentframe()), '..'))
+    )
+    twyg.common.TWYG_USER = os.path.expanduser('~')
+
+else:
+    if 'TWYG_HOME' in os.environ:
+        twyg.common.TWYG_HOME = os.environ['TWYG_HOME']
+    else:
+        twyg.common.TWYG_HOME = os.path.dirname(os.path.realpath(sys.argv[0]))
+        twyg.common.TWYG_HOME
+
+    if 'TWYG_USER' in os.environ:
+        twyg.common.TWYG_USER = os.environ['TWYG_USER']
+    else:
+        twyg.common.TWYG_USER = os.path.expanduser('~')
+
 
 _initialized = False
 
@@ -28,14 +57,6 @@ def _fullname(o):
     return module + '.' + o.__class__.__name__
 
 
-def _detect_nodebox():
-    """ Return True if NodeBox 1 is available. """
-    try:
-        return _fullname(_ctx) == 'nodebox.graphics.Context'
-    except NameError:
-        return False
-
-
 def _init():
     """
     Autodetect the available drawing backend and initialize the system
@@ -45,7 +66,6 @@ def _init():
     if _initialized:
         return
 
-    nodebox = _detect_nodebox()
     if nodebox:
         global _ctx
     else:
@@ -65,14 +85,6 @@ def _init():
     twyg.node._ctx = _ctx
 
     _initialized = True
-
-
-def _loadjson(path):
-    """ Loads a JSON file. """
-    fp = file(path)
-    data = json.load(fp)
-    fp.close()
-    return data
 
 
 def _has_levels(section):
@@ -111,7 +123,7 @@ def _create_drawers(config, section, factory_func, constr_args=()):
     return drawers
 
 
-def buildtree(data_path, config_path, colorscheme_path=None):
+def buildtree(data, config, colorscheme_path=None):
     """
     Build a `Tree` object from a JSON data file according to the rules
     specified in the configuration and apply a colorscheme.
@@ -120,7 +132,7 @@ def buildtree(data_path, config_path, colorscheme_path=None):
     it stops after creating a ``Tree`` object initialized with the
     correct drawer objects.
 
-    `data_path`
+    `data`
         Path to the JSON data file that describes the tree structure.
 
     `config_path'
@@ -131,9 +143,6 @@ def buildtree(data_path, config_path, colorscheme_path=None):
     """
 
     _init()
-
-    data = _loadjson(data_path)
-    config = loadconfig(config_path)
 
     # Layout section
     section = LAYOUT_CONFIG

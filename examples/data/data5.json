@@ -1,4 +1,4 @@
-[{
+{
     "Metrics": [
         {"Tools": [
             "Jira",
@@ -50,13 +50,13 @@
                 "Time spent on fixing the bug"
             ]}
         ]},        
-        {"Testing coverage": [
+        {"Testing coverage":
             "Sonar"
-        ]},        
+        },        
         {"Other": [
             "Defects/KLOC",
             "Number of remarks"
         ]}        
     ]            
-}]
+}
 

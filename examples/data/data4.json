@@ -1,9 +1,9 @@
-[{
+{
     "My Goals": [
         {"Health": [
-            {"Current": [
+            {"Current":
                 "20% overweight"
-            ]},
+            },
             {"Target": [
                 "Normal weight",
                 "Ideal weight"
@@ -22,12 +22,12 @@
             "Learning graphic design asdfasdf f sadf asdf asdfsdf sdf sd asdfasdf asdfasdfiopiuwqer qwerpwer"
         ]},
         {"Career": [
-            {"Now": [
+            {"Now":
                 "Project Analyst"
-            ]},
-            {"Promotion": [
+            },
+            {"Promotion":
                 "Program Manager"
-            ]}
+            }
         ]},
         {"Family": [
             "Family dinner",
@@ -36,4 +36,4 @@
             "Bedtime reading"
         ]}
     ]        
-}]
+}

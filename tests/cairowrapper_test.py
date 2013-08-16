@@ -1,7 +1,5 @@
-import sys
-import shutil
-import time
-import os
+import os, shutil, sys, time
+
 
 sys.path.append(os.path.join('..'))
 

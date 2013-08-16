@@ -1,4 +1,4 @@
-[{
+{
     "Metrics": [
         {"Tools": [
             "Jira",
@@ -15,13 +15,13 @@
             "Maximum"
         ]},
         {"Time spent on releases": [
-            {" Total points  of estimation remaining": [
+            {" Total points  of estimation remaining":
                  "In each of the states"
-            ]},
+            },
             "Total time spent in man hours",
-            {"Number of test of estimation remaining -": [
+            {"Number of test of estimation remaining -":
                  "Should be near the same as the number of issues in release"
-            ]}
+            }
         ]},
         {"Number of times": [
             "Issues which return to in progress",
@@ -50,13 +50,13 @@
                 "Time spent on fixing the bug"
             ]}
         ]},
-        {"Testing coverage": [
+        {"Testing coverage":
             "Sonar"
-        ]},
+        },
         {"Other": [
             "Defects/KLOC",
             "Number of remarks"
         ]}
     ]
-}]
+}
 

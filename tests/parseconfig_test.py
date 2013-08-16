@@ -1,17 +1,23 @@
-import unittest
-import sys
-import os
+import os, sys, unittest
+
 
 sys.path.append(os.path.join('..'))
 
 from twyg.config import (ConfigError, tokenize, buildconfig, parse_expr,
-                         eval_expr, color, parsecolor)
+                         eval_expr, parsecolor)
+
+
+# Get & initialise graphics context
+from twyg import _init
+from twyg.cairowrapper import context as ctx
+
+_init()
 
 
 class TestEvalExpr(unittest.TestCase):
 
     def test_valid_longconfig(self):
-        configfile = r"""
+        config = r"""
 -- comment
 -- other comment
 
@@ -101,12 +107,12 @@ nodeCx2Factor           0
          arraytest2          [depth, ]
         """
 
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         config = buildconfig(tokens)
 
         vars = {
             'depth': 13,
-            'baseColor': color(.5, .25, .125, .5)
+            'baseColor': ctx.color(.5, .25, .125, .5)
         }
 
         node = config['node']
@@ -140,7 +146,7 @@ nodeCx2Factor           0
         self.assertEquals([13], e)
 
     def test_valid_levels(self):
-        configfile = r"""
+        config = r"""
         [layout]
             {level1}
                 param1  1
@@ -170,7 +176,7 @@ nodeCx2Factor           0
                 param7  7
         """
 
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         config = buildconfig(tokens)
 
         # ==============================================
@@ -254,7 +260,7 @@ nodeCx2Factor           0
         self.assertEquals(7, eval_expr(e))
 
     def test_duplicate_level(self):
-        configfile = r"""
+        config = r"""
         [layout]
             {level1}
                 param1  1
@@ -262,183 +268,183 @@ nodeCx2Factor           0
             {level1}
                 param2  2
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_duplicate_section(self):
-        configfile = r"""
+        config = r"""
         [layout]
             {level1}
                 param1  1
         [layout]
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_start(self):
-        configfile = r"""
+        config = r"""
         {level1}
         [layout]
                 param1  1
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_section_props(self):
-        configfile = r"""
+        config = r"""
         [layout]
             param1  1
             {level1}
                 param2  1
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_section(self):
-        configfile = r"""
+        config = r"""
         [layout] param1  1
             {level1}
                 param2  1
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_level(self):
-        configfile = r"""
+        config = r"""
         [layout]
             {level1} param2  1
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_directive_syntax(self):
-        configfile = r"""
+        config = r"""
         [layout]
             {level1}
                 param2  1
                 @copy {asdf}
 
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_level_not_found(self):
-        configfile = r"""
+        config = r"""
         [layout]
             {level1}
                 param2  1
                 @copy asdf
 
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_directive(self):
-        configfile = r"""
+        config = r"""
         [node]
         @bullshit
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_missing_directive_params(self):
-        configfile = r"""
+        config = r"""
         [node]
         @copy
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_property_name(self):
-        configfile = r"""
+        config = r"""
         [node]
         +
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_property_def_start(self):
-        configfile = r"""
+        config = r"""
         [node]
         name {asdf}
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_property_def_inside(self):
-        configfile = r"""
+        config = r"""
         [node]
         name 5 + 3 / {asdf}
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_missing_prop_def(self):
-        configfile = r"""
+        config = r"""
         [node]
         copy
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_array_nested(self):
-        configfile = r"""
+        config = r"""
         [node]
         name  [a, [b, c]]
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_array_badend(self):
-        configfile = r"""
+        config = r"""
         [node]
         name  [a, b, c] s
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_badarray(self):
-        configfile = r"""
+        config = r"""
         [node]
         name  [a, b, {stuff}]
         """
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
     def test_invalid_badstring1(self):
-        configfile = r"""
+        config = r"""
         [node]
         string  "bad string1
         """
-        self.assertRaises(ConfigError, tokenize, configfile.split('\n'), 'testconfig')
+        self.assertRaises(ConfigError, tokenize, config)
 
     def test_invalid_badstring2(self):
-        configfile = r"""
+        config = r"""
         [node]
         string  'bad string2'
         """
-        self.assertRaises(ConfigError, tokenize, configfile.split('\n'), 'testconfig')
+        self.assertRaises(ConfigError, tokenize, config)
 
     def test_invalid_badstring3(self):
-        configfile = r"""
+        config = r"""
         [node]
         string  "bad \"string3""
         """
-        self.assertRaises(ConfigError, tokenize, configfile.split('\n'), 'testconfig')
+        self.assertRaises(ConfigError, tokenize, config)
 
     def test_invalid_badstring4(self):
-        configfile = r"""
+        config = r"""
         [node]
         string  "bad string4\"
         """
-        self.assertRaises(ConfigError, tokenize, configfile.split('\n'), 'testconfig')
+        self.assertRaises(ConfigError, tokenize, config)
 
     def test_invalid_badstring5(self):
-        configfile = r"""
+        config = r"""
         [node]
         string  \"bad string5\"
         """
-        self.assertRaises(ConfigError, tokenize, configfile.split('\n'), 'testconfig')
+        self.assertRaises(ConfigError, tokenize, config)
 
 
 if __name__ == '__main__':

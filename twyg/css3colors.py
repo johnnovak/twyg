@@ -1,5 +1,4 @@
-import re
-import colorsys
+import re, colorsys
 
 
 # SVG 1.0 color keyword names

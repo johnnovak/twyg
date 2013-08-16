@@ -4,9 +4,7 @@
 #                                                                             #
 ###############################################################################
 
-import cairo
-import colorsys
-import math
+import cairo, colorsys, math
 
 
 class Color(object):
@@ -411,7 +409,7 @@ class Context(object):
     #=  HELPER FUNCTIONS                                                     =#
     #=========================================================================#
 
-    def initsurface(self, w, h, fmt, fname, scale=1.0):
+    def initsurface(self, w, h, fmt, fname=None, scale=1.0):
         self._width = w
         self._height = h
 

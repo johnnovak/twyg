@@ -1,17 +1,23 @@
-import unittest
-import sys
-import os
+import os, sys, unittest
+
 
 sys.path.append(os.path.join('..'))
 
 from twyg.config import (ConfigError, tokenize, buildconfig, parse_expr,
-                         eval_expr, color, parsecolor)
+                         eval_expr, parsecolor)
+
+
+# Get & initialise graphics context
+from twyg import _init
+from twyg.cairowrapper import context as ctx
+
+_init()
 
 
 class TestEvalExpr(unittest.TestCase):
 
     def test_validexpressions(self):
-        configfile = r"""
+        config = r"""
         [node]
         test0       42
         test1       50 + depth * 5
@@ -32,7 +38,7 @@ class TestEvalExpr(unittest.TestCase):
         test16      "\"string\" within a string... and \"yet another example\""
         """
 
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         config = buildconfig(tokens)
 
         class Foo:
@@ -45,7 +51,7 @@ class TestEvalExpr(unittest.TestCase):
         vars = {
             'depth': 13,
             'foo': f,
-            'baseColor': color(.5, .25, .125, .5)
+            'baseColor': ctx.color(.5, .25, .125, .5)
         }
 
         node = config['node']
@@ -124,7 +130,7 @@ class TestEvalExpr(unittest.TestCase):
 
 
     def test_invalidexpressions(self):
-        configfile = r"""
+        config = r"""
         [node]
         test0       42 5
         test1       (42))
@@ -156,12 +162,12 @@ class TestEvalExpr(unittest.TestCase):
         test27      sqrt("abcd")
         """
 
-        tokens = tokenize(configfile.split('\n'), 'testconfig')
+        tokens = tokenize(config)
         config = buildconfig(tokens)
 
         vars = {
             'depth': 13,
-            'baseColor': color(.5, .25, .125, .5)
+            'baseColor': ctx.color(.5, .25, .125, .5)
         }
 
         node = config['node']

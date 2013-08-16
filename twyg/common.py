@@ -1,5 +1,9 @@
-import collections
-import math
+import collections, math
+
+try:
+    import json                 # Python 2.6+
+except ImportError:
+    import simplejson as json   # Python 2.5 & Nodebox 1
 
 
 def init(nodebox=False, ctx=None):
@@ -86,6 +90,15 @@ def brightness(col):
     return math.sqrt(  .241 * pow(col.r, 2)
                      + .691 * pow(col.g, 2)
                      + .068 * pow(col.b, 2))
+
+
+def loadjson(path):
+    """ Loads a JSON file. """
+    fp = file(path)
+    data = json.load(fp)
+    fp.close()
+    return data
+
 
 ###############################################################################
 

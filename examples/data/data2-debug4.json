@@ -1,4 +1,4 @@
-[{
+{
     "Metrics": [
         "Time spend on issues" ,
         "Take two numbers as arguments and return a pair of numbers consisting of their quotient and remainder when using long division. With mixed operand types, the rules for binary arithmetic operators apply. For plain and long integers, the result is the same as (a // b, a % b)."
@@ -15,4 +15,4 @@
             "Yellow Take two numbers as arguments and return a pair of numbers consisting of their quotient and remainder when using long division. With mixed operand types, the rules for binary arithmetic operators apply. For plain and long integers, the result is the same as (a // b, a % b)."
         ]}
     ]
-}]
+}

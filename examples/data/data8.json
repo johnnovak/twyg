@@ -1,4 +1,4 @@
-[{
+{
     "Wind instruments": [
         {"Accordion": [
             "Button accordion",
@@ -14,9 +14,9 @@
             "Contrabassoon",
             "Tenoroon"
         ]},
-        {"Bombarde": [
+        {"Bombarde":
             "Chromatic bombarde"
-        ]},
+        },
         {"Clarinets": [
             "Alto clarinet",
             "Bass clarinet",
@@ -25,9 +25,9 @@
             "Clarinette d'amour",
             "Contra-alto clarinet",
             "Contrabass clarinet",
-            {"Piccolo clarinet": [
+            {"Piccolo clarinet":
                 "A♭ clarinet"
-            ]},
+            },
             {"Sopranino clarinet": [
                 "E♭ clarinet",
                 "D clarinet"
@@ -140,4 +140,4 @@
             "Hyperbass flute"
         ]}
     ]
-}]
+}

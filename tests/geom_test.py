@@ -1,7 +1,5 @@
-import math
-import os
-import unittest
-import sys
+import math, os, sys, unittest
+
 
 sys.path.append(os.path.join('..'))
 
