@@ -1,6 +1,5 @@
 import os, sys
 
-
 from twyg.config import (NODE_CONFIG, CONNECTION_CONFIG, LAYOUT_CONFIG,
                          COLOR_CONFIG, STYLE, Level, SectionLevel, ConfigError,
                          get_stylename, createlevel)
