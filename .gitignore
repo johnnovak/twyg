@@ -4,3 +4,4 @@
 ._*
 *.pyc
 *sass-cache*
+doc/_build/*

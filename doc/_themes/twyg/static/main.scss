@@ -112,7 +112,7 @@ table {
       display: block;
       padding: 4px 10px;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 16px;
       text-decoration: none;
       text-transform: uppercase;
       color: #fff;
@@ -231,19 +231,19 @@ table {
   h1 {
     clear: both;
     color: $accentcolor;
-    font-size: 34px;
-    font-weight: 400;
+    font-size: 38px;
+    font-weight: 300;
   }
   h2 {
     color: $accentcolor;
     font-size: 26px;
     font-weight: 400;
-    margin-top: 1em;
+    margin-top: 2em;
   }
   h3 {
     color: $accentcolor;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: 600;
   }
   .property {
     margin-bottom: 1.8em;
@@ -280,18 +280,30 @@ table {
       }
     }
   }
+  .admonition {
+    margin: 1em 0;
+    background: lighten($accentcolor, 30);
+    padding: 5px 10px;
+
+    .admonition-title{
+      font-weight: 700;
+    }
+  }
+  img {
+    margin: 10px 0;
+  }
 }
 
 #table-of-contents, #indices-and-tables, #reference {
   ul {
     list-style: none;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 20px;
     margin: 0;
     padding: 0;
 
     & > li > a {
-      font-weight: 600;
+      font-weight: 400;
     }
 
     ul {

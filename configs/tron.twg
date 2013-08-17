@@ -13,7 +13,7 @@
     boxOrientation          bottomright
     textAlign               center
     textPadX                fontSize * .5
-    strokeColor             strokeColor
+    strokeColor             baseColor
     strokeWidth             1.5
     horizSideColor          bgColor
     vertSideColor           bgColor

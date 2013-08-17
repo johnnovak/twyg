@@ -125,21 +125,22 @@ def _create_drawers(config, section, factory_func, constr_args=()):
 
 def buildtree(data, config, colorscheme_path=None):
     """
-    Build a `Tree` object from a JSON data file according to the rules
-    specified in the configuration and apply a colorscheme.
+    # TODO
+    Build a `Tree` object from a nested tree data structure according to
+    the rules specified in the configuration and apply a colorscheme.
 
     This method does not perform the actual tree layouting and drawing;
     it stops after creating a ``Tree`` object initialized with the
     correct drawer objects.
 
     `data`
-        Path to the JSON data file that describes the tree structure.
+         Hierarchical tree structure (dicts, lists, TODO)
 
-    `config_path'
-        Path to the configuration file.
+    `config'
+        Tree visualisation configuration.
 
     `colorscheme_path`
-        Path to the colorscheme file.
+        Colorscheme to use.
     """
 
     _init()
@@ -150,6 +151,7 @@ def buildtree(data, config, colorscheme_path=None):
     if _has_levels(c):
         # TODO more detailed error message
         raise Exception('Layout section cannot have levels')
+
     style = _get_style(section, c)
     layout_cls = layout_by_name(style)
     layout = layout_cls(c)

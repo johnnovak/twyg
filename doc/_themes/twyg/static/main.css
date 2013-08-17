@@ -91,7 +91,7 @@ table {
       display: block;
       padding: 4px 10px;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 16px;
       text-decoration: none;
       text-transform: uppercase;
       color: #fff; }
@@ -174,17 +174,17 @@ table {
   #content h1 {
     clear: both;
     color: #83b69c;
-    font-size: 34px;
-    font-weight: 400; }
+    font-size: 38px;
+    font-weight: 300; }
   #content h2 {
     color: #83b69c;
     font-size: 26px;
     font-weight: 400;
-    margin-top: 1em; }
+    margin-top: 2em; }
   #content h3 {
     color: #83b69c;
     font-size: 20px;
-    font-weight: 700; }
+    font-weight: 600; }
   #content .property {
     margin-bottom: 1.8em; }
     #content .property tt {
@@ -209,15 +209,23 @@ table {
         width: 100px; }
       #content .property .propparams dd {
         margin: 0; }
+  #content .admonition {
+    margin: 1em 0;
+    background: #e3efe9;
+    padding: 5px 10px; }
+    #content .admonition .admonition-title {
+      font-weight: 700; }
+  #content img {
+    margin: 10px 0; }
 
 #table-of-contents ul, #indices-and-tables ul, #reference ul {
   list-style: none;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 20px;
   margin: 0;
   padding: 0; }
   #table-of-contents ul > li > a, #indices-and-tables ul > li > a, #reference ul > li > a {
-    font-weight: 600; }
+    font-weight: 400; }
   #table-of-contents ul ul, #indices-and-tables ul ul, #reference ul ul {
     font-size: 16px;
     margin-left: 1.5em;
