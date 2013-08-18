@@ -125,7 +125,7 @@ def textwidth(ctx, txt, fontname, fontsize):
     return w
 
 
-def createpath(ctx, segments, close=False):
+def createpath(ctx, segments, close=True):
     """ Create a path object from a list of segment definitions.
 
     Each element of the list ``segments`` defines a segment of the path.

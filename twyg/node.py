@@ -454,8 +454,8 @@ class BoxNodeDrawer(NodeDrawer):
                 Vector2(cx6, cy6)
             ]
 
-            clippath = createpath(_ctx, geom.offset_poly(outline, strokewidth * .5),
-                                  close=True)
+            offs = geom.offset_poly(outline, strokewidth * .5)
+            clippath = createpath(_ctx, offs)
 
             _ctx.beginclip(clippath)
 

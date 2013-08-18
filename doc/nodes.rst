@@ -16,7 +16,7 @@ vehicula pharetra.
 Common properties
 -----------------
 
-The properties below apply to all node styles so they are listed only
+The properties below are common to all node styles so they are listed only
 once in this section.
 
 Text properties
@@ -29,16 +29,14 @@ Text properties
     Name of the font to draw the node text with. Normal font weights are
     always used.
     
-    .. note:: Different graphics backends and operating systems may
-        resolve font names differently, so for example the value
-        "Helvetica" might result in a different font being picked up by
-        NodeBox on Mac OS X than the by the command line application on
-        Windows, which uses the Cairo backend.
+    .. note:: The font name is usually not portable across different
+        operating system and graphics backend combinations and it might need to
+        be adjusted for each platform. Different graphics backends and
+        operating systems may resolve font names differently, for example the
+        font name "Helvetica" might result in a different font being picked up
+        by NodeBox on Mac OS X than the by the command line application on
+        Windows using the Cairo backend.
         
-        The *fontName* property is usually not portable across different
-        operating system and graphics backend combinations and it needs
-        to be adjusted accordingly.
-
 
 .. property:: lineHeight
 
@@ -53,10 +51,9 @@ Text properties
     .. propparams:: Enum auto
         :values: left | right | center | justify | auto
 
-    Alignment of the text within the node shape. The value *auto* aligns
-    the text left, right or center depending on the node's orientation
-    in relation to its parent (center alignment is used for the root
-    node only).
+    Alignment of the text within the node shape. The value *auto* aligns the
+    text left or right depending on the node's orientation in relation to its
+    parent and centers the text in the root node.
 
 
 .. property:: justifyMinLines
@@ -64,18 +61,17 @@ Text properties
     .. propparams:: Number 5
        :values: >0
 
-    If *textAlign* is set to *justify*, this property specifies the
-    minimum number of node text lines for the full justification to take
-    effect.  If the total number of lines is below this value, the text
-    will be cente aligned instead.
+    If *textAlign* is set to *justify*, this property specifies the minimum
+    number of lines for the full justification to take effect.  If the total
+    number of lines is below this value, the text will be centered instead.
 
 
 .. property:: hyphenate
 
     .. propparams:: Boolean yes
 
-    Controls whether the node text should be hyphenated if it spans
-    multiple lines.
+    Controls whether the node text should be hyphenated if it spans multiple
+    lines.
 
     .. note:: Hyphenation is supported for English text only.
 
@@ -85,10 +81,9 @@ Text properties
     .. propparams:: Number 240.0
        :values: >0.0
 
-    Maximum width of the node text in points. If the full text does not
-    fit into a single line having this width, the text will be broken
-    into multiple lines and it will be aligned according to the value of
-    the *textAlign* property.
+    Maximum width of the node text. If the whole text cannot fit into a single
+    line of this width, the text will be broken into multiple lines and it will
+    be aligned according to the value of the *textAlign* property.
 
 
 .. property:: textPadX
@@ -96,9 +91,9 @@ Text properties
     .. propparams:: Number fontSize * 1.0
        :values: >0.0
 
-    Horizontal padding in points between the bounding rectangle of the node text
-    and the node shape. It is recommended to set this value proportional
-    to the font size.
+    Horizontal padding between the bounding rectangle of the node text and the
+    node shape. It is recommended to set this value proportional to the font
+    size.
 
 
 .. property:: textPadY
@@ -106,24 +101,22 @@ Text properties
     .. propparams:: Number fontSize * 0.45
        :values: >0.0
 
-    Vertical padding in points between the bounding rectangle of the node text
-    and the node shape. It is recommended to set this value proportional
-    to the font size.
+    Vertical padding between the bounding rectangle of the node text and the
+    node shape. It is recommended to set this value proportional to the font
+    size.
 
 
 .. property:: textBaselineCorrection
 
     .. propparams:: Number -0.2
 
-    Vertical node text baseline correction factor expressed as a
-    fraction of the font size. Positive values move the baseline
-    upwards, negative downwards.
+    Vertical text baseline correction factor expressed as a fraction of the
+    font size. Positive values move the baseline downwards, negative upwards.
+    The value might need to be adjusted for the font used.
 
-    .. note:: Similarly to the *fontName* property, different graphics
-        backends and operating systems require slightly different
-        *textBaselineCorrection* values for the node text to appear
-        vertically centered. The value may need to be adjusted for every
-        operating system and graphics backend combination.
+    .. note:: Different graphics backend and operating system combinations
+        might require slightly different values for the same font to be
+        positioned vertically in the same way.
 
 
 Stroke properties
@@ -138,8 +131,18 @@ Stroke properties
     results in no outline.
 
 
-Node shadow properties
-^^^^^^^^^^^^^^^^^^^^^^
+Shadow properties
+^^^^^^^^^^^^^^^^^
+
+.. note:: Shadows are rendered slightly differently under the NodeBox and Cairo
+    backends, although they look quite similar for practical purposes. Turning
+    shadows on slows down rendering considerably when using the Cairo backend
+    (command line interface). This can be sped up by decreasing the shadow
+    rasterisation resolution at the expense of sacrificing some image quality,
+    which might not be apparent for light and blurry shadows.
+
+.. warning:: Shadows are positioned incorrectly when using the SVG output.
+
 
 .. property:: nodeDrawShadow
 
@@ -152,7 +155,8 @@ Node shadow properties
 
     .. propparams:: Color rgba(0, 0, 0, 0.2)
 
-    Node shadow color.
+    Color of the node shadow. Typically, this is specified as an RGBA color
+    with a low alpha value to make the shadow somewhat transparent.
 
 
 .. property:: nodeShadowBlur
@@ -160,7 +164,8 @@ Node shadow properties
     .. propparams:: Number 3.0
        :values: >0.0
 
-    Node shadow blur radius.
+    Blur radius of the node shadow. Larger values yield smoother shadows but
+    result in longer rendering times (especially with the Cairo backend).
 
 
 .. property:: nodeShadowOffsX
@@ -177,6 +182,7 @@ Node shadow properties
     Vertical offset of the node shadow.
 
 
+
 .. property:: textDrawShadow
 
     .. propparams:: Boolean no
@@ -184,14 +190,12 @@ Node shadow properties
     Controls whether the node text casts a shadow.
 
 
-Text shadow properties
-^^^^^^^^^^^^^^^^^^^^^^
-
 .. property:: textShadowColor
 
     .. propparams:: Color rgba(0, 0, 0, 0.5)
 
-    Text shadow color.
+    Color of the text shadow. Typically, this is specified as an RGBA color
+    with a low alpha value to make the shadow somewhat transparent.
 
 
 .. property:: textShadowOffsX
@@ -208,6 +212,14 @@ Text shadow properties
     Vertical offset of the text shadow.
 
 
+
+Gradient fill properties
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note:: Gradient fill colors appear to be a slightly different under the
+    NodeBox and Cairo Backends.
+
+
 .. property:: drawGradient
 
     .. propparams:: Boolean no
@@ -220,21 +232,20 @@ Text shadow properties
 
     .. propparams:: Color baseColor.lighten(.12)
 
-    Color of the top of the node if the node shade is filled with a gradient.
+    Color at the top of the gradient.
 
 
 .. property:: gradientBottomColor
 
     .. propparams:: Color baseColor.darken(.04)
 
-    Color of the bottom of the node if the node shade is filled with a
-    gradient.
+    Color at the bottom of the gradient.
 
 
 'box' style
 -----------
 
-These properties are common to all node drawers. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus sit amet justo nec lacinia. Pellentesque id hendrerit eros. Suspendisse a nunc enim. Quisque vitae velit dolor.
+The *box* style draws nodes as axonometric three-dimensional boxes.
 
 .. image:: figures/node-box.png
 
@@ -247,7 +258,7 @@ Properties
     .. propparams:: Enum topright
        :values: topleft | topright | bottomleft | bottomright
 
-    3D orientation of the box.
+    Orientation of the axonometric three-dimensional box.
 
 
 .. property:: boxDepth
@@ -255,35 +266,35 @@ Properties
     .. propparams:: Number 20 * pow(0.7, depth)
        :values: >0.0
 
-    3D depth of the box.
+    Depth of the box.
 
 
 .. property:: horizSideColor
 
     .. propparams:: Color baseColor.lighten(0.34)
 
-    Color of the horizontal side of the 3D box.
+    Color of the horizontal side of the box.
 
 
 .. property:: vertSideColor
 
     .. propparams:: Color baseColor.lighten(0.12)
 
-    Color of the vertical side of the 3D box.
+    Color of the vertical side of the box.
 
 
 .. property:: strokeColor
 
     .. propparams:: Color baseColor
 
-    Stroke color of the box.
+    Stroke color of the wireframe of the box. Back lines are not drawn.
 
 
 
 'line' style
 ------------
 
-These properties are common to all node drawers. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus sit amet justo nec lacinia. Pellentesque id hendrerit eros. Suspendisse a nunc enim. Quisque vitae velit dolor.
+The *line* style draws nodes as...
 
 .. image:: figures/node-line.png
 
@@ -298,7 +309,8 @@ None.
 'oval' style
 ------------
 
-These properties are common to all node drawers. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus sit amet justo nec lacinia. Pellentesque id hendrerit eros. Suspendisse a nunc enim. Quisque vitae velit dolor.
+The *oval* style draws nodes as oval shapes.
+
 
 Properties
 ^^^^^^^^^^
@@ -324,7 +336,11 @@ Properties
 'poly' style
 ------------
 
-These properties are common to all node drawers. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam cursus sit amet justo nec lacinia. Pellentesque id hendrerit eros. Suspendisse a nunc enim. Quisque vitae velit dolor.
+The *poly* style draws nodes as n-sided regular polygons (all side have the
+same length and all angles are equal in measure).
+
+.. image:: figures/node-poly.png
+
 
 Properties
 ^^^^^^^^^^
@@ -334,14 +350,14 @@ Properties
     .. propparams:: Number 6
        :values: >0
 
-    Number of sides of the regular polygon
+    Number of sides of the regular polygon.
 
 
 .. property:: rotation
 
     .. propparams:: Number 0
 
-    Rotation around the center point
+    Rotation of the polygon around its center in degrees.
 
 
 

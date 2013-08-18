@@ -251,7 +251,7 @@ class JunctionConnectionDrawer(object):
         # Draw main branch path
         _ctx.nofill()
 
-        path = createpath(_ctx, segments)
+        path = createpath(_ctx, segments, close=False)
         _ctx.drawpath(path)
 
         # Draw junction point

@@ -211,10 +211,18 @@ table {
         margin: 0; }
   #content .admonition {
     margin: 1em 0;
-    background: #e3efe9;
-    padding: 5px 10px; }
+    padding: 4px 10px; }
     #content .admonition .admonition-title {
+      text-transform: uppercase;
       font-weight: 700; }
+    #content .admonition.note {
+      background: #eaf2ee; }
+      #content .admonition.note .admonition-title {
+        color: #63a382; }
+    #content .admonition.warning {
+      background: #fcc; }
+      #content .admonition.warning .admonition-title {
+        color: #b44; }
   #content img {
     margin: 10px 0; }
 

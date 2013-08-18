@@ -282,12 +282,29 @@ table {
   }
   .admonition {
     margin: 1em 0;
-    background: lighten($accentcolor, 30);
-    padding: 5px 10px;
+    padding: 4px 10px;
 
-    .admonition-title{
+    .admonition-title {
+      text-transform: uppercase;
       font-weight: 700;
     }
+
+    &.note { 
+      background: lighten($accentcolor, 32);
+
+      .admonition-title {
+        color: darken($accentcolor, 10);
+      }
+    }
+
+    &.warning { 
+      background: #fcc;
+
+      .admonition-title {
+        color: #b44;
+      }
+    }
+
   }
   img {
     margin: 10px 0;
