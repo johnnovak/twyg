@@ -3,13 +3,13 @@ html {
   overflow-y: scroll; }
 
 body {
+  font-family: Source Sans Pro, Arial, sans-serif;
+  font-size: 16px;
   margin: 0 auto 100px auto;
   position: relative;
   border: 1px solid transparent;
   padding: 0;
   width: 980px;
-  font-family: 'Source Sans Pro', Arial, sans-serif;
-  font-size: 16px;
   line-height: 1.4;
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
@@ -44,6 +44,35 @@ table {
     border: 1px solid #aaa;
     border-width: 1px 0; }
 
+ul {
+  list-style: square;
+  color: #83b69c !important; }
+  ul li {
+    color: #444444; }
+
+dd {
+  margin-bottom: 1em; }
+  dd .first {
+    margin-top: 0; }
+
+dl {
+  margin-bottom: 2em; }
+
+tt {
+  font-family: Consolas, Menlo, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
+  font-size: 14px;
+  font-weight: bold; }
+
+pre {
+  font-family: Consolas, Menlo, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
+  font-size: 14px;
+  background: #e3efe9;
+  padding: 10px; }
+
+blockquote {
+  margin: 0;
+  padding: 0; }
+
 ::-webkit-scrollbar {
   width: 16px; }
 
@@ -72,7 +101,8 @@ table {
     position: fixed; }
 
 #mainmenu {
-  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-family: Source Sans Pro, Arial, sans-serif;
+  font-size: 16px;
   position: fixed;
   top: 44px;
   right: 0;
@@ -152,7 +182,8 @@ table {
     #docnav ul li {
       display: inline-block; }
     #docnav ul li:not(:last-child):after {
-      content: "\00a0\00a0\2192\00a0"; }
+      content: "\00a0\00a0\2192\00a0";
+      color: #83b69c; }
   #docnav .search {
     float: right;
     padding-right: 15px;
@@ -185,10 +216,13 @@ table {
     color: #83b69c;
     font-size: 20px;
     font-weight: 600; }
+  #content img {
+    margin: 10px 0; }
   #content .property {
     margin-bottom: 1.8em; }
     #content .property tt {
-      font-family: inherit; }
+      font-family: Source Sans Pro, Arial, sans-serif;
+      font-size: 16px; }
     #content .property > dt {
       font-size: 16px;
       font-weight: 600;
@@ -198,8 +232,6 @@ table {
       margin: 0; }
     #content .property > dd {
       margin: 0 0 0 180px; }
-      #content .property > dd p {
-        margin: .5em 0; }
     #content .property .propparams {
       font-size: 16px;
       margin: .5em 0 .5em 0px;
@@ -211,20 +243,27 @@ table {
         margin: 0; }
   #content .admonition {
     margin: 1em 0;
-    padding: 4px 10px; }
+    padding: 8px 12px;
+    display: block; }
+    #content .admonition p {
+      margin: 1em 0 0 0;
+      padding: 0; }
     #content .admonition .admonition-title {
       text-transform: uppercase;
-      font-weight: 700; }
+      font-weight: 700;
+      margin: 0 0 -1em 0;
+      padding: 0; }
     #content .admonition.note {
-      background: #eaf2ee; }
+      background: #e3efe9; }
       #content .admonition.note .admonition-title {
         color: #63a382; }
     #content .admonition.warning {
       background: #fcc; }
       #content .admonition.warning .admonition-title {
         color: #b44; }
-  #content img {
-    margin: 10px 0; }
+  #content .function tt {
+    font-family: Consolas, Menlo, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
+    font-size: 14px; }
 
 #table-of-contents ul, #indices-and-tables ul, #reference ul {
   list-style: none;

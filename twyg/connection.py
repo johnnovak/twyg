@@ -65,13 +65,17 @@ class CurveConnectionDrawer(object):
                 cy1 = (y2 - y1) * E('nodeCy1Factor')
                 cy2 = (y2 - y1) * E('nodeCy2Factor')
 
-                startwidth = E('nodeLineWidthStart') - 1
+                p1x = x1 + cx1
+                p1y = y1 + cy1
+                p2x = x2 - cx2
+                p2y = y2 - cy2
 
+                startwidth = E('nodeLineWidthStart') - 1
                 sw = startwidth / 2.
 
                 _ctx.beginpath(x1, y1 - sw)
-                _ctx.curveto(x1 + cx1, y1 + cy1, x2 - cx2, y2 - cy2, x2, y2)
-                _ctx.curveto(x2 - cx2, y2 - cy2, x1 + cx1, y1 + cy1, x1, y1 + sw)
+                _ctx.curveto(p1x, p1y, p2x, p2y, x2, y2)
+                _ctx.curveto(p1x, p2y, p1x, p1y, x1, y1 + sw)
                 _ctx.endpath()
 
 

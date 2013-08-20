@@ -11,6 +11,8 @@ from twyg.config import buildconfig, tokenize
 
 twyg.common.TWYG_HOME = os.path.join('../..')
 
+IMG_DIR = 'images'
+
 
 def draw(config, data):
     tokens = tokenize(config)
@@ -22,5 +24,6 @@ def draw(config, data):
 
 
 def imgname(ext):
-    return os.path.splitext(sys.argv[0])[0] + '.' + ext
+    fname = os.path.splitext(sys.argv[0])[0] + '.' + ext
+    return os.path.join(IMG_DIR, fname)
 

@@ -356,7 +356,7 @@ class RectNodeDrawer(NodeDrawer):
 
             points = geom.rounded_rect(node.x, node.y,
                                        node.width, node.height, r)
-            return createpath(_ctx, points)
+            return createpath(_ctx, points, close=False)
 
 
 class BoxNodeDrawer(NodeDrawer):

@@ -1,16 +1,11 @@
 Nodes
 =====
 
-These properties are common to all node drawers. Lorem ipsum dolor
-sit amet, consectetur adipiscing elit. Etiam cursus sit amet justo nec
-lacinia. Pellentesque id hendrerit eros. Suspendisse a nunc enim.
-Quisque vitae velit dolor.
+The *node* configuration section controls the visual appearance of the
+nodes, including the size and shape of the nodes, the font used to draw
+the node text, and so on.
 
-Vivamus aliquam fringilla metus, sit amet tempor lectus pretium non.
-Integer et tempor eros. Donec posuere dignissim nulla, non rutrum ipsum
-gravida ut. Maecenas nec lectus eget metus congue blandit. Suspendisse
-sed tortor vel neque vestibulum iaculis nec non mi. Nam porttitor
-vehicula pharetra.
+irni a szinekrol, layout stb
 
 
 Common properties
@@ -141,7 +136,8 @@ Shadow properties
     rasterisation resolution at the expense of sacrificing some image quality,
     which might not be apparent for light and blurry shadows.
 
-.. warning:: Shadows are positioned incorrectly when using the SVG output.
+.. warning:: Shadows are positioned incorrectly when using the SVG output with
+    the Cairo backend.
 
 
 .. property:: nodeDrawShadow
@@ -182,7 +178,6 @@ Shadow properties
     Vertical offset of the node shadow.
 
 
-
 .. property:: textDrawShadow
 
     .. propparams:: Boolean no
@@ -217,7 +212,7 @@ Gradient fill properties
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: Gradient fill colors appear to be a slightly different under the
-    NodeBox and Cairo Backends.
+    NodeBox and Cairo backends.
 
 
 .. property:: drawGradient
@@ -247,7 +242,7 @@ Gradient fill properties
 
 The *box* style draws nodes as axonometric three-dimensional boxes.
 
-.. image:: figures/node-box.png
+.. image:: figures/images/nodes-box.png
 
 
 Properties
@@ -258,7 +253,7 @@ Properties
     .. propparams:: Enum topright
        :values: topleft | topright | bottomleft | bottomright
 
-    Orientation of the axonometric three-dimensional box.
+    Orientation of the three-dimensional depth of the box.
 
 
 .. property:: boxDepth
@@ -266,21 +261,21 @@ Properties
     .. propparams:: Number 20 * pow(0.7, depth)
        :values: >0.0
 
-    Depth of the box.
+    The three-dimensional depth of the box.
 
 
 .. property:: horizSideColor
 
     .. propparams:: Color baseColor.lighten(0.34)
 
-    Color of the horizontal side of the box.
+    Color of the horizontal part of the three-dimensional depth of the box.
 
 
 .. property:: vertSideColor
 
     .. propparams:: Color baseColor.lighten(0.12)
 
-    Color of the vertical side of the box.
+    Color of the vertical part of the three-dimensional depth of the box.
 
 
 .. property:: strokeColor
@@ -294,9 +289,15 @@ Properties
 'line' style
 ------------
 
-The *line* style draws nodes as...
+The *line* style is a special node shape style that draws a line below or above
+the node text so that it appears as a continuation of the line connecting the
+nodes.
 
-.. image:: figures/node-line.png
+.. image:: figures/images/nodes-line.png
+
+The following examples illustrate the use the *line* style:
+
+TODO
 
 
 Properties
@@ -311,6 +312,8 @@ None.
 
 The *oval* style draws nodes as oval shapes.
 
+.. image:: figures/images/nodes-oval.png
+
 
 Properties
 ^^^^^^^^^^
@@ -320,7 +323,9 @@ Properties
     .. propparams:: Number 1.0
        :values: >0.0
 
-    Initial aspect ratio of the oval.
+    Initial aspect ratio of the oval (the ratio of the width and the height of
+    the oval). Values less than *1.0* yield a vertically oriented oval shape,
+    values greater than *1.0* a horizontally oriented oval, and *1.0* a circle.
 
 
 .. property:: maxWidth
@@ -328,18 +333,19 @@ Properties
     .. propparams:: Number 400.0
        :values: >0.0
 
-    Maximum width of the oval (the initial aspect ratio is kept until
-    this width is reached).
+    Maximum width the oval is allowed to reach without changing its aspect
+    ratio. Once the width limit is reached, the aspect ratio is progressively
+    decreased until the full node text fits into the node shape.
 
 
 
 'poly' style
 ------------
 
-The *poly* style draws nodes as n-sided regular polygons (all side have the
+The *poly* style draws nodes as n-sided regular polygons (all sides have the
 same length and all angles are equal in measure).
 
-.. image:: figures/node-poly.png
+.. image:: figures/images/nodes-poly.png
 
 
 Properties
@@ -368,7 +374,7 @@ The *rect* style draws nodes as rectangular shapes that can be either
 completely square (first example) or can have rounded corners drawn in
 different rounding styles (last two examples).
 
-.. image:: figures/node-rect.png
+.. image:: figures/images/nodes-rect.png
 
 
 Properties
@@ -383,7 +389,7 @@ Properties
     shape similar to an old CRT television screen, *arc* draws a
     rectangle with rounded corners using quarter circle arc segments.
 
-    .. image:: figures/node-rect-roundingStyle.png
+    .. image:: figures/images/nodes-rect-roundingStyle.png
 
 .. property:: roundness
 
@@ -394,7 +400,7 @@ Properties
     value of *0.0* yields completely square corners and *1.0* fully
     rounded ones.
 
-    .. image:: figures/node-rect-roundness.png
+    .. image:: figures/images/nodes-rect-roundness.png
 
 .. property:: cornerRadius
 
@@ -408,6 +414,6 @@ Properties
     to draw capsule-like node shapes by setting the corner radius to a
     very large value (last example).
 
-    .. image:: figures/node-rect-cornerRadius.png
+    .. image:: figures/images/nodes-rect-cornerRadius.png
 
 

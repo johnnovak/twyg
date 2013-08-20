@@ -94,9 +94,12 @@ def brightness(col):
 
 def loadjson(path):
     """ Loads a JSON file. """
-    fp = file(path)
-    data = json.load(fp)
-    fp.close()
+    try:
+        fp = file(path)
+        data = json.load(fp)
+        fp.close()
+    except Exception, e:
+        raise ValueError("Error loading JSON file '%s':\n\t%s" % (path, e))
     return data
 
 

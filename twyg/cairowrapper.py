@@ -43,7 +43,8 @@ class Color(object):
     def darken(self, step=0.1):
         return Color(self.h, self.s, self.v - step, self.a, mode='hsv')
 
-    def lighten(self, step=0.1): return Color(self.h, self.s, self.v + step, self.a, mode='hsv')
+    def lighten(self, step=0.1):
+        return Color(self.h, self.s, self.v + step, self.a, mode='hsv')
 
     def blend(self, clr, factor=0.5):
         r = self.r * (1.0 - factor) + clr.r * factor

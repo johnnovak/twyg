@@ -41,7 +41,6 @@ class Node(object):
         self.property_mappings = {
             'x':              'x',
             'y':              'y',
-            'fontname':       'fontName',
             'fontsize':       'fontSize',
             'width':          'width',
             'height':         'height',
@@ -55,8 +54,7 @@ class Node(object):
             'fillcolor':      'fillColor',
             'strokecolor':    'strokeColor',
             'fontcolor':      'fontColor',
-            'lineheight':     'lineHeight',
-            'hyphenate':      'hyphenate'
+            'lineheight':     'lineHeight'
         }
 
     def isleaf(self):
