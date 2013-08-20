@@ -79,25 +79,55 @@ Functions
 Mathematical functions
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. function:: abs(n)
+.. function:: abs(x)
 
-.. function:: ceil(n)
+    Return the absolute value of *x*.
 
-.. function:: floor(n)
 
-.. function:: log(n)
+.. function:: ceil(x)
 
-.. function:: log10(n)
+    Return the smallest integer value greater than or equal to *x*.
 
-.. function:: max(a, b)
 
-.. function:: min(a, b)
+.. function:: floor(x)
 
-.. function:: pow(n, p)
+    Return the larger integer value less than or equal to *x*.
 
-.. function:: round(n)
 
-.. function:: sqrt(n)
+.. function:: log(x)
+
+    Return the natural (base-e) logarithm of *x*.
+
+
+.. function:: log10(x)
+
+    Return the base-10 logarithm of *x*.
+
+
+.. function:: max(x, y)
+
+    Return the largest of two values.
+
+
+.. function:: min(x, y)
+
+    Return the smallest of two values.
+
+
+.. function:: pow(x, y)
+
+    Return *x* to the power of *y*.
+
+
+.. function:: round(x)
+
+    Round *x* to the nearest integer value.
+
+
+.. function:: sqrt(x)
+
+    Return the square root of *x*.
+
 
 
 Colors
@@ -115,10 +145,6 @@ Below are some examples of valid CSS3 color definitions::
     hsl(130, 30%, 80%)
     hsla(99, 12%, 74%, 0.33)
 
-For a comprehensive description of CSS3 color format refer to `Section 4
-<http://www.w3.org/TR/css3-color/>`_ of the `CSS Color Module Level 3
-<http://www.w3.org/TR/css3-color/#colorunits>`_ specification.
-
 Colors can also be specified using `SVG 1.0 color keyword names
 <http://www.w3.org/TR/css3-color/#svg-color>`_ in *color.<colorname>* format::
 
@@ -126,55 +152,58 @@ Colors can also be specified using `SVG 1.0 color keyword names
     color.azure
     color.darkseagreen
 
+For a comprehensive description of CSS3 color notation refer to `Section 4
+<http://www.w3.org/TR/css3-color/>`_ of the `CSS Color Module Level 3
+<http://www.w3.org/TR/css3-color/#colorunits>`_ specification.
+
 
 Color functions
 ^^^^^^^^^^^^^^^
 
 There are a number of functions that can be used to manipulate colors. These
-functions can be invoked on color objects using the *<color>.<function>*
-notation::
+functions can be invoked using the *<color>.<function>* notation::
 
     #ff8.lighten(0.5)
     color.blue.darken(0.2)
     rgb(11%, 20%, 42%).blend(#fff, 0.5)
 
-
-The following fuctions can be used on color objects:
+The following color manipulation functions are available:
 
 .. function:: darken(factor)
 
-    Darkens the color by the given factor. The value of *factor* should be in
-    the *0.0-1.0* range and it is clamped to this range if it's not. For
-    example::
+    Darkens the color by a given factor. The value of *factor* should be between 
+    *0.0-1.0*, it it's not, then it's clamped to this range. For example::
 
-        color.red.darken(0.5)   -- yields dark red
+        color.red.darken(0.5)
+        #48a70f.darken(0.3)
 
 
 .. function:: lighten(factor)
 
-    Darkens the color by the given factor. The value of *factor* should be in
-    the *0.0-1.0* range and it is clamped to this range if it's not. For
-    example::
+    Darkens the color by a given factor. The value of *factor* should be between 
+    *0.0-1.0*, it it's not, then it's clamped to this range. For example::
 
-        color.blue.lighten(0.5)   -- yields light blue
+        color.fuchsia.lighten(0.3)
+        hsla(88, 30%, 68%, 0.7).lighten(.7)
 
 
 .. function:: blend(destcol, factor)
      
     Blends the color with *destcolor* by a given factor. The value of *factor*
-    should be in the *0.0-1.0* range and it is clamped to this range if it's
-    not. For example::
+    should be between *0.0-1.0*, it it's not, then it's clamped to this
+    range. For example::
 
         #118833.blend(#fff, 0.8)
         #777.blend(color.red, 0.6)
         baseColor.blend(bgColor, 0.2)
 
-Blending a color with white or black results in a different, less saturated
-shade than using the *lighten* and *darken* functions, which might be
-preferable in some situations. The following table illustrates the difference
-between the two methods for some colors:
+.. tip:: Blending a color with white or black results in a different, less
+    saturated shade than using the *lighten* and *darken* functions to
+    manipulate brightness. This might be preferable in some situations. The
+    following table illustrates the difference between the two methods:
 
-TODO image
+    .. image:: figures/images/color-blending.png
+       :align: center
 
 
 

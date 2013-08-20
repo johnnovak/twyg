@@ -54,6 +54,7 @@ a {
 em {
   font-weight: 700;
   font-style: normal;
+  color: lighten($basecolor, 8);
 }
 
 table {
@@ -90,12 +91,13 @@ dl {
 
 tt {
   @include monofont;
-  font-weight: bold;
+  font-weight: 700;
+  color: lighten($basecolor, 8);
 }
 
 pre {
   @include monofont;
-  background: lighten($accentcolor, 30);
+  background: #f4ffda;
   padding: 10px;
 }
 
@@ -290,9 +292,15 @@ blockquote {
     color: $accentcolor;
     font-size: 20px;
     font-weight: 600;
+    margin-top: 2em;
   }
   img {
-    margin: 10px 0;
+    margin: 1em 0;
+
+    &.align-center {
+      display: block;
+      margin: 1em auto;
+    }
   }
   .property {
     margin-bottom: 1.8em;
@@ -329,6 +337,8 @@ blockquote {
     margin: 1em 0;
     padding: 8px 12px;
     display: block;
+    background: lighten($accentcolor, 20);
+    color: darken($basecolor, 4);
 
     p {
       margin: 1em 0 0 0;
@@ -339,13 +349,7 @@ blockquote {
       font-weight: 700;
       margin: 0 0 -1em 0;
       padding: 0;
-    }
-    &.note { 
-      background: lighten($accentcolor, 30);
-
-      .admonition-title {
-        color: darken($accentcolor, 10);
-      }
+      color: darken($accentcolor, 20);
     }
     &.warning { 
       background: #fcc;
@@ -398,6 +402,17 @@ blockquote {
   td {
     border: none;
     padding-left: 0;
+  }
+}
+
+#mathematical-functions {
+  dl {
+    margin: 0;
+  }
+  dd {
+    p {
+      margin: 0
+    }
   }
 }
 

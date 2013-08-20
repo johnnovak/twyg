@@ -33,7 +33,8 @@ a {
 
 em {
   font-weight: 700;
-  font-style: normal; }
+  font-style: normal;
+  color: #585858; }
 
 table {
   border: none;
@@ -61,12 +62,13 @@ dl {
 tt {
   font-family: Consolas, Menlo, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
   font-size: 14px;
-  font-weight: bold; }
+  font-weight: 700;
+  color: #585858; }
 
 pre {
   font-family: Consolas, Menlo, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
   font-size: 14px;
-  background: #e3efe9;
+  background: #f4ffda;
   padding: 10px; }
 
 blockquote {
@@ -215,9 +217,13 @@ blockquote {
   #content h3 {
     color: #83b69c;
     font-size: 20px;
-    font-weight: 600; }
+    font-weight: 600;
+    margin-top: 2em; }
   #content img {
-    margin: 10px 0; }
+    margin: 1em 0; }
+    #content img.align-center {
+      display: block;
+      margin: 1em auto; }
   #content .property {
     margin-bottom: 1.8em; }
     #content .property tt {
@@ -244,7 +250,9 @@ blockquote {
   #content .admonition {
     margin: 1em 0;
     padding: 8px 12px;
-    display: block; }
+    display: block;
+    background: #c3dccf;
+    color: #3a3a3a; }
     #content .admonition p {
       margin: 1em 0 0 0;
       padding: 0; }
@@ -252,11 +260,8 @@ blockquote {
       text-transform: uppercase;
       font-weight: 700;
       margin: 0 0 -1em 0;
-      padding: 0; }
-    #content .admonition.note {
-      background: #e3efe9; }
-      #content .admonition.note .admonition-title {
-        color: #63a382; }
+      padding: 0;
+      color: #4e8569; }
     #content .admonition.warning {
       background: #fcc; }
       #content .admonition.warning .admonition-title {
@@ -288,3 +293,8 @@ blockquote {
   .genindextable td {
     border: none;
     padding-left: 0; }
+
+#mathematical-functions dl {
+  margin: 0; }
+#mathematical-functions dd p {
+  margin: 0; }
