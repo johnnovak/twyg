@@ -38,9 +38,9 @@ ctx.fill(textcol)
 ctx.text('lighten', 85, y + 36)
 
 ctx.text('0.2', x + w     + 26, y - 12)
-ctx.text('0.2', x + w * 2 + 26, y - 12)
-ctx.text('0.2', x + w * 3 + 26, y - 12)
-ctx.text('0.2', x + w * 4 + 26, y - 12)
+ctx.text('0.4', x + w * 2 + 26, y - 12)
+ctx.text('0.6', x + w * 3 + 26, y - 12)
+ctx.text('0.8', x + w * 4 + 26, y - 12)
 
 c = col1
 ctx.fill(c)

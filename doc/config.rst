@@ -167,12 +167,12 @@ functions can be invoked using the *<color>.<function>* notation::
     color.blue.darken(0.2)
     rgb(11%, 20%, 42%).blend(#fff, 0.5)
 
-The following color manipulation functions are available:
+The following color manipulation functions are available. The value of *factor*
+should be between *0.0-1.0* in all cases.
 
 .. function:: darken(factor)
 
-    Darkens the color by a given factor. The value of *factor* should be between 
-    *0.0-1.0*, it it's not, then it's clamped to this range. For example::
+    Darkens the color by a given factor. ::
 
         color.red.darken(0.5)
         #48a70f.darken(0.3)
@@ -180,8 +180,7 @@ The following color manipulation functions are available:
 
 .. function:: lighten(factor)
 
-    Darkens the color by a given factor. The value of *factor* should be between 
-    *0.0-1.0*, it it's not, then it's clamped to this range. For example::
+    Darkens the color by a given factor.  ::
 
         color.fuchsia.lighten(0.3)
         hsla(88, 30%, 68%, 0.7).lighten(.7)
@@ -189,9 +188,7 @@ The following color manipulation functions are available:
 
 .. function:: blend(destcol, factor)
      
-    Blends the color with *destcolor* by a given factor. The value of *factor*
-    should be between *0.0-1.0*, it it's not, then it's clamped to this
-    range. For example::
+    Blends the color with *destcolor* by a given factor. ::
 
         #118833.blend(#fff, 0.8)
         #777.blend(color.red, 0.6)

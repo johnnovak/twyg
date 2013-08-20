@@ -85,9 +85,6 @@ dd {
     margin-top: 0;
   }
 }
-dl {
-  margin-bottom: 2em;
-}
 
 tt {
   @include monofont;
@@ -292,7 +289,7 @@ blockquote {
     color: $accentcolor;
     font-size: 20px;
     font-weight: 600;
-    margin-top: 2em;
+    margin-top: 1.5em;
   }
   img {
     margin: 1em 0;
@@ -363,6 +360,14 @@ blockquote {
     tt {
       @include monofont;
     }
+    dl {
+      margin: 0;
+    }
+    dd {
+      p {
+        margin: 0 0 1em 0;
+      }
+    }
   }
 }
 
@@ -408,11 +413,6 @@ blockquote {
 #mathematical-functions {
   dl {
     margin: 0;
-  }
-  dd {
-    p {
-      margin: 0
-    }
   }
 }
 

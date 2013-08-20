@@ -56,9 +56,6 @@ dd {
   dd .first {
     margin-top: 0; }
 
-dl {
-  margin-bottom: 2em; }
-
 tt {
   font-family: Consolas, Menlo, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
   font-size: 14px;
@@ -218,7 +215,7 @@ blockquote {
     color: #83b69c;
     font-size: 20px;
     font-weight: 600;
-    margin-top: 2em; }
+    margin-top: 1.5em; }
   #content img {
     margin: 1em 0; }
     #content img.align-center {
@@ -269,6 +266,10 @@ blockquote {
   #content .function tt {
     font-family: Consolas, Menlo, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
     font-size: 14px; }
+  #content .function dl {
+    margin: 0; }
+  #content .function dd p {
+    margin: 0 0 1em 0; }
 
 #table-of-contents ul, #indices-and-tables ul, #reference ul {
   list-style: none;
@@ -295,6 +296,4 @@ blockquote {
     padding-left: 0; }
 
 #mathematical-functions dl {
-  margin: 0; }
-#mathematical-functions dd p {
   margin: 0; }
