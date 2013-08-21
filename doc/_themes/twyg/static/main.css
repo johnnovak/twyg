@@ -3,7 +3,7 @@ html {
   overflow-y: scroll; }
 
 body {
-  font-family: Source Sans Pro, Arial, sans-serif;
+  font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
   font-size: 16px;
   margin: 0 auto 100px auto;
   position: relative;
@@ -28,8 +28,12 @@ a {
   a:hover {
     text-decoration: underline;
     color: #76b6b8; }
+    a:hover tt {
+      color: #76b6b8; }
   a.headerlink {
     visibility: hidden; }
+  a tt {
+    color: #56a3a5; }
 
 em {
   font-weight: 700;
@@ -57,13 +61,13 @@ dd {
     margin-top: 0; }
 
 tt {
-  font-family: Consolas, Menlo, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
+  font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: bold;
   color: #585858; }
 
 pre {
-  font-family: Consolas, Menlo, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
+  font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
   font-size: 14px;
   background: #f4ffda;
   padding: 10px; }
@@ -100,7 +104,7 @@ blockquote {
     position: fixed; }
 
 #mainmenu {
-  font-family: Source Sans Pro, Arial, sans-serif;
+  font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
   font-size: 16px;
   position: fixed;
   top: 44px;
@@ -120,7 +124,7 @@ blockquote {
       display: block;
       padding: 4px 10px;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 15px;
       text-decoration: none;
       text-transform: uppercase;
       color: #fff; }
@@ -224,7 +228,7 @@ blockquote {
   #content .property {
     margin-bottom: 1.8em; }
     #content .property tt {
-      font-family: Source Sans Pro, Arial, sans-serif;
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
       font-size: 16px; }
     #content .property > dt {
       font-size: 16px;
@@ -264,7 +268,7 @@ blockquote {
       #content .admonition.warning .admonition-title {
         color: #b44; }
   #content .function tt {
-    font-family: Consolas, Menlo, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
+    font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
     font-size: 14px; }
   #content .function dl {
     margin: 0; }

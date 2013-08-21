@@ -44,7 +44,7 @@ Text properties
 .. property:: textAlign
 
     .. propparams:: Enum auto
-        :values: left | right | center | justify | auto
+        :values: left, right, center, justify, auto
 
     Alignment of the text within the node shape. The value *auto* aligns the
     text left or right depending on the node's orientation in relation to its
@@ -56,9 +56,10 @@ Text properties
     .. propparams:: Number 5
        :values: >0
 
-    If *textAlign* is set to *justify*, this property specifies the minimum
-    number of lines for the full justification to take effect.  If the total
-    number of lines is below this value, the text will be centered instead.
+    If :ref:property:`textAlign` is set to *justify*, this property
+    specifies the minimum number of lines for the full justification to
+    take effect.  If the total number of lines is below this value, the
+    text will be centered instead.
 
 
 .. property:: hyphenate
@@ -76,9 +77,10 @@ Text properties
     .. propparams:: Number 240.0
        :values: >0.0
 
-    Maximum width of the node text. If the whole text cannot fit into a single
-    line of this width, the text will be broken into multiple lines and it will
-    be aligned according to the value of the *textAlign* property.
+    Maximum width of the node text. If the whole text cannot fit into a
+    single line of this width, the text will be broken into multiple
+    lines and it will be aligned according to the value of the
+    :ref:property:`textAlign` property.
 
 
 .. property:: textPadX
@@ -251,7 +253,7 @@ Properties
 .. property:: boxOrientation
 
     .. propparams:: Enum topright
-       :values: topleft | topright | bottomleft | bottomright
+       :values: topleft, topright, bottomleft, bottomright
 
     Orientation of the three-dimensional depth of the box.
 
@@ -383,7 +385,7 @@ Properties
 .. property:: roundingStyle
 
     .. propparams:: Enum screen
-       :values: screen | arc
+       :values: screen, arc
 
     Controls the rounding style of the rectangle. *screen* results in a
     shape similar to an old CRT television screen, *arc* draws a
@@ -396,9 +398,9 @@ Properties
     .. propparams:: Number 1.0
        :values: 0.0–1.0
 
-    Rectangle roundess factor if *roundingStyle* is set to *screen*. A
-    value of *0.0* yields completely square corners and *1.0* fully
-    rounded ones.
+    Rectangle roundess factor if :ref:property:`roundingStyle` is set to
+    *screen*. A value of *0.0* yields completely square corners and
+    *1.0* fully rounded ones.
 
     .. image:: figures/images/nodes-rect-roundness.png
 
@@ -407,12 +409,12 @@ Properties
     .. propparams:: Number 5.0
        :values: >0.0
 
-    If *roundingStyle* is set to *arc*, the rectangle corners are drawn
-    using quarter circle arcs having this radius (in points). The radius
-    is capped at half the node's height or width (whichever is lower) to
-    prevent self-overlapping curves. This lends itself to a neat trick
-    to draw capsule-like node shapes by setting the corner radius to a
-    very large value (last example).
+    If :ref:property:`roundingStyle` is set to *arc*, the rectangle
+    corners are drawn using quarter circle arcs having this radius (in
+    points). The radius is capped at half the node's height or width
+    (whichever is lower) to prevent self-overlapping curves. This lends
+    itself to a neat trick to draw capsule-like node shapes by setting
+    the corner radius to a very large value (last example).
 
     .. image:: figures/images/nodes-rect-cornerRadius.png
 

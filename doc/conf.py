@@ -197,5 +197,9 @@ def setup(app):
                         objname='configuration property',
                         indextemplate='pair: %s; configuration property')
 
+    app.add_object_type('directive', 'directive',
+                        objname='configuration directive',
+                        indextemplate='pair: %s; configuration directive')
+
     app.add_directive('propparams', PropertyParams)
 

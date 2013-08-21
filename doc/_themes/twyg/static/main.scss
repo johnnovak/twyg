@@ -3,12 +3,12 @@ $accentcolor: #83b69c;
 $linkcolor: #56a3a5;
 
 @mixin bodyfont {
-  font-family: Source Sans Pro, Arial, sans-serif;
+  font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
 
 @mixin monofont {
-  font-family: Consolas, Menlo, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
+  font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
   font-size: 14px;
 }
 
@@ -45,9 +45,16 @@ a {
   &:hover {
     text-decoration: underline;
     color: lighten($linkcolor, 10);
+
+    tt {
+      color: lighten($linkcolor, 10);
+    }
   }
   &.headerlink {
     visibility: hidden;
+  }
+  tt {
+    color: $linkcolor;
   }
 }
 
@@ -88,7 +95,7 @@ dd {
 
 tt {
   @include monofont;
-  font-weight: 700;
+  font-weight: bold;
   color: lighten($basecolor, 8);
 }
 
@@ -156,7 +163,7 @@ blockquote {
       display: block;
       padding: 4px 10px;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 15px;
       text-decoration: none;
       text-transform: uppercase;
       color: #fff;

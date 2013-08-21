@@ -76,8 +76,7 @@ Variables
 Functions
 ---------
 
-Mathematical functions
-^^^^^^^^^^^^^^^^^^^^^^
+The following functions can be used in property expressions:
 
 .. function:: abs(x)
 
@@ -167,12 +166,14 @@ functions can be invoked using the *<color>.<function>* notation::
     color.blue.darken(0.2)
     rgb(11%, 20%, 42%).blend(#fff, 0.5)
 
-The following color manipulation functions are available. The value of *factor*
-should be between *0.0-1.0* in all cases.
+The following color manipulation functions are available. The parameter *factor*
+should be between *0.0-1.0* in all cases and it is clamped to this range if it
+lies outside.
+
 
 .. function:: darken(factor)
 
-    Darkens the color by a given factor. ::
+    Darkens the color by the given factor. ::
 
         color.red.darken(0.5)
         #48a70f.darken(0.3)
@@ -180,48 +181,76 @@ should be between *0.0-1.0* in all cases.
 
 .. function:: lighten(factor)
 
-    Darkens the color by a given factor.  ::
+    Darkens the color by the given factor.  ::
 
         color.fuchsia.lighten(0.3)
         hsla(88, 30%, 68%, 0.7).lighten(.7)
 
 
-.. function:: blend(destcol, factor)
+.. function:: blend(destcolor, factor)
      
-    Blends the color with *destcolor* by a given factor. ::
+    Blends the color (source color) with *destcolor* by the given factor. A
+    *factor* of *1.0* will result in the destination color and *0.0* in the
+    source color. ::
 
         #118833.blend(#fff, 0.8)
         #777.blend(color.red, 0.6)
         baseColor.blend(bgColor, 0.2)
 
-.. tip:: Blending a color with white or black results in a different, less
-    saturated shade than using the *lighten* and *darken* functions to
-    manipulate brightness. This might be preferable in some situations. The
-    following table illustrates the difference between the two methods:
+.. tip:: The brightness of a color can be changed in two ways:
+    
+    * using the :py:func:`darken` and :py:func:`lighten` functions
+    * blending the color with black or white
+
+    The blending method result in less saturated shades which might be
+    preferable in some situations. The following table illustrates the
+    difference between the two methods:
 
     .. image:: figures/images/color-blending.png
        :align: center
 
 
 
-Directives
-----------
-
-*@copy*
-    Copy level definition.
-
-*@include*
-    Include another config file.
-
-    Search path:
-
-    * Current directory (the directory the script was started in)
-    * $TWYG_USER/configs
-    * $TWYG_HOME/configs
-
-
 Levels
 ------
+
+In the examples above, we defined an uniform visual style for all nodes,
+connections, colorings etc.  But many times it is desirable to style elements
+of the tree differently based on their position in the graph. For example, the
+root node, the leaves and the rest of the nodes could appear in three distinct
+visual styles.  Or all nodes at depth 1 could have a certain style, nodes at
+depth 2 another one, and so on. 
+
+By using level definitions within the section definitions, it is possible to
+further refine the visual appearance of the different elements of the tree.
+Levels can appear in the *node*, *connection* and *color* sections with the
+following syntax::
+
+    [section]
+        {levelname}
+           ...
+           property definitions
+           ...
+
+In this example, the root node is drawn as an octagonal polygon, the leaf nodes
+as ovals, and the rest of the nodes as rectangle::
+
+    [node]
+      {root}
+        levelDepthMax           0
+        style                   poly
+        numSides                8
+
+      {leaf}
+        levelNumChildrenMax     0
+        style                   oval
+
+      {normal}
+        style                   rect
+
+
+Level selectors
+^^^^^^^^^^^^^^^
 
 .. property:: levelDepthMin
 
@@ -286,27 +315,81 @@ Some level selector examples:
           levelNumChildrenMax 0
 
 
-A more complex example using @copy in conjunction with levels::
 
-    [node]
-      {normal}
-        style                   rect
-        strokeWidth             3
-        roundness               1.0
-        roundingStyle           arc
-        cornerRadius            40
+Directives
+----------
 
-      {root}
-        @copy normal
-        levelDepthMax           0
+Directives can appear within section and level definitions just like regular
+properties but they have special meaning.
 
-        cornerRadius            80
+.. directive:: @copy
 
-      {leaf}
-        levelNumChildrenMax     0
-        style                   line
-        strokeWidth             3
+    Copy all property definitions from another level into the current one
+    within the same section. The directive is only allowed to appear in level
+    definitions. The level *<levelname>* does not have to be defined in the
+    same file where the *@copy* directive appears in, it can also come from
+    another configuration file that was included previously (see
+    :ref:directive:`@include` ).
+
+    The purpose of the *@level* directive is to avoid duplication of
+    configuration contents where mostly similar, but slightly different sets of
+    property definitions need to be applied to two (or more) distinct sets of
+    entities.  For example, one could define a default style that applies to
+    all nodes, then apply the same style to the leaf nodes with a few property
+    definitions changed. In this sense, the directive achieves something
+    similar to the concept of inheritance in object-oriented programming
+    languages.
+
+    Note that as the contents of the configuration files are evaluated line by
+    line from top to bottom, it is possible to override the copied properties
+    by redefining them after a *@copy* directive, as shown in the example
+    below.
+
+    In this example, all nodes are drawn as rounded rectangles, except for the
+    root node, which is drawn as a regular rectangle::
+
+        [node]
+          {normal}
+            style                   rect
+            roundness               1.0
+
+          {root}
+            @copy normal
+            levelDepthMax           0
+            roundness               0.0
 
 
+.. directive:: @include
 
+    Include the contents of another configuration file into the current
+    configuration. The most natural way to think about this is that the line
+    containing the *@include* directive is replaced with the contents of
+    *<configname>* and then the parsing continues. There is no limit to the
+    nesting depth of configuration files, but obviously two configuration
+    cannot include each other. If such circular reference is encountered, an
+    error is raised and the execution stops.
+
+    The search order for the configuration file is the following:
+
+    * The current directory (the directory the main Python script was
+      started in)
+    * ``$TWYG_USER/configs``
+    * ``$TWYG_HOME/configs``
+
+    If the configuration file cannot be found in either of these locations, an
+    error is raised and the execution stops.
+
+    For example::
+
+        [connection]
+            @include "connections/style1.twg"
+            cornerRadius            40
+            junctionRadius          17
+
+    In this example, the included configuration file will be searched in the
+    following locations:
+
+    * ``connections/style1.twg``
+    * ``$TWYG_USER/configs/connections/style1.twg``
+    * ``$TWYG_HOME/configs/connections/style1.twg``
 

@@ -42,7 +42,7 @@ Properties
     Width of the connection curve at the end (child node end).
 
 
-.. property:: nodeCx1Factor           0.7
+.. property:: nodeCx1Factor
 
     .. propparams:: Number 0.7
 
@@ -130,7 +130,7 @@ Properties
 .. property:: cornerStyle
 
     .. propparams:: Enum rounded
-       :values: square | beveled | rounded
+       :values: square, beveled, rounded
 
     Style of the corners of the connection lines. 
 
@@ -143,7 +143,7 @@ Properties
        :values: >0.0
 
     Radius of the corners of the connection lines. The value has no effect if
-    the corner style is set to *square*.
+    the :ref:property:`cornerStyle` property is set to *square*.
 
     The radius is automatically capped at the maximum allowable value to
     prevent the connection shapes from overlapping. This lends itself to a neat
@@ -156,7 +156,7 @@ Properties
 .. property:: junctionStyle
 
     .. propparams:: Enum disc
-       :values: none | square | disc | diamond.
+       :values: none, square, disc, diamond.
 
     Style of the junction shape.
 
@@ -196,7 +196,7 @@ Properties
 .. property:: junctionSign
 
     .. propparams:: Enum none
-       :values: none | plus | minus
+       :values: none, plus, minus
 
     Style of the sign inside the junction shape.
 
