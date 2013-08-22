@@ -1,29 +1,28 @@
 [layout]
-    style               layout
-    nodePadX            80
+    style                   layout
+    nodePadX                80
 
 [node]
   {default}
-    style               rect
+    style                   rect
 
   {root}
-    @copy default
-    levelDepthMax       0
-    textPadY            fontSize * 2
+    @copy                   default
+    levelDepthMax           0
+    textPadY                fontSize * 2
 
 [connection]
-    @include "synapse-connection.twg"
+    @include                "synapse-connection.twg"
 
 [color]
   {default}
-    style               colorizer
+    style                   colorizer
 
   {leaf}
-    @copy default
-    levelNumChildrenMax 0
-
-    fillColor           baseColor.blend(bgColor, 0.7)
-    strokeColor         baseColor.blend(bgColor, 0.2)
-    connectionColor     baseColor.blend(bgColor, 0.2)
-    fontColor           baseColor.darken(0.25)
+    @copy                   default
+    levelNumChildrenMax     0
+    fillColor               baseColor.blend(bgColor, 0.7)
+    strokeColor             baseColor.blend(bgColor, 0.2)
+    connectionColor         baseColor.blend(bgColor, 0.2)
+    fontColor               baseColor.darken(0.25)
 

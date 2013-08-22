@@ -1,4 +1,4 @@
-@include "common.twg"
+@include                "common.twg"
 
 -- Initial aspect ratio of the oval.
 aspectRatio             1.0

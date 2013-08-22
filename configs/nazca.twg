@@ -18,9 +18,8 @@
     cornerRadius            40
 
   {root}
-    @copy normal
+    @copy                   normal
     levelDepthMax           0
-
     cornerRadius            80
 
   {leaf}
@@ -37,3 +36,4 @@
 [color]
     style                   colorizer
     colorscheme             "mint"
+

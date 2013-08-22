@@ -1,39 +1,37 @@
 [layout]
-    style               layout
-    horizontalBalance   0.2
-    nodePadX            100
-    branchPadY          40
+    style                   layout
+    horizontalBalance       0.2
+    nodePadX                100
+    branchPadY              40
 
 [node]
   {default}
-    style               rect
-    roundness           0
+    style                   rect
+    roundness               0
 
   {root}
-    @copy default
-    levelDepthMax       0
-
-    textPadY            fontSize * 2
+    @copy                   default
+    levelDepthMax           0
+    textPadY                fontSize * 2
 
 [connection]
   {default}
-    style               curve
-    nodeLineWidthStart  2
-    nodeLineWidthEnd    2
-    nodeCx1Factor       0.6
-    nodeCx2Factor       0
+    style                   curve
+    nodeLineWidthStart      2
+    nodeLineWidthEnd        2
+    nodeCx1Factor           0.6
+    nodeCx2Factor           0
 
   {root}
-    @copy default
-    levelDepthMax       0
-
-    nodeLineWidthStart  60
-    nodeLineWidthEnd    2.5
-    nodeCx1Factor       0
-    nodeCx2Factor       0
-    nodeCy1Factor       0
-    nodeCy2Factor       0
+    @copy                   default
+    levelDepthMax           0
+    nodeLineWidthStart      60
+    nodeLineWidthEnd        2.5
+    nodeCx1Factor           0
+    nodeCx2Factor           0
+    nodeCy1Factor           0
+    nodeCy2Factor           0
 
 [color]
-    style               colorizer
+    style                   colorizer
 

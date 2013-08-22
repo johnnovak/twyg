@@ -1,31 +1,30 @@
 [layout]
-    style               layout
-    nodePadX            25
-    nodePadY            14
-    branchPadY          20
+    style                   layout
+    nodePadX                25
+    nodePadY                14
+    branchPadY              20
 
 [node]
-    style               poly
-    textAlign           justify
-    textPadX            fontSize * 0.7
-    rotation            30
-    strokeWidth         0
+    style                   poly
+    textAlign               justify
+    textPadX                fontSize * 0.7
+    rotation                30
+    strokeWidth             0
 
 [connection]
   {default}
-    style               curve
-    nodeLineWidthStart  2.5
-    nodeLineWidthEnd    2.5
-    nodeCx1Factor       0
-    nodeCx2Factor       0
+    style                   curve
+    nodeLineWidthStart      2.5
+    nodeLineWidthEnd        2.5
+    nodeCx1Factor           0
+    nodeCx2Factor           0
 
   {root}
-    @copy default
-    levelDepthMax       0
-
-    nodeLineWidthStart  60
-    nodeLineWidthEnd    2
+    @copy                   default
+    levelDepthMax           0
+    nodeLineWidthStart      60
+    nodeLineWidthEnd        2
 
 [color]
-    style               colorizer
+    style                   colorizer
 

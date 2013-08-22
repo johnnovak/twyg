@@ -19,9 +19,8 @@
     cornerRadius            40
 
   {root}
-    @copy normal
+    @copy                   normal
     levelDepthMax           0
-
     style                   poly
     textAlign               center
     textPadX                fontSize * .5
