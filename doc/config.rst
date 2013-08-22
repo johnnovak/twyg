@@ -1,20 +1,69 @@
 Configuration
 =============
 
-
-Sections
+Overview
 --------
 
-style mandatory
+The configuration file describes how the tree should be visually rendered (e.g.
+the shape, color and positioning of the nodes and connections, the font used to
+draw the text inside the nodes etc.)
+
+Configuration files usually have the ``.twg`` extension.
+
+The configuration file has the following structure:
+
+* On the top level, the configuration consists of four *section definitions*.
+* Each *section definition* must contain either a list of *properties* or
+  *level definitions*.
+* *Level definitions* must contain a list of properties and cannot be further
+  nested.
+* *Properties* are name-value pairs, where the values can be either simple
+  constans or expressions.
+
+The four section definitions are the following:
+
+  ``[layout]``
+    Controls the positioning of the nodes.
+
+  ``[node]``
+    Controls how the individual nodes are drawn.
+
+  ``[connection]``
+    Controls how the shapes connecting the nodes are drawn.
+
+  ``[color]``
+    Controls the colors used for the drawing operations.
 
 
-*layout*
+The value of each property must be of a certain type, which are the following:
 
-*node*
+*Number*
+    A numeric value::
 
-*connection*
+      5
+      103.2
+      -3.1516
 
-*color*
+*String*
+    A string in double-quotes::
+
+      "Source Sans Pro"
+
+*Boolean*
+    A value used for turning a specific feature on or off. Valid values
+    are: 
+
+    * ``yes``, ``true`` or ``1``
+    * ``no``,  ``false`` or ``0``
+
+*Color*
+    Defines a color. See :ref:`colors` for more information.
+
+*Enum*
+    Property specific list of predefined values. See the properties
+    reference for details.
+
+TODO style mandatory
 
 
 Properties
@@ -24,54 +73,32 @@ Properties
 Variables
 ---------
 
-*x*
-    X position of the node
+The following variables are available in property value expressions:
 
-*y*
-    Y position of the node
+.. hlist::
+    :columns: 4
 
-*fontSize*
-    Font size used 
+    * *x*
+    * *y*
+    * *width*
+    * *height*
 
-*width*
-    Node width
+    * *bboxWidth*
+    * *bboxHeight*
+    * *textWidth*
+    * *textHeight*
 
-*height*
-    Node height
+    * *maxTextWidth*
+    * *lineHeight*
+    * *fontSize*
+    * *fontColor*
 
-*bboxWidth*
-    Bounding box width
+    * *bgColor*
+    * *baseColor*
+    * *fillColor*
+    * *strokeColor*
 
-*bboxHeight*
-    Bounding box height
-
-*textWidth*
-    Text width
-
-*textHeight*
-    Text height
-
-*maxTextWidth*
-    Max text width
-
-*bgColor*
-    Background color
-
-*baseColor*
-    Base color
-
-*fillColor*
-    Fill color
-
-*strokeColor*
-    Stroke color
-
-*fontColor*
-    Font color
-
-*lineHeight*
-    Line height
-
+TODO: some explanation why aren't they always available 
 
 Functions
 ---------
@@ -128,6 +155,7 @@ The following functions can be used in property expressions:
     Return the square root of *x*.
 
 
+.. _colors:
 
 Colors
 ------
@@ -211,8 +239,8 @@ lies outside.
 
 
 
-Levels
-------
+Level selectors
+---------------
 
 In the examples above, we defined an uniform visual style for all nodes,
 connections, colorings etc.  But many times it is desirable to style elements
@@ -248,9 +276,6 @@ as ovals, and the rest of the nodes as rectangle::
       {normal}
         style                   rect
 
-
-Level selectors
-^^^^^^^^^^^^^^^
 
 .. property:: levelDepthMin
 

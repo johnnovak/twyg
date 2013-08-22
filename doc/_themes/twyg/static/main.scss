@@ -417,6 +417,17 @@ blockquote {
   }
 }
 
+.hlist {
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+  td {
+    border: none;
+    padding-left: 0;
+  }
+}
+
 #mathematical-functions {
   dl {
     margin: 0;
