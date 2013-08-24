@@ -25,6 +25,8 @@ a {
   color: #56a3a5;
   text-decoration: none;
   font-weight: 700; }
+  a em {
+    color: inherit; }
   a:hover {
     text-decoration: underline;
     color: #76b6b8; }
@@ -54,6 +56,8 @@ ul {
   color: #83b69c !important; }
   ul li {
     color: #444444; }
+  ul ul {
+    margin-left: 0; }
 
 dd {
   margin-bottom: 1em; }

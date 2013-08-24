@@ -1,5 +1,5 @@
-Colors
-======
+Color
+=====
 
 .. property:: horizontalBalance
 

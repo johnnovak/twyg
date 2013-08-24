@@ -1,5 +1,5 @@
-Nodes
-=====
+Node
+====
 
 The *node* configuration section controls the visual appearance of the
 nodes, including the size and shape of the nodes, the font used to draw

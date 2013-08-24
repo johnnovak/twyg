@@ -1,5 +1,5 @@
-Connections
-===========
+Connection
+==========
 
 The *connection* configuration section controls how the connections between the
 nodes are drawn. These properties do not affect the positioning of the nodes,
