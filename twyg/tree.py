@@ -39,22 +39,23 @@ class Node(object):
         # Property name (Python classes) to variable name (config expressions)
         # mappings
         self.property_mappings = {
-            'x':              'x',
-            'y':              'y',
-            'fontsize':       'fontSize',
-            'width':          'width',
-            'height':         'height',
-            'bboxwidth':      'bboxWidth',
-            'bboxheight':     'bboxHeight',
-            'textwidth':      'textWidth',
-            'textheight':     'textHeight',
-            'max_text_width': 'maxTextWidth',
-            'bgcolor':        'bgColor',
-            'basecolor':      'baseColor',
-            'fillcolor':      'fillColor',
-            'strokecolor':    'strokeColor',
-            'fontcolor':      'fontColor',
-            'lineheight':     'lineHeight'
+            'x':               'x',
+            'y':               'y',
+            'fontsize':        'fontSize',
+            'width':           'width',
+            'height':          'height',
+            'bboxwidth':       'bboxWidth',
+            'bboxheight':      'bboxHeight',
+            'textwidth':       'textWidth',
+            'textheight':      'textHeight',
+            'max_text_width':  'maxTextWidth',
+            'bgcolor':         'bgColor',
+            'basecolor':       'baseColor',
+            'fillcolor':       'fillColor',
+            'strokecolor':     'strokeColor',
+            'connectioncolor': 'connectionColor',
+            'fontcolor':       'fontColor',
+            'lineheight':      'lineHeight'
         }
 
     def isleaf(self):

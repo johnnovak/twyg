@@ -25,7 +25,7 @@ All names in a configuration are case sensitive. Extra blank lines and
 whitespace characters are not significant.  Line comments can be included by
 using the ``--`` marker (two dash characters).
 
-The following is an example of a simple configuration file::
+The following is an example of a complete configuration file::
 
     [layout]                                     -- layout section start marker
         style                 layout             -- layout style
@@ -47,7 +47,6 @@ The following is an example of a simple configuration file::
         nodeLineWidthEnd      3.5                -- override nodeLineWidthEnd
                                                 
     [color]                                      -- color section start marker
-        style                 colorizer          -- color style
         @include              "mycolor.twg"      -- include directive
 
 
@@ -56,8 +55,10 @@ The following is an example of a simple configuration file::
 Sections
 --------
 
-Sections hold a set of property definitions together that control one visual
-aspect of a tree. There are four section types in total:
+Sections group sets of property definitions together that control one visual
+aspect of a tree (for example, how the nodes are drawn). There are four section
+types in total, all of which must be present in the configuration. No section
+is allowed to appear more than once. The four section type are the following:
 
   ``layout``
     Controls the positioning of the nodes.
@@ -71,21 +72,20 @@ aspect of a tree. There are four section types in total:
   ``color``
     Defines the colors used for all drawing operations.
 
-The start of the sections are denoted by section markers, which are written as
-the name of the section in square brackets (e.g. ``[node]``). Everything that
-appears below a section marker belongs to that section until another section
-start marker is encountered. For example::
 
-    [layout]                                     -- layout section start marker
-        style                 layout             
-        rootPadX              70                 
+The start of the sections are denoted by *section start markers*, which are
+written as the name of the section in square brackets (e.g. ``[node]``).
+Section start markers must be in a separate line.  Everything that appears
+below a section start marker belongs to the section it denotes until another
+section start marker is encountered. For example::
+
+    [layout]                                     -- layout section starts
+        style                 layout             --   belongs to the layout section
+        rootPadX              70                 --   belongs to the layout section
                                                 
-    [node]                                       -- node section start marker
-        style                 rect               
-        textPadY              fontSize * 0.7     
-
-All four section must be present in the configuration and they cannot appear
-more than once.
+    [node]                                       -- node section starts
+        style                 rect               --   belongs to the node section
+        textPadY              fontSize * 0.7     --   belongs to the node section
 
 
 .. _levels:
@@ -93,40 +93,57 @@ more than once.
 Levels
 ------
 
-In the examples above, we defined an uniform visual style for all nodes,
-connections, colorings etc.  But many times it is desirable to style elements
-of the tree differently based on their position in the graph. For example, the
-root node, the leaves and the rest of the nodes could appear in three distinct
-visual styles.  Or all nodes at depth 1 could have a certain style, nodes at
-depth 2 another one, and so on. 
+Property definitions directly after a section start marker are applied to all
+elements that section controls. For example, the following configuration
+snippet results in all nodes being drawn as rectangles and the node text to be
+drawn with a font of 14 points::
 
-By using level definitions within the section definitions, it is possible to
-further refine the visual appearance of the different elements of the tree.
-Levels can appear in the *node*, *connection* and *color* sections with the
-following syntax::
+    [node]
+        style                 rect
+        fontSize              14
+
+Many times, however, it is desirable to certain style groups of elements
+differently.  For example, one might want the the root node, the leaf nodes and
+the rest of the nodes to appear in three distinct visual styles. Or all nodes
+at depth 1 to be drawn in certain style, nodes at depth 2 in another style, and
+so on. 
+
+By using *level definitions* within a section definition, it is possible to
+further refine the visual appearance of the elements of the tree. Levels can
+appear in the *node*, *connection* and *color* sections with the following
+syntax::
 
     [section]
         {levelname}
+           level selectors
            ...
            property definitions
            ...
+
+As seen above, a level has three properties:
+
+  * a level name
+  * zero or more :ref:`level selector properties <level-selectors>`
+  * property definitions that belong to the level
 
 In this example, the root node is drawn as an octagonal polygon, the leaf nodes
 as ovals, and the rest of the nodes as rectangle::
 
     [node]
-      {root}
-        levelDepthMax           0
+      {root}                                    -- level start marker
+        levelDepthMax           0               -- level selector
         style                   poly
         numSides                8
 
-      {leaf}
-        levelNumChildrenMax     0
+      {leaf}                                    -- level start marker
+        levelNumChildrenMax     0               -- level selector
         style                   oval
 
       {normal}
         style                   rect
 
+
+.. _level-selectors:
 
 Level selectors
 ^^^^^^^^^^^^^^^
@@ -348,19 +365,20 @@ The following variables are available in property definition expressions:
     * *y*
     * *width*
     * *height*
+    * *maxTextWidth*
 
     * *bboxWidth*
     * *bboxHeight*
     * *textWidth*
     * *textHeight*
 
-    * *maxTextWidth*
     * *lineHeight*
     * *fontSize*
     * *fontColor*
 
     * *bgColor*
     * *baseColor*
+    * *connectionColor*
     * *fillColor*
     * *strokeColor*
 

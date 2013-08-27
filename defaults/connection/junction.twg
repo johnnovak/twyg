@@ -24,13 +24,13 @@ junctionStyle           disc
 junctionRadius          10.0
 
 -- Fill color of the junction point.
-junctionFillColor       baseColor
+junctionFillColor       connectionColor
 
 -- Stroke width of the junction sign.
 junctionStrokeWidth     2.0
 
 -- Stroke color of the junction sign.
-junctionStrokeColor     baseColor
+junctionStrokeColor     connectionColor
 
 -- Style of the sign inside the junction point.
 -- Possible values are none, plus and minus.
