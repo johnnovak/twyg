@@ -75,7 +75,7 @@ class CurveConnectionDrawer(object):
 
                 _ctx.beginpath(x1, y1 - sw)
                 _ctx.curveto(p1x, p1y, p2x, p2y, x2, y2)
-                _ctx.curveto(p1x, p2y, p1x, p1y, x1, y1 + sw)
+                _ctx.curveto(p2x, p2y, p1x, p1y, x1, y1 + sw)
                 _ctx.endpath()
 
 
@@ -91,6 +91,7 @@ class JunctionConnectionDrawer(object):
             'junctionXFactor':     (NumberProperty, {}),
             'cornerStyle':         (EnumProperty,   {'values': corner_styles}),
             'cornerRadius':        (NumberProperty, {'min': 0.0}),
+            'cornerPad':           (NumberProperty, {'min': 0.0}),
             'junctionStyle':       (EnumProperty,
                                     {'values': junction_styles}),
 
@@ -159,16 +160,24 @@ class JunctionConnectionDrawer(object):
         ysecond = children[1].connection_point(opp_direction)[1]
         ypenultimate = children[-2].connection_point(opp_direction)[1]
 
-        # First (top) corner radius
-        r = min(E('cornerRadius'), abs(jx - xfirst))
-        r1 = min(r, abs(yfirst - jy))
-        if ysecond < jy:
-            r1 = min(r, abs(yfirst - ysecond))
+        # Starting corner radius
+        cornerPad = E('cornerPad')
+        r = min(E('cornerRadius'), abs(jx - xfirst) - cornerPad)
+        r = max(r, 0)
 
-        # Last (bottom) corner radius
-        r2 = min(r, abs(ylast - jy))
+        # Adjusted first (top) corner radius
+        r1 = min(r, abs(yfirst - jy) - cornerPad)
+        r1 = max(r1, 0)
+        if ysecond < jy:
+            r1 = min(r, abs(yfirst - ysecond) - cornerPad)
+            r1 = max(r1, 0)
+
+        # Adjusted last (bottom) corner radius
+        r2 = min(r, abs(ylast - jy) - cornerPad)
+        r2 = max(r2, 0)
         if ypenultimate > jy:
-            r2 = min(r, abs(ylast - ypenultimate))
+            r2 = min(r, abs(ylast - ypenultimate) - cornerPad)
+            r2 = max(r2, 0)
 
         # Draw main branch as a single path to ensure line continuity
         p1 = Vector2(jx, yfirst + r1)

@@ -5,3 +5,4 @@
 *.pyc
 *sass-cache*
 doc/_build/*
+doc/figures/images/*

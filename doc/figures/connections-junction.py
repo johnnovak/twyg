@@ -32,13 +32,15 @@ config1 = r"""
 
 [connection]
     style                   junction 
-    lineWidth               3
+    lineWidth               4
     cornerRadius            20
     cornerStyle             rounded
     junctionStyle           disc
-    junctionRadius          15
+    junctionRadius          20
     junctionXFactor         0.55
     junctionSign            plus
+    junctionSignStrokeWidth 3
+    junctionSignColor       #fff
 
 
 [color]
@@ -118,7 +120,7 @@ data2 = { 'barrel': ['flank', 'stem', 'grot']}
 data3 = { '7381': ['331', '102', '445', '983']}
 
 ctx.initsurface(1, 1, OUTFORMAT)
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.7)
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.75)
 ctx.background(ctx.color(1))
 
 ctx.translate(3, 3)

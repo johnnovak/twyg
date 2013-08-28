@@ -178,6 +178,15 @@ class Tree(object):
         self._conndrawers = conndrawers
         self._colorizers = colorizers
 
+        print '*** LAYOUT'
+        print self._layout
+        print '*** NODE'
+        print self._nodedrawers
+        print '*** CONN'
+        print self._conndrawers
+        print '*** COLOR'
+        print self._colorizers
+
         # Precalculate the orientation of the nodes before assigning the
         # drawer objects to them. It is important to do this before the
         # assignment would occur, because the section level rules take

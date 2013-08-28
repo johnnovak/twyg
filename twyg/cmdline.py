@@ -35,6 +35,10 @@ def main():
                             'or MARGIN format; values can be absolute points '
                             'or percentages [default: %default]'))
 
+    parser.add_option('-w', '--write-config',
+                      dest='writeconfig', metavar='FILE',
+                      help='output configuration file')
+
     parser.add_option('-v', '--verbose',
                       default=False, action='store_true',
                       help='display extended error messages')

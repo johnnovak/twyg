@@ -307,14 +307,14 @@ class Context(object):
     def font(self, fontname, fontsize=None):
         self._ctx.select_font_face(fontname, cairo.FONT_SLANT_NORMAL,
                                    cairo.FONT_WEIGHT_NORMAL)
-        if fontsize:
-            self._ctx.set_font_size(fontsize)
-
         self._fontname = fontname
-        self._fontsize = fontsize
+
+        if fontsize:
+            self.fontsize(fontsize)
 
     def fontsize(self, fontsize):
         self._ctx.set_font_size(fontsize)
+        self._fontsize = fontsize
 
     def text(self, txt, x, y):
         # width, height & outline not implemented

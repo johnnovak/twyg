@@ -6,8 +6,8 @@ from twyg.cairowrapper import context as ctx
 
 OUTFORMAT = 'png'
 OUTFILE = imgname(OUTFORMAT)
-WIDTH = 670
-HEIGHT = 520
+WIDTH = 625
+HEIGHT = 160
 
 
 config = r"""
@@ -29,27 +29,24 @@ config = r"""
     cornerRadius            5
     textPadX                14
     textPadY                5
+    textBaselineCorrection  -0.15
 
 [connection]
     style                   junction 
-    lineWidth               3
+    lineWidth               4
     cornerRadius            20
-    cornerStyle             rounded
-    junctionStyle           square
-    junctionRadius          12
-    junctionFillColor       color.red
-    junctionStrokeColor     color.red
-    junctionXFactor         %s
-
+    cornerStyle             %s
+    junctionStyle           disc
+    junctionRadius          14
+    junctionXFactor         0.5
 
 [color]
     style               colorizer
-    colorscheme         "mint-examples"
-    connectionColor     #ea3
+    colorscheme         "mint-examples%s"
 """
 
 
-data = { '1': [{'2': ['3', '4']}, '5', '6']}
+data = { 'A': ['B', 'C', 'D']}
 
 ctx.initsurface(1, 1, OUTFORMAT)
 ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.75)
@@ -59,24 +56,22 @@ textcol = ctx.color(.3)
 ctx.font('Open Sans')
 
 ctx.translate(3, 3)
-draw(config % 0.0, data)
+draw(config % ('square', ''), data)
 ctx.fill(textcol)
 ctx.fontsize(18)
-ctx.text("junctionXFactor = 0.0", 65, 210)
+ctx.text("square", 45, 150)
 
-ctx.push()
-ctx.translate(340, 0)
-draw(config % 0.5, data)
+ctx.translate(230, 0)
+draw(config % ('beveled', 2), data)
 ctx.fill(textcol)
 ctx.fontsize(18)
-ctx.text("junctionXFactor = 0.5", 65, 210)
+ctx.text("beveled", 45, 150)
 
-ctx.pop()
-ctx.translate(0, 280)
-draw(config % 1.0, data)
+ctx.translate(230, 0)
+draw(config % ('rounded', 3), data)
 ctx.fill(textcol)
 ctx.fontsize(18)
-ctx.text("junctionXFactor = 1.0", 65, 210)
+ctx.text("rounded", 45, 150)
 
 ctx.writesurface()
 

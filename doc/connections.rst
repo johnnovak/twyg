@@ -120,11 +120,14 @@ Properties
        :values: 0.0–1.0
 
     Horizontal position of the junction sign in relation to the total
-    horizontal width of the connection line A value of *0.0* positions the
-    junction sign at the parent node end of the connection and a value of *1.0*
-    and the child node's end.
+    horizontal width of the connection line. A value of *0.0* positions the
+    junction sign at the parent's end of the connection and a value of
+    *1.0* at the children's end.
 
-    .. image:: figures/images/connections-junction-junctionXFactor.png
+    .. figure:: figures/images/connections-junction-junctionXFactor.png
+
+        a. junctionXFactor = 0.0
+
 
 
 .. property:: cornerStyle
@@ -145,12 +148,23 @@ Properties
     Radius of the corners of the connection lines. The value has no effect if
     the :ref:property:`cornerStyle` property is set to *square*.
 
-    The radius is automatically capped at the maximum allowable value to
-    prevent the connection shapes from overlapping. This lends itself to a neat
-    trick to draw the corners always with the maximum allowable radius by
-    setting the corner radius to a very large value.
+    .. tip:: The radius is automatically capped at the maximum allowable value
+        to prevent the connection shapes from overlapping. This lends itself to a
+        neat trick to draw the corners always with the maximum allowable radius by
+        setting the corner radius to a very large value (as shown on the second
+        image).
 
     .. image:: figures/images/connections-junction-cornerRadius.png
+
+
+.. property:: cornerPad
+
+    .. propparams:: Number 0.0
+       :values: >0.0
+
+    TODO
+
+    .. image:: figures/images/connections-junction-cornerPad.png
 
 
 .. property:: junctionStyle

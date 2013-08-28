@@ -14,6 +14,9 @@ from twyg.tree import Direction
 import twyg.common
 
 
+DEFAULT_LEVEL = '$defaultLevel'
+
+
 # This is a high-leve description of the config parsing process:
 #
 # 1.   Load configuration (``loadconfig``)
@@ -844,7 +847,9 @@ def eval_expr(expr, vars={}):
 class Level(object):
     """ Class for holding and evaluating level selector rules. """
 
-    def __init__(self, config={}):
+    def __init__(self, levelname, config={}):
+        self.levelname = levelname
+
         # The ordinal numbers of the first four enum values must be
         # identical to those of the Direction enum.
         Level.orientation = ('top', 'right', 'bottom', 'left', 'any')
@@ -860,6 +865,9 @@ class Level(object):
         self._props = Properties(properties, 'level.twg', config,
                                  extra_prop_warning=False)
         self._eval()
+
+    def __repr__(self):
+        return self.levelname
 
     def _eval(self):
         E = self._props.eval
@@ -901,11 +909,11 @@ class Level(object):
         return ok
 
 
-def createlevel(config):
+def createlevel(levelname, config):
     """ Create Level object from a config and then deletes all level
     related properties.
     """
-    level = Level(config)
+    level = Level(levelname, config)
     for k in level._props._properties.keys():
         if k in config:
             del config[k]
@@ -919,6 +927,9 @@ class SectionLevel(object):
     def __init__(self, level, drawer):
         self.level = level
         self.drawer = drawer
+
+    def __repr__(self):
+        return '{%s}: %s' % (self.level, self.drawer)
 
 
 STYLE             = 'style'
@@ -1057,6 +1068,9 @@ class Properties(object):
         c.update(config)
         config = c
 
+        print '-----------------'
+        print config
+
         # Build properties dictionary
         self._properties = {}
         for name, prop_params in properties.iteritems():
@@ -1069,6 +1083,7 @@ class Properties(object):
             if name not in config:
                 raise ConfigError("Missing property: '%s'" % name)
             e = parse_expr(config[name])
+            print '>>>', name, ':', e
             prop.expr = e
             prop.name = name
 

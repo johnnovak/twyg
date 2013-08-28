@@ -6,8 +6,8 @@ from twyg.cairowrapper import context as ctx
 
 OUTFORMAT = 'png'
 OUTFILE = imgname(OUTFORMAT)
-WIDTH = 670
-HEIGHT = 520
+WIDTH = 635
+HEIGHT = 210
 
 
 config = r"""
@@ -16,6 +16,8 @@ config = r"""
     horizontalBalance       0
     rootPadX                80
     nodePadX                80
+    nodePadY                10
+    branchPadY              10
     radialMinNodes          1000
     sameWidthSiblings       no
     snapParentToChildren    yes
@@ -29,27 +31,25 @@ config = r"""
     cornerRadius            5
     textPadX                14
     textPadY                5
+    textBaselineCorrection  -0.15
 
 [connection]
     style                   junction 
-    lineWidth               3
-    cornerRadius            20
-    cornerStyle             rounded
-    junctionStyle           square
-    junctionRadius          12
-    junctionFillColor       color.red
-    junctionStrokeColor     color.red
-    junctionXFactor         %s
-
+    lineWidth               4
+    cornerRadius            %s
+    cornerStyle             beveled
+    cornerPad               0
+    junctionStyle           none
+    junctionRadius          14
+    junctionXFactor         0.5
 
 [color]
     style               colorizer
-    colorscheme         "mint-examples"
-    connectionColor     #ea3
+    colorscheme         "mint-examples%s"
 """
 
 
-data = { '1': [{'2': ['3', '4']}, '5', '6']}
+data = { 'A': ['B', {'C': ['X', 'Y']}, 'D']}
 
 ctx.initsurface(1, 1, OUTFORMAT)
 ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.75)
@@ -59,24 +59,16 @@ textcol = ctx.color(.3)
 ctx.font('Open Sans')
 
 ctx.translate(3, 3)
-draw(config % 0.0, data)
+draw(config % (8, ''), data)
 ctx.fill(textcol)
 ctx.fontsize(18)
-ctx.text("junctionXFactor = 0.0", 65, 210)
+ctx.text("cornerRadius = 10", 45, 200)
 
-ctx.push()
-ctx.translate(340, 0)
-draw(config % 0.5, data)
+ctx.translate(350, 0)
+draw(config % (1000, 3), data)
 ctx.fill(textcol)
 ctx.fontsize(18)
-ctx.text("junctionXFactor = 0.5", 65, 210)
-
-ctx.pop()
-ctx.translate(0, 280)
-draw(config % 1.0, data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("junctionXFactor = 1.0", 65, 210)
+ctx.text("cornerRadius = 1000", 45, 200)
 
 ctx.writesurface()
 

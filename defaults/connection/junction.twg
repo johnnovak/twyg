@@ -16,6 +16,9 @@ cornerStyle             rounded
 -- square corner style).
 cornerRadius            12.0
 
+-- Padding around the corner if the corner radius is larger than blah...  TODO
+cornerPad               0.0
+
 -- Style of the junction point.
 -- Possible values are none, square, disc and diamond.
 junctionStyle           disc

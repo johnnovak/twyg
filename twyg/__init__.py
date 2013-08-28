@@ -109,12 +109,12 @@ def _create_drawers(config, section, factory_func, constr_args=()):
     section from a full configuration.
     """
     c = config[section]
-    level_dict = c if _has_levels(c) else {'defaultLevel': c}
+    level_dict = c if _has_levels(c) else {twyg.config.DEFAULT_LEVEL: c}
     drawers = []
 
-    for level_name, conf in level_dict.iteritems():
-        style = _get_style(section + '.' + level_name, conf)
-        level = createlevel(conf)
+    for levelname, conf in level_dict.iteritems():
+        style = _get_style(section + '.' + levelname, conf)
+        level = createlevel(levelname, conf)
         drawer_class = factory_func(style)
         drawer = drawer_class(conf, *constr_args)
         drawers.append(SectionLevel(level, drawer))
