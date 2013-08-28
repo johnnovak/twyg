@@ -5,9 +5,8 @@ from twyg.cairowrapper import context as ctx
 
 
 OUTFORMAT = 'png'
-OUTFILE = imgname(OUTFORMAT)
-WIDTH = 625
-HEIGHT = 280
+WIDTH = 165
+HEIGHT = 80
 
 
 config = r"""
@@ -48,38 +47,29 @@ config = r"""
 
 data = { 'A': ['B', 'C']}
 
-ctx.initsurface(1, 1, OUTFORMAT)
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.75)
+scale = 0.75
+
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-a'), scale=scale)
 ctx.background(ctx.color(1))
-
-textcol = ctx.color(.3)
-ctx.font('Open Sans')
-
 ctx.translate(3, 3)
 draw(config % ('none', 14, ''), data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("none", 45, 110)
+ctx.writesurface()
 
-ctx.push()
-ctx.translate(230, 0)
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-b'), scale=scale)
+ctx.background(ctx.color(1))
+ctx.translate(3, 3)
 draw(config % ('square', 14, 2), data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("square", 45, 110)
+ctx.writesurface()
 
-ctx.translate(230, 0)
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-c'), scale=scale)
+ctx.background(ctx.color(1))
+ctx.translate(3, 3)
 draw(config % ('disc', 14, 3), data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("disc", 45, 110)
+ctx.writesurface()
 
-ctx.pop()
-ctx.translate(0, 160)
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-d'), scale=scale)
+ctx.background(ctx.color(1))
+ctx.translate(3, 3)
 draw(config % ('diamond', 20, 3), data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("diamond", 45, 110)
-
 ctx.writesurface()
 

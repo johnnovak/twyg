@@ -5,9 +5,8 @@ from twyg.cairowrapper import context as ctx
 
 
 OUTFORMAT = 'png'
-OUTFILE = imgname(OUTFORMAT)
-WIDTH = 635
-HEIGHT = 210
+WIDTH = 285
+HEIGHT = 165
 
 
 config = r"""
@@ -51,24 +50,17 @@ config = r"""
 
 data = { 'A': ['B', {'C': ['X', 'Y']}, 'D']}
 
-ctx.initsurface(1, 1, OUTFORMAT)
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.75)
+scale = 0.75
+
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-a'), scale=scale)
 ctx.background(ctx.color(1))
-
-textcol = ctx.color(.3)
-ctx.font('Open Sans')
-
 ctx.translate(3, 3)
 draw(config % (8, ''), data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("cornerRadius = 10", 45, 200)
+ctx.writesurface()
 
-ctx.translate(350, 0)
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-b'), scale=scale)
+ctx.background(ctx.color(1))
+ctx.translate(3, 3)
 draw(config % (1000, 3), data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("cornerRadius = 1000", 45, 200)
-
 ctx.writesurface()
 

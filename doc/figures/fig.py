@@ -23,7 +23,7 @@ def draw(config, data):
     tree.draw()
 
 
-def imgname(ext):
-    fname = os.path.splitext(sys.argv[0])[0] + '.' + ext
+def imgname(ext, suffix=''):
+    fname = os.path.splitext(sys.argv[0])[0] + suffix + '.' + ext
     return os.path.join(IMG_DIR, fname)
 

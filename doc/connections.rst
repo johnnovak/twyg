@@ -124,9 +124,22 @@ Properties
     junction sign at the parent's end of the connection and a value of
     *1.0* at the children's end.
 
-    .. figure:: figures/images/connections-junction-junctionXFactor.png
+    .. figure:: figures/images/connections-junction-junctionXFactor-a.png
+       :alt: junctionXFactor = 0.0
 
-        a. junctionXFactor = 0.0
+       junctionXFactor = 0.0
+
+
+    .. figure:: figures/images/connections-junction-junctionXFactor-b.png
+       :alt: junctionXFactor = 0.5
+
+       junctionXFactor = 0.5
+
+
+    .. figure:: figures/images/connections-junction-junctionXFactor-c.png
+       :alt: junctionXFactor = 1.0
+
+       junctionXFactor = 1.0
 
 
 
@@ -137,7 +150,22 @@ Properties
 
     Style of the corners of the connection lines. 
 
-    .. image:: figures/images/connections-junction-cornerStyle.png
+    .. figure:: figures/images/connections-junction-cornerStyle-a.png
+       :alt: square
+
+       square
+
+
+    .. figure:: figures/images/connections-junction-cornerStyle-b.png
+       :alt: beveled
+
+       beveled
+
+
+    .. figure:: figures/images/connections-junction-cornerStyle-c.png
+       :alt: rounded
+
+       rounded
 
 
 .. property:: cornerRadius
@@ -154,7 +182,16 @@ Properties
         setting the corner radius to a very large value (as shown on the second
         image).
 
-    .. image:: figures/images/connections-junction-cornerRadius.png
+    .. figure:: figures/images/connections-junction-cornerRadius-a.png
+       :alt: cornerRadius = 10
+
+       cornerRadius = 10
+
+
+    .. figure:: figures/images/connections-junction-cornerRadius-b.png
+       :alt: cornerRadius = 1000
+
+       cornerRadius = 1000
 
 
 .. property:: cornerPad
@@ -174,7 +211,28 @@ Properties
 
     Style of the junction shape.
 
-    .. image:: figures/images/connections-junction-junctionStyle.png
+    .. figure:: figures/images/connections-junction-junctionStyle-a.png
+       :alt: none
+
+       none
+
+
+    .. figure:: figures/images/connections-junction-junctionStyle-b.png
+       :alt: square
+
+       square
+
+
+    .. figure:: figures/images/connections-junction-junctionStyle-c.png
+       :alt: disc
+
+       disc
+
+
+    .. figure:: figures/images/connections-junction-junctionStyle-d.png
+       :alt: diamond
+
+       diamond
 
 
 .. property:: junctionRadius
@@ -214,7 +272,22 @@ Properties
 
     Style of the sign inside the junction shape.
 
-    .. image:: figures/images/connections-junction-junctionSign.png
+    .. figure:: figures/images/connections-junction-junctionSign-a.png
+       :alt: none
+
+       none
+
+
+    .. figure:: figures/images/connections-junction-junctionSign-b.png
+       :alt: plus
+
+       plus
+
+
+    .. figure:: figures/images/connections-junction-junctionSign-c.png
+       :alt: minus
+
+       minus
 
 
 .. property:: junctionSignSize

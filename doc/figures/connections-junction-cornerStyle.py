@@ -5,9 +5,8 @@ from twyg.cairowrapper import context as ctx
 
 
 OUTFORMAT = 'png'
-OUTFILE = imgname(OUTFORMAT)
-WIDTH = 625
-HEIGHT = 160
+WIDTH = 165
+HEIGHT = 120
 
 
 config = r"""
@@ -48,30 +47,23 @@ config = r"""
 
 data = { 'A': ['B', 'C', 'D']}
 
-ctx.initsurface(1, 1, OUTFORMAT)
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.75)
+scale = 0.75
+
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-a'), scale=scale)
 ctx.background(ctx.color(1))
-
-textcol = ctx.color(.3)
-ctx.font('Open Sans')
-
 ctx.translate(3, 3)
 draw(config % ('square', ''), data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("square", 45, 150)
+ctx.writesurface()
 
-ctx.translate(230, 0)
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-b'), scale=scale)
+ctx.background(ctx.color(1))
+ctx.translate(3, 3)
 draw(config % ('beveled', 2), data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("beveled", 45, 150)
+ctx.writesurface()
 
-ctx.translate(230, 0)
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-c'), scale=scale)
+ctx.background(ctx.color(1))
+ctx.translate(3, 3)
 draw(config % ('rounded', 3), data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("rounded", 45, 150)
-
 ctx.writesurface()
 

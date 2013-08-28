@@ -278,6 +278,21 @@ blockquote {
     margin: 0; }
   #content .function dd p {
     margin: 0 0 1em 0; }
+  #content .hlist ul {
+    list-style: none;
+    margin: 0; }
+  #content .hlist td {
+    border: none;
+    padding-left: 0; }
+  #content .figure {
+    display: inline-block;
+    margin-right: 30px; }
+    #content .figure img {
+      margin-bottom: 10px; }
+    #content .figure .caption {
+      margin-top: 0;
+      text-align: center;
+      font-size: 15px; }
 
 #table-of-contents ul, #indices-and-tables ul, #reference ul {
   list-style: none;
@@ -302,13 +317,6 @@ blockquote {
   .genindextable td {
     border: none;
     padding-left: 0; }
-
-.hlist ul {
-  list-style: none;
-  margin: 0; }
-.hlist td {
-  border: none;
-  padding-left: 0; }
 
 #mathematical-functions dl {
   margin: 0; }

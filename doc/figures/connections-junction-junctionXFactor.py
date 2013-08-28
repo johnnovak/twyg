@@ -5,9 +5,8 @@ from twyg.cairowrapper import context as ctx
 
 
 OUTFORMAT = 'png'
-OUTFILE = imgname(OUTFORMAT)
-WIDTH = 670
-HEIGHT = 520
+WIDTH = 280
+HEIGHT = 176
 
 
 config = r"""
@@ -51,32 +50,24 @@ config = r"""
 
 data = { '1': [{'2': ['3', '4']}, '5', '6']}
 
-ctx.initsurface(1, 1, OUTFORMAT)
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.75)
+scale = 0.75
+
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-a'), scale=scale)
 ctx.background(ctx.color(1))
-
-textcol = ctx.color(.3)
-ctx.font('Open Sans')
-
 ctx.translate(3, 3)
 draw(config % 0.0, data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("junctionXFactor = 0.0", 65, 210)
-
-ctx.push()
-ctx.translate(340, 0)
-draw(config % 0.5, data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("junctionXFactor = 0.5", 65, 210)
-
-ctx.pop()
-ctx.translate(0, 280)
-draw(config % 1.0, data)
-ctx.fill(textcol)
-ctx.fontsize(18)
-ctx.text("junctionXFactor = 1.0", 65, 210)
-
 ctx.writesurface()
+
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-b'), scale=scale)
+ctx.background(ctx.color(1))
+ctx.translate(3, 3)
+draw(config % 0.5, data)
+ctx.writesurface()
+
+ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-c'), scale=scale)
+ctx.background(ctx.color(1))
+ctx.translate(3, 3)
+draw(config % 1.0, data)
+ctx.writesurface()
+
 

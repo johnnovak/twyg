@@ -383,6 +383,29 @@ blockquote {
       }
     }
   }
+  .hlist {
+    ul {
+      list-style: none;
+      margin: 0;
+    }
+    td {
+      border: none;
+      padding-left: 0;
+    }
+  }
+  .figure {
+    display: inline-block;
+    margin-right: 30px;
+
+    img {
+      margin-bottom: 10px;
+    }
+    .caption {
+      margin-top: 0;
+      text-align: center;
+      font-size: 15px;
+    }
+  }
 }
 
 #table-of-contents, #indices-and-tables, #reference {
@@ -417,17 +440,6 @@ blockquote {
     dl {
       margin: 0 0 1em 0;
     }
-  }
-  td {
-    border: none;
-    padding-left: 0;
-  }
-}
-
-.hlist {
-  ul {
-    list-style: none;
-    margin: 0;
   }
   td {
     border: none;
