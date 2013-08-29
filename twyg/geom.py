@@ -104,6 +104,9 @@ class Rectangle(object):
         self.w = w
         self.h = h
 
+    def __repr__(self):
+        return '(x=%s, y=%s, w=%s, h=%s)' % (self.x, self.y, self.w, self.h)
+
     def params(self):
         return self.x, self.y, self.w, self.h
 
@@ -112,4 +115,25 @@ class Rectangle(object):
                 Point2D(self.x + self.w, self.y),
                 Point2D(self.x + self.w, self.y + self.h),
                 Point2D(self.x,          self.y + self.h)]
+
+    def expand(self, rect):
+        r1x1 = self.x
+        r1y1 = self.y
+        r1x2 = r1x1 + self.w
+        r1y2 = r1y1 + self.h
+
+        r2x1 = rect.x
+        r2y1 = rect.y
+        r2x2 = r2x1 + rect.w
+        r2y2 = r2y1 + rect.h
+
+        x1 = min(r1x1, r2x1)
+        y1 = min(r1y1, r2y1)
+        x2 = max(r1x2, r2x2)
+        y2 = max(r1y2, r2y2)
+
+        self.x = x1
+        self.y = y1
+        self.w = x2 - x1
+        self.h = y2 - y1
 

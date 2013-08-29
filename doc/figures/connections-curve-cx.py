@@ -1,13 +1,7 @@
 import os, sys
 
-from fig import draw, imgname
+from fig import *
 from twyg.cairowrapper import context as ctx
-
-
-OUTFORMAT = 'png'
-OUTFILE = imgname(OUTFORMAT)
-WIDTH = 500
-HEIGHT = 150
 
 
 def drawconn(ctx, linewidth_start, linewidth_end, x1, y1, x2, y2,
@@ -44,10 +38,8 @@ def drawconn(ctx, linewidth_start, linewidth_end, x1, y1, x2, y2,
     ctx.oval(p2x - 3, p2y - 3, 6, 6)
 
 
-ctx.initsurface(1, 1, OUTFORMAT)
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.8)
+init_surface(500, 150, scale=0.8)
 ctx.background(ctx.color(1))
-
 
 ctx.stroke(.3)
 ctx.fill(.3)

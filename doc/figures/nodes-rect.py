@@ -1,13 +1,7 @@
 import os, sys
 
-from fig import draw, imgname
+from fig import *
 from twyg.cairowrapper import context as ctx
-
-
-OUTFORMAT = 'png'
-OUTFILE = imgname(OUTFORMAT)
-WIDTH = 500
-HEIGHT = 60
 
 
 config1 = r"""
@@ -73,19 +67,20 @@ data1 = { 'mischance': [] }
 data2 = { 'succour': [] }
 data3 = { 'trapessing': [] }
 
+tree1 = create_tree(config1, data1)
+tree2 = create_tree(config2, data2)
+tree3 = create_tree(config3, data3)
 
-ctx.initsurface(1, 1, OUTFORMAT)
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.8)
-ctx.background(ctx.color(1))
+init_surface(500, 60, scale=0.8)
 
 ctx.translate(7, 7)
-draw(config1, data1)
+tree1.draw()
 
 ctx.translate(190, 0)
-draw(config2, data2)
+tree2.draw()
 
 ctx.translate(155, 0)
-draw(config3, data3)
+tree3.draw()
 
 ctx.writesurface()
 

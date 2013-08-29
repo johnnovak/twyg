@@ -23,6 +23,7 @@ class NodeDrawer(object):
 
     def __init__(self, childproperties, defaults, config):
         align = ('auto', 'left', 'right', 'center', 'justify')
+        anchor = ('auto', 'center')
 
         properties = {
             'fontName':               (StringProperty,  {}),
@@ -33,7 +34,6 @@ class NodeDrawer(object):
             'textBaselineCorrection': (NumberProperty,  {}),
             'maxTextWidth':           (NumberProperty,  {'min': 0.0}),
             'hyphenate':              (BooleanProperty, {}),
-
             'textPadX':               (NumberProperty,  {'min': 0.0}),
             'textPadY':               (NumberProperty,  {'min': 0.0}),
 
@@ -52,7 +52,9 @@ class NodeDrawer(object):
 
             'drawGradient':           (BooleanProperty, {}),
             'gradientTopColor':       (ColorProperty,   {}),
-            'gradientBottomColor':    (ColorProperty,   {})
+            'gradientBottomColor':    (ColorProperty,   {}),
+
+            'connectionAnchorPoint':  (EnumProperty,    {'values': anchor})
         }
         properties.update(childproperties)
         self._props = Properties(properties, defaults, config)
@@ -93,13 +95,19 @@ class NodeDrawer(object):
         node.text_has_background = True
 
     def connection_point(self, node, direction):
-        if node.isroot():
-            x = node.bboxwidth / 2
-        else:
+        E = self._eval_func(node)
+
+        anchor = E('connectionAnchorPoint')
+
+        if anchor == 'auto':
             if direction == Direction.Left:
                 x = 0
             else:
                 x = node.bboxwidth
+
+        elif anchor == 'center':
+            x = node.width / 2
+            y = node.height / 2
 
         y = node.bboxheight / 2
         return node.x + x, node.y + y
@@ -593,11 +601,6 @@ class PolyNodeDrawer(NodeDrawer):
                                                   E('rotation'))
         return createpath(_ctx, points)
 
-    def connection_point(self, node, direction):
-        x = node.width / 2
-        y = node.height / 2
-        return node.x + x, node.y + y
-
 
 class OvalNodeDrawer(NodeDrawer):
 
@@ -626,6 +629,7 @@ class CapsuleNodeDrawer(NodeDrawer):
         super(CapsuleNodeDrawer, self).__init__({}, 'node/capsule.twg', config)
 
     def draw(self, node):
+        # TODO
         pass
 
 

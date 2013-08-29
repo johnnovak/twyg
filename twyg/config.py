@@ -1068,8 +1068,8 @@ class Properties(object):
         c.update(config)
         config = c
 
-        print '-----------------'
-        print config
+#        print '-----------------'
+#        print config
 
         # Build properties dictionary
         self._properties = {}
@@ -1083,7 +1083,7 @@ class Properties(object):
             if name not in config:
                 raise ConfigError("Missing property: '%s'" % name)
             e = parse_expr(config[name])
-            print '>>>', name, ':', e
+#            print '>>>', name, ':', e
             prop.expr = e
             prop.name = name
 

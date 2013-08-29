@@ -1,12 +1,6 @@
 import os, sys
 
-from fig import draw, imgname
-from twyg.cairowrapper import context as ctx
-
-
-OUTFORMAT = 'png'
-WIDTH = 165
-HEIGHT = 80
+from fig import *
 
 
 config = r"""
@@ -21,17 +15,17 @@ config = r"""
 
 [node]
     style                   rect
-    fontName                "Open Sans"
-    fontSize                17
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
     strokeWidth             3
     roundingStyle           arc
     cornerRadius            5
     textPadX                14
     textPadY                5
-    textBaselineCorrection  -0.15
 
 [connection]
-    style                   junction 
+    style                   junction
     lineWidth               4
     cornerRadius            20
     cornerStyle             rounded
@@ -40,8 +34,8 @@ config = r"""
     junctionXFactor         0.5
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples%s"
+    style                   colorizer
+    colorscheme             "mint-examples%s"
 """
 
 
@@ -49,27 +43,12 @@ data = { 'A': ['B', 'C']}
 
 scale = 0.75
 
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-a'), scale=scale)
-ctx.background(ctx.color(1))
-ctx.translate(3, 3)
-draw(config % ('none', 14, ''), data)
-ctx.writesurface()
+trees = [
+    create_tree(config % ('none', 14, ''), data),
+    create_tree(config % ('square', 14, 2), data),
+    create_tree(config % ('disc', 14, 3), data),
+    create_tree(config % ('diamond', 20, 3), data)
+]
 
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-b'), scale=scale)
-ctx.background(ctx.color(1))
-ctx.translate(3, 3)
-draw(config % ('square', 14, 2), data)
-ctx.writesurface()
-
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-c'), scale=scale)
-ctx.background(ctx.color(1))
-ctx.translate(3, 3)
-draw(config % ('disc', 14, 3), data)
-ctx.writesurface()
-
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-d'), scale=scale)
-ctx.background(ctx.color(1))
-ctx.translate(3, 3)
-draw(config % ('diamond', 20, 3), data)
-ctx.writesurface()
+write_all_trees(trees, scale)
 

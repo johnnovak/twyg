@@ -1,16 +1,10 @@
 import os, sys
 
-from fig import draw, imgname
+from fig import *
 from twyg.cairowrapper import context as ctx
 
 
-OUTFORMAT = 'png'
-OUTFILE = imgname(OUTFORMAT)
-WIDTH = 586
-HEIGHT = 270
-
-ctx.initsurface(1, 1, OUTFORMAT)
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.8)
+init_surface(586, 270, scale=0.8)
 ctx.background(ctx.color(1))
 
 w = 80
@@ -65,7 +59,6 @@ x += w + padx
 c = c.lighten(f)
 ctx.fill(c)
 ctx.rect(x, y, w, h)
-
 
 
 
@@ -166,7 +159,6 @@ x += w + padx
 c = c.blend(black, f)
 ctx.fill(c)
 ctx.rect(x, y, w, h)
-
 
 
 ctx.writesurface()

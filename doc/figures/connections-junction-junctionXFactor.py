@@ -1,12 +1,6 @@
 import os, sys
 
-from fig import draw, imgname
-from twyg.cairowrapper import context as ctx
-
-
-OUTFORMAT = 'png'
-WIDTH = 280
-HEIGHT = 176
+from fig import *
 
 
 config = r"""
@@ -21,8 +15,9 @@ config = r"""
 
 [node]
     style                   rect
-    fontName                "Open Sans"
-    fontSize                17
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
     strokeWidth             3
     roundingStyle           arc
     cornerRadius            5
@@ -30,7 +25,7 @@ config = r"""
     textPadY                5
 
 [connection]
-    style                   junction 
+    style                   junction
     lineWidth               3
     cornerRadius            20
     cornerStyle             rounded
@@ -42,9 +37,9 @@ config = r"""
 
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples"
-    connectionColor     #ea3
+    style                   colorizer
+    colorscheme             "mint-examples"
+    connectionColor         #ea3
 """
 
 
@@ -52,22 +47,11 @@ data = { '1': [{'2': ['3', '4']}, '5', '6']}
 
 scale = 0.75
 
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-a'), scale=scale)
-ctx.background(ctx.color(1))
-ctx.translate(3, 3)
-draw(config % 0.0, data)
-ctx.writesurface()
+trees = [
+    create_tree(config % 0.0, data),
+    create_tree(config % 0.5, data),
+    create_tree(config % 1.0, data)
+]
 
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-b'), scale=scale)
-ctx.background(ctx.color(1))
-ctx.translate(3, 3)
-draw(config % 0.5, data)
-ctx.writesurface()
-
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, imgname(OUTFORMAT, '-c'), scale=scale)
-ctx.background(ctx.color(1))
-ctx.translate(3, 3)
-draw(config % 1.0, data)
-ctx.writesurface()
-
+write_all_trees(trees, scale)
 

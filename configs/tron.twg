@@ -28,6 +28,6 @@
 
 [color]
     style                   colorizer
-    colorscheme             "turquise"
+    colorscheme             "turquoise"
     fillColor               bgColor
 

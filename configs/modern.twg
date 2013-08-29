@@ -13,6 +13,7 @@
     @copy                   default
     levelDepthMax           0
     textPadY                fontSize * 2
+    connectionAnchorPoint   center
 
 [connection]
   {default}

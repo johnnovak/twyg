@@ -74,3 +74,6 @@ gradientTopColor        baseColor.lighten(.12)
 -- nodebox->cairo magic factor -0.04
 gradientBottomColor     baseColor.darken(.04)
 
+-- TODO
+connectionAnchorPoint   auto
+

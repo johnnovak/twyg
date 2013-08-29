@@ -1,70 +1,63 @@
 import os, sys
 
-from fig import draw, imgname
-from twyg.cairowrapper import context as ctx
-
-
-OUTFORMAT = 'png'
-OUTFILE = imgname(OUTFORMAT)
-WIDTH = 370
-HEIGHT = 60
+from fig import *
 
 
 config1 = r"""
 [layout]
-    style               layout
+    style                   layout
 
 [node]
-    fontName            "Open Sans"
-    style               rect
-    strokeWidth         3
-    roundingStyle       screen
+    style                   rect
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
+    strokeWidth             3
+    roundingStyle           screen
 
 [connection]
-    style               curve
+    style                   curve
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples3"
-    fontColorAuto       no
-    fontColor           #fff
+    style                   colorizer
+    colorscheme             "mint-examples3"
+    fontColorAuto           no
+    fontColor               #fff
 """
 
 config2 = r"""
 [layout]
-    style               layout
+    style                   layout
 
 [node]
-    fontName            "Open Sans"
-    style               rect
-    strokeWidth         3
-    roundingStyle       arc
-    cornerRadius        25
+    style                   rect
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
+    strokeWidth             3
+    roundingStyle           arc
+    cornerRadius            25
 
 [connection]
-    style               curve
+    style                   curve
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples3"
-    fontColorAuto       no
-    fontColor           #fff
+    style                   colorizer
+    colorscheme             "mint-examples3"
+    fontColorAuto           no
+    fontColor               #fff
 """
 
 
-data1 = { 'style = screen': [] }
-data2 = { 'style = arc': [] }
+data1 = { 'screen': [] }
+data2 = { 'arc': [] }
 
+scale = 0.7
 
-ctx.initsurface(1, 1, OUTFORMAT)
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.7)
-ctx.background(ctx.color(1))
+trees = [
+    create_tree(config1, data1),
+    create_tree(config2, data2)
+]
 
-ctx.translate(7, 7)
-draw(config1, data1)
-
-ctx.translate(210, 0)
-draw(config2, data2)
-
-ctx.writesurface()
+write_all_trees(trees, scale)
 

@@ -1,13 +1,6 @@
 import os, sys
 
-from fig import draw, imgname
-from twyg.cairowrapper import context as ctx
-
-
-OUTFORMAT = 'png'
-OUTFILE = imgname(OUTFORMAT)
-WIDTH = 900
-HEIGHT = 170
+from fig import *
 
 
 config1 = r"""
@@ -21,8 +14,9 @@ config1 = r"""
 
 [node]
     style                   rect
-    fontName                "Open Sans"
-    fontSize                17
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
     strokeWidth             3
     roundness               1.0
     roundingStyle           arc
@@ -31,7 +25,7 @@ config1 = r"""
     textPadY                5
 
 [connection]
-    style                   junction 
+    style                   junction
     lineWidth               4
     cornerRadius            20
     cornerStyle             rounded
@@ -44,8 +38,8 @@ config1 = r"""
 
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples"
+    style                   colorizer
+    colorscheme             "mint-examples"
 """
 
 config2 = r"""
@@ -59,15 +53,16 @@ config2 = r"""
 
 [node]
     style                   rect
-    fontName                "Open Sans"
-    fontSize                17
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
     strokeWidth             3
     roundness               0
     textPadX                15
     textPadY                5
 
 [connection]
-    style                   junction 
+    style                   junction
     lineWidth               3
     cornerRadius            20
     cornerStyle             beveled
@@ -77,8 +72,8 @@ config2 = r"""
 
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples2"
+    style                   colorizer
+    colorscheme             "mint-examples2"
 """
 
 config3 = r"""
@@ -93,8 +88,9 @@ config3 = r"""
 [node]
   {normal}
     style                   rect
-    fontName                "Open Sans"
-    fontSize                17
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
     strokeWidth             3
     roundness               0
     cornerRadius            7
@@ -102,7 +98,7 @@ config3 = r"""
     textPadY                5
 
 [connection]
-    style                   junction 
+    style                   junction
     lineWidth               5
     cornerRadius            20
     cornerStyle             square
@@ -111,26 +107,21 @@ config3 = r"""
     junctionXFactor         0.55
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples3"
+    style                   colorizer
+    colorscheme             "mint-examples3"
 """
 
 data1 = { 'barrel': ['flank', 'stem', 'grot']}
 data2 = { 'barrel': ['flank', 'stem', 'grot']}
 data3 = { '7381': ['331', '102', '445', '983']}
 
-ctx.initsurface(1, 1, OUTFORMAT)
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.75)
-ctx.background(ctx.color(1))
+scale = 0.75
 
-ctx.translate(3, 3)
-draw(config1, data1)
+trees = [
+    create_tree(config1, data1),
+    create_tree(config2, data2),
+    create_tree(config3, data3)
+]
 
-ctx.translate(320, 0)
-draw(config2, data2)
-
-ctx.translate(320, 0)
-draw(config3, data3)
-
-ctx.writesurface()
+write_all_trees(trees, scale)
 

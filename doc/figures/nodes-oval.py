@@ -1,75 +1,75 @@
 import os, sys
 
-from fig import draw, imgname
+from fig import *
 from twyg.cairowrapper import context as ctx
-
-
-OUTFORMAT = 'png'
-OUTFILE = imgname(OUTFORMAT)
-WIDTH = 375
-HEIGHT = 85
 
 
 config1 = r"""
 [layout]
-    style               layout
+    style                   layout
 
 [node]
-    fontName            "Open Sans"
-    style               oval
-    strokeWidth         0
-    textPadX            10
-    textPadY            10
+    style                   oval
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
+    strokeWidth             0
+    textPadX                10
+    textPadY                10
 
 [connection]
-    style               curve
+    style                   curve
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples"
+    style                   colorizer
+    colorscheme             "mint-examples"
 """
 
 config2 = r"""
 [layout]
-    style               layout
+    style                   layout
 
 [node]
-    fontName            "Open Sans"
-    style               oval
-    strokeWidth         3
-    aspectRatio         .7
-    textPadX            8
-    textPadY            8
+    style                   oval
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
+    strokeWidth             3
+    aspectRatio             .7
+    textPadX                8
+    textPadY                8
 
 [connection]
-    style               curve
+    style                   curve
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples3"
+    style                   colorizer
+    colorscheme             "mint-examples3"
 """
 
 config3 = r"""
 [layout]
-    style               layout
+    style                   layout
 
 [node]
-    fontName            "Open Sans"
-    style               oval
-    aspectRatio         2
-    strokeWidth         3
-    textPadX            3
-    textPadY            3
+    style                   oval
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
+    aspectRatio             2
+    strokeWidth             3
+    textPadX                3
+    textPadY                3
 
 [connection]
-    style               curve
+    style                   curve
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples3"
-    fontColorAuto       no
-    fontColor           #fff
-    fillColor           baseColor.blend(#fff, .45)
+    style                   colorizer
+    colorscheme             "mint-examples3"
+    fontColorAuto           no
+    fontColor               #fff
+    fillColor               baseColor.blend(#fff, .45)
 
 """
 
@@ -77,19 +77,20 @@ data1 = { 'mar': [] }
 data2 = { 'ere': [] }
 data3 = { 'amiss': [] }
 
+tree1 = create_tree(config1, data1)
+tree2 = create_tree(config2, data2)
+tree3 = create_tree(config3, data3)
 
-ctx.initsurface(1, 1, OUTFORMAT)
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.8)
-ctx.background(ctx.color(1))
+init_surface(375, 80, scale=0.8)
 
-ctx.translate(1, 2)
-draw(config1, data1)
+ctx.translate(2, 2)
+tree1.draw()
 
 ctx.translate(136, 0)
-draw(config2, data2)
+tree2.draw()
 
 ctx.translate(117, 9)
-draw(config3, data3)
+tree3.draw()
 
 ctx.writesurface()
 

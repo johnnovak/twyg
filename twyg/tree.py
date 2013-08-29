@@ -178,15 +178,6 @@ class Tree(object):
         self._conndrawers = conndrawers
         self._colorizers = colorizers
 
-        print '*** LAYOUT'
-        print self._layout
-        print '*** NODE'
-        print self._nodedrawers
-        print '*** CONN'
-        print self._conndrawers
-        print '*** COLOR'
-        print self._colorizers
-
         # Precalculate the orientation of the nodes before assigning the
         # drawer objects to them. It is important to do this before the
         # assignment would occur, because the section level rules take
@@ -205,10 +196,10 @@ class Tree(object):
         self._layout.calclayout(self.root)
         self._colorize_nodes(self.root)
 
-        self._bbox = self._calcbbox()
-        self.shiftnodes(-self._bbox.x, -self._bbox.y)
+        self.bbox = self._calcbbox()
+        self.shiftnodes(-self.bbox.x, -self.bbox.y)
 
-        return self._bbox.w, self._bbox.h
+        return self.bbox.w, self.bbox.h
 
     def shiftnodes(self, dx, dy):
         self.root.shiftbranch(dx, dy)

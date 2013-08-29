@@ -23,7 +23,6 @@
   {root}
     @copy                   default
     levelDepthMax           0
-    nodeCx1Factor           0
 
 [color]
     style                   colorizer

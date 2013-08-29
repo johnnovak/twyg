@@ -1,42 +1,36 @@
 import os, sys
 
-from fig import draw, imgname
+from fig import *
 from twyg.cairowrapper import context as ctx
-
-
-OUTFORMAT = 'png'
-OUTFILE = imgname(OUTFORMAT)
-WIDTH = 190
-HEIGHT = 50
 
 
 config1 = r"""
 [layout]
-    style               layout
+    style                   layout
 
 [node]
-    fontName            "Open Sans"
-    style               line
-    strokeWidth         4
+    style                   line
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
+    strokeWidth             4
 
 [connection]
-    style               curve
+    style                   curve
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples2"
+    style                   colorizer
+    colorscheme             "mint-examples2"
 """
 
 
 data1 = { 'daffadowndilly': [] }
 
+init_surface(190, 50, scale=0.8)
 
-ctx.initsurface(1, 1, OUTFORMAT)
-ctx.initsurface(WIDTH, HEIGHT, OUTFORMAT, OUTFILE, scale=0.8)
-ctx.background(ctx.color(1))
-
-ctx.translate(0, 0)
-draw(config1, data1)
+ctx.translate(3, 3)
+tree = create_tree(config1, data1)
+tree.draw()
 
 ctx.writesurface()
 
