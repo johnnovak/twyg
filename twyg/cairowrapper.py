@@ -181,9 +181,11 @@ class Context(object):
             c.new_path()
             return path
 
-    # NOT IMPLEMENTED:
-    #   arrow(x, y, width, type=NORMAL, draw=True)
-    #   star(x, y, points=20, outer=100, inner=50, draw=True)
+    def arrow(x, y, width, type, draw=True):
+        raise NotImplementedError
+
+    def star(x, y, points=20, outer=100, inner=50, draw=True):
+        raise NotImplementedError
 
     ### PATH ##################################################################
 
@@ -199,8 +201,8 @@ class Context(object):
     def curveto(self, x1, y1, x2, y2, x3, y3):
         self._ctx.curve_to(x1, y1, x2, y2, x3, y3)
 
-    # NOT IMPLEMENTED:
-    #   findpath(list, curvature=1.0)
+    def findpath(list, curvature=1.0):
+        raise NotImplementedError
 
     def endpath(self, draw=True):
         if self._autoclosepath:
@@ -231,8 +233,8 @@ class Context(object):
 
     ### TRANSFORM #############################################################
 
-    # NOT IMPLEMENTED:
-    #   transform(mode=CENTER)
+    def transform(mode):
+        raise NotImplementedError
 
     def translate(self, x, y):
         self._ctx.translate(x, y)
@@ -247,8 +249,8 @@ class Context(object):
             y = 1.0
         self._ctx.scale(x, y)
 
-    # NOT IMPLEMENTED:
-    #   skew(x, y=None)
+    def skew(x, y=None):
+        raise NotImplementedError
 
     def push(self):
         self._ctx.save()
@@ -261,12 +263,9 @@ class Context(object):
 
     ### COLOR #################################################################
 
-    # NOT IMPLEMENTED -- always RGB
-
     def outputmode(self, mode):
-        pass
-
-    # NOT IMPLEMENTED -- always RGB
+        # Not implemented; always RGB
+        raise NotImplementedError
 
     def colormode(self, mode):
         pass
@@ -323,8 +322,8 @@ class Context(object):
         c.move_to(x, y)
         c.show_text(txt)
 
-    # NOT IMPLEMENTED:
-    #   textpath(txt, x, y, width=None, height=1000000)
+    def textpath(txt, x, y, width=None, height=1000000):
+        raise NotImplementedError
 
     def textwidth(self, txt):
         width, height = self.textmetrics(txt)
@@ -345,27 +344,39 @@ class Context(object):
             self._lineheight = height
         return self._lineheight
 
-    # NOT IMPLEMENTED:
-    #   align(self, align=LEFT):
-
+    def align(self, align):
+        raise NotImplementedError
 
     ### IMAGE #################################################################
 
-    # NOT IMPLEMENTED:
-    #   image(path, x, y, width=None, height=None, alpha=1.0, data=None)
-    #   imagesize(path)
+    def image(path, x, y, width=None, height=None, alpha=1.0, data=None):
+        raise NotImplementedError
 
+    def imagesize(path):
+        raise NotImplementedError
 
     ### UTILITY ###############################################################
 
-    # NOT IMPLEMENTED:
-    #   size(w, h):
-    #   var(name, type, default, min, max)
-    #   random(v1=None, v2=None)
-    #   choice(list)
-    #   grid(cols, rows, colsize=1, rowsize=1)
-    #   files(path)
-    #   autotext(xml)
+    def size(w, h):
+        raise NotImplementedError
+
+    def var(name, type, default, min, max):
+        raise NotImplementedError
+
+    def random(v1=None, v2=None):
+        raise NotImplementedError
+
+    def choice(list):
+        raise NotImplementedError
+
+    def grid(cols, rows, colsize=1, rowsize=1):
+        raise NotImplementedError
+
+    def files(path):
+        raise NotImplementedError
+
+    def autotext(xml):
+        raise NotImplementedError
 
 
     #=========================================================================#
