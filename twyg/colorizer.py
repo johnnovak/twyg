@@ -6,7 +6,9 @@ from twyg.config import (colors_path, Properties,
 
 class Colorizer(object):
 
-    def __init__(self, config, colorscheme_path=None):
+    def __init__(self, childproperties, defaults, config,
+                 colorscheme_path=None):
+
         properties = {
             'colorscheme':            (StringProperty,  {}),
             'fillColor':              (ColorProperty,   {}),
@@ -24,8 +26,8 @@ class Colorizer(object):
             'rootColor':       (ColorProperty, {}),
             'nodeColors':      (ArrayProperty, {'type': ColorProperty})
         }
-
-        self._props = Properties(properties, 'colorizer/cycle.twg', config)
+        properties.update(childproperties)
+        self._props = Properties(properties, defaults, config)
 
         E = self._eval_func()
         if not colorscheme_path:
@@ -33,10 +35,9 @@ class Colorizer(object):
 
         colorscheme = loadconfig(colors_path(colorscheme_path), flat=True)
 
-        self._colorscheme_props = Properties(
-                colorscheme_properties, 'colorizer/colorscheme.twg', colorscheme)
-
-        self._colorindex = 0
+        self._colorscheme_props = Properties(colorscheme_properties,
+                                             'colorizer/colorscheme.twg',
+                                             colorscheme)
 
     def _eval_func(self, node=None):
         if node:
@@ -98,35 +99,11 @@ class Colorizer(object):
 class CycleColorizer(Colorizer):
 
     def __init__(self, config, colorscheme_path=None):
-        properties = {
-            'colorscheme':            (StringProperty,  {}),
-            'fillColor':              (ColorProperty,   {}),
-            'strokeColor':            (ColorProperty,   {}),
-            'connectionColor':        (ColorProperty,   {}),
-            'fontColor':              (ColorProperty,   {}),
-            'fontColorAuto':          (BooleanProperty, {}),
-            'fontColorAutoDark':      (ColorProperty,   {}),
-            'fontColorAutoLight':     (ColorProperty,   {}),
-            'fontColorAutoThreshold': (NumberProperty,  {'min': 0.0})
-        }
+        properties = {}
 
-        colorscheme_properties = {
-            'backgroundColor': (ColorProperty, {}),
-            'rootColor':       (ColorProperty, {}),
-            'nodeColors':      (ArrayProperty, {'type': ColorProperty})
-        }
-
-        self._props = Properties(properties, 'colorizer/cycle.twg', config)
-
-        E = self._eval_func()
-        if not colorscheme_path:
-            colorscheme_path = E('colorscheme')
-
-        colorscheme = loadconfig(colors_path(colorscheme_path), flat=True)
-
-        self._colorscheme_props = Properties(
-                colorscheme_properties, 'colorizer/colorscheme.twg', colorscheme)
-
+        super(CycleColorizer, self).__init__(properties,
+                                             'colorizer/cycle.twg', config,
+                                             colorscheme_path=colorscheme_path)
         self._colorindex = 0
 
     def _set_basecolor(self, node):
@@ -151,8 +128,62 @@ class CycleColorizer(Colorizer):
                     self.colorize(node)
 
 
+class DepthColorizer(Colorizer):
+
+    def __init__(self, config, colorscheme_path=None):
+        properties = {}
+
+        super(DepthColorizer, self).__init__(properties,
+                                             'colorizer/depth.twg', config,
+                                             colorscheme_path=colorscheme_path)
+
+    def _set_basecolor(self, node):
+        """
+        Set the color of a node by cycling through all available colors.
+        Leaves have the same color as their parent.
+        """
+
+        C = self._colorscheme_props.eval
+
+        if node.isroot():
+            node.basecolor = C('rootColor')
+        else:
+            nodecolors = C('nodeColors')
+            node.basecolor = nodecolors[node.depth() % len(nodecolors)]
+
+
+class BranchColorizer(Colorizer):
+
+    def __init__(self, config, colorscheme_path=None):
+        properties = {}
+
+        super(BranchColorizer, self).__init__(properties,
+                                              'colorizer/branch.twg', config,
+                                              colorscheme_path=colorscheme_path)
+        self._colorindex = 0
+
+    def _set_basecolor(self, node):
+        """
+        Set the color of a node by cycling through all available colors.
+        Leaves have the same color as their parent.
+        """
+
+        C = self._colorscheme_props.eval
+
+        if node.isroot():
+            node.basecolor = C('rootColor')
+        elif node.depth() == 1:
+            nodecolors = C('nodeColors')
+            self._colorindex = (self._colorindex + 1) % len(nodecolors)
+            node.basecolor = nodecolors[self._colorindex]
+        else:
+            node.basecolor = node.parent.basecolor
+
+
 _colorizer_map = {
-    'cycle': CycleColorizer
+    'cycle': CycleColorizer,
+    'depth': DepthColorizer,
+    'branch': BranchColorizer
 }
 
 

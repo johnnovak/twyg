@@ -350,7 +350,8 @@ class RectNodeDrawer(NodeDrawer):
             'roundingStyle': (EnumProperty,   {'values': ('screen', 'arc')})
         }
 
-        super(RectNodeDrawer, self).__init__(properties, 'node/rect.twg', config)
+        super(RectNodeDrawer, self).__init__(properties, 'node/rect.twg',
+                                             config)
 
     def _calc_shape_path(self, node):
         E = self._eval_func(node)
@@ -554,7 +555,8 @@ class LineNodeDrawer(NodeDrawer):
             'maxTextWidth': (NumberProperty, {'min': 0.0})
         }
 
-        super(LineNodeDrawer, self).__init__(properties, 'node/line.twg', config)
+        super(LineNodeDrawer, self).__init__(properties, 'node/line.twg',
+                                             config)
 
     def precalc_node(self, node):
         """
@@ -595,7 +597,8 @@ class PolyNodeDrawer(NodeDrawer):
             'rotation': (NumberProperty, {})
         }
 
-        super(PolyNodeDrawer, self).__init__(properties, 'node/poly.twg', config)
+        super(PolyNodeDrawer, self).__init__(properties, 'node/poly.twg',
+                                             config)
 
         E = self._eval_func(None)
 
@@ -636,7 +639,8 @@ class OvalNodeDrawer(NodeDrawer):
             'maxWidth':    (NumberProperty, {'min': 0.0})
         }
 
-        super(OvalNodeDrawer, self).__init__(properties, 'node/oval.twg', config)
+        super(OvalNodeDrawer, self).__init__(properties, 'node/oval.twg',
+                                             config)
 
         E = self._eval_func(None)
 
