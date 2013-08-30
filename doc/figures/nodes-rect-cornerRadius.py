@@ -22,7 +22,7 @@ config = r"""
     style                   curve
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "mint-examples%s"
     fontColorAuto           no
     fontColor               #fff

@@ -11,20 +11,22 @@
     textPadY                fontSize * 0.4
     aspectRatio             2.5
     maxWidth                200
+    connectionAnchorPoint   center
 
   {root}
     @copy                   default
     levelDepthMax           0
     textPadY                fontSize * 4
-    connectionAnchorPoint   center
 
 [connection]
   {default}
     style                   curve
     nodeLineWidthStart      2
     nodeLineWidthEnd        2
-    nodeCx1Factor           -1
+    nodeCx1Factor           0.3
     nodeCx2Factor           0
+    nodeCy1Factor           1.2
+    nodeCy2Factor           0
 
   {root}
     @copy                   default
@@ -37,5 +39,5 @@
     nodeCy2Factor           0
 
 [color]
-  style                     colorizer
+  style                     cycle
 

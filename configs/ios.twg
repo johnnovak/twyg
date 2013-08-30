@@ -39,7 +39,7 @@
     nodeCy1Factor           1
 
 [color]
-    style                   colorizer
+    style                   cycle
     strokeColor             baseColor.darken(0.15)
     connectionColor         baseColor.darken(0.15)
 

@@ -39,7 +39,7 @@ config = r"""
     junctionSignColor       #fff
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "mint-examples%s"
 """
 

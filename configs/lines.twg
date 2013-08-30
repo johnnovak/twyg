@@ -31,6 +31,6 @@
     nodeLineWidthEnd        1.5
 
 [color]
-    style                   colorizer
+    style                   cycle
     fontColor               baseColor
 

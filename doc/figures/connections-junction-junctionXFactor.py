@@ -38,7 +38,7 @@ config = r"""
 
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "mint-examples"
     connectionColor         #ea3
 """

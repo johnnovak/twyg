@@ -77,4 +77,3 @@ def calc_bbox(trees):
         rect.expand(t.bbox)
     return rect
 
-

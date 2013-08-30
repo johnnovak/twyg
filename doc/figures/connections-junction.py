@@ -40,7 +40,7 @@ config1 = r"""
 
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "mint-examples"
 """
 
@@ -75,7 +75,7 @@ config2 = r"""
 
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "mint-examples2"
 """
 
@@ -111,7 +111,7 @@ config3 = r"""
     junctionXFactor         0.55
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "mint-examples3"
 """
 

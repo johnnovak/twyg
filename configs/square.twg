@@ -25,6 +25,6 @@
     levelDepthMax           0
 
 [color]
-    style                   colorizer
+    style                   cycle
     fontColor               baseColor
 

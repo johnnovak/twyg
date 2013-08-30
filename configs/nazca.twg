@@ -34,6 +34,6 @@
     junctionRadius          8
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "mint"
 

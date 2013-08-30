@@ -27,7 +27,7 @@
     junctionRadius          5
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "turquoise"
     fillColor               bgColor
 

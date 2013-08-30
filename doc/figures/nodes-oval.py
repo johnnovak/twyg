@@ -21,7 +21,7 @@ config1 = r"""
     style                   curve
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "mint-examples"
 """
 
@@ -43,7 +43,7 @@ config2 = r"""
     style                   curve
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "mint-examples3"
 """
 
@@ -65,7 +65,7 @@ config3 = r"""
     style                   curve
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "mint-examples3"
     fontColorAuto           no
     fontColor               #fff

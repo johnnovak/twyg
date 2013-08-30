@@ -37,7 +37,7 @@ config = r"""
     junctionXFactor         0.5
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "mint-examples%s"
 """
 

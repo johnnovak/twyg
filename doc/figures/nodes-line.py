@@ -19,7 +19,7 @@ config1 = r"""
     style                   curve
 
 [color]
-    style                   colorizer
+    style                   cycle
     colorscheme             "mint-examples2"
 """
 

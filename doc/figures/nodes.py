@@ -6,66 +6,72 @@ from twyg.cairowrapper import context as ctx
 
 config1 = r"""
 [layout]
-    style               layout
+    style                   layout
 
 [node]
-    fontName            "Open Sans"
-    style               poly
-    numSides            5
-    strokeWidth         0
-    rotation            18
-    textPadX            15
-    textPadY            15
+    style                   poly
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
+    numSides                5
+    strokeWidth             0
+    rotation                18
+    textPadX                15
+    textPadY                15
 
 [connection]
-    style               curve
+    style                   curve
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples2"
+    style                   cycle
+    colorscheme             "mint-examples2"
 """
 
 config2 = r"""
 [layout]
-    style               layout
+    style                   layout
 
 [node]
-    fontName            "Open Sans"
-    style               poly
-    numSides            6
-    strokeWidth         3
-    textPadX            15
-    textPadY            15
+    style                   poly
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
+    numSides                6
+    strokeWidth             3
+    textPadX                15
+    textPadY                15
 
 [connection]
-    style               curve
+    style                   curve
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples"
+    style                   cycle
+    colorscheme             "mint-examples"
 """
 
 config3 = r"""
 [layout]
-    style               layout
+    style                   layout
 
 [node]
-    fontName            "Open Sans"
-    style               poly
-    numSides            8
-    strokeWidth         6
-    textPadX            15
-    textPadY            15
+    style                   poly
+    fontName                $FONTNAME
+    fontSize                $FONTSIZE
+    textBaselineCorrection  $BASELINE_CORR
+    numSides                8
+    strokeWidth             6
+    textPadX                15
+    textPadY                15
 
 [connection]
-    style               curve
+    style                   curve
 
 [color]
-    style               colorizer
-    colorscheme         "mint-examples3"
-    fontColorAuto       no
-    fontColor           #fff
-    fillColor           baseColor.blend(#fff, .45)
+    style                   cycle
+    colorscheme             "mint-examples3"
+    fontColorAuto           no
+    fontColor               #fff
+    fillColor               baseColor.blend(#fff, .45)
 
 """
 
