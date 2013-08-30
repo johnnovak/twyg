@@ -239,6 +239,17 @@ Gradient fill properties
     Color at the bottom of the gradient.
 
 
+Other properties
+^^^^^^^^^^^^^^^^
+
+.. property:: connectionAnchorPoint
+
+    .. propparams:: Enum auto
+        :values: auto, center
+
+    TODO
+
+
 'box' style
 -----------
 
@@ -391,7 +402,17 @@ Properties
     shape similar to an old CRT television screen, *arc* draws a
     rectangle with rounded corners using quarter circle arc segments.
 
-    .. image:: figures/images/nodes-rect-roundingStyle.png
+    .. figure:: figures/images/nodes-rect-roundingStyle-a.png
+       :alt: screen
+
+       screen
+
+
+    .. figure:: figures/images/nodes-rect-roundingStyle-b.png
+       :alt: arc
+
+       arc
+
 
 .. property:: roundness
 
@@ -402,7 +423,23 @@ Properties
     *screen*. A value of *0.0* yields completely square corners and
     *1.0* fully rounded ones.
 
-    .. image:: figures/images/nodes-rect-roundness.png
+    .. figure:: figures/images/nodes-rect-roundness-a.png
+       :alt: roundness = 0
+
+       roundness = 0
+
+
+    .. figure:: figures/images/nodes-rect-roundness-b.png
+       :alt: roundness = 0.5
+
+       roundness = 0.5
+
+
+    .. figure:: figures/images/nodes-rect-roundness-c.png
+       :alt: roundness = 1.0
+
+       roundness = 1.0
+
 
 .. property:: cornerRadius
 
@@ -416,6 +453,20 @@ Properties
     itself to a neat trick to draw capsule-like node shapes by setting
     the corner radius to a very large value (last example).
 
-    .. image:: figures/images/nodes-rect-cornerRadius.png
+    .. figure:: figures/images/nodes-rect-cornerRadius-a.png
+       :alt: cornerRadius = 5
 
+       cornerRadius = 5
+
+
+    .. figure:: figures/images/nodes-rect-cornerRadius-b.png
+       :alt: cornerRadius = 10
+
+       cornerRadius = 10
+
+
+    .. figure:: figures/images/nodes-rect-cornerRadius-c.png
+       :alt: cornerRadius = 1000
+
+       cornerRadius = 1000
 

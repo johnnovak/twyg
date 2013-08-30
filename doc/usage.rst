@@ -38,7 +38,9 @@ Command line interface
 NodeBox1
 --------
 
-Nodebox usage::
+Nodebox usage:
+
+.. code-block:: python
 
     ximport('twyg')
 

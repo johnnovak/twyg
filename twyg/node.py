@@ -94,6 +94,11 @@ class NodeDrawer(object):
 
         node.text_has_background = True
 
+        y = node.bboxheight / 2
+        node._conn_point_left = Vector2(0, y)
+        node._conn_point_right = Vector2(node.bboxwidth, y)
+
+
     def connection_point(self, node, direction):
         E = self._eval_func(node)
 
@@ -101,15 +106,16 @@ class NodeDrawer(object):
 
         if anchor == 'auto':
             if direction == Direction.Left:
-                x = 0
+                p = node._conn_point_left
             else:
-                x = node.bboxwidth
+                p = node._conn_point_right
+
+            x, y = p.x, p.y
 
         elif anchor == 'center':
-            x = node.width / 2
-            y = node.height / 2
+            x = node.bboxwidth / 2
+            y = node.bboxheight / 2
 
-        y = node.bboxheight / 2
         return node.x + x, node.y + y
 
     def draw(self, node):
@@ -122,6 +128,8 @@ class NodeDrawer(object):
 
         path = self._calc_shape_path(node)
 
+        _ctx.push()
+        _ctx.translate(node.x, node.y)
         _ctx.fill(node.fillcolor)
         _ctx.stroke(node.strokecolor)
         _ctx.strokewidth(E('strokeWidth'))
@@ -143,6 +151,8 @@ class NodeDrawer(object):
 
         _ctx.fill(node.fontcolor)
         self._drawtext(node, node._textxoffs, node._textyoffs)
+
+        _ctx.pop()
 
     def _draw_gradient_shape(self, node, path, basecolor):
         E = self._eval_func(node)
@@ -208,9 +218,6 @@ class NodeDrawer(object):
                              else LEFT)
 
         # Draw text
-        tx = node.x + xoffs
-        ty = node.y + yoffs
-
         baseline_corr = E('textBaselineCorrection')
 
         _ctx.font(node.fontname, node.fontsize)
@@ -238,8 +245,8 @@ class NodeDrawer(object):
 
             for i, l in enumerate(node._textlines):
                 x, y, w, h = node._textrects[i].params()
-                x += tx
-                y += ty + baseline_offs + lineheight_offs + ystep
+                x += xoffs
+                y += yoffs + baseline_offs + lineheight_offs + ystep
 
                 if DEBUG:
                     _ctx.save()
@@ -272,8 +279,8 @@ class NodeDrawer(object):
         else:
             for i, l in enumerate(node._textlines):
                 x, y, w, h = node._textrects[i].params()
-                x += tx
-                y += ty + ystep
+                x += xoffs
+                y += yoffs + ystep
 
                 if DEBUG:
                     _ctx.save()
@@ -354,7 +361,7 @@ class RectNodeDrawer(NodeDrawer):
             r =  E('roundness')
             r = min(max(0, r / 2.), 1)
 
-            return _ctx.rect(node.x, node.y, node.width, node.height,
+            return _ctx.rect(0, 0, node.width, node.height,
                              roundness=r, draw=False)
 
         elif style == 'arc':
@@ -362,8 +369,7 @@ class RectNodeDrawer(NodeDrawer):
             r = min(r, node.height / 2.)
             r = min(r, node.width / 2.)
 
-            points = geom.rounded_rect(node.x, node.y,
-                                       node.width, node.height, r)
+            points = geom.rounded_rect(0, 0, node.width, node.height, r)
             return createpath(_ctx, points, close=False)
 
 
@@ -417,6 +423,10 @@ class BoxNodeDrawer(NodeDrawer):
         node.bboxwidth += node._boxdepth
         node.bboxheight += node._boxdepth
 
+        y = node.bboxheight / 2
+        node._conn_point_left = Vector2(0, y)
+        node._conn_point_right = Vector2(node.bboxwidth, y)
+
     def draw(self, node):
         """
         Draw the node at its (x,y) anchor point.
@@ -430,27 +440,30 @@ class BoxNodeDrawer(NodeDrawer):
 
         d = node._boxdepth
 
+        _ctx.push()
+        _ctx.translate(node.x, node.y)
+
         if drawstroke:
             # Set up clip path
-            cx1 = cx6 = node.x
-            cy2 = node.y
+            cx1 = cx6 = 0
+            cy2 = 0
             cx3 = cx4 = cx1 + node.width + d
             cy5 = cy2 + node.height + d
 
             if self._vert_dir == self._horiz_dir:
-                cy1 = node.y + d
-                cx2 = node.x + d
-                cy3 = node.y
+                cy1 = d
+                cx2 = d
+                cy3 = 0
                 cy4 = cy3 + node.height
-                cx5 = node.x + node.width
+                cx5 = node.width
                 cy6 = cy4 + d
 
             elif self._vert_dir != self._horiz_dir:
-                cy1 = node.y
-                cx2 = node.x + node.width
-                cy3 = node.y + d
+                cy1 = 0
+                cx2 = node.width
+                cy3 = d
                 cy4 = cy3 + node.height
-                cx5 = node.x + d
+                cx5 = d
                 cy6 = cy4 - d
 
             outline = [
@@ -475,23 +488,23 @@ class BoxNodeDrawer(NodeDrawer):
             _ctx.nostroke()
 
         if self._vert_dir == 1:
-            y1 = node.y + d
+            y1 = d
             y2 = y1 - d
             dv = -d
             oy = y1
         else:
-            y1 = node.y + node.height
+            y1 = node.height
             y2 = y1 + d
             dv = d
-            oy = node.y
+            oy = 0
 
         if self._horiz_dir == 1:
-            x1 = node.x + node.width
+            x1 = node.width
             x2 = x1 + d
             dh = d
-            ox = node.x
+            ox = 0
         else:
-            x1 = node.x + d
+            x1 = d
             x2 = x1 - d
             dh = -d
             ox = x1
@@ -522,14 +535,16 @@ class BoxNodeDrawer(NodeDrawer):
         col = E('vertSideColor')
         self._draw_gradient_shape(node, path, col)
 
-        tx = node._textxoffs - (node.x - ox)
-        ty = node._textyoffs - (node.y - oy)
+        tx = node._textxoffs + ox
+        ty = node._textyoffs + oy
 
         _ctx.fill(node.fontcolor)
         self._drawtext(node, tx, ty)
 
         if drawstroke:
             _ctx.endclip()
+
+        _ctx.pop()
 
 
 class LineNodeDrawer(NodeDrawer):
@@ -550,26 +565,26 @@ class LineNodeDrawer(NodeDrawer):
 
         node.text_has_background = False
 
+        y = node.height
+        node._conn_point_left = Vector2(0, y)
+        node._conn_point_right = Vector2(node.width, y)
+
     def draw(self, node):
         E = self._eval_func(node)
 
-        y = node.y + node.height
+        _ctx.push()
+        _ctx.translate(node.x, node.y)
+
+        y = node.height
 
         _ctx.stroke(node.strokecolor)
         _ctx.strokewidth(E('strokeWidth'))
-        _ctx.line(node.x, y, node.x + node.width, y)
+        _ctx.line(0, y, node.width, y)
 
         _ctx.fill(node.fontcolor)
         self._drawtext(node, node._textxoffs, node._textyoffs)
 
-        _ctx.nofill()
-        _ctx.stroke(1,0,0)
-        _ctx.strokewidth(1)
-
-    def connection_point(self, node, direction):
-        x = 0 if direction == Direction.Left else node.width
-        y = node.height
-        return node.x + x, node.y + y
+        _ctx.pop()
 
 
 class PolyNodeDrawer(NodeDrawer):
@@ -589,17 +604,28 @@ class PolyNodeDrawer(NodeDrawer):
         self._shapefunc_args = {'numSides': E('numSides'),
                                 'rotation': E('rotation')}
 
-    def _calc_shape_path(self, node):
+    def precalc_node(self, node):
+        super(PolyNodeDrawer, self).precalc_node(node)
+
         E = self._eval_func(node)
 
         r = node.width / 2
-        cx = node.x + r
-        cy = node.y + node.height / 2
+        cx = r
+        cy = node.height / 2
 
-        points = geom.calc_regular_polygon_points(cx, cy, r,
-                                                  E('numSides'),
-                                                  E('rotation'))
-        return createpath(_ctx, points)
+        node._shape_points = geom.calc_regular_polygon_points(
+                                   cx, cy, r, E('numSides'), E('rotation'))
+
+        # Slice with a single horizontal line vertically centered to the
+        # shape
+        connection_points = geom.slice_shape(node._shape_points, cy,
+                                             node.height, node.height)
+
+        node._conn_point_left = connection_points[0][0]
+        node._conn_point_right = connection_points[0][1]
+
+    def _calc_shape_path(self, node):
+        return createpath(_ctx, node._shape_points)
 
 
 class OvalNodeDrawer(NodeDrawer):
@@ -620,9 +646,10 @@ class OvalNodeDrawer(NodeDrawer):
                                 'maxWidth':    E('maxWidth')}
 
     def _calc_shape_path(self, node):
-        return _ctx.oval(node.x, node.y, node.width, node.height, draw=False)
+        return _ctx.oval(0, 0, node.width, node.height, draw=False)
 
 
+# TODO
 class CapsuleNodeDrawer(NodeDrawer):
 
     def __init__(self, config={}):

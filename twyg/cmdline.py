@@ -18,11 +18,12 @@ def main():
     usage = 'Usage: %prog [OPTIONS] DATAFILE OUTFILE'
     parser = OptionParser(usage=usage)
     parser.add_option('-c', '--config',
-                      dest='configfile', metavar='FILE', help='config file')
+                      dest='configfile', metavar='FILE',
+                      help='path to the configuration file to use')
 
     parser.add_option('-o', '--colorscheme',
-                      dest='colorschemefile', metavar='FILE',
-                      help='colorscheme file')
+                      dest='colorscheme', metavar='NAME',
+                      help='name of the colorscheme to use')
 
     parser.add_option('-d', '--dpi',
                       default='72.0', type='float',
@@ -32,20 +33,21 @@ def main():
     parser.add_option('-m', '--margin',
                       default='10%,5%',
                       help=('margins in TOP,RIGHT,BOTTOM,LEFT or VERT,HORIZ '
-                            'or MARGIN format; values can be absolute points '
+                            'or MARGIN format; values are absolute (points) '
                             'or percentages [default: %default]'))
 
-    parser.add_option('-w', '--write-config',
-                      dest='writeconfig', metavar='FILE',
-                      help='output configuration file')
+    # TODO
+#    parser.add_option('-w', '--write-config',
+#                      dest='writeconfig', metavar='FILE',
+#                      help='output configuration file')
 
     parser.add_option('-v', '--verbose',
                       default=False, action='store_true',
-                      help='display extended error messages')
+                      help='display stack trace on error')
 
     parser.add_option('-s', '--scale',
                       default='1.0', type='float',
-                      help=('scale factor (absolute value or percentage) '
+                      help=('scale factor (multiplier or percentage) '
                           '[default: %default]'))
 
     options, args = parser.parse_args()
@@ -97,7 +99,7 @@ def main():
         data = loadjson(datafile)
         config = loadconfig(options.configfile)
 
-        tree = buildtree(data, config, options.colorschemefile)
+        tree = buildtree(data, config, options.colorscheme)
 
         width, height = tree.calclayout()
 

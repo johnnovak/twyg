@@ -286,7 +286,8 @@ blockquote {
     padding-left: 0; }
   #content .figure {
     display: inline-block;
-    margin-right: 30px; }
+    margin-right: 30px;
+    text-align: center; }
     #content .figure img {
       margin-bottom: 10px; }
     #content .figure .caption {

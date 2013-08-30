@@ -9,6 +9,7 @@ config = r"""
     horizontalBalance       0
     rootPadX                80
     nodePadX                80
+    nodePadY                10
     radialMinNodes          1000
     sameWidthSiblings       no
     snapParentToChildren    yes

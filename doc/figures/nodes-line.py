@@ -26,7 +26,7 @@ config1 = r"""
 
 data1 = { 'daffadowndilly': [] }
 
-init_surface(190, 50, scale=0.8)
+init_surface(160, 50, scale=0.9)
 
 ctx.translate(3, 3)
 tree = create_tree(config1, data1)

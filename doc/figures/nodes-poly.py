@@ -83,15 +83,15 @@ tree1 = create_tree(config1, data1)
 tree2 = create_tree(config2, data2)
 tree3 = create_tree(config3, data3)
 
-init_surface(390, 110, scale=0.8)
+init_surface(340, 100, scale=0.9)
 
-ctx.translate(0, 15)
+ctx.translate(3, 15)
 tree1.draw()
 
-ctx.translate(136, -6)
+ctx.translate(120, -6)
 tree2.draw()
 
-ctx.translate(150, 3)
+ctx.translate(130, 3)
 tree3.draw()
 
 ctx.writesurface()

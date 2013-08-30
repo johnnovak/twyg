@@ -14,6 +14,8 @@ config1 = r"""
     textBaselineCorrection  $BASELINE_CORR
     strokeWidth             3
     roundingStyle           screen
+    textPadX                22
+    textPadY                8
 
 [connection]
     style                   curve
@@ -37,22 +39,24 @@ config2 = r"""
     strokeWidth             3
     roundingStyle           arc
     cornerRadius            25
+    textPadX                22
+    textPadY                8
 
 [connection]
     style                   curve
 
 [color]
     style                   colorizer
-    colorscheme             "mint-examples3"
+    colorscheme             "mint-examples"
     fontColorAuto           no
     fontColor               #fff
 """
 
 
-data1 = { 'screen': [] }
-data2 = { 'arc': [] }
+data1 = { 'toothsome': [] }
+data2 = { 'flittermice': [] }
 
-scale = 0.7
+scale = 0.8
 
 trees = [
     create_tree(config1, data1),

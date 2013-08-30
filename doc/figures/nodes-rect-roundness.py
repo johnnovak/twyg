@@ -15,13 +15,15 @@ config1 = r"""
     strokeWidth             3
     roundingStyle           screen
     roundness               0
+    textPadX                22
+    textPadY                8
 
 [connection]
     style                   curve
 
 [color]
     style                   colorizer
-    colorscheme             "mint-examples3"
+    colorscheme             "mint-examples"
     fontColorAuto           no
     fontColor               #fff
 """
@@ -38,13 +40,15 @@ config2 = r"""
     strokeWidth             3
     roundingStyle           screen
     roundness               0.5
+    textPadX                22
+    textPadY                8
 
 [connection]
     style                   curve
 
 [color]
     style                   colorizer
-    colorscheme             "mint-examples3"
+    colorscheme             "mint-examples2"
     fontColorAuto           no
     fontColor               #fff
 """
@@ -61,6 +65,8 @@ config3 = r"""
     strokeWidth             3
     roundingStyle           screen
     roundness               1.0
+    textPadX                22
+    textPadY                8
 
 [connection]
     style                   curve
@@ -73,11 +79,11 @@ config3 = r"""
 """
 
 
-data1 = { 'r = 0.0': [] }
-data2 = { 'r = 0.5': [] }
-data3 = { 'r = 1.0': [] }
+data1 = { 'penthouse': [] }
+data2 = { 'roundured': [] }
+data3 = { 'truncheon': [] }
 
-scale = 0.7
+scale = 0.8
 
 trees = [
     create_tree(config1, data1),

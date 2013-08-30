@@ -1,6 +1,7 @@
 import os, sys
 
 from fig import *
+from twyg.cairowrapper import context as ctx
 
 
 config1 = r"""
@@ -8,6 +9,7 @@ config1 = r"""
     style                   layout
     horizontalBalance       0
     rootPadX                110
+    nodePadY                10
     radialMinNodes          1000
     sameWidthSiblings       no
     snapParentToChildren    yes
@@ -47,6 +49,7 @@ config2 = r"""
     style                   layout
     horizontalBalance       0
     rootPadX                110
+    nodePadY                10
     radialMinNodes          1000
     sameWidthSiblings       no
     snapParentToChildren    yes
@@ -81,6 +84,7 @@ config3 = r"""
     style                   layout
     horizontalBalance       0
     rootPadX                110
+    nodePadY                10
     radialMinNodes          1000
     sameWidthSiblings       no
     snapParentToChildren    yes
@@ -115,13 +119,19 @@ data1 = { 'barrel': ['flank', 'stem', 'grot']}
 data2 = { 'barrel': ['flank', 'stem', 'grot']}
 data3 = { '7381': ['331', '102', '445', '983']}
 
-scale = 0.75
+init_surface(865, 165, scale=0.75)
 
-trees = [
-    create_tree(config1, data1),
-    create_tree(config2, data2),
-    create_tree(config3, data3)
-]
+tree1 = create_tree(config1, data1)
+tree2 = create_tree(config2, data2)
+tree3 = create_tree(config3, data3)
 
-write_all_trees(trees, scale)
+ctx.translate(3, 3)
+tree1.draw()
 
+ctx.translate(310, 0)
+tree2.draw()
+
+ctx.translate(310, 0)
+tree3.draw()
+
+ctx.writesurface()

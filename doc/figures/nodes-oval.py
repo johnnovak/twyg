@@ -14,8 +14,8 @@ config1 = r"""
     fontSize                $FONTSIZE
     textBaselineCorrection  $BASELINE_CORR
     strokeWidth             0
-    textPadX                10
-    textPadY                10
+    textPadX                14
+    textPadY                14
 
 [connection]
     style                   curve
@@ -81,15 +81,15 @@ tree1 = create_tree(config1, data1)
 tree2 = create_tree(config2, data2)
 tree3 = create_tree(config3, data3)
 
-init_surface(375, 80, scale=0.8)
+init_surface(320, 83, scale=0.9)
 
-ctx.translate(2, 2)
+ctx.translate(3, 3)
 tree1.draw()
 
-ctx.translate(136, 0)
+ctx.translate(120, 4)
 tree2.draw()
 
-ctx.translate(117, 9)
+ctx.translate(100, 9)
 tree3.draw()
 
 ctx.writesurface()
