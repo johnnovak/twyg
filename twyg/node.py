@@ -604,7 +604,7 @@ class PolyNodeDrawer(NodeDrawer):
 
         self._wraprect = False
         self._shapefunc = geom.calc_regular_polygon_intersections
-        self._shapefunc_args = {'numSides': E('numSides'),
+        self._shapefunc_args = {'numSides': int(round(E('numSides'))),
                                 'rotation': E('rotation')}
 
     def precalc_node(self, node):
@@ -617,7 +617,8 @@ class PolyNodeDrawer(NodeDrawer):
         cy = node.height / 2
 
         node._shape_points = geom.calc_regular_polygon_points(
-                                   cx, cy, r, E('numSides'), E('rotation'))
+                                   cx, cy, r, int(round(E('numSides'))),
+                                   E('rotation'))
 
         # Slice with a single horizontal line vertically centered to the
         # shape

@@ -776,7 +776,7 @@ def eval(self):
 
 
 symbol('(float)').eval    = lambda self: float(self.value)
-symbol('(integer)').eval  = lambda self: int(self.value)
+symbol('(integer)').eval  = lambda self: float(self.value)
 symbol('(percent)').eval  = lambda self: self.value
 symbol('(hexcolor)').eval = lambda self: parsecolor(None, self.value)
 symbol('(string)').eval   = lambda self: self.value.replace('\\"', '"')

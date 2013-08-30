@@ -41,5 +41,6 @@
 
 [color]
     style                   cycle
+    colorscheme             "turquoise"
     fillColor               bgColor
 

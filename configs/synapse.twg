@@ -18,6 +18,7 @@
 [color]
   {default}
     style                   cycle
+    colorscheme             "violet"
 
   {leaf}
     @copy                   default

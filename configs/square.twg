@@ -13,18 +13,13 @@
     textPadY                fontSize * 0.2
 
 [connection]
-  {default}
     style                   junction
     cornerStyle             square
     lineWidth               3
     junctionStyle           none
     junctionXFactor         0.7
 
-  {root}
-    @copy                   default
-    levelDepthMax           0
-
 [color]
-    style                   cycle
+    style                   branch
     fontColor               baseColor
-
+    colorscheme             "tentacle"

@@ -12,10 +12,10 @@ horizontalBalance       0.5
 verticalAlignFactor     0.5
 
 -- Horizontal padding around the root node
-rootPadX                160
+rootPadX                100
 
 -- Horizontal padding between the non-root nodes
-nodePadX                30.0
+nodePadX                40.0
 
 -- Vertical padding between the nodes
 nodePadY                8.0

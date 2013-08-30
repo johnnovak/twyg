@@ -1,7 +1,5 @@
 [layout]
     style                   layout
-    horizontalBalance       0.2
-    nodePadX                100
     branchPadY              40
 
 [node]
@@ -26,7 +24,7 @@
   {root}
     @copy                   default
     levelDepthMax           0
-    nodeLineWidthStart      60
+    nodeLineWidthStart      90
     nodeLineWidthEnd        2.5
     nodeCx1Factor           0
     nodeCx2Factor           0
@@ -35,4 +33,5 @@
 
 [color]
     style                   cycle
+    colorscheme             "terracotta"
 

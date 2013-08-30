@@ -9,7 +9,7 @@
     textAlign               justify
     textPadX                fontSize * 0.6
     textPadY                fontSize * 0.4
-    aspectRatio             2.5
+    aspectRatio             2.0
     maxWidth                200
     connectionAnchorPoint   center
 
@@ -39,5 +39,14 @@
     nodeCy2Factor           0
 
 [color]
-  style                     branch
+  {default}
+    style                   branch
+    colorscheme             "crayons"
+
+  {nonRoot}
+    @copy                   default
+    levelDepthMin           1
+    fillColor               baseColor.blend(bgColor, min(0.8, (depth - 1) * 0.3))
+    strokeColor             fillColor
+    connectionColor         fillColor
 

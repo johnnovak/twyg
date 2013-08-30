@@ -5,7 +5,7 @@
     @copy                   default
     levelDepthMax           0
     nodeLineWidthEnd        2
-    nodeLineWidthStart      90
+    nodeLineWidthStart      50
     nodeCx1Factor           0.3
     nodeCx2Factor           0.6
     nodeCy1Factor           0.6

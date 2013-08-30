@@ -36,6 +36,8 @@ class TestEvalExpr(unittest.TestCase):
         test14      -depth+-3
         test15      "some string !@#$%^&*()_+-=[]{},.<>/?;:'`~"
         test16      "\"string\" within a string... and \"yet another example\""
+        test17      1 / 2
+        test18      1 / 2.
         """
 
         tokens = tokenize(config)
@@ -127,6 +129,14 @@ class TestEvalExpr(unittest.TestCase):
         e = parse_expr(node['test16'])
         e = eval_expr(e, vars)
         self.assertEquals('"string" within a string... and "yet another example"', e)
+
+        e = parse_expr(node['test17'])
+        e = eval_expr(e, vars)
+        self.assertEquals(e, .5)
+
+        e = parse_expr(node['test18'])
+        e = eval_expr(e, vars)
+        self.assertEquals(e, .5)
 
 
     def test_invalidexpressions(self):

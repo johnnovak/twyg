@@ -1,6 +1,6 @@
 [layout]
     style                   layout
-    rootPadX                200
+    rootPadX                150
     nodePadX                70
     branchPadY              21
     radialMinNodes          1000
@@ -9,25 +9,25 @@
 
 [node]
     style                   box
-    boxDepth                20 * pow(0.7, depth)
+    boxDepth                15 * pow(0.7, depth)
     boxOrientation          bottomright
     textAlign               center
     textPadX                fontSize * .5
     strokeColor             baseColor
-    strokeWidth             1.5
-    horizSideColor          bgColor
-    vertSideColor           bgColor
+    strokeWidth             3
+    horizSideColor          baseColor
+    vertSideColor           baseColor
 
 [connection]
     style                   junction 
-    lineWidth               1.5
+    lineWidth               3
     cornerRadius            90
     cornerStyle             beveled
     junctionStyle           square
-    junctionRadius          5
+    junctionRadius          8
 
 [color]
     style                   cycle
-    colorscheme             "turquoise"
-    fillColor               bgColor
+    colorscheme             "cmyk"
+    fillColor               baseColor.blend(bgColor, 0.8)
 

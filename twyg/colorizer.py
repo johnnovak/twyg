@@ -40,9 +40,12 @@ class Colorizer(object):
                                              colorscheme)
 
     def _eval_func(self, node=None):
+        # TODO duplicate from node.py
         if node:
             vars = {
-                'bgColor': self.background_color(),
+                'depth':       node.depth(),
+                'numChildren': len(node.getchildren()),
+                'bgColor':     self.background_color()
             }
         else:
             vars = {}
