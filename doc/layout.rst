@@ -44,6 +44,13 @@ Layout
     .. propparams:: Number 8.0
 
 
+.. property:: branchPadY
+
+    Vertical padding between child node groups
+
+    .. propparams:: Number 25.0
+
+
 .. property:: sameWidthSiblings
 
     Controls whether all sibling nodes should have the same width.
@@ -65,13 +72,6 @@ Layout
     allowed.
 
     .. propparams:: Boolean no
-
-
-.. property:: branchPadY
-
-    Vertical padding between child node groups
-
-    .. propparams:: Number 25.0
 
 
 .. property:: radialMinNodes

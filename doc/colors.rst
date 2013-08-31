@@ -1,16 +1,8 @@
 Color
 =====
 
-.. property:: horizontalBalance
-
-    Controls the left-right distribution of the root node's children:
-
-      0.0 - all nodes to the right
-      0.5 - nodes evenly balanced to left and right
-      1.0 - all nodes to the left
-
-    .. propparams:: Number 0.5
-
+Common properties
+-----------------
 
 .. property:: colorscheme
 
@@ -77,4 +69,20 @@ Color
     this threshold.
 
     .. propparams:: Number 0.3
+
+
+'cycle' style
+-------------
+
+TODO
+
+'depth' style
+-------------
+
+TODO
+
+'branch' style
+--------------
+
+TODO
 
