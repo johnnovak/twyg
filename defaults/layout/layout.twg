@@ -20,6 +20,9 @@ nodePadX                40.0
 -- Vertical padding between the nodes
 nodePadY                8.0
 
+-- Vertical padding between child node groups
+branchPadY              25.0
+
 -- Controls whether all sibling nodes should have the same width.
 sameWidthSiblings       yes
 
@@ -29,9 +32,6 @@ snapParentToChildren    no
 
 -- Controls whether snapping halfway between two connection points is allowed.
 snapToHalfPositions     no
-
--- Vertical padding between child node groups
-branchPadY              25.0
 
 -- Minimum number of siblings for arc node placement
 radialMinNodes          3

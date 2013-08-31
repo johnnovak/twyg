@@ -46,7 +46,7 @@
   {nonRoot}
     @copy                   default
     levelDepthMin           1
-    fillColor               baseColor.blend(bgColor, min(0.8, (depth - 1) * 0.3))
+    fillColor               baseColor.blend(bgColor, min(0.8, (depth - 1) / 3))
     strokeColor             fillColor
     connectionColor         fillColor
 

@@ -691,6 +691,10 @@ def binaryop(t, op):
     try:
         a = t.first.eval()
         b = t.second.eval()
+        # Ensure that an int/int division always results in a float
+        # result
+        if type(b) == int:
+            b = float(b)
         return op(a, b)
     except TypeError, e:
         raise ConfigError("Cannot use operator '%s' on types '%s' and '%s'"
@@ -776,7 +780,7 @@ def eval(self):
 
 
 symbol('(float)').eval    = lambda self: float(self.value)
-symbol('(integer)').eval  = lambda self: float(self.value)
+symbol('(integer)').eval  = lambda self: int(self.value)
 symbol('(percent)').eval  = lambda self: self.value
 symbol('(hexcolor)').eval = lambda self: parsecolor(None, self.value)
 symbol('(string)').eval   = lambda self: self.value.replace('\\"', '"')
