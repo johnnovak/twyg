@@ -32,5 +32,8 @@
 
 [color]
     style                   cycle
-    colorscheme             "gray"
+    colorscheme             "mint-gray"
 
+    fontColorAutoDark       baseColor.darken(.2)
+    fontColorAutoLight      baseColor.blend(color.white, .85)
+    fontColorAutoThreshold  0.3

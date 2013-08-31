@@ -40,6 +40,7 @@
 
 [color]
     style                   cycle
+    colorscheme             "cobalt"
     strokeColor             baseColor.darken(0.15)
     connectionColor         baseColor.darken(0.15)
 

@@ -20,6 +20,7 @@
     junctionXFactor         0.7
 
 [color]
-    style                   branch
-    fontColor               baseColor
+    style                   cycle
     colorscheme             "tentacle"
+    fontColorAutoLight      color.white
+
