@@ -43,7 +43,7 @@ clean:
 	-rm -rf figures/images/*
 
 html:
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
@@ -156,6 +156,9 @@ doctest:
 figures:
 	(cd figures; ./generate-images.sh)
 
+update_css:
+	sass --force --update _themes/twyg/static/main.scss:_themes/twyg/static/main.css
+
 watch_css:
-	sass --watch _themes/twyg/static/main.scss:$(BUILDDIR)/html/_static/main.css
+	sass --force --watch _themes/twyg/static/main.scss:$(BUILDDIR)/html/_static/main.css
 
