@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content=".">
+
+    <title>Color &mdash; twyg 0.1 documentation</title>
+
+    <link rel="stylesheet" href="_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+
+    <script src="_static/jquery.sticky.js"></script>
+    <script>
+      $(document).ready(function(){
+          $("#docnav").sticky({topSpacing:0});
+      });
+    </script>
+    <link rel="top" title="twyg 0.1 documentation" href="index.html" />
+    <link rel="up" title="Properties reference" href="reference.html" />
+    <link rel="next" title="Known issues" href="issues.html" />
+    <link rel="prev" title="Connection" href="connections.html" />
+  </head>
+
+  <body>
+    <div id="header">
+      <a id="logo" href="/">
+        <img src="_static/twyg-logo.png" alt="twyg - python tree visualisation" />
+      </a>
+
+      
+      <ul id="mainmenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="install.html">Get It</a></li>
+        <li class="sel"><a href="contents.html">Docs</a></li>
+        <li><a href="examples.html">Examples</a></li>
+      </ul>
+    </div>
+
+    <div id="content">
+      
+      <div id="docnav">
+        <ul>
+          <li><a href="contents.html">Docs</a></li>
+          <li><a href="reference.html" accesskey="U">Properties reference</a></li>
+          <li><a href="#">Color</a></li>
+        </ul>
+        <a class="index" href="genindex.html">INDEX</a>
+        <a class="search" href="search.html">SEARCH</a>
+      </div>
+
+      <div id="submenu">
+        <div class="wrapper">
+          <h3><a href="contents.html">Table of contents</a></h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="reference.html">Properties reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="layout.html">Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html">Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connections.html">Connection</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Color</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-properties">Common properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cycle-style">&#8216;cycle&#8217; style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#depth-style">&#8216;depth&#8217; style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#branch-style">&#8216;branch&#8217; style</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="issues.html">Known issues</a></li>
+</ul>
+
+        </div>
+      </div>
+      
+
+      
+  <div class="section" id="color">
+<h1>Color<a class="headerlink" href="#color" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="common-properties">
+<h2>Common properties<a class="headerlink" href="#common-properties" title="Permalink to this headline">¶</a></h2>
+<dl class="property">
+<dt id="property-colorscheme">
+<tt class="descname">colorscheme</tt><a class="headerlink" href="#property-colorscheme" title="Permalink to this definition">¶</a></dt>
+<dd><p>Colorscheme to use.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>String</dd>
+<dt>Default</dt>
+<dd>&#8220;mint&#8221;</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-fillColor">
+<tt class="descname">fillColor</tt><a class="headerlink" href="#property-fillColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fill color of the node shape.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>baseColor</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-strokeColor">
+<tt class="descname">strokeColor</tt><a class="headerlink" href="#property-strokeColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stroke color of the node shape</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>baseColor</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-connectionColor">
+<tt class="descname">connectionColor</tt><a class="headerlink" href="#property-connectionColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Color of the connection that connects the nodes</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>baseColor</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-fontColor">
+<tt class="descname">fontColor</tt><a class="headerlink" href="#property-fontColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Color of the text label that appears inside the node</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>bgColor</dd>
+</dl>
+</dd></dl>
+
+<div class="section" id="automatic-font-coloring">
+<h3>Automatic font coloring<a class="headerlink" href="#automatic-font-coloring" title="Permalink to this headline">¶</a></h3>
+<dl class="property">
+<dt id="property-fontColorAuto">
+<tt class="descname">fontColorAuto</tt><a class="headerlink" href="#property-fontColorAuto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Controls whether the color of the text label should be determined
+automatically. If set to yes, the color is automatically determined,
+if set to no, the fontColor property is used.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Boolean</dd>
+<dt>Default</dt>
+<dd>yes</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-fontColorAutoDark">
+<tt class="descname">fontColorAutoDark</tt><a class="headerlink" href="#property-fontColorAutoDark" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dark variant of the automatic text label color</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>baseColor.darken(.35)</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-fontColorAutoLight">
+<tt class="descname">fontColorAutoLight</tt><a class="headerlink" href="#property-fontColorAutoLight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Light variant of the automatic text label color</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Color</dd>
+<dt>Default</dt>
+<dd>baseColor.blend(color.white, .8)</dd>
+</dl>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-fontColorAutoThreshold">
+<tt class="descname">fontColorAutoThreshold</tt><a class="headerlink" href="#property-fontColorAutoThreshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimum brightness difference between the color of the text label
+and its background. The text label color variant is choosen based on
+this threshold.</p>
+<dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>0.3</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="cycle-style">
+<h2>&#8216;cycle&#8217; style<a class="headerlink" href="#cycle-style" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</div>
+<div class="section" id="depth-style">
+<h2>&#8216;depth&#8217; style<a class="headerlink" href="#depth-style" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</div>
+<div class="section" id="branch-style">
+<h2>&#8216;branch&#8217; style<a class="headerlink" href="#branch-style" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</div>
+</div>
+
+
+  </body>
+</html>

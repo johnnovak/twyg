@@ -1,0 +1,694 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content=".">
+
+    <title>Configuration &mdash; twyg 0.1 documentation</title>
+
+    <link rel="stylesheet" href="_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+
+    <script src="_static/jquery.sticky.js"></script>
+    <script>
+      $(document).ready(function(){
+          $("#docnav").sticky({topSpacing:0});
+      });
+    </script>
+    <link rel="top" title="twyg 0.1 documentation" href="index.html" />
+    <link rel="next" title="Properties reference" href="reference.html" />
+    <link rel="prev" title="Usage" href="usage.html" />
+  </head>
+
+  <body>
+    <div id="header">
+      <a id="logo" href="/">
+        <img src="_static/twyg-logo.png" alt="twyg - python tree visualisation" />
+      </a>
+
+      
+      <ul id="mainmenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="install.html">Get It</a></li>
+        <li class="sel"><a href="contents.html">Docs</a></li>
+        <li><a href="examples.html">Examples</a></li>
+      </ul>
+    </div>
+
+    <div id="content">
+      
+      <div id="docnav">
+        <ul>
+          <li><a href="contents.html">Docs</a></li>
+          <li><a href="#">Configuration</a></li>
+        </ul>
+        <a class="index" href="genindex.html">INDEX</a>
+        <a class="search" href="search.html">SEARCH</a>
+      </div>
+
+      <div id="submenu">
+        <div class="wrapper">
+          <h3><a href="contents.html">Table of contents</a></h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sections">Sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#levels">Levels</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#level-selectors">Level selectors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#directives">Directives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#property-value-types">Property value types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mathematical-functions">Mathematical functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#colors-definitions">Colors definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#color-functions">Color functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">Properties reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issues.html">Known issues</a></li>
+</ul>
+
+        </div>
+      </div>
+      
+
+      
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>The visual appearance of the tree  is described in configuration files. This
+includes the shape, color and positioning of the nodes and connections, the font
+used to draw the text inside the nodes and more.</p>
+<p>Configuration files are plain text files with a <tt class="docutils literal"><span class="pre">.twg</span></tt> extension.  They do
+not contain any tree data, but only instructions on <cite>how</cite> to draw the trees.
+These instructions can then be applied to arbitrary tree data files.</p>
+<p>Configurations have the following structure:</p>
+<ul class="simple">
+<li>Four mandatory top-level <a class="reference internal" href="#sections"><em>section definitions</em></a> (<em>layout</em>,
+<em>nodes</em>, <em>connection</em> and <em>colors</em>).</li>
+<li>Each section definition containing either:<ul>
+<li>a list of <a class="reference internal" href="#properties"><em>property definitions</em></a></li>
+<li><a class="reference internal" href="#directives"><em>directives</em></a> that trigger special processing</li>
+<li>one or more <a class="reference internal" href="#levels"><em>level definitions</em></a> containing lists of property
+definitions or directives.</li>
+</ul>
+</li>
+</ul>
+<p>All names in a configuration are case sensitive. Extra blank lines and
+whitespace characters are not significant, although it&#8217;s a good idea to use
+some form of indentation and to separate sections with blank lines. Line
+comments can be included by using the <tt class="docutils literal"><span class="pre">--</span></tt> marker (two dash characters).</p>
+<p>The following is an example of a complete configuration file:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="kt">[layout]</span>                                     <span class="c">-- layout section start marker</span>
+    <span class="na">style</span>                 <span class="na">layout</span>             <span class="c">-- layout style</span>
+    <span class="na">rootPadX</span>              <span class="mi">70</span>                 <span class="c">-- property definition; constant</span>
+
+<span class="kt">[node]</span>                                       <span class="c">-- node section start marker</span>
+    <span class="na">style</span>                 <span class="na">rect</span>               <span class="c">-- node style</span>
+    <span class="na">textPadY</span>              <span class="na">fontSize</span> <span class="o">*</span> <span class="mf">0.7</span>     <span class="c">-- property definition; expression</span>
+
+<span class="kt">[connection]</span>                                 <span class="c">-- connection section start marker</span>
+  <span class="nl">{default}</span>                                  <span class="c">-- &#39;default&#39; level start marker</span>
+    <span class="na">style</span>                 <span class="na">curve</span>              <span class="c">-- connection style</span>
+    <span class="na">nodeLineWidthStart</span>    <span class="mf">1.5</span>
+    <span class="na">nodeLineWidthEnd</span>      <span class="mf">1.5</span>
+
+  <span class="nl">{root}</span>                                     <span class="c">-- &#39;root&#39; level start marker</span>
+    <span class="kp">@copy</span>                 <span class="na">default</span>            <span class="c">-- copy directive</span>
+    <span class="na">levelDepthMax</span>         <span class="mi">0</span>                  <span class="c">-- level selector</span>
+    <span class="na">nodeLineWidthEnd</span>      <span class="mf">3.5</span>                <span class="c">-- override nodeLineWidthEnd</span>
+
+<span class="kt">[color]</span>                                      <span class="c">-- color section start marker</span>
+    <span class="kp">@include</span>              <span class="s2">&quot;mycolor.twg&quot;</span>      <span class="c">-- include directive</span>
+</pre></div>
+</div>
+<div class="section" id="sections">
+<span id="id1"></span><h2>Sections<a class="headerlink" href="#sections" title="Permalink to this headline">¶</a></h2>
+<p>Sections group sets of property definitions together that control one
+particular visual aspect of a tree (e.g. how the nodes are drawn).
+There are four section types in total, all of which must appear exactly once in
+a configuration in any order. These are the following:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">layout</span></tt></dt>
+<dd>Controls the positioning of the nodes.</dd>
+<dt><tt class="docutils literal"><span class="pre">node</span></tt></dt>
+<dd>Controls how the individual nodes are drawn.</dd>
+<dt><tt class="docutils literal"><span class="pre">connection</span></tt></dt>
+<dd>Controls how the shapes connecting the nodes are drawn.</dd>
+<dt><tt class="docutils literal"><span class="pre">color</span></tt></dt>
+<dd>Defines the colors used for all drawing operations.</dd>
+</dl>
+</div></blockquote>
+<p>The start of the sections are denoted by <em>section start markers</em>, which are
+written as the name of the section in square brackets (e.g. <tt class="docutils literal"><span class="pre">[node]</span></tt>).
+Section start markers must be in a separate line.  Everything that appears
+below a section start marker belongs to the section it denotes, until another
+section start marker is encountered or the end of file is reached. For
+example:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="kt">[layout]</span>                                     <span class="c">-- [layout] starts</span>
+    <span class="na">style</span>                 <span class="na">layout</span>             <span class="c">--   belongs to the layout section</span>
+    <span class="na">rootPadX</span>              <span class="mi">70</span>                 <span class="c">--   belongs to the layout section</span>
+
+<span class="kt">[node]</span>                                       <span class="c">-- [layout] ends, [node] starts</span>
+    <span class="na">style</span>                 <span class="na">rect</span>               <span class="c">--   belongs to the node section</span>
+    <span class="na">textPadY</span>              <span class="na">fontSize</span> <span class="o">*</span> <span class="mf">0.7</span>     <span class="c">--   belongs to the node section</span>
+                                             <span class="c">-- end of file, [node] ends</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="levels">
+<span id="id2"></span><h2>Levels<a class="headerlink" href="#levels" title="Permalink to this headline">¶</a></h2>
+<p>By default, property definitions within a section apply to all elements
+the section controls. For example, the following configuration snippet results
+in all nodes being drawn as rectangles and the node text typeset with a
+14-point font:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="kt">[node]</span>
+    <span class="na">style</span>                 <span class="na">rect</span>
+    <span class="na">fontSize</span>              <span class="mi">14</span>
+</pre></div>
+</div>
+<p>Many times, however, it is desirable to style certain groups of elements
+differently. For example, one might want to distribute the nodes into three
+groups, root node, leaf nodes and remaining nodes, and apply three distinct
+visual styles to these groups. Or the grouping could be based on the depth a
+particular node can be found at in the tree, so all nodes at depth 1 would be
+drawn in a certain style, nodes at depth 2 in another style, and so forth.</p>
+<p>By using level definitions within a section definition, it is possible to
+refine the visual appearance of the tree by applying properties to certain
+groups of elements only. Levels can appear in the <em>node</em>, <em>connection</em> and
+<em>color</em> sections with the following syntax:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="kt">[section]</span>
+    <span class="nl">{levelname}</span>
+       <span class="na">level</span> <span class="na">selectors</span>
+       <span class="o">...</span>
+       <span class="na">property</span> <span class="na">definitions</span>
+       <span class="o">...</span>
+</pre></div>
+</div>
+<p>As seen above, a level definitions consists of three parts:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the name of the level in curly brackets (e.g. <tt class="docutils literal"><span class="pre">{root}</span></tt>)</li>
+<li>zero or more <a class="reference internal" href="#level-selectors"><em>level selectors</em></a></li>
+<li>a list of <a class="reference internal" href="#properties"><em>property definitions</em></a>.</li>
+</ul>
+</div></blockquote>
+<p>In the example below, the root node is drawn as an octagonal polygon, the leaf
+nodes as ovals, and the rest of the nodes as rectangles:</p>
+<img alt="_images/levels-example.png" class="align-center" src="_images/levels-example.png" />
+<p>This configuration snippet illustrates the use of level definitions to achieve
+the above results (non-relevant properties are omitted):</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="kt">[node]</span>
+  <span class="nl">{default}</span>                                 <span class="c">-- level start marker</span>
+    <span class="na">style</span>                   <span class="na">rect</span>
+
+  <span class="nl">{leaf}</span>                                    <span class="c">-- level start marker</span>
+    <span class="na">levelNumChildrenMax</span>     <span class="mi">0</span>               <span class="c">-- level selector</span>
+    <span class="na">style</span>                   <span class="na">oval</span>
+
+  <span class="nl">{root}</span>                                    <span class="c">-- level start marker</span>
+    <span class="na">levelDepthMax</span>           <span class="mi">0</span>               <span class="c">-- level selector</span>
+    <span class="na">style</span>                   <span class="na">poly</span>
+    <span class="na">numSides</span>                <span class="mi">8</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The order in which the level definitions appear are important &#8212;
+generic level definitions should always precede more specific ones. For
+instance, if the order of the levels was <em>root</em>, <em>leaf</em> and
+<em>default</em>, all nodes would have been drawn using the <em>default</em> style.</p>
+</div>
+<div class="section" id="level-selectors">
+<span id="id3"></span><h3>Level selectors<a class="headerlink" href="#level-selectors" title="Permalink to this headline">¶</a></h3>
+<p>Level selectors provide a way to control which group of elements a particular
+level definition applies to. Level selectors can appear in level definitions
+only. They can be specified using the same name-value pair syntax as property
+definitions.</p>
+<p>A level definition applies to an element if <em>all</em> level selectors specified
+within the level definition select a given element. In other words, there is an
+<em>and</em> relation between the level selectors specified within a level
+definition. Note that because of the <tt class="docutils literal"><span class="pre">and</span></tt> relation, the following level
+definition will never select any nodes:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="nl">{fail}</span>
+  <span class="na">levelNumChildrenMin</span>   <span class="mi">1</span>
+  <span class="na">levelNumChildrenMax</span>   <span class="mi">0</span>
+</pre></div>
+</div>
+<p>Multiple level definitions are allowed to appear in the same section. Level
+definitions within a section are evaluated in the order they appear in. Level
+definitions are not cascaded if more than one definition selects the same
+element &#8212; only the <cite>last</cite> level definitions that selects a particular element
+will apply.</p>
+<p>The following level selectors can be specified in level definitions:</p>
+<dl class="property">
+<dt id="property-levelDepthMin">
+<tt class="descname">levelDepthMin</tt><a class="headerlink" href="#property-levelDepthMin" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Values</dt>
+<dd>&gt;0</dd>
+<dt>Default</dt>
+<dd>0</dd>
+</dl>
+<p>Minimum depth of the node in the tree to be selected.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-levelDepthMax">
+<tt class="descname">levelDepthMax</tt><a class="headerlink" href="#property-levelDepthMax" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Values</dt>
+<dd>&gt;0</dd>
+<dt>Default</dt>
+<dd>999999999</dd>
+</dl>
+<p>Maximum depth of the node in the tree to be selected.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-levelNumChildrenMin">
+<tt class="descname">levelNumChildrenMin</tt><a class="headerlink" href="#property-levelNumChildrenMin" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Values</dt>
+<dd>&gt;0</dd>
+<dt>Default</dt>
+<dd>0</dd>
+</dl>
+<p>Minimum number of child nodes the node must have to be selected.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-levelNumChildrenMax">
+<tt class="descname">levelNumChildrenMax</tt><a class="headerlink" href="#property-levelNumChildrenMax" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Values</dt>
+<dd>&gt;0</dd>
+<dt>Default</dt>
+<dd>999999999</dd>
+</dl>
+<p>Maximum number of child nodes the node can have to be selected.</p>
+</dd></dl>
+
+<p>Below are some common level selector examples:</p>
+<p><em>Select root node only</em></p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="nl">{root}</span>
+  <span class="na">levelDepthMax</span>         <span class="mi">0</span>
+</pre></div>
+</div>
+<p><em>Select all leaf nodes</em></p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="nl">{leaf}</span>
+  <span class="na">levelNumChildrenMax</span>   <span class="mi">0</span>
+</pre></div>
+</div>
+<p><em>Select leaf nodes at depth 2 or greater</em></p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="nl">{leaf}</span>
+  <span class="na">levelDepthMin</span>         <span class="mi">2</span>
+  <span class="na">levelNumChildrenMax</span>   <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="directives">
+<span id="id4"></span><h2>Directives<a class="headerlink" href="#directives" title="Permalink to this headline">¶</a></h2>
+<p>Directives are special commands that can appear anywhere within section and
+level definitions, just like regular properties. Directive names are always
+prefixed by a <em>&#64;</em> character and usually have at least one parameter. For
+example:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="kp">@copy</span>                   <span class="na">normal</span>
+</pre></div>
+</div>
+<p>Currently, the following two directives are supported:</p>
+<dl class="directive">
+<dt id="directive-&#64;copy&lt;levelname&gt;">
+<tt class="descname">&#64;copy &lt;levelname&gt;</tt><a class="headerlink" href="#directive-@copy<levelname>" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy all property definitions from another level into the current one
+within the same section. The <tt class="docutils literal"><span class="pre">&lt;levelname&gt;</span></tt> parameter has to be the name
+of the level without the curly brackets.</p>
+<p>The directive is only allowed to appear in level definitions. The level
+<em>&lt;levelname&gt;</em> does not have to be defined in the same file where the
+<em>&#64;copy</em> directive appears in; it can also come from another configuration
+file that was included previously (see <tt class="xref std std-directive docutils literal"><span class="pre">&#64;include</span></tt> ).</p>
+<p>The purpose of the <em>&#64;copy</em> directive is to avoid duplication of
+configuration content where mostly similar, but slightly different sets of
+property definitions need to be applied to two (or more) distinct sets of
+elements. For example, one could define a default style that applies to all
+nodes, then apply a very similar style to the leaf nodes with only a few
+property definitions changed. In this sense, the <em>&#64;copy</em> directive achieves
+something similar to the concept of inheritance in object-oriented
+programming languages with the ability to override certain property
+definitoins.</p>
+<p>Note that as the contents of the configuration files are evaluated line by
+line from top to bottom, it is possible to override the copied properties
+by redefining them after a <em>&#64;copy</em> directive, as shown in the example
+below.</p>
+<p>In this example, all nodes are drawn as rounded rectangles, except for the
+root node, which is drawn as a regular rectangle:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="kt">[node]</span>
+  <span class="nl">{normal}</span>
+    <span class="na">style</span>                   <span class="na">rect</span>
+    <span class="na">roundness</span>               <span class="mf">1.0</span>
+
+  <span class="nl">{root}</span>
+    <span class="kp">@copy</span>                   <span class="na">normal</span>
+    <span class="na">levelDepthMax</span>           <span class="mi">0</span>
+    <span class="na">roundness</span>               <span class="mf">0.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="directive">
+<dt id="directive-&#64;include&lt;configname&gt;">
+<tt class="descname">&#64;include &lt;configname&gt;</tt><a class="headerlink" href="#directive-@include<configname>" title="Permalink to this definition">¶</a></dt>
+<dd><p>Include the contents of another configuration file into the current
+configuration. The <tt class="docutils literal"><span class="pre">&lt;configname&gt;</span></tt> argument is the full path to the
+configuration file to be included as a double-quoted string.</p>
+<p>The most natural way to think about this is that when the parser encounters
+a line containing an <em>&#64;include</em> directive, it simply replaces that line
+with the contents of the included configuration file and continues the
+parsing from there. There is no nesting depth limit, but two configuration
+cannot include each other. If such circular references are encountered, an
+error is raised and the execution stops.</p>
+<p>The search order for included configuration files is the following:</p>
+<ul class="simple">
+<li>The current directory (the directory the main Python script was
+started in)</li>
+<li><tt class="docutils literal"><span class="pre">$TWYG_USER/configs</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">$TWYG_HOME/configs</span></tt></li>
+</ul>
+<p>If the configuration file cannot be found in either of these locations, an
+error is raised and the execution stops.</p>
+<p>For example:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="kt">[connection]</span>
+    <span class="kp">@include</span>                <span class="s2">&quot;connections/style1.twg&quot;</span>
+    <span class="na">cornerRadius</span>            <span class="mi">40</span>
+    <span class="na">junctionRadius</span>          <span class="mi">17</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="properties">
+<span id="id5"></span><h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<p>Property definitions are name-value pairs separated by at least one whitespace
+character. Each configuration section and style has a distinct set of
+predefined properties. For a detailed description of all available properties
+see the <a class="reference internal" href="reference.html#properties-reference"><em>Properties reference</em></a>.</p>
+<p>Property values can be either simple literal values:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="na">rootPadX</span>        <span class="mi">70</span>
+<span class="na">fontName</span>        <span class="s2">&quot;Gill Sans&quot;</span>
+<span class="na">nodeColor</span>       <span class="mh">#f80</span>
+</pre></div>
+</div>
+<p>or expressions of arbitrary complexity:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="na">fontSize</span>        <span class="na">max</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="na">round</span><span class="o">(</span><span class="mi">21</span> <span class="o">/</span> <span class="na">sqrt</span><span class="o">(</span><span class="na">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)))</span>
+</pre></div>
+</div>
+<p>Expressions can contain mathematical operators (<em>+</em>, <em>-</em>, <em>*</em>, <em>/</em>, <em>^</em>) and
+parentheses. The <em>^</em> operator is the power operator (e.g. <tt class="docutils literal"><span class="pre">2^3</span></tt>). Standard
+mathematical operator precedence rules apply.</p>
+<p>The important thing to remember is that the property value starts at the first
+non-whitespace character after the property name and it cannot span multiple
+lines.</p>
+<p>There is an exception to this rule; array property values are allowed to span
+multiple lines:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="na">nodeColors</span>      <span class="o">[</span><span class="mh">#af8700</span><span class="o">,</span> <span class="mh">#d75f00</span><span class="o">,</span> <span class="mh">#d70000</span><span class="o">,</span> <span class="mh">#af005f</span><span class="o">,</span>
+                 <span class="mh">#5f5faf</span><span class="o">,</span> <span class="mh">#0087ff</span><span class="o">,</span> <span class="mh">#00afaf</span><span class="o">,</span> <span class="mh">#5f8700</span><span class="o">]</span>
+</pre></div>
+</div>
+<div class="section" id="property-value-types">
+<h3>Property value types<a class="headerlink" href="#property-value-types" title="Permalink to this headline">¶</a></h3>
+<p>Every property value has a type associated with it. These are the following:</p>
+<dl class="docutils">
+<dt><em>Number</em></dt>
+<dd><p class="first">A numeric value:</p>
+<div class="last highlight-twyg"><div class="highlight"><pre><span class="na">level</span>     <span class="mi">5</span>
+<span class="na">width</span>     <span class="mf">103.2</span>
+<span class="na">stuff</span>     <span class="mf">-3.1516</span>
+</pre></div>
+</div>
+</dd>
+<dt><em>String</em></dt>
+<dd><p class="first">A string in double-quotes. Double-quote characters within a string have to be escaped with a <em>\</em> (backslash) character:</p>
+<div class="last highlight-twyg"><div class="highlight"><pre><span class="na">fontName</span>  <span class="s2">&quot;Source Sans Pro&quot;</span>
+<span class="na">name</span>      <span class="s2">&quot;double-quotes (\&quot;\&quot;) within a string&quot;</span>
+</pre></div>
+</div>
+</dd>
+<dt><em>Boolean</em></dt>
+<dd><p class="first">Used for turning a specific feature on or off. Valid values are:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">on</span></tt>, <tt class="docutils literal"><span class="pre">yes</span></tt>, <tt class="docutils literal"><span class="pre">true</span></tt>, numbers greater than or equal to <em>1</em></li>
+<li><tt class="docutils literal"><span class="pre">off</span></tt>, <tt class="docutils literal"><span class="pre">no</span></tt>, <tt class="docutils literal"><span class="pre">false</span></tt>, numbers less than or equal to <em>0</em></li>
+</ul>
+<p>The following expressions all evaluate to <em>true</em>:</p>
+<div class="last highlight-twyg"><div class="highlight"><pre><span class="na">sameWidthSiblings</span>       <span class="mi">1000</span>
+<span class="na">sameWidthSiblings</span>       <span class="mi">10</span> <span class="o">/</span> <span class="mi">5</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span>            <span class="c">-- evaluates to 3 =&gt; true</span>
+<span class="na">sameWidthSiblings</span>       <span class="na">false</span> <span class="o">+</span> <span class="na">no</span> <span class="o">+</span> <span class="na">off</span> <span class="o">+</span> <span class="na">yes</span>    <span class="c">-- evaluates to 1 =&gt; true</span>
+</pre></div>
+</div>
+</dd>
+<dt><em>Color</em></dt>
+<dd>See <a class="reference internal" href="#colors"><em>Colors definitions</em></a> for more information.</dd>
+<dt><em>Enum</em></dt>
+<dd><p class="first">Property specific list of predefined values. See the
+<a class="reference internal" href="reference.html#properties-reference"><em>Properties reference</em></a> for details.</p>
+<p>The predefined values can be referred to by their ordinal number as well.
+The numbering always starts from <em>0</em>. For example, the <em>junctionSign</em> enum
+property has three predefined values, <em>none</em>, <em>plus</em> and <em>minus</em>, which
+correspond to the numeric values <em>0</em>, <em>1</em> and <em>2</em>. The following expression evaluates to <em>minus</em>:</p>
+<div class="last highlight-twyg"><div class="highlight"><pre><span class="na">junctionSign</span>            <span class="mi">32</span> <span class="o">/</span> <span class="mi">8</span> <span class="o">*</span> <span class="mf">.5</span>               <span class="c">-- evaluates to 2 =&gt; minus</span>
+</pre></div>
+</div>
+</dd>
+<dt><em>Array</em></dt>
+<dd><p class="first">An array of values in square brackets (<tt class="docutils literal"><span class="pre">[]</span></tt>), separated by commas
+(<tt class="docutils literal"><span class="pre">,</span></tt>). Array definitions are allowed to span multiple lines:</p>
+<div class="last highlight-twyg"><div class="highlight"><pre><span class="na">nodeColors</span>      <span class="o">[</span><span class="mh">#af8700</span><span class="o">,</span> <span class="mh">#d75f00</span><span class="o">,</span> <span class="mh">#d70000</span><span class="o">,</span> <span class="mh">#af005f</span><span class="o">,</span>
+                 <span class="mh">#5f5faf</span><span class="o">,</span> <span class="mh">#0087ff</span><span class="o">,</span> <span class="mh">#00afaf</span><span class="o">,</span> <span class="mh">#5f8700</span><span class="o">]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h3>
+<p>The following variables are available in property definition expressions. These
+variables are effectively properties of the node that is currently being
+processed. In case of connection properties, the node in question is always the
+one on the parent side of the connection.</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><em>x</em></li>
+<li><em>y</em></li>
+<li><em>width</em></li>
+<li><em>height</em></li>
+<li><em>maxTextWidth</em></li>
+</ul>
+</td><td><ul class="simple">
+<li><em>bboxWidth</em></li>
+<li><em>bboxHeight</em></li>
+<li><em>textWidth</em></li>
+<li><em>textHeight</em></li>
+</ul>
+</td><td><ul class="simple">
+<li><em>lineHeight</em></li>
+<li><em>fontSize</em></li>
+<li><em>fontColor</em></li>
+<li><em>bgColor</em></li>
+</ul>
+</td><td><ul class="simple">
+<li><em>baseColor</em></li>
+<li><em>connectionColor</em></li>
+<li><em>fillColor</em></li>
+<li><em>strokeColor</em></li>
+</ul>
+</td></tr></table>
+<p>All variables are of numeric type, except the ones ending with <em>Color</em>,
+which contain color definitions.</p>
+<p>Note that usually only a subset of these variables are available in a
+particular property definition.</p>
+</div>
+<div class="section" id="mathematical-functions">
+<h3>Mathematical functions<a class="headerlink" href="#mathematical-functions" title="Permalink to this headline">¶</a></h3>
+<p>The following mathematical functions can be used in property expressions:</p>
+<dl class="function">
+<dt id="abs">
+<tt class="descname">abs</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#abs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the absolute value of <em>x</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ceil">
+<tt class="descname">ceil</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#ceil" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the smallest integer value greater than or equal to <em>x</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="floor">
+<tt class="descname">floor</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#floor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the larger integer value less than or equal to <em>x</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="log">
+<tt class="descname">log</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the natural (base-e) logarithm of <em>x</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="log10">
+<tt class="descname">log10</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#log10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the base-10 logarithm of <em>x</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="max">
+<tt class="descname">max</tt><big>(</big><em>x</em>, <em>y</em><big>)</big><a class="headerlink" href="#max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the largest of two values.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="min">
+<tt class="descname">min</tt><big>(</big><em>x</em>, <em>y</em><big>)</big><a class="headerlink" href="#min" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the smallest of two values.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pow">
+<tt class="descname">pow</tt><big>(</big><em>x</em>, <em>y</em><big>)</big><a class="headerlink" href="#pow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return <em>x</em> to the power of <em>y</em>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="round">
+<tt class="descname">round</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#round" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round <em>x</em> to the nearest integer value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="sqrt">
+<tt class="descname">sqrt</tt><big>(</big><em>x</em><big>)</big><a class="headerlink" href="#sqrt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the square root of <em>x</em>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="colors-definitions">
+<span id="colors"></span><h3>Colors definitions<a class="headerlink" href="#colors-definitions" title="Permalink to this headline">¶</a></h3>
+<p>Colors can be specified in either hexadecimal or functional CSS3 notation.
+Below are some examples of valid CSS3 color definitions:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="mh">#ff8</span>
+<span class="mh">#00427a</span>
+<span class="na">rgb</span><span class="o">(</span><span class="mi">100</span><span class="o">,</span> <span class="mi">100</span><span class="o">,</span> <span class="mi">255</span><span class="o">)</span>
+<span class="na">rgb</span><span class="o">(</span><span class="m">11%</span><span class="o">,</span> <span class="m">20%</span><span class="o">,</span> <span class="m">42%</span><span class="o">)</span>
+<span class="na">rgba</span><span class="o">(</span><span class="mi">255</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">79</span><span class="o">,</span> <span class="mf">0.4</span><span class="o">)</span>
+<span class="na">rgba</span><span class="o">(</span><span class="m">11%</span><span class="o">,</span> <span class="m">100%</span><span class="o">,</span> <span class="m">0%</span><span class="o">,</span> <span class="mf">0.1</span><span class="o">)</span>
+<span class="na">hsl</span><span class="o">(</span><span class="mi">130</span><span class="o">,</span> <span class="m">30%</span><span class="o">,</span> <span class="m">80%</span><span class="o">)</span>
+<span class="na">hsla</span><span class="o">(</span><span class="mi">99</span><span class="o">,</span> <span class="m">12%</span><span class="o">,</span> <span class="m">74%</span><span class="o">,</span> <span class="mf">0.33</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Colors can also be specified using <a class="reference external" href="http://www.w3.org/TR/css3-color/#svg-color">SVG 1.0 color keyword names</a> in <em>color.&lt;colorname&gt;</em> format:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="na">color</span><span class="o">.</span><span class="na">yellow</span>
+<span class="na">color</span><span class="o">.</span><span class="na">azure</span>
+<span class="na">color</span><span class="o">.</span><span class="na">darkseagreen</span>
+</pre></div>
+</div>
+<p>For a comprehensive description of the CSS3 color notation refer to the <a class="reference external" href="http://www.w3.org/TR/css3-color/#colorunits">CSS
+Color Module Level 3</a>
+specification.</p>
+</div>
+<div class="section" id="color-functions">
+<h3>Color functions<a class="headerlink" href="#color-functions" title="Permalink to this headline">¶</a></h3>
+<p>There are a number of functions that can be used to manipulate colors. These
+functions can be invoked using the <em>&lt;color&gt;.&lt;function&gt;</em> syntax. For example:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="mh">#ff8</span><span class="o">.</span><span class="na">lighten</span><span class="o">(</span><span class="mf">0.5</span><span class="o">)</span>
+<span class="na">color</span><span class="o">.</span><span class="na">blue</span><span class="o">.</span><span class="na">darken</span><span class="o">(</span><span class="mf">0.2</span><span class="o">)</span>
+<span class="na">rgb</span><span class="o">(</span><span class="m">11%</span><span class="o">,</span> <span class="m">20%</span><span class="o">,</span> <span class="m">42%</span><span class="o">).</span><span class="na">blend</span><span class="o">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="mf">0.5</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>The following color manipulation functions are available. The parameter
+<em>factor</em> should be between <em>0.0&#8211;1.0</em>. Values outside this range are clamped to
+the interval <em>0.0&#8211;1.0</em>.</p>
+<dl class="function">
+<dt id="darken">
+<tt class="descname">darken</tt><big>(</big><em>factor</em><big>)</big><a class="headerlink" href="#darken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Darken the color by a given factor.</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="na">color</span><span class="o">.</span><span class="na">red</span><span class="o">.</span><span class="na">darken</span><span class="o">(</span><span class="mf">0.5</span><span class="o">)</span>
+<span class="mh">#48a70f</span><span class="o">.</span><span class="na">darken</span><span class="o">(</span><span class="mf">0.3</span><span class="o">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="lighten">
+<tt class="descname">lighten</tt><big>(</big><em>factor</em><big>)</big><a class="headerlink" href="#lighten" title="Permalink to this definition">¶</a></dt>
+<dd><p>Darken the color by a given factor.</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="na">color</span><span class="o">.</span><span class="na">fuchsia</span><span class="o">.</span><span class="na">lighten</span><span class="o">(</span><span class="mf">0.3</span><span class="o">)</span>
+<span class="na">hsla</span><span class="o">(</span><span class="mi">88</span><span class="o">,</span> <span class="m">30%</span><span class="o">,</span> <span class="m">68%</span><span class="o">,</span> <span class="mf">0.7</span><span class="o">).</span><span class="na">lighten</span><span class="o">(</span><span class="mf">.7</span><span class="o">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="blend">
+<tt class="descname">blend</tt><big>(</big><em>destcolor</em>, <em>factor</em><big>)</big><a class="headerlink" href="#blend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Blend the color (source color) with <em>destcolor</em> by a given factor. A
+<em>factor</em> of <em>1.0</em> will result in the destination color and <em>0.0</em> in the
+source color.</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="mh">#118833</span><span class="o">.</span><span class="na">blend</span><span class="o">(</span><span class="mh">#fff</span><span class="o">,</span> <span class="mf">0.8</span><span class="o">)</span>
+<span class="mh">#777</span><span class="o">.</span><span class="na">blend</span><span class="o">(</span><span class="na">color</span><span class="o">.</span><span class="na">red</span><span class="o">,</span> <span class="mf">0.6</span><span class="o">)</span>
+<span class="na">baseColor</span><span class="o">.</span><span class="na">blend</span><span class="o">(</span><span class="na">bgColor</span><span class="o">,</span> <span class="mf">0.2</span><span class="o">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>The brightness of a color can be changed in two ways:</p>
+<ul class="simple">
+<li>using the <a class="reference internal" href="#darken" title="darken"><tt class="xref py py-func docutils literal"><span class="pre">darken()</span></tt></a> and <a class="reference internal" href="#lighten" title="lighten"><tt class="xref py py-func docutils literal"><span class="pre">lighten()</span></tt></a> functions</li>
+<li>blending the color with black or white</li>
+</ul>
+<p>The blending method result in less saturated shades which might be
+preferable in some situations. The following table illustrates the
+difference between the two methods:</p>
+<img alt="_images/color-blending.png" class="last align-center" src="_images/color-blending.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+  </body>
+</html>
