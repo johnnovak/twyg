@@ -8,4 +8,5 @@ Table of contents
    usage
    config
    reference
+   issues
 

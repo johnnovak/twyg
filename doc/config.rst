@@ -1,29 +1,29 @@
 Configuration
 =============
 
-Configurations are plain text files with a ``.twg`` extension. They describe
-the visual appearance of the tree, such as the shape, color and positioning of
-the nodes and connections, the font used to draw the text inside the nodes and
-so on. Configuration files do not contain any tree data --- they only describe
-`how` the trees should be drawn and these instructions can then be applied to
-arbitrary tree data files.  
+The visual appearance of the tree  is described in configuration files. This
+includes the shape, color and positioning of the nodes and connections, the font
+used to draw the text inside the nodes and more.
+
+Configuration files are plain text files with a ``.twg`` extension.  They do
+not contain any tree data, but only instructions on `how` to draw the trees.
+These instructions can then be applied to arbitrary tree data files.  
 
 Configurations have the following structure:
 
-* Four mandatory :ref:`section definitions <sections>` at the top level (layout, nodes, connection and colors).
-* Each section definition must contain either
+* Four mandatory top-level :ref:`section definitions <sections>` (*layout*,
+  *nodes*, *connection* and *colors*).
+* Each section definition containing either:
 
   * a list of :ref:`property definitions <properties>`
-  * or one or more :ref:`level definitions <levels>` containing lists of
-    property definitions.
-
-* Property definitions are name-value pairs separated by whitespace characters.
-* :ref:`Directives <directives>` that trigger special processing can also
-  appear where properties are allowed.
+  * :ref:`directives <directives>` that trigger special processing
+  * one or more :ref:`level definitions <levels>` containing lists of property
+    definitions or directives.
 
 All names in a configuration are case sensitive. Extra blank lines and
-whitespace characters are not significant.  Line comments can be included by
-using the ``--`` marker (two dash characters).
+whitespace characters are not significant, although it's a good idea to use
+some form of indentation and to separate sections with blank lines. Line
+comments can be included by using the ``--`` marker (two dash characters).
 
 The following is an example of a complete configuration file::
 
@@ -50,15 +50,16 @@ The following is an example of a complete configuration file::
         @include              "mycolor.twg"      -- include directive
 
 
+
 .. _sections:
 
 Sections
 --------
 
-Sections group sets of property definitions together that control one visual
-aspect of a tree (for example, how the nodes are drawn). There are four section
-types in total, all of which must be present in the configuration. No section
-is allowed to appear more than once. The four section type are the following:
+Sections group sets of property definitions together that control one
+particular visual aspect of a tree (e.g. how the nodes are drawn).
+There are four section types in total, all of which must appear exactly once in
+a configuration in any order. These are the following:
 
   ``layout``
     Controls the positioning of the nodes.
@@ -72,20 +73,22 @@ is allowed to appear more than once. The four section type are the following:
   ``color``
     Defines the colors used for all drawing operations.
 
-
 The start of the sections are denoted by *section start markers*, which are
 written as the name of the section in square brackets (e.g. ``[node]``).
 Section start markers must be in a separate line.  Everything that appears
-below a section start marker belongs to the section it denotes until another
-section start marker is encountered. For example::
+below a section start marker belongs to the section it denotes, until another
+section start marker is encountered or the end of file is reached. For
+example::
 
-    [layout]                                     -- layout section starts
+    [layout]                                     -- [layout] starts
         style                 layout             --   belongs to the layout section
         rootPadX              70                 --   belongs to the layout section
                                                 
-    [node]                                       -- node section starts
+    [node]                                       -- [layout] ends, [node] starts
         style                 rect               --   belongs to the node section
         textPadY              fontSize * 0.7     --   belongs to the node section
+                                                 -- end of file, [node] ends
+
 
 
 .. _levels:
@@ -93,25 +96,26 @@ section start marker is encountered. For example::
 Levels
 ------
 
-Property definitions directly after a section start marker are applied to all
-elements that section controls. For example, the following configuration
-snippet results in all nodes being drawn as rectangles and the node text to be
-drawn with a font of 14 points::
+By default, property definitions within a section apply to all elements
+the section controls. For example, the following configuration snippet results
+in all nodes being drawn as rectangles and the node text typeset with a
+14-point font::
 
     [node]
         style                 rect
         fontSize              14
 
-Many times, however, it is desirable to certain style groups of elements
-differently.  For example, one might want the the root node, the leaf nodes and
-the rest of the nodes to appear in three distinct visual styles. Or all nodes
-at depth 1 to be drawn in certain style, nodes at depth 2 in another style, and
-so on. 
+Many times, however, it is desirable to style certain groups of elements
+differently. For example, one might want to distribute the nodes into three
+groups, root node, leaf nodes and remaining nodes, and apply three distinct
+visual styles to these groups. Or the grouping could be based on the depth a
+particular node can be found at in the tree, so all nodes at depth 1 would be
+drawn in a certain style, nodes at depth 2 in another style, and so forth. 
 
-By using *level definitions* within a section definition, it is possible to
-further refine the visual appearance of the elements of the tree. Levels can
-appear in the *node*, *connection* and *color* sections with the following
-syntax::
+By using level definitions within a section definition, it is possible to
+refine the visual appearance of the tree by applying properties to certain
+groups of elements only. Levels can appear in the *node*, *connection* and
+*color* sections with the following syntax::
 
     [section]
         {levelname}
@@ -120,27 +124,39 @@ syntax::
            property definitions
            ...
 
-As seen above, a level has three properties:
+As seen above, a level definitions consists of three parts:
 
-  * a level name
-  * zero or more :ref:`level selector properties <level-selectors>`
-  * property definitions that belong to the level
+  * the name of the level in curly brackets (e.g. ``{root}``)
+  * zero or more :ref:`level selectors <level-selectors>`
+  * a list of :ref:`property definitions <properties>`.
 
-In this example, the root node is drawn as an octagonal polygon, the leaf nodes
-as ovals, and the rest of the nodes as rectangle::
+In the example below, the root node is drawn as an octagonal polygon, the leaf
+nodes as ovals, and the rest of the nodes as rectangles:
+
+.. image:: figures/images/levels-example.png
+   :align: center
+
+This configuration snippet illustrates the use of level definitions to achieve
+the above results (non-relevant properties are omitted)::
 
     [node]
-      {root}                                    -- level start marker
-        levelDepthMax           0               -- level selector
-        style                   poly
-        numSides                8
+      {default}                                 -- level start marker
+        style                   rect
 
       {leaf}                                    -- level start marker
         levelNumChildrenMax     0               -- level selector
         style                   oval
 
-      {normal}
-        style                   rect
+      {root}                                    -- level start marker
+        levelDepthMax           0               -- level selector
+        style                   poly
+        numSides                8
+
+.. note:: The order in which the level definitions appear are important ---
+    generic level definitions should always precede more specific ones. For
+    instance, if the order of the levels was *root*, *leaf* and
+    *default*, all nodes would have been drawn using the *default* style.
+
 
 
 .. _level-selectors:
@@ -148,12 +164,35 @@ as ovals, and the rest of the nodes as rectangle::
 Level selectors
 ^^^^^^^^^^^^^^^
 
+Level selectors provide a way to control which group of elements a particular
+level definition applies to. Level selectors can appear in level definitions
+only. They can be specified using the same name-value pair syntax as property
+definitions.
+
+A level definition applies to an element if *all* level selectors specified
+within the level definition select a given element. In other words, there is an
+*and* relation between the level selectors specified within a level
+definition. Note that because of the ``and`` relation, the following level
+definition will never select any nodes::
+
+    {fail}
+      levelNumChildrenMin   1
+      levelNumChildrenMax   0
+
+Multiple level definitions are allowed to appear in the same section. Level
+definitions within a section are evaluated in the order they appear in. Level
+definitions are not cascaded if more than one definition selects the same
+element --- only the `last` level definitions that selects a particular element
+will apply.
+
+The following level selectors can be specified in level definitions:
+
 .. property:: levelDepthMin
 
     .. propparams:: Number 0
         :values: >0
 
-    Minimum depth the node must have for the level definition to apply to it.
+    Minimum depth of the node in the tree to be selected.
 
 
 .. property:: levelDepthMax
@@ -161,7 +200,7 @@ Level selectors
     .. propparams:: Number 999999999
         :values: >0
 
-    Maximum depth the node can have for the level definition to apply to it.
+    Maximum depth of the node in the tree to be selected.
 
 
 .. property:: levelNumChildrenMin 
@@ -169,8 +208,7 @@ Level selectors
    .. propparams:: Number 0
        :values: >0
 
-   Minimum number of child nodes the node must have for the level definition to
-   apply to it.
+   Minimum number of child nodes the node must have to be selected.
 
 
 .. property:: levelNumChildrenMax 
@@ -178,18 +216,10 @@ Level selectors
    .. propparams:: Number 999999999
        :values: >0
 
-   Maximum number of child nodes the node can have for the level
-   definition to apply to it.
+   Maximum number of child nodes the node can have to be selected.
 
 
-.. property:: levelOrientation 
-
-   .. propparams:: Enum any
-       :values: top | right | bottom | left | any
-
-   TODO
-
-Some level selector examples:
+Below are some common level selector examples:
 
 *Select root node only* ::
 
@@ -203,11 +233,12 @@ Some level selector examples:
       levelNumChildrenMax   0
 
 
-*Select leaf nodes at depth 2 at least* ::
+*Select leaf nodes at depth 2 or greater* ::
 
     {leaf}
       levelDepthMin         2
       levelNumChildrenMax   0
+
 
 
 .. _directives:
@@ -215,26 +246,35 @@ Some level selector examples:
 Directives
 ----------
 
-Directives can appear within section and level definitions just like regular
-properties but they have special meaning.
+Directives are special commands that can appear anywhere within section and
+level definitions, just like regular properties. Directive names are always
+prefixed by a *@* character and usually have at least one parameter. For
+example::
 
-.. directive:: @copy
+    @copy                   normal
+
+Currently, the following two directives are supported:
+
+.. directive:: @copy <levelname>
 
     Copy all property definitions from another level into the current one
-    within the same section. The directive is only allowed to appear in level
-    definitions. The level *<levelname>* does not have to be defined in the
-    same file where the *@copy* directive appears in, it can also come from
-    another configuration file that was included previously (see
-    :ref:directive:`@include` ).
+    within the same section. The ``<levelname>`` parameter has to be the name
+    of the level without the curly brackets.
+    
+    The directive is only allowed to appear in level definitions. The level
+    *<levelname>* does not have to be defined in the same file where the
+    *@copy* directive appears in; it can also come from another configuration
+    file that was included previously (see :ref:directive:`@include` ).
 
-    The purpose of the *@level* directive is to avoid duplication of
-    configuration contents where mostly similar, but slightly different sets of
+    The purpose of the *@copy* directive is to avoid duplication of
+    configuration content where mostly similar, but slightly different sets of
     property definitions need to be applied to two (or more) distinct sets of
-    entities.  For example, one could define a default style that applies to
-    all nodes, then apply the same style to the leaf nodes with a few property
-    definitions changed. In this sense, the directive achieves something
-    similar to the concept of inheritance in object-oriented programming
-    languages.
+    elements. For example, one could define a default style that applies to all
+    nodes, then apply a very similar style to the leaf nodes with only a few
+    property definitions changed. In this sense, the *@copy* directive achieves
+    something similar to the concept of inheritance in object-oriented
+    programming languages with the ability to override certain property
+    definitoins.
 
     Note that as the contents of the configuration files are evaluated line by
     line from top to bottom, it is possible to override the copied properties
@@ -255,17 +295,20 @@ properties but they have special meaning.
             roundness               0.0
 
 
-.. directive:: @include
+.. directive:: @include <configname>
 
     Include the contents of another configuration file into the current
-    configuration. The most natural way to think about this is that the line
-    containing the *@include* directive is replaced with the contents of
-    *<configname>* and then the parsing continues. There is no limit to the
-    nesting depth of configuration files, but obviously two configuration
-    cannot include each other. If such circular reference is encountered, an
+    configuration. The ``<configname>`` argument is the full path to the
+    configuration file to be included as a double-quoted string.
+    
+    The most natural way to think about this is that when the parser encounters
+    a line containing an *@include* directive, it simply replaces that line
+    with the contents of the included configuration file and continues the
+    parsing from there. There is no nesting depth limit, but two configuration
+    cannot include each other. If such circular references are encountered, an
     error is raised and the execution stops.
 
-    The search order for the configuration file is the following:
+    The search order for included configuration files is the following:
 
     * The current directory (the directory the main Python script was
       started in)
@@ -282,12 +325,6 @@ properties but they have special meaning.
             cornerRadius            40
             junctionRadius          17
 
-    In this example, the included configuration file will be searched in the
-    following locations:
-
-    * ``connections/style1.twg``
-    * ``$TWYG_USER/configs/connections/style1.twg``
-    * ``$TWYG_HOME/configs/connections/style1.twg``
 
 
 .. _properties:
@@ -297,16 +334,22 @@ Properties
 
 Property definitions are name-value pairs separated by at least one whitespace
 character. Each configuration section and style has a distinct set of
-predefined property names. For a detailed description of all available
-properties see the :ref:`properties-reference`.
+predefined properties. For a detailed description of all available properties
+see the :ref:`properties-reference`.
 
 Property values can be either simple literal values::
 
         rootPadX        70
+        fontName        "Gill Sans"
+        nodeColor       #f80 
 
-or expressions or arbitrary complexity::
+or expressions of arbitrary complexity::
 
         fontSize        max(10, round(21 / sqrt(depth + 1)))
+
+Expressions can contain mathematical operators (*+*, *-*, *\**, */*, *^*) and
+parentheses. The *^* operator is the power operator (e.g. ``2^3``). Standard
+mathematical operator precedence rules apply.
 
 The important thing to remember is that the property value starts at the first
 non-whitespace character after the property name and it cannot span multiple
@@ -318,10 +361,11 @@ multiple lines::
     nodeColors      [#af8700, #d75f00, #d70000, #af005f,
                      #5f5faf, #0087ff, #00afaf, #5f8700]
 
+
 Property value types
 ^^^^^^^^^^^^^^^^^^^^
 
-Every property has a type, which is one of the following:
+Every property value has a type associated with it. These are the following:
 
 *Number*
     A numeric value::
@@ -331,32 +375,52 @@ Every property has a type, which is one of the following:
       stuff     -3.1516
 
 *String*
-    A string in double-quotes. Double-quote characters within a string have to be escaped with a backslash (\)::
+    A string in double-quotes. Double-quote characters within a string have to be escaped with a *\\* (backslash) character::
 
       fontName  "Source Sans Pro"
-      name      "double-quotes: \"\""
+      name      "double-quotes (\"\") within a string"
 
 *Boolean*
     Used for turning a specific feature on or off. Valid values are: 
 
-    * ``yes``, ``true`` or ``1``
-    * ``no``,  ``false`` or ``0``
+    * ``on``, ``yes``, ``true``, numbers greater than or equal to *1*
+    * ``off``, ``no``, ``false``, numbers less than or equal to *0*
+
+    The following expressions all evaluate to *true*::
+
+        sameWidthSiblings       1000
+        sameWidthSiblings       10 / 5 - 2 + 3            -- evaluates to 3 => true
+        sameWidthSiblings       false + no + off + yes    -- evaluates to 1 => true
 
 *Color*
-    Defines a color. See :ref:`colors` for more information.
+    See :ref:`colors` for more information.
 
 *Enum*
     Property specific list of predefined values. See the
     :ref:`properties-reference` for details.
 
+    The predefined values can be referred to by their ordinal number as well.
+    The numbering always starts from *0*. For example, the *junctionSign* enum
+    property has three predefined values, *none*, *plus* and *minus*, which
+    correspond to the numeric values *0*, *1* and *2*. The following expression evaluates to *minus*::
+
+        junctionSign            32 / 8 * .5               -- evaluates to 2 => minus
+
 *Array*
-    TODO
+    An array of values in square brackets (``[]``), separated by commas
+    (``,``). Array definitions are allowed to span multiple lines::
+
+        nodeColors      [#af8700, #d75f00, #d70000, #af005f,
+                         #5f5faf, #0087ff, #00afaf, #5f8700]
 
 
 Variables
 ^^^^^^^^^
 
-The following variables are available in property definition expressions:
+The following variables are available in property definition expressions. These
+variables are effectively properties of the node that is currently being
+processed. In case of connection properties, the node in question is always the
+one on the parent side of the connection.
 
 .. hlist::
     :columns: 4
@@ -382,8 +446,11 @@ The following variables are available in property definition expressions:
     * *fillColor*
     * *strokeColor*
 
-All variables contain numeric values, except the ones ending with *Color*.
-TODO: some explanation why aren't they always available 
+All variables are of numeric type, except the ones ending with *Color*,
+which contain color definitions.
+
+Note that usually only a subset of these variables are available in a
+particular property definition.
 
 
 Mathematical functions
@@ -443,9 +510,8 @@ The following mathematical functions can be used in property expressions:
 
 .. _colors:
 
-
-Colors
-^^^^^^
+Colors definitions
+^^^^^^^^^^^^^^^^^^
 
 Colors can be specified in either hexadecimal or functional CSS3 notation.
 Below are some examples of valid CSS3 color definitions::
@@ -466,28 +532,29 @@ Colors can also be specified using `SVG 1.0 color keyword names
     color.azure
     color.darkseagreen
 
-For a comprehensive description of CSS3 color notation refer to the `CSS Color
-Module Level 3 <http://www.w3.org/TR/css3-color/#colorunits>`_ specification.
+For a comprehensive description of the CSS3 color notation refer to the `CSS
+Color Module Level 3 <http://www.w3.org/TR/css3-color/#colorunits>`_
+specification.
 
 
 Color functions
 ^^^^^^^^^^^^^^^
 
 There are a number of functions that can be used to manipulate colors. These
-functions can be invoked using the *<color>.<function>* notation. For example::
+functions can be invoked using the *<color>.<function>* syntax. For example::
 
     #ff8.lighten(0.5)
     color.blue.darken(0.2)
     rgb(11%, 20%, 42%).blend(#fff, 0.5)
 
-The following color manipulation functions are available. The parameter *factor*
-should be between *0.0-1.0* in all cases and it is clamped to this range if it
-lies outside.
+The following color manipulation functions are available. The parameter
+*factor* should be between *0.0--1.0*. Values outside this range are clamped to
+the interval *0.0--1.0*.
 
 
 .. function:: darken(factor)
 
-    Darkens the color by the given factor. ::
+    Darken the color by a given factor. ::
 
         color.red.darken(0.5)
         #48a70f.darken(0.3)
@@ -495,7 +562,7 @@ lies outside.
 
 .. function:: lighten(factor)
 
-    Darkens the color by the given factor.  ::
+    Darken the color by a given factor.  ::
 
         color.fuchsia.lighten(0.3)
         hsla(88, 30%, 68%, 0.7).lighten(.7)
@@ -503,7 +570,7 @@ lies outside.
 
 .. function:: blend(destcolor, factor)
      
-    Blends the color (source color) with *destcolor* by the given factor. A
+    Blend the color (source color) with *destcolor* by a given factor. A
     *factor* of *1.0* will result in the destination color and *0.0* in the
     source color. ::
 
@@ -522,5 +589,4 @@ lies outside.
 
     .. image:: figures/images/color-blending.png
        :align: center
-
 

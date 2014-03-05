@@ -14,7 +14,7 @@ ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
-.PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext figures
+.PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext figures watch_css
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -155,4 +155,7 @@ doctest:
 
 figures:
 	(cd figures; ./generate-images.sh)
+
+watch_css:
+	sass --watch _themes/twyg/static/main.scss:$(BUILDDIR)/html/_static/main.css
 

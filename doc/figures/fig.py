@@ -28,7 +28,7 @@ TEMPLATE_VARS = {
 ctx.initsurface(1, 1, OUTFORMAT)
 
 
-def write_tree(tree, w, h, suffix=None, scale=1.0):
+def write_tree(tree, w, h, suffix='', scale=1.0):
     w += PAD_X * 2
     h += PAD_Y * 2
     if suffix:

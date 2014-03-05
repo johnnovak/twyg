@@ -355,22 +355,6 @@ nodeCx2Factor           0
         tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens)
 
-    def test_include_directive(self):
-        config = r"""
-        [node]
-        @include "include-test1.twg"
-        """
-        tokens = tokenize(config)
-        self.assertRaises(ConfigError, buildconfig, tokens, cwd=os.getcwd())
-
-    def test_include_directive_self(self):
-        config = r"""
-        [node]
-        @include "include-test3.twg"
-        """
-        tokens = tokenize(config)
-        self.assertRaises(ConfigError, buildconfig, tokens, cwd=os.getcwd())
-
     def test_invalid_property_name(self):
         config = r"""
         [node]
@@ -466,3 +450,8 @@ nodeCx2Factor           0
 if __name__ == '__main__':
     unittest.main()
 
+# TODO
+# this is valid:
+#   someColor #fff
+# ...but this should trigger an error:
+#   some Color #fff

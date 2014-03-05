@@ -153,7 +153,8 @@ def tokenize(config, file=None, flat=False):
 ##############################################################################
 
 def buildconfig(tokens, cwd=None, state='start', config=None, curr=None,
-                curr_section=None, curr_level=None, section_props=False):
+                curr_section=None, curr_level=None, section_props=False,
+                prev_configs=[]):
 
     """ Build the final config dict from the results of the config file
     tokenization step.
@@ -327,16 +328,26 @@ def buildconfig(tokens, cwd=None, state='start', config=None, curr=None,
 
                 if name == 'include':
                     try:
-                        tokens, cwd = _tokenize_file(include_path(os.path.join(cwd, param)),
-                                                     flat=False)
+                        configpath = include_path(os.path.join(cwd, param))
+
+                        if configpath in prev_configs:
+                            raise ConfigError(
+                                "Error while processing '%s' directive:\n"
+                                "\tCircular reference detected when attempting"
+                                " to include '%s'"
+                                % (name, configpath),
+                                prevtoken)
+
+                        tokens, cwd = _tokenize_file(configpath, flat=False)
                     except IOError, e:
                         raise ConfigError(
                             "Error while processing '%s' directive:\n"
                             "\t%s: '%s'" % (name, e.strerror, e.filename),
                             prevtoken)
 
+                    prev_configs.append(configpath)
                     buildconfig(tokens, cwd, state, config, curr, curr_section,
-                                curr_level, section_props)
+                                curr_level, section_props, prev_configs)
 
                 elif name == 'copy':
                     level = param
@@ -437,7 +448,7 @@ def loadconfig(file, flat=False):
     """
 
     tokens, cwd = _tokenize_file(file, flat)
-    config = buildconfig(tokens, cwd=cwd)
+    config = buildconfig(tokens, cwd=cwd, prev_configs=[file])
     if flat:
         config = config['default']
     return config
@@ -1020,7 +1031,7 @@ class EnumProperty(Property):
 
 class BooleanProperty(Property):
     def eval(self, vars):
-        vars = {'no': 0, 'false': 0, 'yes': 1, 'true': 1}
+        vars = {'no': 0, 'off': 0, 'false': 0, 'yes': 1, 'on': 1, 'true': 1}
         n = eval_expr(self.expr, vars)
 
         if type(n) not in (int, float):

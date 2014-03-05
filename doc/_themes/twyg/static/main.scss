@@ -4,7 +4,7 @@ $linkcolor: #56a3a5;
 
 @mixin bodyfont {
   font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 @mixin monofont {
@@ -102,8 +102,13 @@ dd {
 
 tt {
   @include monofont;
+  font-size: 15px !important;
   font-weight: bold;
   color: lighten($basecolor, 8);
+
+  &.descname {
+    font-size: 16px !important;
+  }
 }
 
 pre {
@@ -170,7 +175,7 @@ blockquote {
       display: block;
       padding: 4px 10px;
       font-weight: 600;
-      font-size: 15px;
+      font-size: 18px;
       text-decoration: none;
       text-transform: uppercase;
       color: #fff;
@@ -211,7 +216,7 @@ blockquote {
     
     a {
       color: $linkcolor;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
     }
   }
@@ -231,8 +236,8 @@ blockquote {
       }
     }
     ul ul {
-      font-size: 14px;
-      line-height: 18px;
+      font-size: 16px;
+      line-height: 21px;
     }
     &.current li:last-child {
       margin-bottom: 1em;
@@ -241,7 +246,7 @@ blockquote {
 }
 
 #docnav {
-  width: 800px;
+  width: 700px;
   height: 41px; 
   padding-top: 5px;
   background: #fff;
@@ -253,6 +258,7 @@ blockquote {
     color: $accentcolor;
     font-weight: 600;
     float: left;
+    font-size: 19px;
 
     li {
       display: inline-block;
@@ -266,10 +272,12 @@ blockquote {
     float: right;
     padding-right: 15px;
     cursor: pointer;
+    font-size: 19px;
   }
   .index {
     float: right;
     cursor: pointer;
+    font-size: 19px;
   }
 
   a {
@@ -290,18 +298,18 @@ blockquote {
   h1 {
     clear: both;
     color: $accentcolor;
-    font-size: 38px;
+    font-size: 44px;
     font-weight: 300;
   }
   h2 {
     color: $accentcolor;
-    font-size: 26px;
+    font-size: 32px;
     font-weight: 400;
     margin-top: 2em;
   }
   h3 {
     color: $accentcolor;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
     margin-top: 1.5em;
   }
@@ -314,13 +322,13 @@ blockquote {
     }
   }
   .property {
-    margin-bottom: 1.8em;
+    margin-bottom: 2em;
     
     tt {
       @include bodyfont;
     }
     & > dt {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 600;
       width: 170px;
       text-align: right;
@@ -331,7 +339,7 @@ blockquote {
       margin: 0 0 0 180px;
     }
     .propparams {
-      font-size: 16px;
+      font-size: 17px;
       margin: .5em 0 .5em 0px;
       color: #888;
 
@@ -409,20 +417,20 @@ blockquote {
   }
 }
 
-#table-of-contents, #indices-and-tables, #reference {
+#table-of-contents, #indices-and-tables, #reference, .toctree-wrapper {
   ul {
     list-style: none;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 21px;
     margin: 0;
     padding: 0;
 
     & > li > a {
-      font-weight: 400;
+      font-weight: 600;
     }
 
     ul {
-      font-size: 16px;
+      font-size: 18px;
       margin-left: 1.5em;
       margin-bottom: 1em;
       font-weight: 400;

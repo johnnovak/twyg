@@ -17,11 +17,6 @@ and various factors that affect the positioning of the curves' control points.
 If a parent node has only a single child node, then connection is drawn
 as a straight line.
 
-.. image:: figures/images/connections-curve.png
-
-.. image:: figures/images/connections-curve-cx.png
-
-
 
 Properties
 ^^^^^^^^^^
@@ -198,10 +193,6 @@ Properties
 
     .. propparams:: Number 0.0
        :values: >0.0
-
-    TODO
-
-    .. image:: figures/images/connections-junction-cornerPad.png
 
 
 .. property:: junctionStyle

@@ -170,6 +170,7 @@ class TestEvalExpr(unittest.TestCase):
         test25      "some \"other\" string" "333"
         test26      3 + "a"
         test27      sqrt("abcd")
+        test28      color #fff
         """
 
         tokens = tokenize(config)
@@ -243,6 +244,8 @@ class TestEvalExpr(unittest.TestCase):
 
         e = parse_expr(node['test27'])
         self.assertRaises(ConfigError, eval_expr, e)
+
+        self.assertRaises(ConfigError, parse_expr, node['test28'])
 
 
 if __name__ == '__main__':

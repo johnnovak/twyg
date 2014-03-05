@@ -39,6 +39,9 @@ Common properties
     .. propparams:: Color bgColor
 
 
+Automatic font coloring
+^^^^^^^^^^^^^^^^^^^^^^^
+
 .. property:: fontColorAuto
 
     Controls whether the color of the text label should be determined
