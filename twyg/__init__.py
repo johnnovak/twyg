@@ -32,19 +32,12 @@ if nodebox:
     twyg.common.TWYG_HOME = os.path.dirname(os.path.abspath(
         os.path.join(inspect.getfile(inspect.currentframe()), '..'))
     )
-    twyg.common.TWYG_USER = os.path.expanduser('~')
 
 else:
     if 'TWYG_HOME' in os.environ:
         twyg.common.TWYG_HOME = os.environ['TWYG_HOME']
     else:
-        twyg.common.TWYG_HOME = os.path.dirname(os.path.realpath(sys.argv[0]))
-        twyg.common.TWYG_HOME
-
-    if 'TWYG_USER' in os.environ:
-        twyg.common.TWYG_USER = os.environ['TWYG_USER']
-    else:
-        twyg.common.TWYG_USER = os.path.expanduser('~')
+        twyg.common.TWYG_HOME = os.path.expanduser('~')
 
 
 _initialized = False

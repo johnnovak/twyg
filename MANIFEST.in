@@ -1,0 +1,3 @@
+include twyg/colors/*/**
+include twyg/configs/*/**
+include twyg/defaults/*/**

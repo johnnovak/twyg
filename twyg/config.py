@@ -1,6 +1,9 @@
 import math, os, re, sys
 import operator as _operator
 
+# TODO what happens in NodeBox?
+from pkg_resources import resource_filename
+
 try:
     # Python 2.7+
     from collections import OrderedDict
@@ -455,15 +458,15 @@ def loadconfig(file, flat=False):
 
 
 def defaults_path(configname):
-    return os.path.join(twyg.common.TWYG_HOME, 'defaults', configname)
+    return resource_filename(__name__, os.path.join('defaults', configname))
 
 
 def colors_path(colorscheme):
     configname = colorscheme + '.twg'
     paths = [
         configname,
-        os.path.join(twyg.common.TWYG_USER, 'colors', configname),
-        os.path.join(twyg.common.TWYG_HOME, 'colors', configname)
+        os.path.join(twyg.common.TWYG_HOME, 'colors', configname),
+        resource_filename(__name__, os.path.join('colors', configname))
     ]
     for p in paths:
         if os.path.exists(p):
@@ -474,8 +477,8 @@ def colors_path(colorscheme):
 def include_path(configname):
     paths = [
         configname,
-        os.path.join(twyg.common.TWYG_USER, 'configs', configname),
-        os.path.join(twyg.common.TWYG_HOME, 'configs', configname)
+        os.path.join(twyg.common.TWYG_HOME, 'configs', configname),
+        resource_filename(__name__, os.path.join('configs', configname))
     ]
     for p in paths:
         if os.path.exists(p):

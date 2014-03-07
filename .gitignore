@@ -3,6 +3,7 @@
 .DS_Store
 ._*
 *.pyc
+*.egg
 *.egg-info
 *sass-cache*
 doc/_build/*
@@ -12,3 +13,4 @@ out/
 tests/out/
 doc/_build
 dist
+env

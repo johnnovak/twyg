@@ -16,9 +16,10 @@ Features
 Installation
 ------------
 
-This is the documentation for the Sphinx documentation builder.  Sphinx is a
-tool that translates a set of reStructuredText_ source files into various output
-formats, automatically producing cross-references, indices etc.
+To install twyg for all users:
+
+    $ sudo easy_install pip
+    $ sudo pip install twyg
 
 
 Quickstart
