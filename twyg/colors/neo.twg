@@ -1,4 +1,4 @@
-backgroundColor #f4f4f4
-rootColor       #6d8778
-nodeColors      [#82beac, #b4d1ae, #e0e3b5]
+backgroundColor     #f4f4f4
+rootColor           #6d8778
+nodeColors          [#82beac, #b4d1ae, #e0e3b5]
 

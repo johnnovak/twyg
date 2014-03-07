@@ -1,6 +1,6 @@
 [layout]
-  style                     layout
-  branchPadY                16
+    style                   layout
+    branchPadY              16
 
 [node]
   {default}

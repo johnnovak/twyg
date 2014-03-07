@@ -1,4 +1,4 @@
-backgroundColor #fefaf1
-rootColor       #e66843
-nodeColors      [#cabb99, #626262, #bdefcd]
+backgroundColor     #fefaf1
+rootColor           #e66843
+nodeColors          [#cabb99, #626262, #bdefcd]
 

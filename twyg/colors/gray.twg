@@ -1,4 +1,4 @@
-backgroundColor #666
-rootColor       #ccc
-nodeColors      [#ccc]
+backgroundColor     #666
+rootColor           #ccc
+nodeColors          [#ccc]
 
