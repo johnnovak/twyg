@@ -45,4 +45,3 @@ Examples
 
 This is the documentation for the Sphinx documentation builder.
 
-
