@@ -3,6 +3,11 @@
 .DS_Store
 ._*
 *.pyc
+*.egg-info
 *sass-cache*
 doc/_build/*
 doc/figures/images/*
+MANIFEST
+out/
+tests/out/
+doc/_build

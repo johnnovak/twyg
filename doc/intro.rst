@@ -1,50 +1,16 @@
 Getting started
 ===============
 
-This is the documentation for the Sphinx documentation builder.  Sphinx is a
-tool that translates a set of reStructuredText_ source files into various output
-formats, automatically producing cross-references, indices etc.  That is, if
-you have a directory containing a bunch of reST-formatted documents (and
-possibly subdirectories of docs in there as well), Sphinx can generate a
-nicely-organized arrangement of HTML files (in some other directory) for easy
-browsing and navigation.  But from the same source, it can also generate a
-LaTeX file that you can compile into a PDF version of the documents, or a
-PDF file directly using `rst2pdf <http://rst2pdf.googlecode.com>`_.
-
-The focus is on hand-written documentation, rather than auto-generated API docs.
-Though there is support for that kind of docs as well (which is intended to be
-freely mixed with hand-written content), if you need pure API docs have a look
-at `Epydoc <http://epydoc.sf.net/>`_, which also understands reST.
-
-
 Features
 --------
 
-This section is intended to collect helpful hints for those wanting to migrate
-to reStructuredText/Sphinx from other documentation systems.
-
-* Gerard Flanagan has written a script to convert pure HTML to reST; it can be
-  found at the `Python Package Index <http://pypi.python.org/pypi/html2rest>`_.
-
-* For converting the old Python docs to Sphinx, a converter was written which
-  can be found at `the Python SVN repository
-  <http://svn.python.org/projects/doctools/converter>`_.  It contains generic
-  code to convert Python-doc-style LaTeX markup to Sphinx reST.
-
-* Marcin Wojdyr has written a script to convert Docbook to reST with Sphinx
-  markup; it is at `Google Code <http://code.google.com/p/db2rst/>`_.
-
-* Christophe de Vienne wrote a tool to convert from Open/LibreOffice documents
-  to Sphinx: `odt2sphinx <http://pypi.python.org/pypi/odt2sphinx/>`_.
-
-* To convert different markups, `Pandoc <http://johnmacfarlane.net/pandoc/>`_ is
-  a very helpful tool.
-
-
-Examples
---------
-
-This is the documentation for the Sphinx documentation builder.
+* Generate pretty looking graphs using a procedural configuration language
+* Trees are described in simple JSON format
+* Powerful procedural configuration language to control all visual aspects of the
+  resulting graphs
+* 36 colorschemes and 15 configurations built-in
+* Generate output from the command line using the Cairo backend
+* Supports PDF, SVG and PNG output formats using the Cairo backend
 
 
 Installation
@@ -58,13 +24,25 @@ formats, automatically producing cross-references, indices etc.
 Quickstart
 ----------
 
-Sphinx needs at least **Python 2.5** or **Python 3.1** to run, as well as the
-docutils_ and Jinja2_ libraries.  Sphinx should work with docutils version 0.7
-or some (not broken) SVN trunk snapshot.  If you like to have source code
-highlighting support, you must also install the Pygments_ library.
+Generate a PDF output of the tree `example1.json` using the built-in `nazca`
+configuration::
 
-.. _reStructuredText: http://docutils.sf.net/rst.html
-.. _docutils: http://docutils.sf.net/
-.. _Jinja2: http://jinja.pocoo.org/
-.. _Pygments: http://pygments.org/
+    $ twyg.py --config nazca example1.json example.pdf
+
+Generate a PNG file at 150 DPI from `example1.json` using the built-in `bubble`
+configuration and use the `mint` colorscheme instead of the default one
+specified in the config::
+
+    $ twyg.py -c bubbles --colorscheme mint --dpi 150 example1.json example.png
+
+Same as above, but leave 10% vertical and 20% horizontal margins::
+
+    $ twyg.py -c bubbles -o mint --dpi 150 --margin=10%,20% example1.json example.png
+
+
+Examples
+--------
+
+This is the documentation for the Sphinx documentation builder.
+
 

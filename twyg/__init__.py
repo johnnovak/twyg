@@ -1,3 +1,5 @@
+__version__ = '0.1dev'
+
 import os, sys
 
 from twyg.config import (NODE_CONFIG, CONNECTION_CONFIG, LAYOUT_CONFIG,

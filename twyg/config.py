@@ -1083,9 +1083,6 @@ class Properties(object):
         c.update(config)
         config = c
 
-#        print '-----------------'
-#        print config
-
         # Build properties dictionary
         self._properties = {}
         for name, prop_params in properties.iteritems():

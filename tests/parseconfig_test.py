@@ -358,7 +358,7 @@ nodeCx2Factor           0
     def test_include_directive(self):
         config = r"""
         [node]
-        @include "include-test1.twg"
+        @include "test-configs/include-test1.twg"
         """
         tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens, cwd=os.getcwd())
@@ -366,7 +366,7 @@ nodeCx2Factor           0
     def test_include_directive_self(self):
         config = r"""
         [node]
-        @include "include-test3.twg"
+        @include "test-configs/include-test3.twg"
         """
         tokens = tokenize(config)
         self.assertRaises(ConfigError, buildconfig, tokens, cwd=os.getcwd())
