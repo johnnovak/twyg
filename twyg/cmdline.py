@@ -6,7 +6,7 @@ from optparse import OptionParser
 from twyg import buildtree
 from twyg.cairowrapper import context as ctx
 from twyg.common import validate_margins, calculate_margins, loadjson
-from twyg.config import loadconfig
+from twyg.config import loadconfig, include_path
 
 
 def exit_error(msg):
@@ -35,11 +35,6 @@ def main():
                       help=('margins in TOP,RIGHT,BOTTOM,LEFT or VERT,HORIZ '
                             'or MARGIN format; values are absolute (points) '
                             'or percentages [default: %default]'))
-
-    # TODO
-#    parser.add_option('-w', '--write-config',
-#                      dest='writeconfig', metavar='FILE',
-#                      help='output configuration file')
 
     parser.add_option('-v', '--verbose',
                       default=False, action='store_true',
@@ -97,7 +92,9 @@ def main():
         ctx.initsurface(1, 1, options.outformat, None, scale)
 
         data = loadjson(datafile)
-        config = loadconfig(options.configfile)
+
+        # TODO create new load_config function
+        config = loadconfig(include_path(options.configfile))
 
         tree = buildtree(data, config, options.colorscheme)
 

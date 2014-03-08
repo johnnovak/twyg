@@ -1,4 +1,4 @@
-@include    "common.twg"
+@include    "common"
 
 -- Number of sides of the regular polygon
 numSides                6

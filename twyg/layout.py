@@ -1,4 +1,4 @@
-import math, sys
+import math, os, sys
 
 from twyg.config import Properties, NumberProperty, BooleanProperty
 
@@ -24,10 +24,15 @@ class Layout(object):
             'radialFactor':            (NumberProperty,  {})
         }
 
-        self._props = Properties(properties, 'layout/layout.twg', config)
+        self._props = Properties(properties, self._defaults_path('layout'),
+                                 config)
 
         self._leftnodes = ()
         self._rightnodes = ()
+
+    # TODO util function in common?
+    def _defaults_path(self, conf):
+        return os.path.join('layout', conf)
 
     def _eval_func(self, node=None, direction=None):
         if node:

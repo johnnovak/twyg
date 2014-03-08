@@ -1,4 +1,4 @@
-@include    "common.twg"
+@include    "common"
 
 -- 3D orientation of the box.
 -- Possible values: topleft, topright, bottomleft, bottomright

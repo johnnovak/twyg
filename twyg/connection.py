@@ -1,3 +1,5 @@
+import os
+
 from twyg.common import createpath
 from twyg.config import (Properties, NumberProperty,
                          EnumProperty, ColorProperty)
@@ -5,6 +7,11 @@ from twyg.config import (Properties, NumberProperty,
 from twyg.geom import Vector2
 from twyg.geomutils import arcpath
 from twyg.tree import Direction, opposite_dir
+
+
+# TODO util function in common?
+def defaults_path(conf):
+    return os.path.join('connection', conf)
 
 
 class CurveConnectionDrawer(object):
@@ -19,7 +26,7 @@ class CurveConnectionDrawer(object):
             'nodeCy2Factor':      (NumberProperty, {})
         }
 
-        self._props = Properties(properties, 'connection/curve.twg', config)
+        self._props = Properties(properties, defaults_path('curve'), config)
 
     def _eval_func(self, node):
         return lambda name: self._props.eval(name, node)
@@ -87,25 +94,30 @@ class JunctionConnectionDrawer(object):
         junction_sign = ('none', 'plus', 'minus')
 
         properties = {
-            'lineWidth':           (NumberProperty, {'min': 0.0}),
-            'junctionXFactor':     (NumberProperty, {}),
-            'cornerStyle':         (EnumProperty,   {'values': corner_styles}),
-            'cornerRadius':        (NumberProperty, {'min': 0.0}),
-            'cornerPad':           (NumberProperty, {'min': 0.0}),
-            'junctionStyle':       (EnumProperty,
-                                    {'values': junction_styles}),
+            'lineWidth':        (NumberProperty, {'min': 0.0}),
+            'junctionXFactor':  (NumberProperty, {}),
 
-            'junctionRadius':      (NumberProperty, {'min': 0.0}),
-            'junctionFillColor':   (ColorProperty,  {}),
-            'junctionStrokeWidth': (NumberProperty, {'min': 0.0}),
-            'junctionStrokeColor': (ColorProperty,  {}),
-            'junctionSign':        (EnumProperty,   {'values': junction_sign}),
-            'junctionSignSize':    (NumberProperty, {'min': 0.0}),
-            'junctionSignStrokeWidth': (NumberProperty, {'min': 0.0}),
-            'junctionSignColor':   (ColorProperty,  {})
+            'cornerStyle':      (EnumProperty, {'values': corner_styles}),
+            'cornerRadius':     (NumberProperty, {'min': 0.0}),
+            'cornerPad':        (NumberProperty, {'min': 0.0}),
+
+            'junctionStyle':    (EnumProperty,{'values': junction_styles}),
+
+            'junctionRadius':       (NumberProperty, {'min': 0.0}),
+            'junctionFillColor':    (ColorProperty,  {}),
+            'junctionStrokeWidth':  (NumberProperty, {'min': 0.0}),
+            'junctionStrokeColor':  (ColorProperty,  {}),
+
+            'junctionSign':             (EnumProperty,
+                                        {'values': junction_sign}),
+
+            'junctionSignSize':         (NumberProperty, {'min': 0.0}),
+            'junctionSignStrokeWidth':  (NumberProperty, {'min': 0.0}),
+            'junctionSignColor':        (ColorProperty,  {})
         }
 
-        self._props = Properties(properties, 'connection/junction.twg', config)
+        self._props = Properties(properties, defaults_path('junction'),
+                                 config)
 
     def _eval_func(self, node):
         return lambda name: self._props.eval(name, node)

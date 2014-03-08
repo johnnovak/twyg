@@ -17,6 +17,12 @@ from twyg.tree import Direction
 import twyg.common
 
 
+CONF_EXT = '.twg'
+
+DEFAULTS_DIR = 'defaults'
+COLORS_DIR   = 'colors'
+CONFIGS_DIR  = 'configs'
+
 DEFAULT_LEVEL = '$defaultLevel'
 
 
@@ -36,7 +42,7 @@ DEFAULT_LEVEL = '$defaultLevel'
 #      - If an @include directive is encountered, the referenced config file
 #        is loaded and tokenized by ``_tokenize_file`` and then recursively
 #        parsed by ``buildconfig``.
-# 
+#
 # 2.   TODO
 #
 
@@ -143,7 +149,8 @@ def tokenize(config, file=None, flat=False):
 
             if not found:
                 raise ConfigError("Syntax error",
-                                  file=file, line=linenum(line_nr, flat), col=col)
+                                  file=file, line=linenum(line_nr, flat),
+                                  col=col)
 
         sym = symbol('(newline)')
         tokens.append(sym())
@@ -336,10 +343,9 @@ def buildconfig(tokens, cwd=None, state='start', config=None, curr=None,
                         if configpath in prev_configs:
                             raise ConfigError(
                                 "Error while processing '%s' directive:\n"
-                                "\tCircular reference detected when attempting"
-                                " to include '%s'"
-                                % (name, configpath),
-                                prevtoken)
+                                "\tCircular reference detected when "
+                                "attempting to include '%s'"
+                                % (name, configpath), prevtoken)
 
                         tokens, cwd = _tokenize_file(configpath, flat=False)
                     except IOError, e:
@@ -349,8 +355,9 @@ def buildconfig(tokens, cwd=None, state='start', config=None, curr=None,
                             prevtoken)
 
                     prev_configs.append(configpath)
-                    buildconfig(tokens, cwd, state, config, curr, curr_section,
-                                curr_level, section_props, prev_configs)
+                    buildconfig(tokens, cwd, state, config, curr,
+                                curr_section, curr_level, section_props,
+                                prev_configs)
 
                 elif name == 'copy':
                     level = param
@@ -438,6 +445,10 @@ def _tokenize_file(file, flat=False):
     return tokens, cwd
 
 
+def loaddefaults(defaults):
+    return loadconfig(defaults_path(defaults), flat=True)
+
+
 def loadconfig(file, flat=False):
     """ Tokenize a config file.
 
@@ -457,16 +468,27 @@ def loadconfig(file, flat=False):
     return config
 
 
+# TODO refactor *_path functions, extract common parts
 def defaults_path(configname):
-    return resource_filename(__name__, os.path.join('defaults', configname))
+    conf = os.path.join('defaults', configname)
+    conf_ext = os.path.join(DEFAULTS_DIR, configname) + CONF_EXT
+    paths = [
+        resource_filename(__name__, conf),
+        resource_filename(__name__, conf_ext)
+    ]
+    for p in paths:
+        if os.path.exists(p):
+            return p
+    raise ConfigError("Cannot open defaults file: '%s'" % colorscheme)
 
 
 def colors_path(colorscheme):
-    configname = colorscheme + '.twg'
+    conf_ext = colorscheme + CONF_EXT
+    color_conf_ext = os.path.join(COLORS_DIR, conf_ext)
     paths = [
-        configname,
-        os.path.join(twyg.common.TWYG_HOME, 'colors', configname),
-        resource_filename(__name__, os.path.join('colors', configname))
+        conf_ext,
+        os.path.join(twyg.common.TWYG_HOME, color_conf_ext),
+        resource_filename(__name__, color_conf_ext)
     ]
     for p in paths:
         if os.path.exists(p):
@@ -475,10 +497,17 @@ def colors_path(colorscheme):
 
 
 def include_path(configname):
+    conf = configname
+    conf_ext = configname + CONF_EXT
+    configs_conf = os.path.join(CONFIGS_DIR, conf)
+    configs_conf_ext = os.path.join(CONFIGS_DIR, conf_ext)
     paths = [
-        configname,
-        os.path.join(twyg.common.TWYG_HOME, 'configs', configname),
-        resource_filename(__name__, os.path.join('configs', configname))
+        conf,
+        conf_ext,
+        os.path.join(twyg.common.TWYG_HOME, configs_conf),
+        os.path.join(twyg.common.TWYG_HOME, configs_conf_ext),
+        resource_filename(__name__, configs_conf),
+        resource_filename(__name__, configs_conf_ext)
     ]
     for p in paths:
         if os.path.exists(p):
@@ -490,9 +519,18 @@ def include_path(configname):
 # Pratt expression parser
 ##############################################################################
 
-# Pratt parser based heavily on TODO's excellent article.
-# Added type checking, function calls and extensive error reporting.
-# TODO references
+# Top-down operator-precedence parser based heavily on Fredrik Lundh's
+# excellent article on Pratt parsers:
+#
+# http://effbot.org/zone/simple-top-down-parsing.htm
+#
+# Added type checking, function calls and extensive error reporting on
+# my own.
+#
+# Further references:
+#
+# http://eli.thegreenplace.net/2010/01/02/top-down-operator-precedence-parsing/
+# http://javascript.crockford.com/tdop/tdop.html
 
 def parsecolor(mode, *components):
     """ Helper function to parse colors specified by their individual
@@ -877,7 +915,8 @@ class Level(object):
             'levelDepthMax':       (NumberProperty, {'min': 0}),
             'levelNumChildrenMin': (NumberProperty, {'min': 0}),
             'levelNumChildrenMax': (NumberProperty, {'min': 0}),
-            'levelOrientation':    (EnumProperty,   {'values': Level.orientation})
+            'levelOrientation':    (EnumProperty,
+                                    {'values': Level.orientation})
         }
 
         self._props = Properties(properties, 'level.twg', config,
@@ -990,8 +1029,9 @@ class NumberProperty(Property):
                               % self.name, self.expr)
 
         if self.min and self.value < self.min:
-            raise ConfigError("Number property '%s' must have a value greater "
-                              "than %s" % (self.name, self.min), self.expr)
+            raise ConfigError(
+                "Number property '%s' must have a value greater "
+                "than %s" % (self.name, self.min), self.expr)
 
         if self.max and self.value > self.max:
             raise ConfigError("Number property '%s' must have a value less "
@@ -1025,8 +1065,8 @@ class EnumProperty(Property):
         n = int(round(n))
         if n < 0 or n >= len(self.values):
             raise ConfigError(
-                ("Enum property '%s' evaluated to an invalid numeric value: %s"
-                 % (self.name, n)), self.expr)
+                ("Enum property '%s' evaluated to an invalid "
+                 "numeric value: %s" % (self.name, n)), self.expr)
 
         self.value = self.values[n]
         return self.value
@@ -1082,7 +1122,7 @@ class Properties(object):
         dict if ``extra_prop_warning`` is True.
         """
 
-        c = loadconfig(defaults_path(defaults), flat=True)
+        c = loaddefaults(defaults)
         c.update(config)
         config = c
 

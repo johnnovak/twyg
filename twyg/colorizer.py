@@ -1,3 +1,5 @@
+import os
+
 from twyg.common import brightness
 from twyg.config import (colors_path, Properties,
                          BooleanProperty, NumberProperty, ColorProperty,
@@ -27,7 +29,8 @@ class Colorizer(object):
             'nodeColors':      (ArrayProperty, {'type': ColorProperty})
         }
         properties.update(childproperties)
-        self._props = Properties(properties, defaults, config)
+        self._props = Properties(properties, self._defaults_path(defaults),
+                                 config)
 
         E = self._eval_func()
         if not colorscheme_path:
@@ -36,8 +39,12 @@ class Colorizer(object):
         colorscheme = loadconfig(colors_path(colorscheme_path), flat=True)
 
         self._colorscheme_props = Properties(colorscheme_properties,
-                                             'colorizer/colorscheme.twg',
+                                             'colorizer/colorscheme',
                                              colorscheme)
+
+    # TODO util function in common?
+    def _defaults_path(self, conf):
+        return os.path.join('colorizer', conf)
 
     def _eval_func(self, node=None):
         # TODO duplicate from node.py
@@ -104,9 +111,10 @@ class CycleColorizer(Colorizer):
     def __init__(self, config, colorscheme_path=None):
         properties = {}
 
-        super(CycleColorizer, self).__init__(properties,
-                                             'colorizer/cycle.twg', config,
-                                             colorscheme_path=colorscheme_path)
+        super(CycleColorizer, self).__init__(
+            properties, 'cycle', config,
+            colorscheme_path=colorscheme_path)
+
         self._colorindex = 0
 
     def _set_basecolor(self, node):
@@ -136,9 +144,9 @@ class DepthColorizer(Colorizer):
     def __init__(self, config, colorscheme_path=None):
         properties = {}
 
-        super(DepthColorizer, self).__init__(properties,
-                                             'colorizer/depth.twg', config,
-                                             colorscheme_path=colorscheme_path)
+        super(DepthColorizer, self).__init__(
+            properties, 'depth', config,
+            colorscheme_path=colorscheme_path)
 
     def _set_basecolor(self, node):
         """
@@ -160,9 +168,10 @@ class BranchColorizer(Colorizer):
     def __init__(self, config, colorscheme_path=None):
         properties = {}
 
-        super(BranchColorizer, self).__init__(properties,
-                                              'colorizer/branch.twg', config,
-                                              colorscheme_path=colorscheme_path)
+        super(BranchColorizer, self).__init__(
+            properties, DEFAULTS_ROOT + 'branch', config,
+            colorscheme_path=colorscheme_path)
+
         self._colorindex = 0
 
     def _set_basecolor(self, node):

@@ -37,7 +37,7 @@ else:
     if 'TWYG_HOME' in os.environ:
         twyg.common.TWYG_HOME = os.environ['TWYG_HOME']
     else:
-        twyg.common.TWYG_HOME = os.path.expanduser('~')
+        twyg.common.TWYG_HOME = os.path.join(os.path.expanduser('~'), '.twyg')
 
 
 _initialized = False
