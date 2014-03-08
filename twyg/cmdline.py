@@ -6,7 +6,7 @@ from optparse import OptionParser
 from twyg import buildtree
 from twyg.cairowrapper import context as ctx
 from twyg.common import validate_margins, calculate_margins, loadjson
-from twyg.config import loadconfig, include_path
+from twyg.config import loadconfig, config_path
 
 
 def exit_error(msg):
@@ -93,10 +93,7 @@ def main():
         ctx.initsurface(1, 1, options.outformat, None, scale)
 
         data = loadjson(datafile)
-
-        # TODO create new load_config function
-        config = loadconfig(include_path(options.config))
-
+        config = loadconfig(config_path(options.config))
         tree = buildtree(data, config, options.colorscheme)
 
         width, height = tree.calclayout()

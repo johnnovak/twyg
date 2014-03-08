@@ -468,51 +468,57 @@ def loadconfig(file, flat=False):
     return config
 
 
-# TODO refactor *_path functions, extract common parts
+def find_config(paths, name):
+    """ Find a config file.
+
+    ``paths`` contains a list of search paths, including the name of the
+    config. The function first tries to fint the config as specified in
+    the path, then tries with CONF_EXT extension appended at the end.
+    """
+
+    for p in paths:
+        if os.path.exists(p):
+            return p
+        p = p + CONF_EXT
+        if os.path.exists(p):
+            return p
+    raise ConfigError("Cannot open %s file: '%s'" % (name, colorscheme))
+
+
 def defaults_path(configname):
-    conf = os.path.join('defaults', configname)
-    conf_ext = os.path.join(DEFAULTS_DIR, configname) + CONF_EXT
+    conf = os.path.join(DEFAULTS_DIR, configname)
+    home_conf = os.path.join(twyg.common.TWYG_HOME, conf)
     paths = [
-        resource_filename(__name__, conf),
-        resource_filename(__name__, conf_ext)
+        home_conf,
+        resource_filename(__name__, conf)
     ]
-    for p in paths:
-        if os.path.exists(p):
-            return p
-    raise ConfigError("Cannot open defaults file: '%s'" % colorscheme)
+    return find_config(paths, 'defaults config')
 
 
-def colors_path(colorscheme):
-    conf_ext = colorscheme + CONF_EXT
-    color_conf_ext = os.path.join(COLORS_DIR, conf_ext)
+def colors_path(configname):
+    colors_conf = os.path.join(COLORS_DIR, configname)
+    home_colors_conf = os.path.join(twyg.common.TWYG_HOME, colors_conf)
     paths = [
-        conf_ext,
-        os.path.join(twyg.common.TWYG_HOME, color_conf_ext),
-        resource_filename(__name__, color_conf_ext)
+        configname,
+        home_colors_conf,
+        resource_filename(__name__, colors_conf)
     ]
-    for p in paths:
-        if os.path.exists(p):
-            return p
-    raise ConfigError("Cannot open colorscheme file: '%s'" % colorscheme)
+    return find_config(paths, 'colorscheme config')
+
+
+def config_path(configname):
+    configs_conf = os.path.join(CONFIGS_DIR, configname)
+    home_configs_conf = os.path.join(twyg.common.TWYG_HOME, configs_conf)
+    paths = [
+        configname,
+        home_configs_conf,
+        resource_filename(__name__, configs_conf)
+    ]
+    return find_config(paths, 'config')
 
 
 def include_path(configname):
-    conf = configname
-    conf_ext = configname + CONF_EXT
-    configs_conf = os.path.join(CONFIGS_DIR, conf)
-    configs_conf_ext = os.path.join(CONFIGS_DIR, conf_ext)
-    paths = [
-        conf,
-        conf_ext,
-        os.path.join(twyg.common.TWYG_HOME, configs_conf),
-        os.path.join(twyg.common.TWYG_HOME, configs_conf_ext),
-        resource_filename(__name__, configs_conf),
-        resource_filename(__name__, configs_conf_ext)
-    ]
-    for p in paths:
-        if os.path.exists(p):
-            return p
-    raise ConfigError("Cannot open configuration file: '%s'" % configname)
+    return find_config([configname], 'included config')
 
 
 ##############################################################################
