@@ -21,8 +21,10 @@ Main Features
 
 * Simple yet flexible configuration language to fully control all visual
   aspects of the tree
+* Customisable layout and coloring algorithms
+* Lots of fully customisable node and connections shapes
+* Built-in configurations and colorschemes
 * Tree structures are described in simple JSON files
-* Lots of built-in configurations and colorschemes
 * Can be used from the command-line with the Cairo backend or as a NodeBox1
   library
 * PDF, SVG and PNG output formats
