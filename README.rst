@@ -1,8 +1,13 @@
-**********************************************
-twyg: Scriptable tree visualisation for Python
-**********************************************
+***********************************************
+twyg – Scriptable tree visualisation for Python
+***********************************************
 
-**twyg** lets you visualise arbitrary tree structures in a rather pretty way.
+**twyg** lets you visualise arbitrary tree structures in a pretty way.  The
+appearance of the tree (layout, color, node and connection shapes etc.) are
+fully controlled via configuration files in a programmatic way. Comes with an
+extensive set of pre-built configurations and colorschemes. Requires Cairo for
+image generation when used from the command line or can be used as a NodeBox1
+library.
 
 .. image:: /img/goals-boxes.png
 .. image:: /img/synthesis-nazca.png
@@ -14,8 +19,8 @@ twyg: Scriptable tree visualisation for Python
 Main Features
 =============
 
-* Simple yet flexible configuration language to programmatically control the
-  visual apparance of the tree
+* Simple yet flexible configuration language to fully control the visual
+  apparance of the tree
 * Tree structures can be described in simple JSON files
 * Lots of built-in configurations and colorschemes
 * Can be used from the command-line with the Cairo backend or as a NodeBox1
