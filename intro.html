@@ -71,10 +71,10 @@
           <h3><a href="contents.html">Table of contents</a></h3>
           <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Getting started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#main-features">Main Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
@@ -90,53 +90,58 @@
       
   <div class="section" id="getting-started">
 <h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>This is the documentation for the Sphinx documentation builder.  Sphinx is a
-tool that translates a set of <a class="reference external" href="http://docutils.sf.net/rst.html">reStructuredText</a> source files into various output
-formats, automatically producing cross-references, indices etc.  That is, if
-you have a directory containing a bunch of reST-formatted documents (and
-possibly subdirectories of docs in there as well), Sphinx can generate a
-nicely-organized arrangement of HTML files (in some other directory) for easy
-browsing and navigation.  But from the same source, it can also generate a
-LaTeX file that you can compile into a PDF version of the documents, or a
-PDF file directly using <a class="reference external" href="http://rst2pdf.googlecode.com">rst2pdf</a>.</p>
-<p>The focus is on hand-written documentation, rather than auto-generated API docs.
-Though there is support for that kind of docs as well (which is intended to be
-freely mixed with hand-written content), if you need pure API docs have a look
-at <a class="reference external" href="http://epydoc.sf.net/">Epydoc</a>, which also understands reST.</p>
-<div class="section" id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
-<p>This section is intended to collect helpful hints for those wanting to migrate
-to reStructuredText/Sphinx from other documentation systems.</p>
+<p><strong>twyg</strong> lets you visualise arbitrary tree structures in a pretty way.  The
+appearance of the tree (layout, color, node and connection shapes etc.) is
+fully controlled via configuration files in a programmatic way. Comes with an
+extensive set of default configurations and colorschemes. Requires Cairo (and
+optionally PIL) for image generation when used from the command-line or can be
+used as a NodeBox1 library.</p>
+<img alt="_images/goals-boxes.png" src="_images/goals-boxes.png" />
+<div class="section" id="main-features">
+<h2>Main Features<a class="headerlink" href="#main-features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Gerard Flanagan has written a script to convert pure HTML to reST; it can be
-found at the <a class="reference external" href="http://pypi.python.org/pypi/html2rest">Python Package Index</a>.</li>
-<li>For converting the old Python docs to Sphinx, a converter was written which
-can be found at <a class="reference external" href="http://svn.python.org/projects/doctools/converter">the Python SVN repository</a>.  It contains generic
-code to convert Python-doc-style LaTeX markup to Sphinx reST.</li>
-<li>Marcin Wojdyr has written a script to convert Docbook to reST with Sphinx
-markup; it is at <a class="reference external" href="http://code.google.com/p/db2rst/">Google Code</a>.</li>
-<li>Christophe de Vienne wrote a tool to convert from Open/LibreOffice documents
-to Sphinx: <a class="reference external" href="http://pypi.python.org/pypi/odt2sphinx/">odt2sphinx</a>.</li>
-<li>To convert different markups, <a class="reference external" href="http://johnmacfarlane.net/pandoc/">Pandoc</a> is
-a very helpful tool.</li>
+<li>Simple yet flexible configuration language to fully control all visual
+aspects of the tree</li>
+<li>Customisable layout and coloring algorithms</li>
+<li>Lots of fully customisable node and connections shapes</li>
+<li>Built-in configurations and colorschemes</li>
+<li>Tree structures are described in simple JSON files</li>
+<li>Can be used from the command-line with the Cairo backend or as a NodeBox1
+library</li>
+<li>PDF, SVG and PNG output formats</li>
+<li>Optionally requires PIL for drop-shadow support</li>
+<li>Python 2.5, 2.6 and 2.7 support</li>
+<li>Extensive documentation</li>
 </ul>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p>This is the documentation for the Sphinx documentation builder.</p>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>This is the documentation for the Sphinx documentation builder.  Sphinx is a
-tool that translates a set of <a class="reference external" href="http://docutils.sf.net/rst.html">reStructuredText</a> source files into various output
-formats, automatically producing cross-references, indices etc.</p>
+<p>To install twyg for all users:</p>
+<blockquote>
+<div>$ sudo easy_install pip
+$ sudo pip install twyg</div></blockquote>
 </div>
 <div class="section" id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
-<p>Sphinx needs at least <strong>Python 2.5</strong> or <strong>Python 3.1</strong> to run, as well as the
-<a class="reference external" href="http://docutils.sf.net/">docutils</a> and <a class="reference external" href="http://jinja.pocoo.org/">Jinja2</a> libraries.  Sphinx should work with docutils version 0.7
-or some (not broken) SVN trunk snapshot.  If you like to have source code
-highlighting support, you must also install the <a class="reference external" href="http://pygments.org/">Pygments</a> library.</p>
+<p>Generate a PDF output of the tree <cite>example1.json</cite> using the built-in <cite>nazca</cite>
+configuration:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="err">$</span> <span class="na">twyg</span><span class="o">.</span><span class="na">py</span> <span class="c">--config nazca example1.json example.pdf</span>
+</pre></div>
+</div>
+<p>Generate a PNG file at 150 DPI from <cite>example1.json</cite> using the built-in <cite>bubble</cite>
+configuration and use the <cite>mint</cite> colorscheme instead of the default one
+specified in the config:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="err">$</span> <span class="na">twyg</span><span class="o">.</span><span class="na">py</span> <span class="o">-</span><span class="na">c</span> <span class="na">bubbles</span> <span class="c">--colorscheme mint --dpi 150 example1.json example.png</span>
+</pre></div>
+</div>
+<p>Same as above, but leave 10% vertical and 20% horizontal margins:</p>
+<div class="highlight-twyg"><div class="highlight"><pre><span class="err">$</span> <span class="na">twyg</span><span class="o">.</span><span class="na">py</span> <span class="o">-</span><span class="na">c</span> <span class="na">bubbles</span> <span class="o">-</span><span class="na">o</span> <span class="na">mint</span> <span class="c">--dpi 150 --margin=10%,20% example1.json example.png</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
 </div>
 </div>
 
