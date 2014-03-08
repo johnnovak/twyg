@@ -1,0 +1,73 @@
+{
+    "Types of synthesis": [
+        {"Additive": [
+            {"Early electronic": [
+                "Teleharmonium",
+                "Hammond organ"
+            ]},
+            {"Digital": [
+                "RMI Harmonic Synthesizer",
+                "EMS Digital Oscillator Bank (DOB)",
+                "Fairlight Quasar M8",
+                "Bell Labs Digital Synthesizer",
+                "Synclavier II"
+            ]}
+        ]},
+
+        "Subtractive",
+
+        {"Frequency Modulation (FM)": [
+            {"Hardware": [
+                "Yamaha DX7",
+                "Yamaha SY99",
+                "Yamaha FS1R"
+            ]},
+            {"Software": [
+                "Native Instruments FM8",
+                "Image-Line Sytrus"
+            ]}
+        ]},
+
+        {"Phase distortion": [
+            "Casio CZ series"
+        ]},
+        {"Scanned": [
+            "Csound",
+            "Pure Data",
+            "Scanned Synth VST",
+            "ScanSynthGL"
+        ]},
+        {"Linear Arithmetic (LA)": [
+            "Roland D-50",
+            "Roland D-70"
+        ]},
+        {"Physical modelling": [
+            "Digital waveguide synthesis",
+            "Banded waveguide synthesis",
+            "Karplus–Strong string synthesis",
+            "Formant synthesis"
+        ]},
+
+        {"Sample-based": [
+            {"Wavetable synthesis": [
+                 "Sequential Circuits Prophet VS",
+                 "Korg Wavestation",
+                 "Yamaha SY series",
+                 "Korg OASYS"
+            ]},
+            "Vector synthesis",
+            {"Granular": [
+                "Csound",
+                "Max/MSP",
+                "Reaktor",
+                "SuperCollider",
+                "AudioMulch"
+            ]}
+        ]},
+        {"Analysis/resynthesis": [
+            "Vocoder",
+            "Speech synthesis"
+        ]}
+    ]
+}
+

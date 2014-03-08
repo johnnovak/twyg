@@ -479,10 +479,10 @@ def find_config(paths, name):
     for p in paths:
         if os.path.exists(p):
             return p
-        p = p + CONF_EXT
-        if os.path.exists(p):
-            return p
-    raise ConfigError("Cannot open %s file: '%s'" % (name, colorscheme))
+        p2 = p + CONF_EXT
+        if os.path.exists(p2):
+            return p2
+    raise ConfigError("Cannot open %s file: '%s'" % (name, p))
 
 
 def defaults_path(configname):

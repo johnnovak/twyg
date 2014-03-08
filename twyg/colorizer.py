@@ -169,7 +169,7 @@ class BranchColorizer(Colorizer):
         properties = {}
 
         super(BranchColorizer, self).__init__(
-            properties, DEFAULTS_ROOT + 'branch', config,
+            properties, 'branch', config,
             colorscheme_path=colorscheme_path)
 
         self._colorindex = 0

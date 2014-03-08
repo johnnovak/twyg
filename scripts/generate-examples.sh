@@ -11,13 +11,15 @@ DATAFILE=$1
 OUTDIR=$2
 FORMAT=$3
 
-for CONFIG in configs/*.twg
+for CONFIG in twyg/configs/*.twg
 do
-    FNAME=`basename $CONFIG`
-    FNAME="${FNAME%.*}"
-    OUTFILE="${OUTDIR}/$FNAME.$FORMAT"
+    D=`basename $DATAFILE`
+    D="${D%.*}"
+    C=`basename $CONFIG`
+    C="${C%.*}"
+    OUTFILE="${OUTDIR}/${D}-${C}.${FORMAT}"
     echo "Writing $OUTFILE"
 
-    ./twyg.py -c $CONFIG $DATAFILE $OUTFILE
+    twyg -c $CONFIG $DATAFILE $OUTFILE
 done
 

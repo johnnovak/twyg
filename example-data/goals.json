@@ -19,7 +19,7 @@
         ]},
         {"Learning": [
             "Learning Spanish",
-            "Learning graphic design asdfasdf f sadf asdf asdfsdf sdf sd asdfasdf asdfasdfiopiuwqer qwerpwer"
+            "Learning graphic design"
         ]},
         {"Career": [
             {"Now":
@@ -35,5 +35,5 @@
             "Daily playtime",
             "Bedtime reading"
         ]}
-    ]        
+    ]
 }
