@@ -18,12 +18,13 @@ def main():
     usage = 'Usage: %prog [OPTIONS] DATAFILE OUTFILE'
     parser = OptionParser(usage=usage)
     parser.add_option('-c', '--config',
-                      dest='configfile', metavar='FILE',
-                      help='path to the configuration file to use')
+                      default='default',
+                      dest='config', metavar='FILE',
+                      help='configuration to use [default: %default]')
 
     parser.add_option('-o', '--colorscheme',
                       dest='colorscheme', metavar='NAME',
-                      help='name of the colorscheme to use')
+                      help='colorscheme to use')
 
     parser.add_option('-d', '--dpi',
                       default='72.0', type='float',
@@ -33,8 +34,8 @@ def main():
     parser.add_option('-m', '--margin',
                       default='10%,5%',
                       help=('margins in TOP,RIGHT,BOTTOM,LEFT or VERT,HORIZ '
-                            'or MARGIN format; values are absolute (points) '
-                            'or percentages [default: %default]'))
+                            'or MARGIN format, either as absolute units '
+                            '(points) or percentages [default: %default]'))
 
     parser.add_option('-v', '--verbose',
                       default=False, action='store_true',
@@ -94,7 +95,7 @@ def main():
         data = loadjson(datafile)
 
         # TODO create new load_config function
-        config = loadconfig(include_path(options.configfile))
+        config = loadconfig(include_path(options.config))
 
         tree = buildtree(data, config, options.colorscheme)
 
