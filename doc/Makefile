@@ -42,8 +42,8 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 	-rm -rf figures/images/*
 
-html:
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)
+html: update_css
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
@@ -160,5 +160,5 @@ update_css:
 	sass --force --update _themes/twyg/static/main.scss:_themes/twyg/static/main.css
 
 watch_css:
-	sass --force --watch _themes/twyg/static/main.scss:$(BUILDDIR)/html/_static/main.css
+	sass --watch _themes/twyg/static/main.scss:$(BUILDDIR)/html/_static/main.css
 
