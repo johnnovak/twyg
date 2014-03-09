@@ -5,6 +5,7 @@ Table of contents
    :maxdepth: 2
 
    intro
+   install
    usage
    config
    reference

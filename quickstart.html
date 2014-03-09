@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="description" content=".">
 
-    <title>Examples &mdash; twyg 0.1 documentation</title>
+    <title>Quickstart &mdash; twyg 0.1 documentation</title>
 
     <link rel="stylesheet" href="_static/main.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -65,8 +65,8 @@
       <ul id="mainmenu">
         <li><a href="index.html">Home</a></li>
         <li><a href="getit.html">Get It</a></li>
-        <li><a href="quickstart.html">Quickstart</a></li>
-        <li class="sel"><a href="#">Examples</a></li>
+        <li class="sel"><a href="#">Quickstart</a></li>
+        <li><a href="examples.html">Examples</a></li>
         <li><a href="contents.html">Docs</a></li>
       </ul>
     </div>
@@ -76,7 +76,21 @@
 
       <div id="body">
       
-  <h1>Examples</h1>
+  <h1>Quickstart</h1>
+
+  <p>Generate a PDF output from the tree <code>example1.json</code> using the built-in <em>nazca</em> configuration:</p>
+
+  <pre>$ twyg.py --config nazca example1.json example.pdf</pre>
+
+  <p>Generate a PNG file at 150 DPI from <code>example1.json</code>
+  using the <em>bubble</em> configuration and the <em>mint</em>
+  colorscheme:</p>
+
+  <pre>$ twyg.py -c bubbles --colorscheme mint --dpi 150 example1.json example.png</pre>
+
+  <p>Same as above, but leave 10% vertical and 20% horizontal margins:</p>
+
+  <pre>$ twyg.py -c bubbles -o mint --dpi 150 --margin=10%,20% example1.json example.png</pre>
 
 
       </div>

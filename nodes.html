@@ -29,11 +29,14 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
 
-    <script src="_static/jquery.sticky.js"></script>
+    <script src="_static/jquery.sticky.min.js"></script>
     <script>
-      $(document).ready(function(){
-          $("#docnav").sticky({topSpacing:0});
+      $(document).ready(function() {
+        $("#docnav").sticky({topSpacing: 0});
+
+        
       });
+
     </script>
     <link rel="top" title="twyg 0.1 documentation" href="index.html" />
     <link rel="up" title="Properties reference" href="reference.html" />
@@ -50,13 +53,14 @@
       
       <ul id="mainmenu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="install.html">Get It</a></li>
-        <li class="sel"><a href="contents.html">Docs</a></li>
+        <li><a href="getit.html">Get It</a></li>
+        <li><a href="quickstart.html">Quickstart</a></li>
         <li><a href="examples.html">Examples</a></li>
+        <li class="sel"><a href="contents.html">Docs</a></li>
       </ul>
     </div>
 
-    <div id="content">
+    <div id="content" ">
       
       <div id="docnav">
         <ul>
@@ -72,7 +76,8 @@
         <div class="wrapper">
           <h3><a href="contents.html">Table of contents</a></h3>
           <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="reference.html">Properties reference</a><ul class="current">
@@ -97,6 +102,7 @@
       </div>
       
 
+      <div id="body">
       
   <div class="section" id="node">
 <h1>Node<a class="headerlink" href="#node" title="Permalink to this headline">¶</a></h1>
@@ -733,5 +739,6 @@ the corner radius to a very large value (last example).</p>
 </div>
 
 
+      </div>
   </body>
 </html>

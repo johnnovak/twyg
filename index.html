@@ -28,11 +28,29 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
 
-    <script src="_static/jquery.sticky.js"></script>
+    <script src="_static/jquery.sticky.min.js"></script>
     <script>
-      $(document).ready(function(){
-          $("#docnav").sticky({topSpacing:0});
+      $(document).ready(function() {
+        $("#docnav").sticky({topSpacing: 0});
+
+        
+        var fadeStart = 20;
+        var fadeUntil = 80;
+        var fading = $('#logo');
+
+        $(window).bind('scroll', function(){
+          var offset = $(document).scrollTop();
+          var opacity = 0;
+          if (offset <= fadeStart) {
+              opacity = 1;
+          } else if (offset <= fadeUntil){
+              opacity = 1 - (offset - fadeStart) / (fadeUntil - fadeStart);
+          }
+          fading.css('opacity', opacity);
+        });
+        
       });
+
     </script>
     <link rel="top" title="twyg 0.1 documentation" href="#" />
   </head>
@@ -46,15 +64,17 @@
       
       <ul id="mainmenu">
         <li class="sel"><a href="#">Home</a></li>
-        <li><a href="install.html">Get It</a></li>
-        <li><a href="contents.html">Docs</a></li>
+        <li><a href="getit.html">Get It</a></li>
+        <li><a href="quickstart.html">Quickstart</a></li>
         <li><a href="examples.html">Examples</a></li>
+        <li><a href="contents.html">Docs</a></li>
       </ul>
     </div>
 
-    <div id="content">
+    <div id="content" class="static"">
       
 
+      <div id="body">
       
   <h1>Home</h1>
 
@@ -69,5 +89,6 @@
   <img src="_images/goals-boxes.png" alt="" />
 
 
+      </div>
   </body>
 </html>
