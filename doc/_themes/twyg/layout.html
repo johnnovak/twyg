@@ -43,11 +43,29 @@
     <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
     {%- endfor %}
 
-    <script src="{{ pathto('_static/jquery.sticky.js', 1) }}"></script>
+    <script src="{{ pathto('_static/jquery.sticky.min.js', 1) }}"></script>
     <script>
-      $(document).ready(function(){
-          $("#docnav").sticky({topSpacing:0});
+      $(document).ready(function() {
+        $("#docnav").sticky({topSpacing: 0});
+
+        {% if staticpage %}
+        var fadeStart = 20;
+        var fadeUntil = 80;
+        var fading = $('#logo');
+
+        $(window).bind('scroll', function(){
+          var offset = $(document).scrollTop();
+          var opacity = 0;
+          if (offset <= fadeStart) {
+              opacity = 1;
+          } else if (offset <= fadeUntil){
+              opacity = 1 - (offset - fadeStart) / (fadeUntil - fadeStart);
+          }
+          fading.css('opacity', opacity);
+        });
+        {% endif %}
       });
+
     </script>
 
     {%- if use_opensearch %}
@@ -95,7 +113,7 @@
       </ul>
     </div>
 
-    <div id="content{% if staticpage %} static{% endif %}">
+    <div id="content" {% if staticpage %}class="static"{% endif %}">
       {% if not staticpage %}
       <div id="docnav">
         <ul>
@@ -119,6 +137,8 @@
       </div>
       {% endif %}
 
+      <div id="body">
       {% block body %} {% endblock %}
+      </div>
   </body>
 </html>

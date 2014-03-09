@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% set staticpage = True %}
+{% set title = _('Quickstart') %}
+{% block body %}
+  <h1>Quickstart</h1>
+
+  <p>Generate a PDF output from the tree <code>example1.json</code> using the built-in <em>nazca</em> configuration:</p>
+
+  <pre>$ twyg.py --config nazca example1.json example.pdf</pre>
+
+  <p>Generate a PNG file at 150 DPI from <code>example1.json</code>
+  using the <em>bubble</em> configuration and the <em>mint</em>
+  colorscheme:</p>
+
+  <pre>$ twyg.py -c bubbles --colorscheme mint --dpi 150 example1.json example.png</pre>
+
+  <p>Same as above, but leave 10% vertical and 20% horizontal margins:</p>
+
+  <pre>$ twyg.py -c bubbles -o mint --dpi 150 --margin=10%,20% example1.json example.png</pre>
+
+{% endblock %}

@@ -103,8 +103,9 @@ blockquote {
 #header {
   position: absolute;
   top: 20px;
-  left: 63px;
-  padding-top: 10px; }
+  left: 65px;
+  padding-top: 10px;
+  width: 880px; }
   #header #logo {
     display: block;
     width: 200px;
@@ -118,6 +119,8 @@ blockquote {
   right: 0;
   margin: 0;
   padding: 0;
+  right: 0;
+  display: block;
   border: 2px solid #fff;
   border-right: 0;
   z-index: 1; }
@@ -144,7 +147,7 @@ blockquote {
 
 #submenu {
   position: absolute;
-  top: 80px;
+  top: 60px;
   left: -275px; }
   #submenu .wrapper {
     position: fixed; }
@@ -215,11 +218,17 @@ blockquote {
   margin-left: 260px;
   margin-top: 140px;
   position: relative; }
+  #content.static {
+    margin-left: 68px;
+    margin-top: 170px;
+    width: 880px; }
   #content h1 {
     clear: both;
     color: #83b69c;
-    font-size: 44px;
-    font-weight: 300; }
+    font-size: 48px;
+    font-weight: 300;
+    margin-left: -2px;
+    margin-bottom: 0.5em; }
   #content h2 {
     color: #83b69c;
     font-size: 32px;

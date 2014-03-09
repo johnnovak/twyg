@@ -23,7 +23,7 @@ To regenerate the CSS from the Sass files only:
 
     make update_css
 
-To watch Sass files changes (generates CSS automatically when a change is
+To watch Sass file changes (generates CSS automatically when a change is
 detected):
 
     make watch_css
