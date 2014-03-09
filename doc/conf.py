@@ -21,9 +21,10 @@ html_static_path = ['_static']
 
 
 html_additional_pages = {
-  'index':    'index.html',
-  'install':  'install.html',
-  'examples': 'examples.html'
+  'index':      'index.html',
+  'getit':      'getit.html',
+  'quickstart': 'quickstart.html',
+  'examples':   'examples.html'
 }
 
 htmlhelp_basename = 'twygdoc'

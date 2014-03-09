@@ -1,9 +1,9 @@
 Prerequisites
 -------------
 
-The documentation is written using Sphinx.
+The documentation for *twyg* is written in reStructuredText / Sphinx.
 
-The following tools need to be installed to generate the documentation:
+The following tools are needed to generate the documentation:
 
 * make
 * Sphinx
@@ -14,17 +14,16 @@ The following tools need to be installed to generate the documentation:
 Usage
 -----
 
-The following commands will generate the full HTML documenation in
-`_build/html`::
+These commands will generate the full HTML documenation in `_build/html`:
 
     make figures
     make html
 
-To regenerate the CSS from the Sass files only::
+To regenerate the CSS from the Sass files only:
 
     make update_css
 
 To watch Sass files changes (generates CSS automatically when a change is
-detected)::
+detected):
 
     make watch_css

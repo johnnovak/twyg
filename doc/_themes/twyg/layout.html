@@ -88,13 +88,14 @@
       {% set menusel = ' class="sel"' %}
       <ul id="mainmenu">
         <li{% if pagename == 'index' %}{{ menusel }}{% endif %}><a href="{{ pathto('index') }}">Home</a></li>
-        <li{% if pagename == 'install' %}{{ menusel }}{% endif %}><a href="{{ pathto('install') }}">Get It</a></li>
-        <li{% if not staticpage %}{{ menusel }}{% endif %}><a href="{{ pathto('contents') }}">Docs</a></li>
+        <li{% if pagename == 'getit' %}{{ menusel }}{% endif %}><a href="{{ pathto('getit') }}">Get It</a></li>
+        <li{% if pagename == 'quickstart' %}{{ menusel }}{% endif %}><a href="{{ pathto('quickstart') }}">Quickstart</a></li>
         <li{% if pagename == 'examples' %}{{ menusel }}{% endif %}><a href="{{ pathto('examples') }}">Examples</a></li>
+        <li{% if not staticpage %}{{ menusel }}{% endif %}><a href="{{ pathto('contents') }}">Docs</a></li>
       </ul>
     </div>
 
-    <div id="content">
+    <div id="content{% if staticpage %} static{% endif %}">
       {% if not staticpage %}
       <div id="docnav">
         <ul>
