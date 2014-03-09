@@ -1,7 +1,5 @@
 import os, sys
 
-sys.path.append(os.path.join('../..'))
-
 import twyg.common
 
 from twyg import buildtree
@@ -10,8 +8,7 @@ from twyg.config import buildconfig, tokenize
 from twyg.geom import Rectangle
 
 
-twyg.common.TWYG_USER = os.path.join('.')
-twyg.common.TWYG_HOME = os.path.join('../..')
+twyg.common.TWYG_HOME = os.path.join('.')
 
 IMG_DIR = 'images'
 OUTFORMAT = 'png'
