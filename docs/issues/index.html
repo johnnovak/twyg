@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content=".">
+
+    <title>Known issues &mdash; twyg 0.1 documentation</title>
+
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    <script src="../../_static/jquery.sticky.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("#docnav").sticky({topSpacing: 0});
+
+        
+      });
+
+    </script>
+    <link rel="top" title="twyg 0.1 documentation" href="../../" />
+    <link rel="up" title="Table of contents" href="../" />
+    <link rel="prev" title="Color" href="../colors/" />
+  </head>
+
+  <body class="docs/issues">
+    <div class="header">
+      <a class="logo" href="/">
+        <img id="logo" src="../../_static/twyg-logo.png" alt="twyg – Generative tree visualiser for Python" />
+      </a>
+
+      
+      <ul class="mainmenu">
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../download/">Get It</a></li>
+        <li><a href="../../quickstart/">Quickstart</a></li>
+        <li><a href="../../examples/">Examples</a></li>
+        <li class="sel"><a href="../">Docs</a></li>
+      </ul>
+    </div>
+
+    <div class="content">
+      
+      <div class="docnav">
+        <ul>
+          <li><a href="../../contents/">Docs</a></li>
+          <li><a href="../" accesskey="U">Table of contents</a></li>
+          <li><a href="#">Known issues</a></li>
+        </ul>
+        <a class="index" href="../../genindex/">INDEX</a>
+        <a class="search" href="../../search/">SEARCH</a>
+      </div>
+
+      <div class="submenu">
+        <div class="wrapper">
+          <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../">Table of contents</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro/">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/">Properties reference</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Known issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backends">Backends</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+      
+
+      
+  <div class="section" id="known-issues">
+<h1>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Some UTF-8 character &amp; font combination cause lockups (typically characters from non-Western languages).</li>
+</ul>
+</div>
+<div class="section" id="backends">
+<h2>Backends<a class="headerlink" href="#backends" title="Permalink to this headline">¶</a></h2>
+<p>In general, pixel-exact rendering should not be expected across backends.
+There are some differences in how images are rendered with the Cairo and
+NodeBox backends:</p>
+<ul class="simple">
+<li>Font name resolution works differently (e.g. some fonts can be used in one
+backend but not in the other).</li>
+<li>Font rendering is slightly different (e.g. font baselines are not in the same
+Y-position).</li>
+<li>Shadows look a bit different (NodeBox uses Quartz to render the shadows,
+while when using Cairo, shadows are rasterized by a custom Python algorithm).</li>
+<li>Transparent PDF backgrounds are not possible when using Cairo.</li>
+<li>Shadows are not positioned correctly when outputting SVG files.</li>
+<li>Gradient colors are not exactly the same.</li>
+</ul>
+</div>
+</div>
+
+
+  </body>
+</html>

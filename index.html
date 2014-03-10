@@ -20,7 +20,7 @@
         URL_ROOT:    '',
         VERSION:     '0.1',
         COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
+        FILE_SUFFIX: '',
         HAS_SOURCE:  true
       };
     </script>
@@ -34,8 +34,10 @@
         $("#docnav").sticky({topSpacing: 0});
 
         
-        var fadeStart = 20;
-        var fadeUntil = 80;
+          
+            var fadeStart = 70;
+            var fadeUntil = 130;
+          
         var fading = $('#logo');
 
         $(window).bind('scroll', function(){
@@ -55,40 +57,77 @@
     <link rel="top" title="twyg 0.1 documentation" href="#" />
   </head>
 
-  <body>
-    <div id="header">
-      <a id="logo" href="/">
-        <img src="_static/twyg-logo.png" alt="twyg - python tree visualisation" />
+  <body class="index">
+    <div class="header">
+      <a class="logo" href="/">
+        <img id="logo" src="_static/twyg-logo.png" alt="twyg – Generative tree visualiser for Python" />
       </a>
 
       
-      <ul id="mainmenu">
+      <ul class="mainmenu">
         <li class="sel"><a href="#">Home</a></li>
-        <li><a href="getit.html">Get It</a></li>
-        <li><a href="quickstart.html">Quickstart</a></li>
-        <li><a href="examples.html">Examples</a></li>
-        <li><a href="contents.html">Docs</a></li>
+        <li><a href="download/">Get It</a></li>
+        <li><a href="quickstart/">Quickstart</a></li>
+        <li><a href="examples/">Examples</a></li>
+        <li><a href="docs/">Docs</a></li>
       </ul>
     </div>
 
-    <div id="content" class="static"">
+    <div class="content static">
       
 
-      <div id="body">
       
-  <h1>Home</h1>
+  <div class="release">
+    <h1>Generative tree visualiser for Python</h1>
+    <ul>
+      <li class="version">Current release: 0.1</li>
+      <li><a href="https://github.com/johnnovak/twyg">Fork on Github</a></li>
+    </ul>
+  </div>
 
-  <p><em>twyg</em> lets you visualise arbitrary tree structures in a
-  pretty way.  The appearance of the tree (layout, color, node and
-  connection shapes etc.) is fully controlled via configuration files in
-  a programmatic way. Comes with an extensive set of default
-  configurations and colorschemes. Requires Cairo (and optionally PIL)
-  for image generation when used from the command-line or can be used as
-  a NodeBox1 library.</p>
+  <div class="body">
+    <h2>Main features</h2>
 
-  <img src="_images/goals-boxes.png" alt="" />
+    <ul class="features">
+      <li>
+        <h3>Built-in styles</h3>
+        <ul>
+            <li><span>15 built-in styles to choose from</span></li>
+            <li><span>easily extendable with new style</span></li>
+            <li><span>flexible configuration language</span></li>
+            <li><span>easily extendable with new style</span></li>
+            <li><span>easily extendable with new style, and some really long text that will span multiple lines so I can test the text wrapping blabla blaba whatever</span></li>
+            <li><span>flexible configuration language</span></li>
+        </ul>
+        <img src="_static/test.png" alt="Layout example 1" />
+        <img src="_static/test.png" alt="Layout example 2" />
+      </li>
+      <li>
+        <h3>Node shapes</h3>
+        <ul>
+            <li><span>15 built-in styles to choose from</span></li>
+            <li><span>easily extendable with new style, and some really long text that will span multiple lines so I can test the text wrapping blabla blaba whatever</span></li>
+            <li><span>easily extendable with new style, and some really long text that will span multiple lines so I can test the text wrapping blabla blaba whatever</span></li>
+            <li><span>flexible configuration language</span></li>
+        </ul>
+        <img src="_static/test.png" alt="Node shapes" />
+        <img src="_static/test.png" alt="Connections" />
+      </li>
+      <li>
+        <h3>Configurable</h3>
+        <ul>
+            <li><span>15 built-in styles to choose from</span></li>
+            <li><span>easily extendable with new easily extendable with new style</span></li>
+            <li><span>15 built-in styles to choose from</span></li>
+            <li><span>easilywith new style with new style extendable with new style</span></li>
+            <li><span>flexible configuration language</span></li>
+        </ul>
+        <img src="_static/test.png" alt="Configuration file" />
+        <img src="_static/test.png" alt="Node properties" />
+      </li>
+    </ul>
+  </div>
 
 
-      </div>
   </body>
 </html>

@@ -1,13 +1,5 @@
-Table of contents
-=================
-
 .. toctree::
    :maxdepth: 2
+   :hidden:
 
-   intro
-   install
-   usage
-   config
-   reference
-   issues
-
+   docs/index

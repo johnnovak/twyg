@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content=".">
+
+    <title>Usage &mdash; twyg 0.1 documentation</title>
+
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    <script src="../../_static/jquery.sticky.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("#docnav").sticky({topSpacing: 0});
+
+        
+      });
+
+    </script>
+    <link rel="top" title="twyg 0.1 documentation" href="../../" />
+    <link rel="up" title="Table of contents" href="../" />
+    <link rel="next" title="Configuration" href="../config/" />
+    <link rel="prev" title="Installation" href="../install/" />
+  </head>
+
+  <body class="docs/usage">
+    <div class="header">
+      <a class="logo" href="/">
+        <img id="logo" src="../../_static/twyg-logo.png" alt="twyg – Generative tree visualiser for Python" />
+      </a>
+
+      
+      <ul class="mainmenu">
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../download/">Get It</a></li>
+        <li><a href="../../quickstart/">Quickstart</a></li>
+        <li><a href="../../examples/">Examples</a></li>
+        <li class="sel"><a href="../">Docs</a></li>
+      </ul>
+    </div>
+
+    <div class="content">
+      
+      <div class="docnav">
+        <ul>
+          <li><a href="../../contents/">Docs</a></li>
+          <li><a href="../" accesskey="U">Table of contents</a></li>
+          <li><a href="#">Usage</a></li>
+        </ul>
+        <a class="index" href="../../genindex/">INDEX</a>
+        <a class="search" href="../../search/">SEARCH</a>
+      </div>
+
+      <div class="submenu">
+        <div class="wrapper">
+          <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../">Table of contents</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro/">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/">Installation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-interface">Command line interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nodebox1">NodeBox1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../config/">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/">Properties reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../issues/">Known issues</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+      
+
+      
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="command-line-interface">
+<h2>Command line interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
+<dl class="option">
+<dt id="cmdoption-h">
+<tt class="descname">-h</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--help</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-h" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show this help message and exit</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-c">
+<tt class="descname">-c</tt><tt class="descclassname"> FILE</tt><tt class="descclassname">, </tt><tt class="descname">--config</tt><tt class="descclassname">=FILE</tt><a class="headerlink" href="#cmdoption-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Config file</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-o">
+<tt class="descname">-o</tt><tt class="descclassname"> FILE</tt><tt class="descclassname">, </tt><tt class="descname">--colorscheme</tt><tt class="descclassname">=FILE</tt><a class="headerlink" href="#cmdoption-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Colorscheme file</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-d">
+<tt class="descname">-d</tt><tt class="descclassname"> DPI</tt><tt class="descclassname">, </tt><tt class="descname">--dpi</tt><tt class="descclassname">=DPI</tt><a class="headerlink" href="#cmdoption-d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output resolution (PNG) or shadow rasterisation resolution (PDF and
+SVG) [default: 72.0]</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-m">
+<tt class="descname">-m</tt><tt class="descclassname"> MARGIN</tt><tt class="descclassname">, </tt><tt class="descname">--margin</tt><tt class="descclassname">=MARGIN</tt><a class="headerlink" href="#cmdoption-m" title="Permalink to this definition">¶</a></dt>
+<dd><p>Margins in TOP,RIGHT,BOTTOM,LEFT or VERT,HORIZ or MARGIN format;
+values can be absolute points or percentages [default: 10%,5%]</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-v">
+<tt class="descname">-v</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--verbose</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display extended error messages</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-s">
+<tt class="descname">-s</tt><tt class="descclassname"> SCALE</tt><tt class="descclassname">, </tt><tt class="descname">--scale</tt><tt class="descclassname">=SCALE</tt><a class="headerlink" href="#cmdoption-s" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scale factor (absolute value or percentage) [default: 1.0]</p>
+</dd></dl>
+
+</div>
+<div class="section" id="nodebox1">
+<h2>NodeBox1<a class="headerlink" href="#nodebox1" title="Permalink to this headline">¶</a></h2>
+<p>Nodebox usage:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ximport</span><span class="p">(</span><span class="s">&#39;twyg&#39;</span><span class="p">)</span>
+
+<span class="n">datafile</span> <span class="o">=</span> <span class="s">&#39;examples/data/data2.json&#39;</span>
+<span class="n">configfile</span> <span class="o">=</span> <span class="s">&#39;configs/synapse.twg&#39;</span>
+<span class="n">colorschemefile</span> <span class="o">=</span> <span class="s">&#39;colors/honey.twg&#39;</span>
+
+<span class="n">tree</span> <span class="o">=</span> <span class="n">twyg</span><span class="o">.</span><span class="n">buildtree</span><span class="p">(</span><span class="n">datafile</span><span class="p">,</span> <span class="n">configfile</span><span class="p">,</span> <span class="n">colorschemefile</span><span class="p">)</span>
+
+<span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">calclayout</span><span class="p">()</span>
+
+<span class="n">size</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+<span class="n">background</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">background_color</span><span class="p">())</span>
+
+<span class="n">tree</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>See also <em>nodebox-usage.py</em></p>
+</div>
+</div>
+
+
+  </body>
+</html>

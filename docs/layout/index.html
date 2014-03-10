@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content=".">
+
+    <title>Layout &mdash; twyg 0.1 documentation</title>
+
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+    <script src="../../_static/jquery.sticky.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("#docnav").sticky({topSpacing: 0});
+
+        
+      });
+
+    </script>
+    <link rel="top" title="twyg 0.1 documentation" href="../../" />
+    <link rel="up" title="Properties reference" href="../reference/" />
+    <link rel="next" title="Node" href="../nodes/" />
+    <link rel="prev" title="Properties reference" href="../reference/" />
+  </head>
+
+  <body class="docs/layout">
+    <div class="header">
+      <a class="logo" href="/">
+        <img id="logo" src="../../_static/twyg-logo.png" alt="twyg – Generative tree visualiser for Python" />
+      </a>
+
+      
+      <ul class="mainmenu">
+        <li><a href="../../">Home</a></li>
+        <li><a href="../../download/">Get It</a></li>
+        <li><a href="../../quickstart/">Quickstart</a></li>
+        <li><a href="../../examples/">Examples</a></li>
+        <li class="sel"><a href="../">Docs</a></li>
+      </ul>
+    </div>
+
+    <div class="content">
+      
+      <div class="docnav">
+        <ul>
+          <li><a href="../../contents/">Docs</a></li>
+          <li><a href="../" >Table of contents</a></li>
+          <li><a href="../reference/" accesskey="U">Properties reference</a></li>
+          <li><a href="#">Layout</a></li>
+        </ul>
+        <a class="index" href="../../genindex/">INDEX</a>
+        <a class="search" href="../../search/">SEARCH</a>
+      </div>
+
+      <div class="submenu">
+        <div class="wrapper">
+          <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../">Table of contents</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro/">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config/">Configuration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../reference/">Properties reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="">Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nodes/">Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../connections/">Connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../colors/">Color</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../issues/">Known issues</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+      
+
+      
+  <div class="section" id="layout">
+<h1>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">¶</a></h1>
+<p>The <em>layout</em> section controls the positioning of the individual nodes within
+the tree.</p>
+<dl class="property">
+<dt id="property-horizontalBalance">
+<tt class="descname">horizontalBalance</tt><a class="headerlink" href="#property-horizontalBalance" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>0.5</dd>
+</dl>
+<p>Controls the left-right distribution of the root node&#8217;s children.  A values
+of <em>0.0</em> aligns all nodes to the right and a values of <em>1.0</em> results in all
+nodes aligned to the left.  <em>0.5</em> results in nodes balanced evenly between
+left and right.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-verticalAlignFactor">
+<tt class="descname">verticalAlignFactor</tt><a class="headerlink" href="#property-verticalAlignFactor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>0.5</dd>
+</dl>
+<p>Vertical align factor.  A value of <em>0.0</em> aligns all nodes to the top, <em>0.5</em>
+center the nodes vertically and <em>1.0</em> aligns them all to the bottom.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-rootPadX">
+<tt class="descname">rootPadX</tt><a class="headerlink" href="#property-rootPadX" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>160</dd>
+</dl>
+<p>Horizontal padding around the root node.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-nodePadX">
+<tt class="descname">nodePadX</tt><a class="headerlink" href="#property-nodePadX" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>30.0</dd>
+</dl>
+<p>Horizontal padding between the non-root nodes.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-nodePadY">
+<tt class="descname">nodePadY</tt><a class="headerlink" href="#property-nodePadY" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>8.0</dd>
+</dl>
+<p>Vertical padding between the nodes.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-branchPadY">
+<tt class="descname">branchPadY</tt><a class="headerlink" href="#property-branchPadY" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>25.0</dd>
+</dl>
+<p>Vertical padding between child node groups.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-sameWidthSiblings">
+<tt class="descname">sameWidthSiblings</tt><a class="headerlink" href="#property-sameWidthSiblings" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Boolean</dd>
+<dt>Default</dt>
+<dd>yes</dd>
+</dl>
+<p>Controls whether all sibling nodes should have the same width.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-snapParentToChildren">
+<tt class="descname">snapParentToChildren</tt><a class="headerlink" href="#property-snapParentToChildren" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Boolean</dd>
+<dt>Default</dt>
+<dd>no</dd>
+</dl>
+<p>Controls whether the connection point of the child nodes should be
+snapped to the parent&#8217;s connection point.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-snapToHalfPositions">
+<tt class="descname">snapToHalfPositions</tt><a class="headerlink" href="#property-snapToHalfPositions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Boolean</dd>
+<dt>Default</dt>
+<dd>no</dd>
+</dl>
+<p>Controls whether snapping halfway between two connection points is
+allowed.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-radialMinNodes">
+<tt class="descname">radialMinNodes</tt><a class="headerlink" href="#property-radialMinNodes" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>3</dd>
+</dl>
+<p>Minimum number of siblings for arc node placement.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="property-radialFactor">
+<tt class="descname">radialFactor</tt><a class="headerlink" href="#property-radialFactor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="propparams docutils">
+<dt>Type</dt>
+<dd>Number</dd>
+<dt>Default</dt>
+<dd>2.2</dd>
+</dl>
+<p>Roundness of the arc node placement.</p>
+</dd></dl>
+
+</div>
+
+
+  </body>
+</html>
