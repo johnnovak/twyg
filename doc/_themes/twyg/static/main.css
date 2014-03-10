@@ -63,13 +63,13 @@ dd {
   dd .first {
     margin-top: 0; }
 
-tt {
+tt, code {
   font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
   font-size: 14px;
   font-size: 15px !important;
   font-weight: bold;
   color: #585858; }
-  tt.descname {
+  tt.descname, code.descname {
     font-size: 16px !important; }
 
 pre {
@@ -209,14 +209,12 @@ blockquote {
   .docnav a:hover {
     text-decoration: underline; }
 
-.content.static {
-  width: 880px; }
-
 .content {
   width: 680px;
   margin: 140px auto 0 auto;
-  position: relative;
-  border: 1px solid red; }
+  position: relative; }
+  .content.static {
+    width: 880px; }
   .content h1 {
     clear: both;
     color: #83b69c;
@@ -307,7 +305,7 @@ blockquote {
 
 .index .header {
   height: 230px;
-  background: url("/_static/tree.png") 180px 10px no-repeat; }
+  background: url("tree.png") 180px 10px no-repeat; }
 .index .content {
   width: 100%;
   margin: 0; }
