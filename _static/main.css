@@ -305,7 +305,7 @@ blockquote {
 
 .index .header {
   height: 230px;
-  background: url("_static/tree.png") 180px 10px no-repeat; }
+  background: url("tree.png") 180px 10px no-repeat; }
 .index .content {
   width: 100%;
   margin: 0; }
