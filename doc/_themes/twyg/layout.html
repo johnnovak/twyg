@@ -49,8 +49,13 @@
         $("#docnav").sticky({topSpacing: 0});
 
         {% if staticpage %}
-        var fadeStart = 20;
-        var fadeUntil = 80;
+          {% if pagename == 'index' %}
+            var fadeStart = 70;
+            var fadeUntil = 130;
+          {% else %}
+            var fadeStart = 20;
+            var fadeUntil = 80;
+          {% endif %}
         var fading = $('#logo');
 
         $(window).bind('scroll', function(){
@@ -97,25 +102,25 @@
 {%- endblock %}
   </head>
 
-  <body>
-    <div id="header">
-      <a id="logo" href="/">
-        <img src="{{ pathto('_static/twyg-logo.png', 1) }}" alt="twyg - python tree visualisation" />
+  <body class="{{ pagename }}">
+    <div class="header">
+      <a class="logo" href="/">
+        <img id="logo" src="{{ pathto('_static/twyg-logo.png', 1) }}" alt="twyg – Generative tree visualiser for Python" />
       </a>
 
       {% set menusel = ' class="sel"' %}
-      <ul id="mainmenu">
+      <ul class="mainmenu">
         <li{% if pagename == 'index' %}{{ menusel }}{% endif %}><a href="{{ pathto('index') }}">Home</a></li>
-        <li{% if pagename == 'getit' %}{{ menusel }}{% endif %}><a href="{{ pathto('getit') }}">Get It</a></li>
+        <li{% if pagename == 'download' %}{{ menusel }}{% endif %}><a href="{{ pathto('download') }}">Get It</a></li>
         <li{% if pagename == 'quickstart' %}{{ menusel }}{% endif %}><a href="{{ pathto('quickstart') }}">Quickstart</a></li>
         <li{% if pagename == 'examples' %}{{ menusel }}{% endif %}><a href="{{ pathto('examples') }}">Examples</a></li>
-        <li{% if not staticpage %}{{ menusel }}{% endif %}><a href="{{ pathto('contents') }}">Docs</a></li>
+        <li{% if not staticpage %}{{ menusel }}{% endif %}><a href="{{ pathto('docs/index') }}">Docs</a></li>
       </ul>
     </div>
 
-    <div id="content" {% if staticpage %}class="static"{% endif %}">
+    <div class="content{% if staticpage %} static{% endif %}">
       {% if not staticpage %}
-      <div id="docnav">
+      <div class="docnav">
         <ul>
           {%- block rootrellink %}
           <li><a href="{{ pathto(master_doc) }}">Docs</a></li>
@@ -129,16 +134,13 @@
         <a class="search" href="{{ pathto('search') }}">SEARCH</a>
       </div>
 
-      <div id="submenu">
+      <div class="submenu">
         <div class="wrapper">
-          <h3><a href="{{ pathto(master_doc) }}">Table of contents</a></h3>
-          {{ toctree(collapse=True, maxdepth=3) }}
+          {{ toctree(collapse=True, maxdepth=4) }}
         </div>
       </div>
       {% endif %}
 
-      <div id="body">
       {% block body %} {% endblock %}
-      </div>
   </body>
 </html>

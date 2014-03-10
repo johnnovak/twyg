@@ -2,17 +2,56 @@
 {% set staticpage = True %}
 {% set title = _('Home') %}
 {% block body %}
-  <h1>Home</h1>
+  <div class="release">
+    <h1>Generative tree visualiser for Python</h1>
+    <ul>
+      <li class="version">Current release: 0.1</li>
+      <li><a href="https://github.com/johnnovak/twyg">Fork on Github</a></li>
+    </ul>
+  </div>
 
-  <p><em>twyg</em> lets you visualise arbitrary tree structures in a
-  pretty way.  The appearance of the tree (layout, color, node and
-  connection shapes etc.) is fully controlled via configuration files in
-  a programmatic way. Comes with an extensive set of default
-  configurations and colorschemes. Requires Cairo (and optionally PIL)
-  for image generation when used from the command-line or can be used as
-  a NodeBox1 library.</p>
+  <div class="body">
+    <h2>Main features</h2>
 
-  <img src="_images/goals-boxes.png" alt="" />
+    <ul class="features">
+      <li>
+        <h3>Built-in styles</h3>
+        <ul>
+            <li><span>15 built-in styles to choose from</span></li>
+            <li><span>easily extendable with new style</span></li>
+            <li><span>flexible configuration language</span></li>
+            <li><span>easily extendable with new style</span></li>
+            <li><span>easily extendable with new style, and some really long text that will span multiple lines so I can test the text wrapping blabla blaba whatever</span></li>
+            <li><span>flexible configuration language</span></li>
+        </ul>
+        <img src="{{ pathto('_static/test.png', 1) }}" alt="Layout example 1" />
+        <img src="{{ pathto('_static/test.png', 1) }}" alt="Layout example 2" />
+      </li>
+      <li>
+        <h3>Node shapes</h3>
+        <ul>
+            <li><span>15 built-in styles to choose from</span></li>
+            <li><span>easily extendable with new style, and some really long text that will span multiple lines so I can test the text wrapping blabla blaba whatever</span></li>
+            <li><span>easily extendable with new style, and some really long text that will span multiple lines so I can test the text wrapping blabla blaba whatever</span></li>
+            <li><span>flexible configuration language</span></li>
+        </ul>
+        <img src="{{ pathto('_static/test.png', 1) }}" alt="Node shapes" />
+        <img src="{{ pathto('_static/test.png', 1) }}" alt="Connections" />
+      </li>
+      <li>
+        <h3>Configurable</h3>
+        <ul>
+            <li><span>15 built-in styles to choose from</span></li>
+            <li><span>easily extendable with new easily extendable with new style</span></li>
+            <li><span>15 built-in styles to choose from</span></li>
+            <li><span>easilywith new style with new style extendable with new style</span></li>
+            <li><span>flexible configuration language</span></li>
+        </ul>
+        <img src="{{ pathto('_static/test.png', 1) }}" alt="Configuration file" />
+        <img src="{{ pathto('_static/test.png', 1) }}" alt="Node properties" />
+      </li>
+    </ul>
+  </div>
 
 {% endblock %}
 

@@ -253,7 +253,7 @@ Other properties
 
 The *box* style draws nodes as axonometric three-dimensional boxes.
 
-.. image:: figures/images/nodes-box.png
+.. image:: ../figures/img/nodes-box.png
 
 
 Properties
@@ -304,7 +304,7 @@ The *line* style is a special node shape style that draws a line below or above
 the node text so that it appears as a continuation of the line connecting the
 nodes.
 
-.. image:: figures/images/nodes-line.png
+.. image:: ../figures/img/nodes-line.png
 
 The following examples illustrate the use the *line* style:
 
@@ -323,7 +323,7 @@ None.
 
 The *oval* style draws nodes as oval shapes.
 
-.. image:: figures/images/nodes-oval.png
+.. image:: ../figures/img/nodes-oval.png
 
 
 Properties
@@ -356,7 +356,7 @@ Properties
 The *poly* style draws nodes as n-sided regular polygons (all sides have the
 same length and all angles are equal in measure).
 
-.. image:: figures/images/nodes-poly.png
+.. image:: ../figures/img/nodes-poly.png
 
 
 Properties
@@ -385,7 +385,7 @@ The *rect* style draws nodes as rectangular shapes that can be either
 completely square (first example) or can have rounded corners drawn in
 different rounding styles (last two examples).
 
-.. image:: figures/images/nodes-rect.png
+.. image:: ../figures/img/nodes-rect.png
 
 
 Properties
@@ -400,13 +400,13 @@ Properties
     shape similar to an old CRT television screen, *arc* draws a
     rectangle with rounded corners using quarter circle arc segments.
 
-    .. figure:: figures/images/nodes-rect-roundingStyle-a.png
+    .. figure:: ../figures/img/nodes-rect-roundingStyle-a.png
        :alt: screen
 
        screen
 
 
-    .. figure:: figures/images/nodes-rect-roundingStyle-b.png
+    .. figure:: ../figures/img/nodes-rect-roundingStyle-b.png
        :alt: arc
 
        arc
@@ -421,19 +421,19 @@ Properties
     *screen*. A value of *0.0* yields completely square corners and
     *1.0* fully rounded ones.
 
-    .. figure:: figures/images/nodes-rect-roundness-a.png
+    .. figure:: ../figures/img/nodes-rect-roundness-a.png
        :alt: roundness = 0
 
        roundness = 0
 
 
-    .. figure:: figures/images/nodes-rect-roundness-b.png
+    .. figure:: ../figures/img/nodes-rect-roundness-b.png
        :alt: roundness = 0.5
 
        roundness = 0.5
 
 
-    .. figure:: figures/images/nodes-rect-roundness-c.png
+    .. figure:: ../figures/img/nodes-rect-roundness-c.png
        :alt: roundness = 1.0
 
        roundness = 1.0
@@ -451,19 +451,19 @@ Properties
     itself to a neat trick to draw capsule-like node shapes by setting
     the corner radius to a very large value (last example).
 
-    .. figure:: figures/images/nodes-rect-cornerRadius-a.png
+    .. figure:: ../figures/img/nodes-rect-cornerRadius-a.png
        :alt: cornerRadius = 5
 
        cornerRadius = 5
 
 
-    .. figure:: figures/images/nodes-rect-cornerRadius-b.png
+    .. figure:: ../figures/img/nodes-rect-cornerRadius-b.png
        :alt: cornerRadius = 10
 
        cornerRadius = 10
 
 
-    .. figure:: figures/images/nodes-rect-cornerRadius-c.png
+    .. figure:: ../figures/img/nodes-rect-cornerRadius-c.png
        :alt: cornerRadius = 1000
 
        cornerRadius = 1000

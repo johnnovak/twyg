@@ -17,7 +17,7 @@ Usage
 These commands will generate the full HTML documenation in `_build/html`:
 
     make figures
-    make html
+    make dirhtml
 
 To regenerate the CSS from the Sass files only:
 

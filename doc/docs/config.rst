@@ -133,7 +133,7 @@ As seen above, a level definitions consists of three parts:
 In the example below, the root node is drawn as an octagonal polygon, the leaf
 nodes as ovals, and the rest of the nodes as rectangles:
 
-.. image:: figures/images/levels-example.png
+.. image:: ../figures/img/levels-example.png
    :align: center
 
 This configuration snippet illustrates the use of level definitions to achieve
@@ -587,6 +587,6 @@ the interval *0.0--1.0*.
     preferable in some situations. The following table illustrates the
     difference between the two methods:
 
-    .. image:: figures/images/color-blending.png
+    .. image:: ../figures/img/color-blending.png
        :align: center
 

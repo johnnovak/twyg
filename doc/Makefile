@@ -42,17 +42,19 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 	-rm -rf figures/images/*
 
-html: update_css
+html: generate_css
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
-dirhtml:
+dirhtml_all: figures dirhtml
+
+dirhtml: generate_css
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/dirhtml."
 
-singlehtml:
+singlehtml: generate_css
 	$(SPHINXBUILD) -b singlehtml $(ALLSPHINXOPTS) $(BUILDDIR)/singlehtml
 	@echo
 	@echo "Build finished. The HTML page is in $(BUILDDIR)/singlehtml."
@@ -154,11 +156,17 @@ doctest:
 	      "results in $(BUILDDIR)/doctest/output.txt."
 
 figures:
-	(cd figures; ./generate-images.sh)
+	@echo "Generating figures..."
+	(cd figures; mkdir img; ./generate-images.sh)
 
-update_css:
+clean_figures:
+	@echo "Cleaning figures..."
+	rm -rf figures/img/*
+
+generate_css:
+	@echo "Generating CSS files..."
 	sass --force --update _themes/twyg/static/main.scss:_themes/twyg/static/main.css
 
 watch_css:
-	sass --watch _themes/twyg/static/main.scss:$(BUILDDIR)/html/_static/main.css
+	sass --watch _themes/twyg/static/main.scss:$(BUILDDIR)/dirhtml/_static/main.css
 

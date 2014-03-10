@@ -6,31 +6,31 @@ source_suffix = '.rst'
 master_doc = 'contents'
 
 project = u'twyg'
-copyright = u'2013, John Novak'
-version = '0.1'
-release = '0.1'
+copyright = u'2011-2014, John Novak'
+version = 0.1
+release = 0.1
 
 exclude_patterns = ['_build']
 
-pygments_style = 'style.TwygStyle'
-highlight_language = 'twyg'
-
 html_theme = 'twyg'
 html_theme_path = ['_themes']
+#html_favicon = 'favicon.ico'
 html_static_path = ['_static']
-
 
 html_additional_pages = {
   'index':      'index.html',
-  'getit':      'getit.html',
+  'download':   'download.html',
   'quickstart': 'quickstart.html',
   'examples':   'examples.html'
 }
 
 htmlhelp_basename = 'twygdoc'
 
+pygments_style = 'style.TwygStyle'
+highlight_language = 'twyg'
 
-# -- twyg Pygments lexer -------------------------------------------------------
+
+# -- twyg Pygments lexer -----------------------------------------------------
 
 from pygments.lexer import Lexer, RegexLexer
 from pygments.token import (Punctuation, Text, Comment, Keyword, Name, String,
@@ -65,7 +65,7 @@ class TwygLexer(RegexLexer):
     }
 
 
-# -- Extension interface -------------------------------------------------------
+# -- Extension interface -----------------------------------------------------
 
 import sys, os
 

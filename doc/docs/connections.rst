@@ -94,7 +94,7 @@ segments that are always parallel with the coordinate axes. It is possible to
 configure the position and appearance of the junction point of the fork and the
 shape of the corners where the horizontal and vertical lines meet.
 
-.. image:: figures/images/connections-junction.png
+.. image:: ../figures/img/connections-junction.png
 
 
 Properties
@@ -119,19 +119,19 @@ Properties
     junction sign at the parent's end of the connection and a value of
     *1.0* at the children's end.
 
-    .. figure:: figures/images/connections-junction-junctionXFactor-a.png
+    .. figure:: ../figures/img/connections-junction-junctionXFactor-a.png
        :alt: junctionXFactor = 0.0
 
        junctionXFactor = 0.0
 
 
-    .. figure:: figures/images/connections-junction-junctionXFactor-b.png
+    .. figure:: ../figures/img/connections-junction-junctionXFactor-b.png
        :alt: junctionXFactor = 0.5
 
        junctionXFactor = 0.5
 
 
-    .. figure:: figures/images/connections-junction-junctionXFactor-c.png
+    .. figure:: ../figures/img/connections-junction-junctionXFactor-c.png
        :alt: junctionXFactor = 1.0
 
        junctionXFactor = 1.0
@@ -145,19 +145,19 @@ Properties
 
     Style of the corners of the connection lines. 
 
-    .. figure:: figures/images/connections-junction-cornerStyle-a.png
+    .. figure:: ../figures/img/connections-junction-cornerStyle-a.png
        :alt: square
 
        square
 
 
-    .. figure:: figures/images/connections-junction-cornerStyle-b.png
+    .. figure:: ../figures/img/connections-junction-cornerStyle-b.png
        :alt: beveled
 
        beveled
 
 
-    .. figure:: figures/images/connections-junction-cornerStyle-c.png
+    .. figure:: ../figures/img/connections-junction-cornerStyle-c.png
        :alt: rounded
 
        rounded
@@ -177,13 +177,13 @@ Properties
         setting the corner radius to a very large value (as shown on the second
         image).
 
-    .. figure:: figures/images/connections-junction-cornerRadius-a.png
+    .. figure:: ../figures/img/connections-junction-cornerRadius-a.png
        :alt: cornerRadius = 10
 
        cornerRadius = 10
 
 
-    .. figure:: figures/images/connections-junction-cornerRadius-b.png
+    .. figure:: ../figures/img/connections-junction-cornerRadius-b.png
        :alt: cornerRadius = 1000
 
        cornerRadius = 1000
@@ -202,25 +202,25 @@ Properties
 
     Style of the junction shape.
 
-    .. figure:: figures/images/connections-junction-junctionStyle-a.png
+    .. figure:: ../figures/img/connections-junction-junctionStyle-a.png
        :alt: none
 
        none
 
 
-    .. figure:: figures/images/connections-junction-junctionStyle-b.png
+    .. figure:: ../figures/img/connections-junction-junctionStyle-b.png
        :alt: square
 
        square
 
 
-    .. figure:: figures/images/connections-junction-junctionStyle-c.png
+    .. figure:: ../figures/img/connections-junction-junctionStyle-c.png
        :alt: disc
 
        disc
 
 
-    .. figure:: figures/images/connections-junction-junctionStyle-d.png
+    .. figure:: ../figures/img/connections-junction-junctionStyle-d.png
        :alt: diamond
 
        diamond
@@ -263,19 +263,19 @@ Properties
 
     Style of the sign inside the junction shape.
 
-    .. figure:: figures/images/connections-junction-junctionSign-a.png
+    .. figure:: ../figures/img/connections-junction-junctionSign-a.png
        :alt: none
 
        none
 
 
-    .. figure:: figures/images/connections-junction-junctionSign-b.png
+    .. figure:: ../figures/img/connections-junction-junctionSign-b.png
        :alt: plus
 
        plus
 
 
-    .. figure:: figures/images/connections-junction-junctionSign-c.png
+    .. figure:: ../figures/img/connections-junction-junctionSign-c.png
        :alt: minus
 
        minus

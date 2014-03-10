@@ -10,7 +10,7 @@ from twyg.geom import Rectangle
 
 twyg.common.TWYG_HOME = os.path.join('.')
 
-IMG_DIR = 'images'
+IMG_DIR = 'img'
 OUTFORMAT = 'png'
 PAD_X = 3
 PAD_Y = 3
