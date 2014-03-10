@@ -12,5 +12,6 @@ MANIFEST
 out/
 tests/out/
 doc/_build
+doc/figures/img
 dist
 env

@@ -143,8 +143,7 @@ blockquote {
 
 .submenu {
   position: absolute;
-  top: 60px;
-  left: -275px; }
+  top: 6px; }
   .submenu .wrapper {
     position: fixed; }
     .submenu .wrapper > ul > li > a {
@@ -160,7 +159,7 @@ blockquote {
       font-size: 18px;
       font-weight: 700; }
   .submenu ul {
-    width: 210px;
+    width: 170px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -172,15 +171,17 @@ blockquote {
         text-decoration: underline; }
     .submenu ul ul ul {
       font-size: 16px;
-      line-height: 21px; }
+      line-height: 21px;
+      text-decoration: none; }
     .submenu ul.current li:last-child {
       margin-bottom: 1em; }
 
 .docnav {
-  width: 700px;
+  width: 670px;
   height: 41px;
   padding-top: 5px;
-  background: #fff; }
+  background: #fff;
+  margin-left: 210px; }
   .docnav ul {
     list-style: none;
     margin: 0;
@@ -210,7 +211,7 @@ blockquote {
     text-decoration: underline; }
 
 .content {
-  width: 680px;
+  width: 880px;
   margin: 140px auto 0 auto;
   position: relative; }
   .content.static {
@@ -328,6 +329,7 @@ blockquote {
     color: #fff;
     display: inline; }
     .index .content .release li.version {
+      font-weight: 600;
       margin-right: 30px; }
   .index .content .release a {
     color: #fff; }
@@ -367,6 +369,9 @@ blockquote {
 .index .body {
   width: 880px;
   margin: 0 auto; }
+
+.docs .body {
+  margin-left: 210px; }
 
 #table-of-contents ul, #indices-and-tables ul, #reference ul, .toctree-wrapper ul {
   list-style: none;

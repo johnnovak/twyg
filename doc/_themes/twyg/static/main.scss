@@ -6,6 +6,8 @@ $darkgreen: #1f8b8d;
 $yellow: #d4f9b5;
 
 $contentwidth: 880px;
+$submenu-width: 170px;
+$submenu-pad: 40px;
 
 @mixin bodyfont {
   font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
@@ -199,8 +201,7 @@ blockquote {
 
 .submenu {
   position: absolute;
-  top: 60px;
-  left: -275px;
+  top: 6px;
 
   .wrapper {
     position: fixed;
@@ -224,7 +225,7 @@ blockquote {
     }
   }
   ul {
-    width: 210px;
+    width: $submenu-width;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -241,6 +242,7 @@ blockquote {
     ul ul {
       font-size: 16px;
       line-height: 21px;
+      text-decoration: none;
     }
     &.current li:last-child {
       margin-bottom: 1em;
@@ -249,10 +251,11 @@ blockquote {
 }
 
 .docnav {
-  width: 700px;
+  width: $contentwidth - $submenu-width - $submenu-pad;
   height: 41px; 
   padding-top: 5px;
   background: #fff;
+  margin-left: $submenu-width + $submenu-pad;
 
   ul {
     list-style: none;
@@ -293,7 +296,7 @@ blockquote {
 }
 
 .content {
-  width: $contentwidth - 200px;
+  width: $contentwidth;
   margin: 140px auto 0 auto;
   position: relative;
 
@@ -458,6 +461,7 @@ blockquote {
         display: inline;
 
         &.version {
+          font-weight: 600;
           margin-right: 30px;
         }
       }
@@ -513,6 +517,12 @@ blockquote {
   .body {
     width: $contentwidth;
     margin: 0 auto;
+  }
+}
+
+.docs {
+  .body {
+    margin-left: $submenu-width + $submenu-pad;
   }
 }
 

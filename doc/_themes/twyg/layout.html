@@ -102,7 +102,7 @@
 {%- endblock %}
   </head>
 
-  <body class="{{ pagename }}">
+  <body class="{% if staticpage %}{{ pagename }}{% else %}docs{%endif %}">
     <div class="header">
       <a class="logo" href="/">
         <img id="logo" src="{{ pathto('_static/twyg-logo.png', 1) }}" alt="twyg – Generative tree visualiser for Python" />
@@ -120,7 +120,7 @@
 
     <div class="content{% if staticpage %} static{% endif %}">
       {% if not staticpage %}
-      <div class="docnav">
+      <div id="docnav" class="docnav">
         <ul>
           {%- block rootrellink %}
           <li><a href="{{ pathto(master_doc) }}">Docs</a></li>
@@ -141,6 +141,8 @@
       </div>
       {% endif %}
 
+      {% if not staticpage %}<div class="body">{% endif %}
       {% block body %} {% endblock %}
+      {% if not staticpage %}</div>{% endif %}
   </body>
 </html>
