@@ -2,13 +2,17 @@ __version__ = '0.1dev'
 
 import os, sys
 
+from twyg.cairowrapper import context as ctx
+
 from twyg.config import (NODE_CONFIG, CONNECTION_CONFIG, LAYOUT_CONFIG,
-                         COLOR_CONFIG, STYLE, Level, SectionLevel, ConfigError,
-                         get_stylename, createlevel)
+                         COLOR_CONFIG, STYLE, DEFAULT_LEVEL,
+                         Level, SectionLevel, ConfigError,
+                         get_stylename, createlevel, loadconfig, config_path)
 
 from twyg.layout import layout_by_name
 from twyg.tree import Tree
 
+from twyg.common import calculate_margins, loadjson
 
 import twyg.config
 import twyg.colorizer
@@ -104,7 +108,7 @@ def _create_drawers(config, section, factory_func, constr_args=()):
     section from a full configuration.
     """
     c = config[section]
-    level_dict = c if _has_levels(c) else {twyg.config.DEFAULT_LEVEL: c}
+    level_dict = c if _has_levels(c) else {DEFAULT_LEVEL: c}
     drawers = []
 
     for levelname, conf in level_dict.iteritems():
@@ -115,6 +119,44 @@ def _create_drawers(config, section, factory_func, constr_args=()):
         drawers.append(SectionLevel(level, drawer))
 
     return drawers
+
+
+def generate_output(data_fname, config_fname, out_fname, outformat,
+                    colorscheme=None, scale=1.0, margins=['10%', '5%']):
+    """
+    TODO
+    """
+
+    # Temporary context for layout calculations (need an actual graphics
+    # context to be able to work with fonts & text extents). Note that
+    # 'None' is given for the output filename, so a failed run won't
+    # overwrite an already existing file with an empty one. The actual
+    # output file will be created later.
+    ctx.initsurface(1, 1, outformat, None, scale)
+
+    data = loadjson(data_fname)
+    config = loadconfig(config_path(config_fname))
+    tree = buildtree(data, config, colorscheme)
+
+    width, height = tree.calclayout()
+
+    # Margins can be given as percentages of the total graph size,
+    # that's why we have to wait with the margin calculations until the
+    # layout is complete
+    padtop, padleft, padbottom, padright = calculate_margins(width, height,
+                                                             margins)
+    width += padleft + padright
+    height += padtop + padbottom
+
+    # Create output file
+    ctx.initsurface(width, height, outformat, out_fname, scale)
+    ctx.background(tree.background_color())
+
+    # Center the graph
+    ctx.translate(padleft, padtop)
+
+    tree.draw()
+    ctx.writesurface()
 
 
 def buildtree(data, config, colorscheme_path=None):

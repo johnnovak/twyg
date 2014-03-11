@@ -3,10 +3,8 @@ import sys
 import traceback
 from optparse import OptionParser
 
-from twyg import buildtree
-from twyg.cairowrapper import context as ctx
-from twyg.common import validate_margins, calculate_margins, loadjson
-from twyg.config import loadconfig, config_path
+from twyg import generate_output
+from twyg.common import validate_margins
 
 
 def exit_error(msg):
@@ -85,36 +83,9 @@ def main():
     try:
         scale = options.dpi / 72.0 * options.scale     # 1 point = 1/72 inch
 
-        # Temporary context for layout calculations (need an actual graphics
-        # context to be able to work with fonts & text extents). Note that
-        # 'None' is given for the output filename, so a failed run won't
-        # overwrite an already existing file with an empty one. The actual
-        # output file will be created later.
-        ctx.initsurface(1, 1, options.outformat, None, scale)
-
-        data = loadjson(datafile)
-        config = loadconfig(config_path(options.config))
-        tree = buildtree(data, config, options.colorscheme)
-
-        width, height = tree.calclayout()
-
-        # Margins can be given as percentages of the total graph size,
-        # that's why we have to wait with the margin calculations until the
-        # layout is complete
-        padtop, padleft, padbottom, padright = calculate_margins(width, height,
-                                                                 margins)
-        width += padleft + padright
-        height += padtop + padbottom
-
-        # Create output file
-        ctx.initsurface(width, height, options.outformat, outfile, scale)
-        ctx.background(tree.background_color())
-
-        # Center the graph
-        ctx.translate(padleft, padtop)
-
-        tree.draw()
-        ctx.writesurface()
+        generate_output(datafile, options.config, outfile, options.outformat,
+                        colorscheme=options.colorscheme, scale=scale,
+                        margins=margins)
 
     except Exception, e:
         exit_error(traceback.format_exc() if options.verbose else str(e))
