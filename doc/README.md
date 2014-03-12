@@ -25,24 +25,24 @@ This consists of the following subtasks.
 
 1. Generate the CSS from the Sass files:
 
-    make update_css
+        make update_css
 
 2. Generate the figures:
 
-    make figures
+        make figures
 
 3. Generate the documentation from the reStructuredText sources and copy all
 referenced static files *excluding* the example images:
 
-    make dirhtml
+        make dirhtml
 
 4. Generate example images:
 
-    make example
+        make example
 
 5. Copy example images to the output directory:
 
-    make copy_examples
+        make copy_examples
 
 Note that the copying of example images is accomplished by a separate make
 subtask, as opposed to letting Sphinx copy them as referenced static files.
