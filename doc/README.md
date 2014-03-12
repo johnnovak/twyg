@@ -54,7 +54,7 @@ referenced static files *excluding* the example images:
     make copy_examples
     ```
 
-Note that the copying of example images is accomplished by a separate make
+**NOTE:** Copying of example images is accomplished by a separate make
 subtask, as opposed to letting Sphinx copy them as referenced static files.
 This is for speed reasons — copying 24 megabytes of static data takes a bit
 too long for my taste. This way you can just hit `make dirhtml` to regenerate
