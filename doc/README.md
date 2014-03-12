@@ -4,7 +4,7 @@
 
 The documentation for **twyg** is written in reStructuredText / Sphinx.
 
-The following tools needed to be installed to generate the documentation:
+The following tools need to be installed to generate the documentation:
 
 * make
 * Sphinx
@@ -56,12 +56,12 @@ referenced static files *excluding* the example images:
 
 Note that the copying of example images is accomplished by a separate make
 subtask, as opposed to letting Sphinx copy them as referenced static files.
-This is for speed reasons -- copying 24 megabytes of static data takes a bit
+This is for speed reasons — copying 24 megabytes of static data takes a bit
 too long for my taste. This way you can just hit `make dirhtml` to regenerate
 the documentation quickly.
 
-To watch Sass file changes (generates CSS automatically into the build dir
-when a change is detected -- useful when making tweaks to the Sass files):
+To watch Sass file changes (generates the CSS automatically into the build dir
+when a Sass change is detected):
 
     make watch_css
 
