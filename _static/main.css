@@ -21,7 +21,7 @@ html {
 
 body {
   position: relative;
-  margin: 20px 0 100px 0;
+  margin: 20px 0 60px 0;
   padding: 0;
   border-top: 1px solid transparent;
   line-height: 1.4;
@@ -309,6 +309,9 @@ blockquote {
 .index .content {
   width: 100%;
   margin: 0; }
+.index .footer {
+  width: 880px;
+  margin: 0 auto; }
 .index h1 {
   margin: 0 0 0 0;
   padding: 5px 0;
@@ -370,15 +373,13 @@ blockquote {
     width: 25.5%; }
     .index .feature-group img.first {
       padding-right: 2%; }
-.index .footer {
-  clear: both;
-  padding-top: 0px; }
 
 .examples .examples-container {
-  margin: 40px 0 0 0; }
-.examples h2 {
-  clear: both;
   margin: 0; }
+.examples h2 {
+  position: relative;
+  top: 10px;
+  clear: both; }
 .examples .example-image {
   float: left;
   width: 31%;
@@ -393,6 +394,8 @@ blockquote {
     margin: 0;
     width: 100%;
     border: 1px solid #ccc; }
+    .examples .example-image img:hover {
+      opacity: .8; }
   .examples .example-image ul {
     display: block;
     margin: 3px 0 40px 0;
@@ -426,6 +429,21 @@ blockquote {
     font-weight: 400; }
     #table-of-contents ul ul a, #indices-and-tables ul ul a, #reference ul ul a, .toctree-wrapper ul ul a {
       font-weight: 400; }
+
+.footer {
+  clear: both;
+  padding-top: 50px;
+  width: 100%; }
+  .footer p {
+    border-top: 3px solid #d4f9b5;
+    width: 50%;
+    color: #777;
+    font-size: 16px;
+    margin: 0;
+    padding-top: 0.2em;
+    float: left; }
+  .footer .info {
+    text-align: right; }
 
 .genindextable {
   margin: -20px 0 0 0; }
