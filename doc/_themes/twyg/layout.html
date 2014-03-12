@@ -118,13 +118,10 @@
       </ul>
     </div>
 
-    <div class="content{% if staticpage %} static{% endif %}">
+    <div class="content">
       {% if not staticpage %}
       <div id="docnav" class="docnav">
         <ul>
-          {%- block rootrellink %}
-          <li><a href="{{ pathto(master_doc) }}">Docs</a></li>
-          {%- endblock %}
           {%- for parent in parents %}
           <li><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a></li>
           {%- endfor %}
@@ -141,8 +138,12 @@
       </div>
       {% endif %}
 
-      {% if not staticpage %}<div class="body">{% endif %}
+      <div class="body">
       {% block body %} {% endblock %}
-      {% if not staticpage %}</div>{% endif %}
+      </div>
+      <div class="footer">
+        <p class="copyright">&copy; Copyright 2011-2014, John Novak.</p>
+        <p class="info">Site created using <a href="http://sphinx-doc.org/">Sphinx</a>. Hosted on <a href="http://github.com">GitHub</a>.</p>
+      </div>
   </body>
 </html>

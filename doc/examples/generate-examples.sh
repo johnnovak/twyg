@@ -21,7 +21,7 @@ DY = 'synthesis'
 configs = [
     {'boxes':     [{ 'data': DC, 'colors': 'kelp' },
                    { 'data': DG, 'colors': '' },
-                   { 'data': DS, 'colors': 'crayons' }]
+                   { 'data': DM, 'colors': 'moon' }]
     },
     {'bubbles':   [{ 'data': DA, 'colors': 'inca' },
                    { 'data': DM, 'colors': '' },
@@ -56,7 +56,7 @@ configs = [
                    { 'data': DY, 'colors': 'cobalt' }]
     },
     {'nazca':     [{ 'data': DC, 'colors': 'cmyk' },
-                   { 'data': DM, 'colors': 'jelly' },
+                   { 'data': DM, 'colors': 'aqua' },
                    { 'data': DY, 'colors': '' }]
     },
     {'rounded':   [{ 'data': DG, 'colors': '' },
@@ -72,7 +72,7 @@ configs = [
                    { 'data': DM, 'colors': '' }]
     },
     {'tron':      [{ 'data': DC, 'colors': '' },
-                   { 'data': DM, 'colors': 'crayons' },
+                   { 'data': DM, 'colors': 'mellow' },
                    { 'data': DY, 'colors': 'colors21' }]
     }
 ]
@@ -102,7 +102,7 @@ def generate_examples(outformat, dpi):
             print 'OK'
 
 
-#generate_examples('pdf', 72)
-#generate_examples('svg', 72)
+generate_examples('pdf', 72)
+generate_examples('svg', 72)
 generate_examples('png', 150)
 
