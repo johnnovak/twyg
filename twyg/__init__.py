@@ -3,6 +3,7 @@ __version__ = '0.1dev'
 import os, sys
 
 from twyg.cairowrapper import context as ctx
+from twyg.common import calculate_margins, loadjson
 
 from twyg.config import (NODE_CONFIG, CONNECTION_CONFIG, LAYOUT_CONFIG,
                          COLOR_CONFIG, STYLE, DEFAULT_LEVEL,
@@ -12,10 +13,8 @@ from twyg.config import (NODE_CONFIG, CONNECTION_CONFIG, LAYOUT_CONFIG,
 from twyg.layout import layout_by_name
 from twyg.tree import Tree
 
-from twyg.common import calculate_margins, loadjson
-
-import twyg.config
 import twyg.colorizer
+import twyg.config
 import twyg.connection
 import twyg.node
 
@@ -121,6 +120,10 @@ def _create_drawers(config, section, factory_func, constr_args=()):
     return drawers
 
 
+def get_scale_factor(dpi, scale):
+    return dpi / 72.0 * scale     # 1 point = 1/72 inch
+
+
 def generate_output(data_fname, config_fname, out_fname, outformat,
                     colorscheme=None, scale=1.0, margins=['10%', '5%']):
     """
@@ -152,7 +155,7 @@ def generate_output(data_fname, config_fname, out_fname, outformat,
     ctx.initsurface(width, height, outformat, out_fname, scale)
     ctx.background(tree.background_color())
 
-    # Center the graph
+    # Center tree
     ctx.translate(padleft, padtop)
 
     tree.draw()
@@ -192,15 +195,21 @@ def buildtree(data, config, colorscheme_path=None):
     layout_cls = layout_by_name(style)
     layout = layout_cls(c)
 
-    nodedrawers = _create_drawers(config, NODE_CONFIG,
-                                  factory_func=twyg.node.nodedrawer_by_name)
+    nodedrawers = _create_drawers(
+        config, NODE_CONFIG,
+        factory_func=twyg.node.nodedrawer_by_name
+    )
 
-    conndrawers = _create_drawers(config, CONNECTION_CONFIG,
-                                  factory_func=twyg.connection.conndrawer_by_name)
+    conndrawers = _create_drawers(
+        config, CONNECTION_CONFIG,
+        factory_func=twyg.connection.conndrawer_by_name
+    )
 
-    colorizers = _create_drawers(config, COLOR_CONFIG,
-                                 factory_func=twyg.colorizer.colorizer_by_name,
-                                 constr_args=(colorscheme_path,))
+    colorizers = _create_drawers(
+        config, COLOR_CONFIG,
+        factory_func=twyg.colorizer.colorizer_by_name,
+        constr_args=(colorscheme_path,)
+    )
 
     return Tree(layout, nodedrawers, conndrawers, colorizers, data)
 

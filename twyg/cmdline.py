@@ -3,7 +3,7 @@ import sys
 import traceback
 from optparse import OptionParser
 
-from twyg import generate_output
+from twyg import get_scale_factor, generate_output
 from twyg.common import validate_margins
 
 
@@ -81,7 +81,7 @@ def main():
         return 2
 
     try:
-        scale = options.dpi / 72.0 * options.scale     # 1 point = 1/72 inch
+        scale = get_scale_factor(options.dpi, options.scale)
 
         generate_output(datafile, options.config, outfile, options.outformat,
                         colorscheme=options.colorscheme, scale=scale,
