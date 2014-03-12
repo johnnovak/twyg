@@ -53,6 +53,7 @@ referenced static files *excluding* the example images:
     ```
     make copy_examples
     ```
+
 Note that the copying of example images is accomplished by a separate make
 subtask, as opposed to letting Sphinx copy them as referenced static files.
 This is for speed reasons -- copying 24 megabytes of static data takes a bit
