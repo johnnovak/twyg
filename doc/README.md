@@ -1,29 +1,57 @@
-Prerequisites
--------------
+# twyg documentation
 
-The documentation for *twyg* is written in reStructuredText / Sphinx.
+## Prerequisites
 
-The following tools are needed to generate the documentation:
+The documentation for **twyg** is written in reStructuredText / Sphinx.
+
+The following tools needed to be installed to generate the documentation:
 
 * make
 * Sphinx
 * Sass
 * twyg (e.g. installed with virtualenv in develop mode)
-* Pycairo and PIL for image generation
+* Pycairo
+* Python Imaging Library (PIL)
 
-Usage
------
 
-These commands will generate the full HTML documenation in `_build/html`:
+## Usage
 
-    make figures
-    make dirhtml
+The following master task will generate the full HTML documentation in
+`_build/dirhtml`:
 
-To regenerate the CSS from the Sass files only:
+    make dirhtml_all
+
+This consists of the following subtasks.
+
+1. Generate the CSS from the Sass files:
 
     make update_css
 
-To watch Sass file changes (generates CSS automatically when a change is
-detected):
+2. Generate the figures:
+
+    make figures
+
+3. Generate the documentation from the reStructuredText sources and copy all
+referenced static files *excluding* the example images:
+
+    make dirhtml
+
+4. Generate example images:
+
+    make example
+
+5. Copy example images to the output directory:
+
+    make copy_examples
+
+Note that the copying of example images is accomplished by a separate make
+subtask, as opposed to letting Sphinx copy them as referenced static files.
+This is for speed reasons -- copying 24 megabytes of static data takes a bit
+too long for my taste. This way you can just hit `make dirhtml` to regenerate
+the documentation quickly.
+
+To watch Sass file changes (generates CSS automatically into the build dir
+when a change is detected -- useful when making tweaks to the Sass files):
 
     make watch_css
+
