@@ -47,7 +47,7 @@ html: generate_css
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
-dirhtml_all: figures dirhtml
+dirhtml_all: figures dirhtml examples copy_examples
 
 dirhtml: generate_css
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
@@ -169,4 +169,16 @@ generate_css:
 
 watch_css:
 	sass --watch _themes/twyg/static/main.scss:$(BUILDDIR)/dirhtml/_static/main.css
+
+examples:
+	@echo "Generating examples..."
+	(cd examples; ./generate-examples.sh)
+
+copy_examples:
+	mkdir $(BUILDDIR)/dirhtml/examples/pdf/
+	mkdir $(BUILDDIR)/dirhtml/examples/png/
+	mkdir $(BUILDDIR)/dirhtml/examples/svg/
+	cp examples/pdf/*.pdf $(BUILDDIR)/dirhtml/examples/pdf/
+	cp examples/png/*.png $(BUILDDIR)/dirhtml/examples/png/
+	cp examples/svg/*.svg $(BUILDDIR)/dirhtml/examples/svg/
 

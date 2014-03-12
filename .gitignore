@@ -14,6 +14,3 @@ tests/out
 doc/_build
 doc/figures/images/*
 doc/figures/img
-doc/examples/pdf
-doc/examples/png
-doc/examples/svg
