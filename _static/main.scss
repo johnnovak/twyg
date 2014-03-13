@@ -5,7 +5,7 @@ $linkcolor: #56a3a5;
 $darkgreen: #1f8b8d;
 $yellow: #d4f9b5;
 
-$contentwidth: 880px;
+$contentwidth: 940px;
 $submenu-width: 170px;
 $submenu-pad: 40px;
 
@@ -475,6 +475,14 @@ blockquote {
     margin: 0 auto;
     width: $contentwidth;
   }
+  .summary {
+    width: 70%;
+    margin: 1em auto;
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+    color: #999;
+  }
 
   h2 {
     margin: 40px 0 0 ;
@@ -499,9 +507,9 @@ blockquote {
 
     ul {
       float: left;
-      width: 40%;
+      width: 38%;
       margin: 0;
-      padding: 0 3% 0 32px;
+      padding: 0 2% 0 32px;
     }
 
     li {
@@ -519,10 +527,10 @@ blockquote {
       float: left;
       position: relative;
       top: -40px;
-      width: 25.5%;
+      width: 27%;
 
       &.first {
-        padding-right: 2%;
+        padding-right: 1%;
       }
     }
   }

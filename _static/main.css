@@ -102,7 +102,7 @@ blockquote {
   padding: 0; }
 
 .header {
-  width: 880px;
+  width: 940px;
   margin: 0 auto; }
   .header .logo {
     position: fixed;
@@ -178,7 +178,7 @@ blockquote {
       margin-bottom: 1em; }
 
 .docnav {
-  width: 670px;
+  width: 730px;
   height: 41px;
   margin-left: 210px;
   padding-top: 5px;
@@ -213,7 +213,7 @@ blockquote {
 
 .content {
   position: relative;
-  width: 880px;
+  width: 940px;
   margin: 140px auto 0 auto; }
   .content h1 {
     clear: both;
@@ -310,7 +310,7 @@ blockquote {
   width: 100%;
   margin: 0; }
 .index .footer {
-  width: 880px;
+  width: 940px;
   margin: 0 auto; }
 .index h1 {
   margin: 0 0 0 0;
@@ -337,7 +337,14 @@ blockquote {
   color: #fff; }
 .index .features {
   margin: 0 auto;
-  width: 880px; }
+  width: 940px; }
+.index .summary {
+  width: 70%;
+  margin: 1em auto;
+  font-size: 28px;
+  font-weight: 400;
+  text-align: center;
+  color: #999; }
 .index h2 {
   margin: 40px 0 0;
   border-bottom: 6px solid #d4f9b5;
@@ -356,9 +363,9 @@ blockquote {
   list-style: none; }
   .index .feature-group ul {
     float: left;
-    width: 40%;
+    width: 38%;
     margin: 0;
-    padding: 0 3% 0 32px; }
+    padding: 0 2% 0 32px; }
   .index .feature-group li {
     margin-bottom: 0.4em;
     line-height: 1.3em;
@@ -370,9 +377,9 @@ blockquote {
     float: left;
     position: relative;
     top: -40px;
-    width: 25.5%; }
+    width: 27%; }
     .index .feature-group img.first {
-      padding-right: 2%; }
+      padding-right: 1%; }
 
 .examples .examples-container {
   margin: 0; }
