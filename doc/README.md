@@ -45,7 +45,7 @@ referenced static files *excluding* the example images:
 4. Generate example images:
 
     ```
-    make example
+    make examples
     ```
 
 5. Copy example images to the output directory:
