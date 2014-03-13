@@ -1,1 +1,12 @@
-- negative margins result in error with no details
+BUGS
+====
+- negative margins result in error with no error details
+- some non-western UTF-8 character/font combinations result in crash/hanging
+  process
+
+FEATURES
+========
+- improve malformed JSON error messages
+- colourlovers integration (https://github.com/elbaschid/python-colourlovers)
+- top-down layout
+- capsule node drawer
