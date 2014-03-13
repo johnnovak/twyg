@@ -16,11 +16,11 @@ used as a NodeBox1 library.
   aspects of the tree
 * Customisable layout and coloring algorithms
 * Lots of fully customisable node and connections shapes
-* Built-in configurations and colorschemes
+* Lost of built-in configurations and colorschemes
 * Tree structures are described in simple JSON files
 * Can be used from the command-line with the Cairo backend or as a NodeBox1
   library
-* PDF, SVG and PNG output formats
+* PDF, SVG and PNG output formats supported
 * Optionally requires PIL for drop-shadow support
 * Python 2.5, 2.6 and 2.7 support
 * Extensive documentation
