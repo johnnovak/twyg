@@ -5,16 +5,17 @@
 
 background(None)
 size(590, 430)
- 
+
 lsystem = ximport("lsystem")
- 
-stroke(0.122, 0.545, 0.553, 1) 
+
+stroke(0.122, 0.545, 0.553, 1)
 
 def segment(length, generations, time, id):
-    if generations > 0:
-        strokewidth(generations ** 2.1)
-        line(0, 0, 0, -length)
+  if generations > 0:
+    strokewidth(generations ** 2.1)
+      line(0, 0, 0, -length)
 
 tree = lsystem.strong()
 tree.segment = segment
 tree.draw(290, 390, 6)
+
