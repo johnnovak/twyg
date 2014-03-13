@@ -7,7 +7,7 @@ extensive set of default configurations and colorschemes. Requires Cairo (and
 optionally PIL) for image generation when used from the command-line or can be
 used as a NodeBox1 library.
 
-![metrics-synapse](img/metrics-synapse.png)
+![metrics-synapse](img/metrics-synapse-mint.png)
 
 
 ## Main Features
