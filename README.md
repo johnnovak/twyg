@@ -7,6 +7,8 @@ extensive set of default configurations and colorschemes. Requires Cairo (and
 optionally PIL) for image generation when used from the command-line or can be
 used as a NodeBox1 library.
 
+![goals-boxes](img/goals-boxes.png)
+
 
 ## Main Features
 
