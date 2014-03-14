@@ -123,13 +123,19 @@ dd {
 
 tt, code {
   @include monofont;
-  font-size: 15px !important;
   font-weight: bold;
   color: lighten($basecolor, 8);
 
   &.descname {
     font-size: 16px !important;
   }
+}
+p tt {
+  font-size: 17px !important;
+}
+p code {
+  font-size: 15px;
+  padding: 0 .4em;
 }
 
 pre {
@@ -589,6 +595,30 @@ blockquote {
   }
 }
 
+.quickstart {
+  p {
+    clear: both;
+  }
+  .img {
+    width: 80%;
+  }
+  .example {
+    margin-top: 2em;
+
+    pre {
+      float: left;
+      width: 34%;
+      margin: 0;
+      margin-bottom: 3em;
+    }
+    img {
+      float: left;
+      width: 60%;
+      margin: 40px 0 0 33px;
+    }
+  }
+}
+
 .docs {
   .body {
     margin-left: $submenu-width + $submenu-pad;
@@ -633,6 +663,7 @@ blockquote {
     margin: 0;
     padding-top: 0.2em;
     float: left;
+    clear: none;
   }
   .info {
     text-align: right;

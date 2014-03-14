@@ -77,9 +77,14 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../">Table of contents</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../intro/">Introduction</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#automatic-installation">Automatic installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#manual-installation">Manual installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-usage">Command line usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installing-the-dependencies">Installing the dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-installation">Automatic installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manual-installation">Manual installation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#nodebox1-library-mac-os-x">NodeBox1 library (Mac OS X)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../usage/">Usage</a></li>
@@ -98,14 +103,36 @@
       
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p><em>twyg</em> is compatible with Python 2.5, 2.6 and 2.7.</p>
+<p>When used as a standalone command line program, the <a class="reference external" href="http://cairographics.org/">cairo</a> and <a class="reference external" href="http://www.pango.org/">pango</a> graphics
+libraries and the <a class="reference external" href="http://cairographics.org/pycairo/">Pycairo</a> Python
+bindings need to be installed for the graphics rendering.</p>
+<p>Python 2.5 requires the <a class="reference external" href="https://pypi.python.org/pypi/simplejson/">simplejson</a> Python module as well.</p>
+<p>There are no prerequisites if it is used as a NodeBox1 library.</p>
+</div>
+<div class="section" id="command-line-usage">
+<h2>Command line usage<a class="headerlink" href="#command-line-usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-the-dependencies">
+<h3>Installing the dependencies<a class="headerlink" href="#installing-the-dependencies" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="mac-os-x">
+<h4>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h4>
+<div class="code bash highlight-twyg"><div class="highlight"><pre><span class="na">sudo</span> <span class="na">port</span> <span class="na">install</span> <span class="na">py27</span><span class="o">-</span><span class="na">pip</span> <span class="na">py27</span><span class="o">-</span><span class="na">cairo</span> <span class="na">pango</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cygwin">
+<h4>Cygwin<a class="headerlink" href="#cygwin" title="Permalink to this headline">¶</a></h4>
+<p>Install the <tt class="docutils literal"><span class="pre">pip</span></tt>, <tt class="docutils literal"><span class="pre">cairo</span></tt> and <tt class="docutils literal"><span class="pre">pango</span></tt> packages with the Cygwin
+installer tool.</p>
+</div>
 </div>
 <div class="section" id="automatic-installation">
-<h2>Automatic installation<a class="headerlink" href="#automatic-installation" title="Permalink to this headline">¶</a></h2>
-<p><strong>twyg</strong> is registered at the Python Package Index (PyPI), so the simplest way
+<h3>Automatic installation<a class="headerlink" href="#automatic-installation" title="Permalink to this headline">¶</a></h3>
+<p><em>twyg</em> is registered at the Python Package Index (PyPI), so the simplest way
 to install it is with the <tt class="docutils literal"><span class="pre">pip</span></tt> command:</p>
-<div class="code bash highlight-twyg"><div class="highlight"><pre><span class="na">pip</span> <span class="na">install</span> <span class="na">twyg</span>
+<div class="code bash highlight-twyg"><div class="highlight"><pre><span class="na">sudo</span> <span class="na">pip</span> <span class="na">install</span> <span class="na">twyg</span>
 </pre></div>
 </div>
 <p>That&#8217;s it.</p>
@@ -117,7 +144,7 @@ download the package as well to get those files.</p>
 </div>
 </div>
 <div class="section" id="manual-installation">
-<h2>Manual installation<a class="headerlink" href="#manual-installation" title="Permalink to this headline">¶</a></h2>
+<h3>Manual installation<a class="headerlink" href="#manual-installation" title="Permalink to this headline">¶</a></h3>
 <p>You can also download the installation package at PyPi and then install
 manually:</p>
 <div class="code bash highlight-twyg"><div class="highlight"><pre><span class="na">tar</span> <span class="na">xvzf</span> <span class="na">tywg</span><span class="mf">-0.1</span><span class="o">.</span><span class="na">tar</span><span class="o">.</span><span class="na">gz</span>
@@ -126,6 +153,14 @@ manually:</p>
 <span class="na">sudo</span> <span class="na">python</span> <span class="na">setup</span><span class="o">.</span><span class="na">py</span> <span class="na">install</span>
 </pre></div>
 </div>
+<p>Then you will need to install the dependencies either via <tt class="docutils literal"><span class="pre">pip</span></tt> or your
+operatings system&#8217;s package manager.</p>
+</div>
+</div>
+<div class="section" id="nodebox1-library-mac-os-x">
+<h2>NodeBox1 library (Mac OS X)<a class="headerlink" href="#nodebox1-library-mac-os-x" title="Permalink to this headline">¶</a></h2>
+<p>Download the installation package and just extract its contents into
+<tt class="docutils literal"><span class="pre">~/Library/Application\</span> <span class="pre">Support/NodeBox</span></tt>.</p>
 </div>
 </div>
 
