@@ -2,7 +2,7 @@ __version__ = '0.1dev'
 
 import os, sys
 
-from twyg.cairowrapper import context as ctx
+#from twyg.cairowrapper import context as ctx
 from twyg.common import calculate_margins, loadjson
 
 from twyg.config import (NODE_CONFIG, CONNECTION_CONFIG, LAYOUT_CONFIG,
@@ -130,16 +130,14 @@ def generate_output(data_fname, config_fname, out_fname, outformat,
     TODO
     """
 
+    tree = _buildtree(data_fname, config_fname, colorscheme)
+
     # Temporary context for layout calculations (need an actual graphics
     # context to be able to work with fonts & text extents). Note that
     # 'None' is given for the output filename, so a failed run won't
     # overwrite an already existing file with an empty one. The actual
     # output file will be created later.
-    ctx.initsurface(1, 1, outformat, None, scale)
-
-    data = loadjson(data_fname)
-    config = loadconfig(config_path(config_fname))
-    tree = buildtree(data, config, colorscheme)
+    _ctx.initsurface(1, 1, outformat, None, scale)
 
     width, height = tree.calclayout()
 
@@ -151,15 +149,41 @@ def generate_output(data_fname, config_fname, out_fname, outformat,
     width += padleft + padright
     height += padtop + padbottom
 
-    # Create output file
-    ctx.initsurface(width, height, outformat, out_fname, scale)
-    ctx.background(tree.background_color())
-
     # Center tree
-    ctx.translate(padleft, padtop)
+    tree.shiftnodes(padleft, padtop)
+
+    # Create output file
+    _ctx.initsurface(width, height, outformat, out_fname, scale)
+    _ctx.background(tree.background_color())
 
     tree.draw()
-    ctx.writesurface()
+    _ctx.writesurface()
+
+
+def generate_output_nodebox(data_fname, config_fname, colorscheme=None,
+                            margins=['10%', '5%']):
+
+    tree = _buildtree(data_fname, config_fname, colorscheme)
+    width, height = tree.calclayout()
+
+    padtop, padleft, padbottom, padright = calculate_margins(width, height,
+                                                             margins)
+    width += padleft + padright
+    height += padtop + padbottom
+
+    # Center tree
+    tree.shiftnodes(padleft, padtop)
+
+    _ctx.size(width, height)
+    _ctx.background(tree.background_color())
+
+    tree.draw()
+
+
+def _buildtree(data_fname, config_fname, colorscheme):
+    data = loadjson(data_fname)
+    config = loadconfig(config_path(config_fname))
+    return twyg.buildtree(data, config, colorscheme)
 
 
 def buildtree(data, config, colorscheme_path=None):

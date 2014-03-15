@@ -1,19 +1,8 @@
 ximport('twyg')
 
-datafile = 'examples/data/data2.json'
-configfile = 'configs/synapse.twg'
-colorschemefile = 'colors/honey.twg'
+datafile = '/Users/jnovak/Work/Code/twyg/example-data/synthesis.json'
+config = 'hive'
+colorscheme = 'orbit'
+margins = ['10%', '5%']
 
-tree = twyg.buildtree(datafile, configfile, colorschemefile)
-
-width, height = tree.calclayout()
-
-#padtop, padleft, padbottom, padright = twyg.calculate_margins(width, height, margins)
-#width += padleft + padright
-#height += padtop + padbottom
-#tree.shiftnodes(padleft, padtop)
-
-size(width, height)
-background(tree.background_color())
-
-tree.draw()
+twyg.generate_output_nodebox(datafile, config, colorscheme=colorscheme, margins=margins)
