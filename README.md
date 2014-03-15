@@ -35,3 +35,9 @@ TODO
 
 TODO
 
+
+##  License
+
+© Copyright 2011-2014, [John Novak](http://www.johnnovak.net/)  
+This project is released under the MIT license.
+

@@ -4,18 +4,52 @@
 {% block body %}
   <h1>Quickstart</h1>
 
-  <p>Generate a PDF output from the tree <code>example1.json</code> using the built-in <em>nazca</em> configuration:</p>
+  <p><em>twyg</em> expects plain-text <a href="http://json.org/">JSON</a>
+  files as input that describe the topology of the tree and the text labels of
+  the individual nodes. Below is a sample JSON file and the corresponding
+  graph that was generated using the default configuration:</p>
 
-  <pre>$ twyg.py --config nazca example1.json example.pdf</pre>
+  <div class="example">
+    <pre>
+  {
+      "Animals": [
+          {"Birds": [
+              "Parrots",
+              "Owls",
+              "Penguis"
+          ]},
+          {"Mammals": [
+              {"Primates":
+                  "Harry the Monkey"
+              },
+              "Rodents"
+          ]},
+          "Fish",
+          "Invertebrates"
+  }</pre>
 
-  <p>Generate a PNG file at 150 DPI from <code>example1.json</code>
-  using the <em>bubble</em> configuration and the <em>mint</em>
-  colorscheme:</p>
+    <img src="{{ pathto('_static/quickstart-animals.png', 1) }}" alt="Animals" />
+  </div>
 
-  <pre>$ twyg.py -c bubbles --colorscheme mint --dpi 150 example1.json example.png</pre>
+  <p>To generate this graph as a PDF file, create a text file
+  <code>example.json</code> containing the JSON data above and then execute
+  this command:</p>
 
-  <p>Same as above, but leave 10% vertical and 20% horizontal margins:</p>
+  <pre>twyg.py example.json example.pdf</pre>
 
-  <pre>$ twyg.py -c bubbles -o mint --dpi 150 --margin=10%,20% example1.json example.png</pre>
+  <p>You can also specify the <em>configuration</em> and <em>colorscheme</em> to
+  use as shown below (see the <a href="../examples/">examples page</a> for
+  samples of the built-in colorschemes and configurations). The <em>output
+  format</em> is determined by the extension of the output file, which in this
+  case will be PNG:</p>
+
+  <pre>$ twyg.py --config nazca --colorscheme azure example.json example.png</pre>
+
+  <img class="img" src="{{ pathto('_static/quickstart-animals2.png', 1) }}" alt="Animals" />
+
+  <p>Refer to the <a href="../docs/">documentation</a> for a full description
+  of all available <a href="../docs/usage/#command-line-interface">command
+  line options</a> and to learn how to create your own custom <a
+  href="../docs/config/">configurations</a>.</p>
 
 {% endblock %}
