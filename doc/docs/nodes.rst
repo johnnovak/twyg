@@ -21,7 +21,7 @@ Text properties
 
     Name of the font to draw the node text with. Normal font weights are
     always used.
-    
+
     .. note:: The font name is usually not portable across different
         operating system and graphics backend combinations and it might need to
         be adjusted for each platform. Different graphics backends and
@@ -29,7 +29,7 @@ Text properties
         font name "Helvetica" might result in a different font being picked up
         by NodeBox on Mac OS X than the by the command line application on
         Windows using the Cairo backend.
-        
+
 
 .. property:: lineHeight
 

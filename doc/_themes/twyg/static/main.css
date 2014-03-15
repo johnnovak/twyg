@@ -84,21 +84,16 @@ dd {
 
 tt, code {
   font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
   color: #585858; }
-  tt.descname, code.descname {
-    font-size: 16px !important; }
 
-p tt {
+.descname {
   font-size: 17px !important; }
-
-p code {
-  font-size: 15px;
-  padding: 0 .4em; }
 
 pre {
   font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
+  font-size: 15px;
   font-size: 14px;
   padding: 10px;
   background: #f4ffda; }
@@ -250,13 +245,13 @@ blockquote {
       font-size: 18px; }
     .content .property > dt {
       float: left;
-      width: 170px;
+      width: 185px;
       margin: 0;
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 600;
       text-align: right; }
     .content .property > dd {
-      margin: 0 0 0 180px; }
+      margin: 0 0 0 200px; }
     .content .property .propparams {
       margin: .5em 0 .5em 0px;
       font-size: 17px;
@@ -287,7 +282,7 @@ blockquote {
         color: #b44; }
   .content .function tt {
     font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
-    font-size: 14px; }
+    font-size: 15px; }
   .content .function dl {
     margin: 0; }
   .content .function dd p {
@@ -432,13 +427,13 @@ blockquote {
   margin-top: 2em; }
   .quickstart .example pre {
     float: left;
-    width: 34%;
+    width: 28%;
     margin: 0;
     margin-bottom: 3em; }
   .quickstart .example img {
     float: left;
-    width: 60%;
-    margin: 40px 0 0 33px; }
+    width: 65%;
+    margin: 20px 0 0 40px; }
 
 .docs .body {
   margin-left: 210px; }

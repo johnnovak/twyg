@@ -7,7 +7,7 @@ used to draw the text inside the nodes and more.
 
 Configuration files are plain text files with a ``.twg`` extension.  They do
 not contain any tree data, but only instructions on `how` to draw the trees.
-These instructions can then be applied to arbitrary tree data files.  
+These instructions can then be applied to arbitrary tree data files.
 
 Configurations have the following structure:
 
@@ -29,23 +29,23 @@ The following is an example of a complete configuration file::
 
     [layout]                                     -- layout section start marker
         style                 layout             -- layout style
-        rootPadX              70                 -- property definition; constant
-                                                
+        rootPadX              70                 -- property definition; constan
+
     [node]                                       -- node section start marker
         style                 rect               -- node style
         textPadY              fontSize * 0.7     -- property definition; expression
-                                                
+
     [connection]                                 -- connection section start marker
       {default}                                  -- 'default' level start marker
         style                 curve              -- connection style
-        nodeLineWidthStart    1.5               
-        nodeLineWidthEnd      1.5               
-                                                
+        nodeLineWidthStart    1.5
+        nodeLineWidthEnd      1.5
+
       {root}                                     -- 'root' level start marker
         @copy                 default            -- copy directive
         levelDepthMax         0                  -- level selector
         nodeLineWidthEnd      3.5                -- override nodeLineWidthEnd
-                                                
+
     [color]                                      -- color section start marker
         @include              "mycolor.twg"      -- include directive
 
@@ -83,12 +83,11 @@ example::
     [layout]                                     -- [layout] starts
         style                 layout             --   belongs to the layout section
         rootPadX              70                 --   belongs to the layout section
-                                                
+
     [node]                                       -- [layout] ends, [node] starts
         style                 rect               --   belongs to the node section
         textPadY              fontSize * 0.7     --   belongs to the node section
                                                  -- end of file, [node] ends
-
 
 
 .. _levels:
@@ -110,7 +109,7 @@ differently. For example, one might want to distribute the nodes into three
 groups, root node, leaf nodes and remaining nodes, and apply three distinct
 visual styles to these groups. Or the grouping could be based on the depth a
 particular node can be found at in the tree, so all nodes at depth 1 would be
-drawn in a certain style, nodes at depth 2 in another style, and so forth. 
+drawn in a certain style, nodes at depth 2 in another style, and so forth.
 
 By using level definitions within a section definition, it is possible to
 refine the visual appearance of the tree by applying properties to certain
@@ -203,7 +202,7 @@ The following level selectors can be specified in level definitions:
     Maximum depth of the node in the tree to be selected.
 
 
-.. property:: levelNumChildrenMin 
+.. property:: levelNumChildrenMin
 
    .. propparams:: Number 0
        :values: >0
@@ -211,7 +210,7 @@ The following level selectors can be specified in level definitions:
    Minimum number of child nodes the node must have to be selected.
 
 
-.. property:: levelNumChildrenMax 
+.. property:: levelNumChildrenMax
 
    .. propparams:: Number 999999999
        :values: >0
@@ -260,7 +259,7 @@ Currently, the following two directives are supported:
     Copy all property definitions from another level into the current one
     within the same section. The ``<levelname>`` parameter has to be the name
     of the level without the curly brackets.
-    
+
     The directive is only allowed to appear in level definitions. The level
     *<levelname>* does not have to be defined in the same file where the
     *@copy* directive appears in; it can also come from another configuration
@@ -300,7 +299,7 @@ Currently, the following two directives are supported:
     Include the contents of another configuration file into the current
     configuration. The ``<configname>`` argument is the full path to the
     configuration file to be included as a double-quoted string.
-    
+
     The most natural way to think about this is that when the parser encounters
     a line containing an *@include* directive, it simply replaces that line
     with the contents of the included configuration file and continues the
@@ -341,7 +340,7 @@ Property values can be either simple literal values::
 
         rootPadX        70
         fontName        "Gill Sans"
-        nodeColor       #f80 
+        nodeColor       #f80
 
 or expressions of arbitrary complexity::
 
@@ -381,7 +380,7 @@ Every property value has a type associated with it. These are the following:
       name      "double-quotes (\"\") within a string"
 
 *Boolean*
-    Used for turning a specific feature on or off. Valid values are: 
+    Used for turning a specific feature on or off. Valid values are:
 
     * ``on``, ``yes``, ``true``, numbers greater than or equal to *1*
     * ``off``, ``no``, ``false``, numbers less than or equal to *0*
@@ -569,7 +568,7 @@ the interval *0.0--1.0*.
 
 
 .. function:: blend(destcolor, factor)
-     
+
     Blend the color (source color) with *destcolor* by a given factor. A
     *factor* of *1.0* will result in the destination color and *0.0* in the
     source color. ::
@@ -579,7 +578,7 @@ the interval *0.0--1.0*.
         baseColor.blend(bgColor, 0.2)
 
 .. tip:: The brightness of a color can be changed in two ways:
-    
+
     * using the :py:func:`darken` and :py:func:`lighten` functions
     * blending the color with black or white
 
