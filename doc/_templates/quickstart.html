@@ -5,9 +5,32 @@
   <h1>Quickstart</h1>
 
   <p><em>twyg</em> expects plain-text <a href="http://json.org/">JSON</a>
-  files as input that describe the topology of the tree and the text labels of
-  the individual nodes. Below is a sample JSON file and the corresponding
-  graph that was generated using the default configuration:</p>
+  files as input that describe the tree to be drawn. These JSON files only
+  contain the <em>topology</em> of the tree and the <em>text labels</em> of the
+  individual tree nodes. They do not contain any information on <em>how</em> the
+  tree should be visually rendered.</p>
+
+  <p>The visual appearance of the tree is described in so-called
+  <em>configuration files</em>. Several <a href="../examples/">built-in
+    configurations</a> are included
+  with your twyg installation that you can use out-of-the-box. That way, you
+  don't need to learn the intricacies of the custom <a
+    href="../docs/config/">configuration language</a> to
+  get pretty looking results quickly.</p>
+
+  <p>The benefit of separating the visual style from the tree data itself is
+  that this way you can easily render the same tree in different visual styles
+  by just using a different configuration file. Moreover, configurations can
+  defined in a generative manner, which means that almost all <a
+    href="../docs/reference/">visual aspects</a>
+  of the tree can be defined as expressions that depend on the tree's
+  properties (e.g. the color or shape of a node can depend on the hierarchical
+  position it occupies in the tree).  This allows for crafting very flexible
+  configurations that can be applied to trees of arbitrary size and
+  complexity.</p>
+
+  <p>Below is a sample JSON file and the corresponding graph that was
+  generated using the default configuration:</p>
 
   <div class="example">
     <pre>

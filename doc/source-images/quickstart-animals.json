@@ -1,0 +1,17 @@
+{
+    "Animals": [
+        {"Birds": [
+            "Parrots",
+            "Owls",
+            "Penguis"
+        ]},
+        {"Mammals": [
+            "Primates",
+            "Rodents",
+            "Marsupials"
+        ]},
+        "Fish",
+        "Invertebrates"
+    ]
+}
+
