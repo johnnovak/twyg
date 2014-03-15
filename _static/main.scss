@@ -16,7 +16,7 @@ $submenu-pad: 40px;
 
 @mixin monofont {
   font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 html {
@@ -126,20 +126,14 @@ tt, code {
   font-weight: bold;
   color: lighten($basecolor, 8);
 
-  &.descname {
-    font-size: 16px !important;
-  }
 }
-p tt {
+.descname {
   font-size: 17px !important;
-}
-p code {
-  font-size: 15px;
-  padding: 0 .4em;
 }
 
 pre {
   @include monofont;
+  font-size: 14px;
   padding: 10px;
   background: #f4ffda;
 }
@@ -340,14 +334,14 @@ blockquote {
     }
     & > dt {
       float: left;
-      width: 170px;
+      width: 185px;
       margin: 0;
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 600;
       text-align: right;
     }
     & > dd {
-      margin: 0 0 0 180px;
+      margin: 0 0 0 200px;
     }
     .propparams {
       margin: .5em 0 .5em 0px;
@@ -607,14 +601,14 @@ blockquote {
 
     pre {
       float: left;
-      width: 34%;
+      width: 28%;
       margin: 0;
       margin-bottom: 3em;
     }
     img {
       float: left;
-      width: 60%;
-      margin: 40px 0 0 33px;
+      width: 65%;
+      margin: 20px 0 0 40px;
     }
   }
 }
