@@ -128,7 +128,7 @@ tt, code {
 
 }
 .descname {
-  font-size: 17px !important;
+  font-size: 15px;
 }
 
 pre {
@@ -203,35 +203,17 @@ blockquote {
 
   .wrapper {
     position: fixed;
-
-    & > ul > li > a {
-      font-weight: 700;
-    }
-  }
-  a {
-    font-weight: 400;
-  }
-  h3 {
-    margin: 0 0 1em 0;
-    padding: 0;
-    text-align: right;
-
-    a {
-      color: $linkcolor;
-      font-size: 18px;
-      font-weight: 700;
-    }
   }
   ul {
     width: $submenu-width;
     margin: 0;
     padding: 0;
     list-style: none;
-    font-weight: 400;
     text-align: right;
 
     a {
       color: $linkcolor;
+      font-weight: 600;
 
       &:hover {
         text-decoration: underline;
@@ -241,6 +223,18 @@ blockquote {
       font-size: 16px;
       line-height: 21px;
       text-decoration: none;
+
+      a {
+        color: $linkcolor;
+        font-weight: 400;
+      }
+
+      ul {
+        font-size: 15px;
+        a {
+          font-weight: 400;
+        }
+      }
     }
     &.current li:last-child {
       margin-bottom: 1em;
