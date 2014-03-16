@@ -89,7 +89,7 @@ default installation:
 Linux
 ^^^^^
 
-Install **Pycairo** with your distribution's package manager.
+Install **Pycairo** and **pip** with your distribution's package manager.
 
 Cygwin
 ^^^^^^

@@ -6,7 +6,7 @@ $darkgreen: #1f8b8d;
 $yellow: #d4f9b5;
 
 $contentwidth: 940px;
-$submenu-width: 170px;
+$submenu-width: 175px;
 $submenu-pad: 40px;
 
 @mixin bodyfont {
@@ -15,7 +15,8 @@ $submenu-pad: 40px;
 }
 
 @mixin monofont {
-  font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
+  font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans
+  Mono, Courier New, monospace;
   font-size: 15px;
 }
 
@@ -259,11 +260,24 @@ blockquote {
     color: $accentcolor;
   }
   li {
-    display: inline-block;
+    display: inline;
   }
-  li:not(:last-child):after {
-    content: "\00a0\00a0\2192\00a0";
-    color: $accentcolor;
+  // This is the way of doing this properly:
+  //
+  // li:not(:last-child):after {
+  //   content: "\00a0\00a0\2192\00a0";
+  //   color: $accentcolor;
+  // }
+  //
+  // But let's just be nice to IE8...
+  li {
+    a:after {
+      content: "\00a0\00a0\2192\00a0";
+      color: $accentcolor;
+    }
+    a[href="#"]:after {
+      content: "";
+    }
   }
 
   a {
