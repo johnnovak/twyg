@@ -83,7 +83,7 @@ dd {
     margin-top: 0; }
 
 tt, code {
-  font-family: Cousine,Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, Bitstream Vera Sans Mono, monospace;
+  font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
   font-size: 15px;
   font-weight: bold;
   color: #585858; }
@@ -92,7 +92,7 @@ tt, code {
   font-size: 15px; }
 
 pre {
-  font-family: Cousine,Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, Bitstream Vera Sans Mono, monospace;
+  font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
   font-size: 15px;
   font-size: 14px;
   padding: 10px;
@@ -278,7 +278,7 @@ blockquote {
       .content .admonition.warning .admonition-title {
         color: #b44; }
   .content .function tt {
-    font-family: Cousine,Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, Bitstream Vera Sans Mono, monospace;
+    font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
     font-size: 15px; }
   .content .function dl {
     margin: 0; }

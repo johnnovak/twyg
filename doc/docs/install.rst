@@ -9,10 +9,9 @@ Prerequisites
 When used as a standalone command line program, the `cairo
 <http://cairographics.org/>`_ and `pango <http://www.pango.org/>`_ graphics
 libraries and the `Pycairo <http://cairographics.org/pycairo/>`_ Python
-bindings need to be installed for graphics rendering.
-
-Python 2.5 requires the `simplejson
-<https://pypi.python.org/pypi/simplejson/>`_ Python module as well.
+bindings need to be installed for graphics rendering. Python 2.5 requires the
+`simplejson <https://pypi.python.org/pypi/simplejson/>`_ Python module as
+well.
 
 There are no prerequisites if it is used as a NodeBox1 library (see :ref:`nodebox1-setup`).
 

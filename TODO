@@ -6,6 +6,7 @@ BUGS
 
 FEATURES
 ========
+- use Psyco when available
 - improve malformed JSON error messages
 - colourlovers integration (https://github.com/elbaschid/python-colourlovers)
 - top-down layout
