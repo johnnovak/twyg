@@ -83,7 +83,7 @@ dd {
     margin-top: 0; }
 
 tt, code {
-  font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
+  font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
   font-size: 15px;
   font-weight: bold;
   color: #585858; }
@@ -92,7 +92,7 @@ tt, code {
   font-size: 15px; }
 
 pre {
-  font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
+  font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
   font-size: 15px;
   font-size: 14px;
   padding: 10px;
@@ -149,7 +149,7 @@ blockquote {
   .submenu .wrapper {
     position: fixed; }
   .submenu ul {
-    width: 170px;
+    width: 175px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -174,9 +174,9 @@ blockquote {
       margin-bottom: 1em; }
 
 .docnav {
-  width: 730px;
+  width: 725px;
   height: 41px;
-  margin-left: 210px;
+  margin-left: 215px;
   padding-top: 5px;
   background: #fff; }
   .docnav ul {
@@ -188,10 +188,12 @@ blockquote {
     font-size: 19px;
     color: #83b69c; }
   .docnav li {
-    display: inline-block; }
-  .docnav li:not(:last-child):after {
+    display: inline; }
+  .docnav li a:after {
     content: "\00a0\00a0\2192\00a0";
     color: #83b69c; }
+  .docnav li a[href="#"]:after {
+    content: ""; }
   .docnav a {
     font-weight: 600;
     color: #83b69c; }
@@ -276,7 +278,7 @@ blockquote {
       .content .admonition.warning .admonition-title {
         color: #b44; }
   .content .function tt {
-    font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
+    font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier New, monospace;
     font-size: 15px; }
   .content .function dl {
     margin: 0; }
@@ -431,7 +433,7 @@ blockquote {
     margin: 20px 0 0 40px; }
 
 .docs .body {
-  margin-left: 210px; }
+  margin-left: 215px; }
 
 #table-of-contents ul, #indices-and-tables ul, #reference ul, .toctree-wrapper ul {
   margin: 0;

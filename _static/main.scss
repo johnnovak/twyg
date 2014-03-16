@@ -6,7 +6,7 @@ $darkgreen: #1f8b8d;
 $yellow: #d4f9b5;
 
 $contentwidth: 940px;
-$submenu-width: 170px;
+$submenu-width: 175px;
 $submenu-pad: 40px;
 
 @mixin bodyfont {
@@ -15,7 +15,8 @@ $submenu-pad: 40px;
 }
 
 @mixin monofont {
-  font-family: Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans Mono, Courier, monospace;
+  font-family: Cousine,Menlo, Consolas, Andale Mono, DejaVu Sans Mono, Droid Sans
+  Mono, Courier New, Bitstream Vera Sans Mono, monospace;
   font-size: 15px;
 }
 
@@ -203,35 +204,17 @@ blockquote {
 
   .wrapper {
     position: fixed;
-
-    & > ul > li > a {
-      font-weight: 700;
-    }
-  }
-  a {
-    font-weight: 400;
-  }
-  h3 {
-    margin: 0 0 1em 0;
-    padding: 0;
-    text-align: right;
-
-    a {
-      color: $linkcolor;
-      font-size: 18px;
-      font-weight: 700;
-    }
   }
   ul {
     width: $submenu-width;
     margin: 0;
     padding: 0;
     list-style: none;
-    font-weight: 400;
     text-align: right;
 
     a {
       color: $linkcolor;
+      font-weight: 600;
 
       &:hover {
         text-decoration: underline;
@@ -241,6 +224,18 @@ blockquote {
       font-size: 16px;
       line-height: 21px;
       text-decoration: none;
+
+      a {
+        color: $linkcolor;
+        font-weight: 400;
+      }
+
+      ul {
+        font-size: 15px;
+        a {
+          font-weight: 400;
+        }
+      }
     }
     &.current li:last-child {
       margin-bottom: 1em;
@@ -265,11 +260,24 @@ blockquote {
     color: $accentcolor;
   }
   li {
-    display: inline-block;
+    display: inline;
   }
-  li:not(:last-child):after {
-    content: "\00a0\00a0\2192\00a0";
-    color: $accentcolor;
+  // This is the way of doing this properly:
+  //
+  // li:not(:last-child):after {
+  //   content: "\00a0\00a0\2192\00a0";
+  //   color: $accentcolor;
+  // }
+  //
+  // But let's just be nice to IE8...
+  li {
+    a:after {
+      content: "\00a0\00a0\2192\00a0";
+      color: $accentcolor;
+    }
+    a[href="#"]:after {
+      content: "";
+    }
   }
 
   a {
