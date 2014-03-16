@@ -17,7 +17,7 @@ def main():
     parser = OptionParser(usage=usage)
     parser.add_option('-c', '--config',
                       default='default',
-                      dest='config', metavar='FILE',
+                      dest='config', metavar='NAME',
                       help='configuration to use [default: %default]')
 
     parser.add_option('-o', '--colorscheme',
