@@ -77,14 +77,17 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../">Table of contents</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../intro/">Introduction</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#command-line-usage">Command line usage</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#installing-the-dependencies">Installing the dependencies</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#automatic-installation">Automatic installation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#manual-installation">Manual installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download">Download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-dependencies">Install dependencies</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cygwin">Cygwin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#nodebox1-library-mac-os-x">NodeBox1 library (Mac OS X)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-twyg">Install twyg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nodebox1-setup">NodeBox1 setup</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../usage/">Usage</a></li>
@@ -103,64 +106,107 @@
       
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <p><em>twyg</em> is compatible with Python 2.5, 2.6 and 2.7.</p>
 <p>When used as a standalone command line program, the <a class="reference external" href="http://cairographics.org/">cairo</a> and <a class="reference external" href="http://www.pango.org/">pango</a> graphics
 libraries and the <a class="reference external" href="http://cairographics.org/pycairo/">Pycairo</a> Python
-bindings need to be installed for the graphics rendering.</p>
+bindings need to be installed for graphics rendering.</p>
 <p>Python 2.5 requires the <a class="reference external" href="https://pypi.python.org/pypi/simplejson/">simplejson</a> Python module as well.</p>
-<p>There are no prerequisites if it is used as a NodeBox1 library.</p>
+<p>There are no prerequisites if it is used as a NodeBox1 library (see <a class="reference internal" href="#nodebox1-setup"><em>NodeBox1 setup</em></a>).</p>
 </div>
-<div class="section" id="command-line-usage">
-<h2>Command line usage<a class="headerlink" href="#command-line-usage" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="installing-the-dependencies">
-<h3>Installing the dependencies<a class="headerlink" href="#installing-the-dependencies" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="mac-os-x">
-<h4>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h4>
-<div class="code bash highlight-twyg"><div class="highlight"><pre><span class="na">sudo</span> <span class="na">port</span> <span class="na">install</span> <span class="na">py27</span><span class="o">-</span><span class="na">pip</span> <span class="na">py27</span><span class="o">-</span><span class="na">cairo</span> <span class="na">pango</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="cygwin">
-<h4>Cygwin<a class="headerlink" href="#cygwin" title="Permalink to this headline">¶</a></h4>
-<p>Install the <tt class="docutils literal"><span class="pre">pip</span></tt>, <tt class="docutils literal"><span class="pre">cairo</span></tt> and <tt class="docutils literal"><span class="pre">pango</span></tt> packages with the Cygwin
-installer tool.</p>
-</div>
-</div>
-<div class="section" id="automatic-installation">
-<h3>Automatic installation<a class="headerlink" href="#automatic-installation" title="Permalink to this headline">¶</a></h3>
-<p><em>twyg</em> is registered at the Python Package Index (PyPI), so the simplest way
-to install it is with the <tt class="docutils literal"><span class="pre">pip</span></tt> command:</p>
-<div class="code bash highlight-twyg"><div class="highlight"><pre><span class="na">sudo</span> <span class="na">pip</span> <span class="na">install</span> <span class="na">twyg</span>
-</pre></div>
-</div>
-<p>That&#8217;s it.</p>
+<div class="section" id="download">
+<h2>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h2>
+<p>If you wish to install <em>twyg</em> automatically with <tt class="docutils literal"><span class="pre">pip</span></tt>, you don&#8217;t need to
+download anything. Just proceed to the <a class="reference internal" href="#install-deps"><em>Install dependencies</em></a> section.</p>
+<p>If you want to do a manual install, you can download the <a class="reference external" href="#">latest distribution
+package</a> from the <a class="reference external" href="https://pypi.python.org/pypi">Python Package Index (PyPi)</a>. Alternatively, you can download the latest development version as a
+<a class="reference external" href="https://github.com/johnnovak/twyg/archive/master.zip">ZIP file</a> from the
+project&#8217;s <a class="reference external" href="https://github.com/johnnovak/twyg">GitHub page</a>,
+or clone the repository if you are familiar with <tt class="docutils literal"><span class="pre">git</span></tt>.</p>
+<p>You can also download the <a class="reference external" href="#">offline documentation</a> here.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The installation package contains example data files and some useful
-scripts which won&#8217;t be installed by using this method. You might want to
-download the package as well to get those files.</p>
+scripts that won&#8217;t be installed when using the automatic installation
+method with <tt class="docutils literal"><span class="pre">pip</span></tt>. You might want to download the package as well to get
+those files.</p>
 </div>
 </div>
-<div class="section" id="manual-installation">
-<h3>Manual installation<a class="headerlink" href="#manual-installation" title="Permalink to this headline">¶</a></h3>
-<p>You can also download the installation package at PyPi and then install
-manually:</p>
-<div class="code bash highlight-twyg"><div class="highlight"><pre><span class="na">tar</span> <span class="na">xvzf</span> <span class="na">tywg</span><span class="mf">-0.1</span><span class="o">.</span><span class="na">tar</span><span class="o">.</span><span class="na">gz</span>
-<span class="na">cd</span> <span class="na">tornado</span><span class="mf">-0.1</span>
-<span class="na">python</span> <span class="na">setup</span><span class="o">.</span><span class="na">py</span> <span class="na">build</span>
-<span class="na">sudo</span> <span class="na">python</span> <span class="na">setup</span><span class="o">.</span><span class="na">py</span> <span class="na">install</span>
+<div class="section" id="install-dependencies">
+<span id="install-deps"></span><h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Below are platform specific instructions on installing the dependencies
+required by <strong>twyg</strong>.</p>
+<div class="section" id="mac-os-x">
+<h3>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="install-macports">
+<h4>1. Install MacPorts<a class="headerlink" href="#install-macports" title="Permalink to this headline">¶</a></h4>
+<p>The easiest way to install the dependent libraries on Mac OS X is to use <a class="reference external" href="http://www.macports.org/">MacPorts</a>. If you already have MacPorts
+on your system, just proceed with the following step. Otherwise, follow
+<a class="reference external" href="http://www.macports.org/install.php">these instructions</a> to install
+MacPorts first.</p>
+</div>
+<div class="section" id="id1">
+<h4>2. Install dependencies<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>The following command will install <em>cairo</em> and the <em>Pycairo</em> Python bindings.
+It will install <em>Python 2.7</em> as well, if it&#8217;s not already installed (that will
+take a while):</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo port install py27-cairo
 </pre></div>
 </div>
-<p>Then you will need to install the dependencies either via <tt class="docutils literal"><span class="pre">pip</span></tt> or your
-operatings system&#8217;s package manager.</p>
+<p>If you wish to do an automatic install, you&#8217;ll need to install <em>pip</em> as
+well:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo port install py27-pip
+</pre></div>
+</div>
+<p>After the above commands have successfully completed, make Python 2.7 the
+default installation:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo port <span class="k">select</span> --set python python27
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you wish to use an earlier Python version, change all occurences
+of <tt class="docutils literal"><span class="pre">27</span></tt> to <tt class="docutils literal"><span class="pre">26</span></tt> or <tt class="docutils literal"><span class="pre">25</span></tt> in the above commands.</p>
 </div>
 </div>
-<div class="section" id="nodebox1-library-mac-os-x">
-<h2>NodeBox1 library (Mac OS X)<a class="headerlink" href="#nodebox1-library-mac-os-x" title="Permalink to this headline">¶</a></h2>
-<p>Download the installation package and just extract its contents into
-<tt class="docutils literal"><span class="pre">~/Library/Application\</span> <span class="pre">Support/NodeBox</span></tt>.</p>
+</div>
+<div class="section" id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<p>TODO</p>
+</div>
+<div class="section" id="cygwin">
+<h3>Cygwin<a class="headerlink" href="#cygwin" title="Permalink to this headline">¶</a></h3>
+<p>Install the <strong>pip</strong>, <strong>cairo</strong> and <strong>pango</strong> packages with the Cygwin installer
+tool.</p>
+</div>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>TODO</p>
+</div>
+</div>
+<div class="section" id="install-twyg">
+<h2>Install twyg<a class="headerlink" href="#install-twyg" title="Permalink to this headline">¶</a></h2>
+<p><em>1. Automatic method</em></p>
+<p>To install <strong>twyg</strong> automatically with <strong>pip</strong>, issue the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre>pip install twyg
+</pre></div>
+</div>
+<p><em>2. Manual method</em></p>
+<p>Alternatively, you can do a manual install if you have downloaded the
+distribution package:</p>
+<div class="highlight-bash"><div class="highlight"><pre>tar xzf twyg-0.1.tgz
+<span class="nb">cd </span>twyg-0.1
+python setup.py build
+sudo python setup.py install
+</pre></div>
+</div>
+</div>
+<div class="section" id="nodebox1-setup">
+<span id="id2"></span><h2>NodeBox1 setup<a class="headerlink" href="#nodebox1-setup" title="Permalink to this headline">¶</a></h2>
+<p>Download the <a class="reference external" href="#">distribution package</a> and extract its contents somewhere.
+Copy the <tt class="docutils literal"><span class="pre">twyg</span></tt> subfolder from the folder you extracted the package to into
+<tt class="docutils literal"><span class="pre">~/Library/Application\</span> <span class="pre">Support/NodeBox</span></tt> .</p>
 </div>
 </div>
 
