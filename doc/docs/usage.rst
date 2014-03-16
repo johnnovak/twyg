@@ -4,59 +4,69 @@ Usage
 Command line interface
 ----------------------
 
+**twyg** understands the following command line options:
+
 .. option:: -h, --help
 
-    Show this help message and exit
+    Print a short summary of the available command line options and exit.
 
-.. option:: -c FILE, --config=FILE
+.. option:: -c NAME, --config=FILE
 
-    Config file
+    Name of the configuration to use. The ``default`` configuration is used if
+    not specified.
 
-.. option:: -o FILE, --colorscheme=FILE
+.. option:: -o NAME, --colorscheme=NAME
 
-    Colorscheme file
+    Name of the colorscheme to use. Use this option to override the
+    colorscheme specified in the configuration. The ``default`` configuration
+    is used if not specified.
 
 .. option:: -d DPI, --dpi=DPI
 
-    Output resolution (PNG) or shadow rasterisation resolution (PDF and
-    SVG) [default: 72.0]
+    For PNG output, this option sets the output resolution (DPI) of the raster
+    image.
+
+    For vector output formats (PDF, PostScript and SVG), the value controls
+    the rasterisation resolution of the drop shadow images. Use the
+    ``--scale`` option to control the size of the resulting image instead.
+
+    The default DPI value is ``72.0``
 
 .. option:: -m MARGIN, --margin=MARGIN
 
-    Margins in TOP,RIGHT,BOTTOM,LEFT or VERT,HORIZ or MARGIN format;
-    values can be absolute points or percentages [default: 10%,5%]
+    Margins in TOP,RIGHT,BOTTOM,LEFT or VERT,HORIZ or MARGIN format.
+    Margin values can be absolute points or percentages.
+
+    The default margin value is ``10%,5%``
 
 .. option:: -v, --verbose
   
-    Display extended error messages
+    Display extended error messages. This could be useful when you would like
+    to report a defect.
 
 .. option:: -s SCALE, --scale=SCALE
 
-    Scale factor (absolute value or percentage) [default: 1.0]
+    Scale factor (absolute value or percentage). This is useful to scale
+    the size image when using vector output formats.
+
+    The default scale factor is ``1.0``
 
 
 NodeBox1
 --------
 
-Nodebox usage:
+Using *twyg* as a NodeBox1 library is pretty simple:
 
 .. code-block:: python
 
     ximport('twyg')
 
-    datafile = 'examples/data/data2.json'
-    configfile = 'configs/synapse.twg'
-    colorschemefile = 'colors/honey.twg'
+    datafile = '/path/to/example-data/synthesis.json'
+    config = 'hive'
+    colorscheme = 'orbit'
+    margins = ['10%', '5%']
 
-    tree = twyg.buildtree(datafile, configfile, colorschemefile)
-
-    width, height = tree.calclayout()
-
-    size(width, height)
-    background(tree.background_color())
-
-    tree.draw()
+    twyg.generate_output_nodebox(datafile, config, colorscheme=colorscheme, margins=margins)
 
 
-See also *nodebox-usage.py*
-
+That's it.
