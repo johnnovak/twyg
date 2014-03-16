@@ -27,7 +27,7 @@ def main():
     parser.add_option('-d', '--dpi',
                       default='72.0', type='float',
                       help=('output resolution (PNG) or shadow rasterisation '
-                            'resolution (PDF and SVG) [default: %default]'))
+                            'resolution (PDF, PS and SVG) [default: %default]'))
 
     parser.add_option('-m', '--margin',
                       default='10%,5%',
@@ -58,7 +58,7 @@ def main():
     outfile = args[1]
 
     ext = os.path.splitext(outfile)[1][1:].lower()
-    if ext in ('pdf', 'png', 'svg'):
+    if ext in ('pdf', 'png', 'ps', 'svg'):
         options.outformat = ext
     else:
         parser.error('invalid output format: %s' % ext)

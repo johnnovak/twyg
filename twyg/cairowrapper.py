@@ -436,6 +436,8 @@ class Context(object):
             w = int(w + .5)
             h = int(h + .5)
             self._surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, w, h)
+        elif fmt == 'ps':
+            self._surface = cairo.PSSurface(fname, w, h)
         else:
             raise ValueError, "Invalid output format: '%s'" % (fmt)
 
