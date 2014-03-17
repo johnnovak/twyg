@@ -99,71 +99,77 @@
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="command-line-interface">
 <h2>Command line interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
+<p><strong>twyg</strong> understands the following command line options:</p>
 <dl class="option">
 <dt id="cmdoption-h">
 <tt class="descname">-h</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--help</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-h" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show this help message and exit</p>
+<dd><p>Print a short summary of the available command line options and exit.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-c">
-<tt class="descname">-c</tt><tt class="descclassname"> FILE</tt><tt class="descclassname">, </tt><tt class="descname">--config</tt><tt class="descclassname">=FILE</tt><a class="headerlink" href="#cmdoption-c" title="Permalink to this definition">¶</a></dt>
-<dd><p>Config file</p>
+<tt class="descname">-c</tt><tt class="descclassname"> NAME</tt><tt class="descclassname">, </tt><tt class="descname">--config</tt><tt class="descclassname">=FILE</tt><a class="headerlink" href="#cmdoption-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the configuration to use. The <tt class="docutils literal"><span class="pre">default</span></tt> configuration is used if
+not specified.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-o">
-<tt class="descname">-o</tt><tt class="descclassname"> FILE</tt><tt class="descclassname">, </tt><tt class="descname">--colorscheme</tt><tt class="descclassname">=FILE</tt><a class="headerlink" href="#cmdoption-o" title="Permalink to this definition">¶</a></dt>
-<dd><p>Colorscheme file</p>
+<tt class="descname">-o</tt><tt class="descclassname"> NAME</tt><tt class="descclassname">, </tt><tt class="descname">--colorscheme</tt><tt class="descclassname">=NAME</tt><a class="headerlink" href="#cmdoption-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the colorscheme to use. Use this option to override the
+colorscheme specified in the configuration. The <tt class="docutils literal"><span class="pre">default</span></tt> configuration
+is used if not specified.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-d">
 <tt class="descname">-d</tt><tt class="descclassname"> DPI</tt><tt class="descclassname">, </tt><tt class="descname">--dpi</tt><tt class="descclassname">=DPI</tt><a class="headerlink" href="#cmdoption-d" title="Permalink to this definition">¶</a></dt>
-<dd><p>Output resolution (PNG) or shadow rasterisation resolution (PDF and
-SVG) [default: 72.0]</p>
+<dd><p>For PNG output, this option sets the output resolution (DPI) of the raster
+image.</p>
+<p>For vector output formats (PDF, PostScript and SVG), the value controls
+the rasterisation resolution of the drop shadow images. Use the
+<tt class="docutils literal"><span class="pre">--scale</span></tt> option to control the size of the resulting image instead.</p>
+<p>The default DPI value is <tt class="docutils literal"><span class="pre">72.0</span></tt></p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-m">
 <tt class="descname">-m</tt><tt class="descclassname"> MARGIN</tt><tt class="descclassname">, </tt><tt class="descname">--margin</tt><tt class="descclassname">=MARGIN</tt><a class="headerlink" href="#cmdoption-m" title="Permalink to this definition">¶</a></dt>
-<dd><p>Margins in TOP,RIGHT,BOTTOM,LEFT or VERT,HORIZ or MARGIN format;
-values can be absolute points or percentages [default: 10%,5%]</p>
+<dd><p>Margins in TOP,RIGHT,BOTTOM,LEFT or VERT,HORIZ or MARGIN format.
+Margin values can be absolute points or percentages.</p>
+<p>The default margin value is <tt class="docutils literal"><span class="pre">10%,5%</span></tt></p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-v">
 <tt class="descname">-v</tt><tt class="descclassname"></tt><tt class="descclassname">, </tt><tt class="descname">--verbose</tt><tt class="descclassname"></tt><a class="headerlink" href="#cmdoption-v" title="Permalink to this definition">¶</a></dt>
-<dd><p>Display extended error messages</p>
+<dd><p>Display extended error messages. This could be useful when you would like
+to report a defect.</p>
 </dd></dl>
 
 <dl class="option">
 <dt id="cmdoption-s">
 <tt class="descname">-s</tt><tt class="descclassname"> SCALE</tt><tt class="descclassname">, </tt><tt class="descname">--scale</tt><tt class="descclassname">=SCALE</tt><a class="headerlink" href="#cmdoption-s" title="Permalink to this definition">¶</a></dt>
-<dd><p>Scale factor (absolute value or percentage) [default: 1.0]</p>
+<dd><p>Scale factor (absolute value or percentage). This is useful to scale
+the size image when using vector output formats.</p>
+<p>The default scale factor is <tt class="docutils literal"><span class="pre">1.0</span></tt></p>
 </dd></dl>
 
 </div>
 <div class="section" id="nodebox1">
 <h2>NodeBox1<a class="headerlink" href="#nodebox1" title="Permalink to this headline">¶</a></h2>
-<p>Nodebox usage:</p>
+<p>Using <em>twyg</em> as a NodeBox1 library is pretty simple:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">ximport</span><span class="p">(</span><span class="s">&#39;twyg&#39;</span><span class="p">)</span>
 
-<span class="n">datafile</span> <span class="o">=</span> <span class="s">&#39;examples/data/data2.json&#39;</span>
-<span class="n">configfile</span> <span class="o">=</span> <span class="s">&#39;configs/synapse.twg&#39;</span>
-<span class="n">colorschemefile</span> <span class="o">=</span> <span class="s">&#39;colors/honey.twg&#39;</span>
+<span class="n">datafile</span> <span class="o">=</span> <span class="s">&#39;/path/to/example-data/synthesis.json&#39;</span>
+<span class="n">config</span> <span class="o">=</span> <span class="s">&#39;hive&#39;</span>
+<span class="n">colorscheme</span> <span class="o">=</span> <span class="s">&#39;orbit&#39;</span>
+<span class="n">margins</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;10%&#39;</span><span class="p">,</span> <span class="s">&#39;5%&#39;</span><span class="p">]</span>
 
-<span class="n">tree</span> <span class="o">=</span> <span class="n">twyg</span><span class="o">.</span><span class="n">buildtree</span><span class="p">(</span><span class="n">datafile</span><span class="p">,</span> <span class="n">configfile</span><span class="p">,</span> <span class="n">colorschemefile</span><span class="p">)</span>
-
-<span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">calclayout</span><span class="p">()</span>
-
-<span class="n">size</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
-<span class="n">background</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">background_color</span><span class="p">())</span>
-
-<span class="n">tree</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="n">twyg</span><span class="o">.</span><span class="n">generate_output_nodebox</span><span class="p">(</span><span class="n">datafile</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">colorscheme</span><span class="o">=</span><span class="n">colorscheme</span><span class="p">,</span> <span class="n">margins</span><span class="o">=</span><span class="n">margins</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>See also <em>nodebox-usage.py</em></p>
+<p>That&#8217;s it.</p>
 </div>
 </div>
 

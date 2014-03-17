@@ -111,8 +111,9 @@
 <p><em>twyg</em> is compatible with Python 2.5, 2.6 and 2.7.</p>
 <p>When used as a standalone command line program, the <a class="reference external" href="http://cairographics.org/">cairo</a> and <a class="reference external" href="http://www.pango.org/">pango</a> graphics
 libraries and the <a class="reference external" href="http://cairographics.org/pycairo/">Pycairo</a> Python
-bindings need to be installed for graphics rendering.</p>
-<p>Python 2.5 requires the <a class="reference external" href="https://pypi.python.org/pypi/simplejson/">simplejson</a> Python module as well.</p>
+bindings need to be installed for graphics rendering. Python 2.5 requires the
+<a class="reference external" href="https://pypi.python.org/pypi/simplejson/">simplejson</a> Python module as
+well.</p>
 <p>There are no prerequisites if it is used as a NodeBox1 library (see <a class="reference internal" href="#nodebox1-setup"><em>NodeBox1 setup</em></a>).</p>
 </div>
 <div class="section" id="download">
@@ -173,12 +174,16 @@ of <tt class="docutils literal"><span class="pre">27</span></tt> to <tt class="d
 </div>
 <div class="section" id="linux">
 <h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
-<p>TODO</p>
+<p>TODO: Install <strong>Pycairo</strong> and <strong>pip</strong> with your distribution&#8217;s package manager.</p>
 </div>
 <div class="section" id="cygwin">
 <h3>Cygwin<a class="headerlink" href="#cygwin" title="Permalink to this headline">¶</a></h3>
-<p>Install the <strong>pip</strong>, <strong>cairo</strong> and <strong>pango</strong> packages with the Cygwin installer
-tool.</p>
+<p>Install the <strong>python-cairo</strong> package with the Cygwin setup tool.</p>
+<p>If you wish to do the automatic setup, install <strong>python_setuptools</strong> as
+well, then issue the following command from the Cygwin shell:</p>
+<div class="highlight-bash"><div class="highlight"><pre>easy_install pip
+</pre></div>
+</div>
 </div>
 <div class="section" id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
@@ -195,8 +200,8 @@ tool.</p>
 <p><em>2. Manual method</em></p>
 <p>Alternatively, you can do a manual install if you have downloaded the
 distribution package:</p>
-<div class="highlight-bash"><div class="highlight"><pre>tar xzf twyg-0.1.tgz
-<span class="nb">cd </span>twyg-0.1
+<div class="highlight-bash"><div class="highlight"><pre>tar xzf twyg-&lt;version&gt;.tgz
+<span class="nb">cd </span>twyg-&lt;version&gt;
 python setup.py build
 sudo python setup.py install
 </pre></div>

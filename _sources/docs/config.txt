@@ -117,11 +117,11 @@ groups of elements only. Levels can appear in the *node*, *connection* and
 *color* sections with the following syntax::
 
     [section]
-        {levelname}
-           level selectors
-           ...
-           property definitions
-           ...
+      {levelname}
+        level selectors
+        ...
+        property definitions
+        ...
 
 As seen above, a level definitions consists of three parts:
 
