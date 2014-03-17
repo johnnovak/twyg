@@ -52,7 +52,7 @@ Mac OS X
 ~~~~~~~~~~~~~~~~~~~
 
 The easiest way to install the dependent libraries on Mac OS X is to use `MacPorts <http://www.macports.org/>`_. If you already have MacPorts
-on your system, just proceed with the following step. Otherwise, follow 
+on your system, just proceed with the following step. Otherwise, follow
 `these instructions <http://www.macports.org/install.php>`_ to install
 MacPorts first.
 
@@ -88,13 +88,20 @@ default installation:
 Linux
 ^^^^^
 
-Install **Pycairo** and **pip** with your distribution's package manager.
+TODO: Install **Pycairo** and **pip** with your distribution's package manager.
 
 Cygwin
 ^^^^^^
 
-Install the **pip**, **cairo** and **pango** packages with the Cygwin installer
-tool.
+Install the **python-cairo** package with the Cygwin setup tool.
+
+If you wish to do the automatic setup, install **python_setuptools** as
+well, then issue the following command from the Cygwin shell:
+
+.. code-block:: bash
+
+    easy_install pip
+
 
 Windows
 ^^^^^^^
@@ -120,8 +127,8 @@ distribution package:
 
 .. code-block:: bash
 
-    tar xzf twyg-0.1.tgz
-    cd twyg-0.1
+    tar xzf twyg-<version>.tgz
+    cd twyg-<version>
     python setup.py build
     sudo python setup.py install
 
