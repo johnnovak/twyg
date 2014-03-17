@@ -1,6 +1,7 @@
 BUGS
 ====
 - negative margins result in error with no error details
+- allow integers for absolute margins (currently must be strings)
 - some non-western UTF-8 character/font combinations result in crash/hanging
   process
 
