@@ -23,13 +23,13 @@ configs = [
                    { 'data': DG, 'colors': '' },
                    { 'data': DM, 'colors': 'moon' }]
     },
-    {'berlin' :   [{ 'data': DC, 'colors': 'aqua' },
-                   { 'data': DG, 'colors': 'azure' },
-                   { 'data': DU, 'colors': '' }]
-    },
     {'bubbles':   [{ 'data': DA, 'colors': 'inca' },
                    { 'data': DM, 'colors': '' },
                    { 'data': DS, 'colors': 'neo' }]
+    },
+    {'edge' :     [{ 'data': DC, 'colors': 'aqua' },
+                   { 'data': DG, 'colors': 'azure' },
+                   { 'data': DU, 'colors': '' }]
     },
     {'flowchart': [{ 'data': DA, 'colors': 'inca' },
                    { 'data': DM, 'colors': '' },
