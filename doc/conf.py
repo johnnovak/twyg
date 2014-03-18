@@ -19,7 +19,7 @@ html_static_path = ['_static']
 
 html_additional_pages = {
   'index':      'index.html',
-  'download':   'download.html',
+  'getit':      'getit.html',
   'quickstart': 'quickstart.html',
   'examples':   'examples.html'
 }

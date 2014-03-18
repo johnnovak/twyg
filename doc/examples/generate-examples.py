@@ -23,6 +23,10 @@ configs = [
                    { 'data': DG, 'colors': '' },
                    { 'data': DM, 'colors': 'moon' }]
     },
+    {'berlin' :   [{ 'data': DC, 'colors': 'aqua' },
+                   { 'data': DG, 'colors': 'azure' },
+                   { 'data': DU, 'colors': '' }]
+    },
     {'bubbles':   [{ 'data': DA, 'colors': 'inca' },
                    { 'data': DM, 'colors': '' },
                    { 'data': DS, 'colors': 'neo' }]
@@ -39,6 +43,10 @@ configs = [
                    { 'data': DS, 'colors': 'honey' },
                    { 'data': DY, 'colors': '' }]
     },
+    {'jellyfish': [{ 'data': DU, 'colors': '' },
+                   { 'data': DY, 'colors': 'quartz' },
+                   { 'data': DN, 'colors': 'colors21' }]
+    },
     {'junction1': [{ 'data': DN, 'colors': 'forest' },
                    { 'data': DM, 'colors': 'clay' },
                    { 'data': DW, 'colors': '' }]
@@ -49,13 +57,13 @@ configs = [
     },
     {'lines':     [{ 'data': DN, 'colors': '' },
                    { 'data': DA, 'colors': 'merlot' },
-                   { 'data': DM, 'colors': 'inca' }]
+                   { 'data': DM, 'colors': 'azure' }]
     },
     {'modern':    [{ 'data': DN, 'colors': '' },
-                   { 'data': DM, 'colors': 'forest' },
+                   { 'data': DM, 'colors': 'mustard' },
                    { 'data': DY, 'colors': 'cobalt' }]
     },
-    {'nazca':     [{ 'data': DC, 'colors': 'cmyk' },
+    {'nazca':     [{ 'data': DC, 'colors': 'earth' },
                    { 'data': DM, 'colors': 'aqua' },
                    { 'data': DY, 'colors': '' }]
     },
@@ -104,5 +112,6 @@ def generate_examples(outformat, dpi):
 
 generate_examples('pdf', 72)
 generate_examples('svg', 72)
+generate_examples('ps', 72)
 generate_examples('png', 150)
 

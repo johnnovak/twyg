@@ -112,7 +112,7 @@
       <ul class="mainmenu">
         <li{% if pagename == 'index' %}{{ menusel }}{% endif %}><a href="{{ pathto('index') }}">Home</a></li>
         <li{% if pagename == 'examples' %}{{ menusel }}{% endif %}><a href="{{ pathto('examples') }}">Examples</a></li>
-        <li{% if pagename == 'download' %}{{ menusel }}{% endif %}><a href="{{ pathto('download') }}">Get It</a></li>
+        <li{% if pagename == 'getit' %}{{ menusel }}{% endif %}><a href="{{ pathto('getit') }}">Get It</a></li>
         <li{% if pagename == 'quickstart' %}{{ menusel }}{% endif %}><a href="{{ pathto('quickstart') }}">Quickstart</a></li>
         <li{% if not staticpage %}{{ menusel }}{% endif %}><a href="{{ pathto('docs/index') }}">Docs</a></li>
       </ul>

@@ -4,29 +4,33 @@ from setuptools import setup
 
 setup(name='twyg',
       version='0.1',
-      description='Scriptable tree visualisatino for Python',
+      description='Generative tree visualiser for Python',
       long_description=open('README.md').read(),
 
+      # TODO
       classifiers=[
         'Development Status :: 3 - Alpha',
-        'License :: OSI Approved :: BSD License',
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2.7',
         'Topic :: Graphics :: Visualisation'
       ],
 
-      keywords='tree graph visualisation layout nodebox',
+      keywords='tree graph visualisation generative graphics layout nodebox',
       url='http://www.johnnovak.net/twyg/',
       author='John Novak',
       author_email='john@johnnovak.net',
-      license='BSD',
+      license='MIT',
 
       packages=['twyg'],
       include_package_data=True,
 
+      # TODO
       install_requires=[],
 
       entry_points = {
         'console_scripts': ['twyg=twyg.cmdline:main']
       },
 
-      zip_safe=False)
+      zip_safe=False
+)
+

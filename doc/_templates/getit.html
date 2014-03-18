@@ -2,60 +2,45 @@
 {% set staticpage = True %}
 {% set title = _('Get It') %}
 {% block body %}
-  <h1>Download</h1>
+  <h1>Get it</h1>
+
+  <h2>Prerequisites</h2>
+
+  <p><em>twyg</em> is compatible with Python 2.5, 2.6 and 2.7. It can be used
+  as a command line utility, in which case it requires the <em>Cairo</em>
+  graphics library and the <em>Pycairo</em> Python bindings for graphics
+  rendering. Python 2.5 users will also need to install
+  <em>simplejson</em>.</p>
+
+  <p>You can also use <em>twyg</em> as a NodeBox1 library. Please refer to the
+  <a href="../docs/install/#nodebox1-setup">documentation</a> for details.</p>
+
+  <h2>Installation</h2>
+
+  <p>On Mac OS X and Unix-like systems, you can easily install <em>twyg</em>
+  by issuing the following command from the terminal, providing you already
+  have <em>Cairo</em>, <em>Pycairo</em> and <em>pip</em> installed:</p>
+
+  <pre>pip install twyg</pre>
+
+  <p>For detailed platform specific instructions, please refer to the <a
+    href="../docs/install/">Installation</a> section of the documentation.</p>
+
+  <h2>Distribution package</h2>
 
   <p>You can download the <a href="#">latest distribution package</a> from the
-  <a href="https://pypi.python.org/pypi">Python Package Index (PyPi)</a>. The
-  package contains some extras (e.g. example data) that you won't get if you
-  just install it with <em>pip</em>.</p>
+  <a href="https://pypi.python.org/pypi">Python Package Index (PyPi)</a>. Note
+  that the package contains some extras (e.g. example data) that you won't get
+  if you just install it with <em>pip</em>.</p>
 
   <p>Alternatively, you can download the latest development version as a <a
     href="https://github.com/johnnovak/twyg/archive/master.zip">ZIP file</a>
   from the project's <a href="https://github.com/johnnovak/twyg">GitHub
-    page</a> (or just clone the repo if you are familiar with git).</p>
+  page</a>, or just clone the repository if you are familiar with
+  <em>git</em>.</p>
 
-  <p>You can also download for offline viewing.</p>
-
-  <h1>Installation</h1>
-
-
-  <h3>Mac OS X</h3>
-
-  <h4>1. Install MacPorts</h4>
-
-  The easiest way to install the dependent libraries on Mac OS X is to use <a
-    href="http://www.macports.org/">MacPorts</a>. If you already have MacPorts
-  on your system, just proceed with the following step. Otherwise, follow <a
-  href="http://www.macports.org/install.php">these instructions</a> to install
-MacPorts first.
-
-  <h4>2. Install dependencies</h4>
-  <p>The following command will install <em>cairo</em>, the <em>Pycairo</em>
-  Python bindings, the <em>pip</em> installation tool and <em>Python 2.7</em>
-  as well, if it's not already installed (this might take a while):</p>
-
-  <pre>
-sudo port install py27-pip py27-cairo</pre>
-
-  <p>After the above command has successfully completed, make Python 2.7 the
-  default installation:</p>
-
-  <pre>
-sudo port select --set python python27</pre>
-
-  <h4>3. Install twyg</h4>
-
-  <p>Install <em>twyg</em> with <code>pip</code> by issuing the following
-  command:</p>
-
-  <pre>sudo pip install twyg</pre>
-
-
-  <h2>Linux</h2>
-
-  <h2>Cygwin</h2>
-
-  <h2>Windows</h2>
+  <p>You can also download a version of the documentation suitable for offline
+  viewing <a href="#">here</a>.</p>
 
 {% endblock %}
 
