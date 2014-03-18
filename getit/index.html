@@ -34,8 +34,10 @@
         $("#docnav").sticky({topSpacing: 0});
 
         
-        var fadeStart = 20;
-        var fadeUntil = 80;
+          
+            var fadeStart = 20;
+            var fadeUntil = 80;
+          
         var fading = $('#logo');
 
         $(window).bind('scroll', function(){
@@ -55,36 +57,72 @@
     <link rel="top" title="twyg 0.1 documentation" href="../" />
   </head>
 
-  <body>
-    <div id="header">
-      <a id="logo" href="/">
-        <img src="../_static/twyg-logo.png" alt="twyg - python tree visualisation" />
+  <body class="getit">
+    <div class="header">
+      <a class="logo" href="/">
+        <img id="logo" src="../_static/twyg-logo.png" alt="twyg – Generative tree visualiser for Python" />
       </a>
 
       
-      <ul id="mainmenu">
+      <ul class="mainmenu">
         <li><a href="../">Home</a></li>
+        <li><a href="../examples/">Examples</a></li>
         <li class="sel"><a href="#">Get It</a></li>
         <li><a href="../quickstart/">Quickstart</a></li>
-        <li><a href="../examples/">Examples</a></li>
-        <li><a href="../contents/">Docs</a></li>
+        <li><a href="../docs/">Docs</a></li>
       </ul>
     </div>
 
-    <div id="content" class="static">
+    <div class="content">
       
 
-      <div id="body">
+      <div class="body">
       
-  <h1>Installation</h1>
+  <h1>Get it</h1>
 
-  <p>The easiest way to start using <em>twyg</em> is to install it with <code>pip</code>:</p>
+  <h2>Prerequisites</h2>
 
-  <pre>pip install pip</pre>
+  <p><em>twyg</em> is compatible with Python 2.5, 2.6 and 2.7. It can be used
+  as a command line utility, in which case it requires the <em>Cairo</em>
+  graphics library and the <em>Pycairo</em> Python bindings for graphics
+  rendering. Python 2.5 users will also need to install
+  <em>simplejson</em>.</p>
 
-  <p>That's it.</p>
+  <p>You can also use <em>twyg</em> as a NodeBox1 library. Please refer to the
+  <a href="../docs/install/#nodebox1-setup">documentation</a> for details.</p>
+
+  <h2>Installation</h2>
+
+  <p>On Mac OS X and Unix-like systems, you can easily install <em>twyg</em>
+  by issuing the following command from the terminal, providing you already
+  have <em>Cairo</em>, <em>Pycairo</em> and <em>pip</em> installed:</p>
+
+  <pre>pip install twyg</pre>
+
+  <p>For detailed platform specific instructions, please refer to the <a
+    href="../docs/install/">Installation</a> section of the documentation.</p>
+
+  <h2>Distribution package</h2>
+
+  <p>You can download the <a href="#">latest distribution package</a> from the
+  <a href="https://pypi.python.org/pypi">Python Package Index (PyPi)</a>. Note
+  that the package contains some extras (e.g. example data) that you won't get
+  if you just install it with <em>pip</em>.</p>
+
+  <p>Alternatively, you can download the latest development version as a <a
+    href="https://github.com/johnnovak/twyg/archive/master.zip">ZIP file</a>
+  from the project's <a href="https://github.com/johnnovak/twyg">GitHub
+  page</a>, or just clone the repository if you are familiar with
+  <em>git</em>.</p>
+
+  <p>You can also download a version of the documentation suitable for offline
+  viewing <a href="#">here</a>.</p>
 
 
+      </div>
+      <div class="footer">
+        <p class="copyright">&copy; Copyright 2011-2014, <a href="http://www.johnnovak.net/">John Novak</a>.</p>
+        <p class="info">Site created using <a href="http://sphinx-doc.org/">Sphinx</a>. Hosted on <a href="http://github.com">GitHub</a>.</p>
       </div>
   </body>
 </html>

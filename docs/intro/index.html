@@ -54,7 +54,7 @@
       <ul class="mainmenu">
         <li><a href="../../">Home</a></li>
         <li><a href="../../examples/">Examples</a></li>
-        <li><a href="../../download/">Get It</a></li>
+        <li><a href="../../getit/">Get It</a></li>
         <li><a href="../../quickstart/">Quickstart</a></li>
         <li class="sel"><a href="../">Docs</a></li>
       </ul>
@@ -77,6 +77,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../">Table of contents</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="">Introduction</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../install/">Installation</a></li>
@@ -98,12 +99,49 @@
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p><strong>twyg</strong> lets you visualise arbitrary tree structures in a pretty way.  The
-appearance of the tree (layout, color, node and connection shapes etc.) is
-fully controlled via configuration files in a programmatic way. Comes with an
-extensive set of default configurations and colorschemes. Requires Cairo (and
-optionally PIL) for image generation when used from the command-line or can be
-used as a NodeBox1 library.</p>
+<p><em>twyg</em> lets you visualise arbitrary tree structures in a pretty way. The
+appearance of the tree (layout, color, node, connection shapes etc.) is
+fully controlled via configuration files in a generative way. This means that
+almost all visual properties of the output can be controlled by expressions
+that depend on the characteristics of the tree (e.g. the color or shape of a
+node can be a function of its hierarchical position in the tree). This allows
+for crafting very flexible configurations that can be applied to trees of
+arbitrary size and complexity.</p>
+<p>Plain-text JSON files describing the tree are expected as input.  These JSON
+files only contain the topology of the tree and the text labels of the
+individual tree nodes. They do not contain any information on <cite>how</cite> the tree
+should be visually rendered; this is entirely described by the
+configurations.  The benefit of separating the visual style from the tree data
+itself—in a way similar to separating style from content in the case of
+CSS and HTML—is that this way one can easily render the same tree in different
+visual styles by just applying different configurations to it.</p>
+<p><em>twyg</em> comes with an extensive set of default configurations and
+colorschemes to get you started. This way, you can get usable results quickly
+by just combining the included configuration and colorschemes, then gradually
+learn the intricacies of the configuration language to create your own custom
+visual styles. Moreover, you can combine both the built-in and your own
+configurations in a cascading fashion (akin to CSS) to build up your own
+library of custom styles.</p>
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Compatible with Python 2.5, 2.6 and 2.7</li>
+<li>Supports the <em>Cairo</em> and <em>NodeBox1</em> rendering backends</li>
+<li>16 visually fine-tuned built-in configurations</li>
+<li>32 attractive looking colorschemes</li>
+<li>Simple JSON files as input</li>
+<li>PNG, PDF, SVG and PostScript output using the Cairo backend</li>
+<li>Fully customisable node and connection shapes and coloring algorithms</li>
+<li>High-quality font rendering via Cairo</li>
+<li>Gradient and drop shadow support, even in PDF and PostScript files</li>
+<li>Custom human-readable configuration language that allows the visual
+properties of the tree to be defined as expressions of arbitraty complexity</li>
+<li>Ability to cascade configurations and configuration sections</li>
+<li>Full <a class="reference external" href="http://www.w3.org/TR/css3-color/#colorunits">CSS3 color notation</a> and <a class="reference external" href="http://www.w3.org/TR/css3-color/#svg-color">SVG 1.0 color keyword
+name</a> support</li>
+<li>Extensive reference documentation</li>
+</ul>
 </div>
 </div>
 
