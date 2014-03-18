@@ -1,0 +1,52 @@
+[layout]
+    style                   layout
+    branchPadY              40
+    horizontalBalance       0
+    rootPadX                300
+    radialMinNodes          1000
+
+[node]
+  {default}
+    style                   rect
+    textPadY                0
+    fontSize                max(12, round(28 / sqrt(depth + 1)))
+    strokeWidth             0
+    roundness               0
+
+  {root}
+    levelDepthMax           0
+    style                   poly
+    fontSize                24
+    connectionAnchorPoint   center
+
+[connection]
+  {default}
+    style                   curve
+    nodeLineWidthStart      2
+    nodeLineWidthEnd        2
+    nodeCx1Factor           0
+    nodeCx2Factor           0
+
+  {root}
+    @copy                   default
+    levelDepthMax           0
+    nodeLineWidthStart      20
+    nodeLineWidthEnd        2.5
+    nodeCx1Factor           0.6
+    nodeCx2Factor           0.9
+    nodeCy1Factor           0.2
+    nodeCy2Factor           0
+
+[color]
+  {default}
+    style                   cycle
+    colorscheme             "azure"
+    fillColor               bgColor
+    fontColor               baseColor
+    fontColorAuto           no
+    connectionColor         baseColor.blend(bgColor, .2)
+
+  {root}
+    style                   cycle
+    levelDepthMax           0
+    fillColor               baseColor

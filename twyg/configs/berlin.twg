@@ -1,0 +1,43 @@
+[layout]
+    style                   layout
+    branchPadY              40
+    horizontalBalance       0
+    rootPadX                200
+    nodePadY                10
+    radialMinNodes          1000
+    verticalAlignFactor     0
+
+[node]
+  {default}
+    style                   rect
+    textPadY                fontSize * .4
+    fontSize                max(12, round(28 / sqrt(depth + 1)))
+    strokeWidth             0
+    roundness               0
+    drawGradient            yes
+    nodeDrawShadow          yes
+    nodeShadowOffsX         0
+    nodeShadowOffsY         0
+    nodeShadowBlur          6
+
+  {root}
+    @copy                   default
+    levelDepthMax           0
+    connectionAnchorPoint   center
+
+[connection]
+  {default}
+    style                   curve
+    nodeLineWidthStart      2.3
+    nodeLineWidthEnd        2.3
+    nodeCx1Factor           0
+    nodeCx2Factor           0
+
+
+[color]
+  {default}
+    style                   cycle
+    colorscheme             "clay"
+    connectionColor         baseColor.blend(bgColor, .5)
+    fontColorAutoLight      baseColor.blend(color.white, .9)
+
