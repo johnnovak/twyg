@@ -44,7 +44,7 @@ Install dependencies
 --------------------
 
 Below are platform specific instructions on installing the dependencies
-required by **twyg**.
+required by *twyg*.
 
 Mac OS X
 ^^^^^^^^
@@ -90,20 +90,40 @@ Linux
 ^^^^^
 
 Install *Cairo* and *Pycairo* with your distribution's package manager.
+
+For example, on Debian issue the following command:
+
+.. code-block:: bash
+
+    sudo apt-get install python-cairo
+
+On Fedora:
+
+.. code-block:: bash
+
+    sudo yum install pycairo
+
+The exacts commands might vary depending on your distribution.
+
 Optionally, install *pip* as well if you wish to intall *twyg* with the
 automatic method.
+
 
 Cygwin
 ^^^^^^
 
-Install the **python-cairo** package with the Cygwin setup tool.
+Install the *python-cairo* package with the Cygwin setup tool.
 
-If you wish to do the automatic setup, install **python_setuptools** as
-well, then issue the following command from the Cygwin shell:
+If you wish to do the automatic setup, install *python_setuptools* as well,
+then issue the following command from the Cygwin shell:
 
 .. code-block:: bash
 
     easy_install pip
+
+.. note:: If you're using 64-bit Cygwin, the *pip* tool might just exit
+    without doing anything. If this is the case, install the *binutils*
+    package to fix the issue.
 
 
 Windows
@@ -117,11 +137,11 @@ Install twyg
 
 *1. Automatic method*
 
-To install **twyg** automatically with **pip**, issue the following command:
+To install *twyg* automatically with *pip*, issue the following command:
 
 .. code-block:: bash
 
-    pip install twyg
+    sudo pip install twyg
 
 
 *2. Manual method*
