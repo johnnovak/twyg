@@ -104,7 +104,7 @@
 
   <body class="{% if staticpage %}{{ pagename }}{% else %}docs{%endif %}">
     <div class="header">
-      <a class="logo" href="/">
+      <a class="logo" href="http://www.johnnovak.net/twyg/">
         <img id="logo" src="{{ pathto('_static/twyg-logo.png', 1) }}" alt="twyg – Generative tree visualiser for Python" />
       </a>
 
@@ -112,8 +112,8 @@
       <ul class="mainmenu">
         <li{% if pagename == 'index' %}{{ menusel }}{% endif %}><a href="{{ pathto('index') }}">Home</a></li>
         <li{% if pagename == 'examples' %}{{ menusel }}{% endif %}><a href="{{ pathto('examples') }}">Examples</a></li>
-        <li{% if pagename == 'getit' %}{{ menusel }}{% endif %}><a href="{{ pathto('getit') }}">Get It</a></li>
         <li{% if pagename == 'quickstart' %}{{ menusel }}{% endif %}><a href="{{ pathto('quickstart') }}">Quickstart</a></li>
+        <li{% if pagename == 'getit' %}{{ menusel }}{% endif %}><a href="{{ pathto('getit') }}">Get It</a></li>
         <li{% if not staticpage %}{{ menusel }}{% endif %}><a href="{{ pathto('docs/index') }}">Docs</a></li>
       </ul>
     </div>
