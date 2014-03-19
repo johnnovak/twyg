@@ -30,7 +30,7 @@ project's `GitHub page <https://github.com/johnnovak/twyg>`_,
 or clone the repository if you are familiar with ``git``.
 
 You can also download a version of this documentation suitable for offline
-viewing `here <../twyg-0.1-docs.zip>`_.
+viewing `here <../twyg-0.1.0-docs.zip>`_.
 
 .. note:: The installation package contains example data files and some useful
     scripts that won't be installed when using the automatic installation
