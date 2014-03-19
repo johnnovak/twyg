@@ -36,6 +36,6 @@ For detailed instructions, please refer to the `user documentation
 License
 -------
 
-© Copyright 2011-2014, `John Novak <http://www.johnnovak.net/>`.
+© Copyright 2011-2014, `John Novak <http://www.johnnovak.net/>`_.
 This project is released under the MIT license.
 
