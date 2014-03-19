@@ -41,8 +41,6 @@ setup(name='twyg',
       packages=['twyg'],
       include_package_data=True,
 
-      install_requires=['cairo'],
-
       entry_points = {
         'console_scripts': ['twyg=twyg.cmdline:main']
       },
