@@ -6,12 +6,11 @@ Prerequisites
 
 *twyg* is compatible with Python 2.5, 2.6 and 2.7.
 
-When used as a standalone command line program, the `cairo
-<http://cairographics.org/>`_ and `pango <http://www.pango.org/>`_ graphics
-libraries and the `Pycairo <http://cairographics.org/pycairo/>`_ Python
-bindings need to be installed for graphics rendering. Python 2.5 requires the
-`simplejson <https://pypi.python.org/pypi/simplejson/>`_ Python module as
-well.
+When used as a standalone command line program, the `Cairo
+<http://cairographics.org/>`_ graphics library and the `Pycairo
+<https://pypi.python.org/pypi/pycairo/>`_ Python bindings need to be installed for
+graphics rendering. Python 2.5 requires the `simplejson
+<https://pypi.python.org/pypi/simplejson/>`_ Python module as well.
 
 There are no prerequisites if it is used as a NodeBox1 library (see :ref:`nodebox1-setup`).
 
@@ -29,7 +28,8 @@ package <#>`_ from the `Python Package Index (PyPi)
 project's `GitHub page <https://github.com/johnnovak/twyg>`_,
 or clone the repository if you are familiar with ``git``.
 
-You can also download the `offline documentation <#>`_ here.
+You can also download a version of this documentation suitable for offline
+viewing `here <../twyg-0.1-docs.zip>`_.
 
 .. note:: The installation package contains example data files and some useful
     scripts that won't be installed when using the automatic installation
@@ -88,7 +88,9 @@ default installation:
 Linux
 ^^^^^
 
-TODO: Install **Pycairo** and **pip** with your distribution's package manager.
+Install *Cairo* and *Pycairo* with your distribution's package manager.
+Optionally, install *pip* as well if you wish to intall *twyg* with the
+automatic method.
 
 Cygwin
 ^^^^^^
@@ -107,6 +109,7 @@ Windows
 ^^^^^^^
 
 TODO
+
 
 Install twyg
 ------------
