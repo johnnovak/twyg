@@ -135,7 +135,7 @@ those files.</p>
 <div class="section" id="install-dependencies">
 <span id="install-deps"></span><h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Below are platform specific instructions on installing the dependencies
-required by <strong>twyg</strong>.</p>
+required by <em>twyg</em>.</p>
 <div class="section" id="mac-os-x">
 <h3>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="install-macports">
@@ -172,17 +172,32 @@ of <tt class="docutils literal"><span class="pre">27</span></tt> to <tt class="d
 </div>
 <div class="section" id="linux">
 <h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
-<p>Install <em>Cairo</em> and <em>Pycairo</em> with your distribution&#8217;s package manager.
-Optionally, install <em>pip</em> as well if you wish to intall <em>twyg</em> with the
+<p>Install <em>Cairo</em> and <em>Pycairo</em> with your distribution&#8217;s package manager.</p>
+<p>For example, on Debian issue the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install python-cairo
+</pre></div>
+</div>
+<p>On Fedora:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo yum install pycairo
+</pre></div>
+</div>
+<p>The exacts commands might vary depending on your distribution.</p>
+<p>Optionally, install <em>pip</em> as well if you wish to intall <em>twyg</em> with the
 automatic method.</p>
 </div>
 <div class="section" id="cygwin">
 <h3>Cygwin<a class="headerlink" href="#cygwin" title="Permalink to this headline">¶</a></h3>
-<p>Install the <strong>python-cairo</strong> package with the Cygwin setup tool.</p>
-<p>If you wish to do the automatic setup, install <strong>python_setuptools</strong> as
-well, then issue the following command from the Cygwin shell:</p>
+<p>Install the <em>python-cairo</em> package with the Cygwin setup tool.</p>
+<p>If you wish to do the automatic setup, install <em>python_setuptools</em> as well,
+then issue the following command from the Cygwin shell:</p>
 <div class="highlight-bash"><div class="highlight"><pre>easy_install pip
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you&#8217;re using 64-bit Cygwin, the <em>pip</em> tool might just exit
+without doing anything. If this is the case, install the <em>binutils</em>
+package to fix the issue.</p>
 </div>
 </div>
 <div class="section" id="windows">
@@ -193,8 +208,8 @@ well, then issue the following command from the Cygwin shell:</p>
 <div class="section" id="install-twyg">
 <h2>Install twyg<a class="headerlink" href="#install-twyg" title="Permalink to this headline">¶</a></h2>
 <p><em>1. Automatic method</em></p>
-<p>To install <strong>twyg</strong> automatically with <strong>pip</strong>, issue the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre>pip install twyg
+<p>To install <em>twyg</em> automatically with <em>pip</em>, issue the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo pip install twyg
 </pre></div>
 </div>
 <p><em>2. Manual method</em></p>
