@@ -3,9 +3,9 @@
 from setuptools import setup
 
 setup(name='twyg',
-      version='0.1',
+      version='0.1.0',
       description='Generative tree visualiser for Python',
-      long_description=open('README.md').read(),
+      long_description=open('README.rst').read(),
 
       classifiers=[
         'Development Status :: 4 - Beta',
@@ -32,8 +32,7 @@ setup(name='twyg',
         'Topic :: Software Development :: Libraries :: Python Modules'
       ],
 
-      keywords='tree graph visualisation generative graphics layout
-      nodebox cairo pdf png postscript svg',
+      keywords='tree graph visualisation generative graphics layout nodebox cairo pdf png postscript svg',
       url='http://www.johnnovak.net/twyg/',
       author='John Novak',
       author_email='john@johnnovak.net',

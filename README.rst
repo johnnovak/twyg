@@ -1,4 +1,5 @@
-# twyg – Generative tree visualiser for Python
+twyg – Generative tree visualiser for Python
+============================================
 
 **twyg** lets you visualise arbitrary tree structures in a pretty way.  The
 appearance of the tree (layout, color, node and connection shapes etc.) is
@@ -7,10 +8,8 @@ extensive set of default configurations and colorschemes. Requires Cairo (and
 optionally PIL) for image generation when used from the command-line or can be
 used as a NodeBox1 library.
 
-![metrics-synapse](img/synapse-mint-metrics.png)
-
-
-## Main Features
+Main Features
+-------------
 
 * Simple yet flexible configuration language to fully control all visual
   aspects of the tree
@@ -25,18 +24,14 @@ used as a NodeBox1 library.
 * Python 2.5, 2.6 and 2.7 support
 * Extensive documentation
 
+Installation & Usage
+--------------------
 
-## Installation
+For detailed instructions, please refer to the `user documentation
+<http://www.johnnovak.net/twyg/docs/`_.
 
-TODO
-
-
-## Usage
-
-TODO
-
-
-##  License
+License
+-------
 
 © Copyright 2011-2014, [John Novak](http://www.johnnovak.net/)  
 This project is released under the MIT license.
