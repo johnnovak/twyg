@@ -22,7 +22,8 @@ If you wish to install *twyg* automatically with ``pip``, you don't need to
 download anything. Just proceed to the :ref:`install-deps` section.
 
 If you want to do a manual install, you can download the `latest distribution
-package <#>`_ from the `Python Package Index (PyPi)
+package
+<https://pypi.python.org/packages/source/t/twyg/twyg-0.1.0.tar.gz#md5=0ab479bd81a6d5c0d1a6cb11426654f8>`_ from the `Python Package Index (PyPi)
 <https://pypi.python.org/pypi>`_. Alternatively, you can download the latest development version as a
 `ZIP file <https://github.com/johnnovak/twyg/archive/master.zip>`_ from the
 project's `GitHub page <https://github.com/johnnovak/twyg>`_,
