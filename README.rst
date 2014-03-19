@@ -8,6 +8,9 @@ extensive set of default configurations and colorschemes. Requires Cairo (and
 optionally PIL) for image generation when used from the command-line or can be
 used as a NodeBox1 library.
 
+.. image:: img/synapse-mint-metrics.png
+
+
 Main Features
 -------------
 
@@ -28,11 +31,11 @@ Installation & Usage
 --------------------
 
 For detailed instructions, please refer to the `user documentation
-<http://www.johnnovak.net/twyg/docs/`_.
+<http://www.johnnovak.net/twyg/docs/>`_.
 
 License
 -------
 
-© Copyright 2011-2014, [John Novak](http://www.johnnovak.net/)  
+© Copyright 2011-2014, `John Novak <http://www.johnnovak.net/>`.
 This project is released under the MIT license.
 
