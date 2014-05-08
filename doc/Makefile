@@ -38,9 +38,11 @@ help:
 	@echo "  linkcheck  to check all external links for integrity"
 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
 
-clean:
+clean: clean_build clean_figures
+
+clean_build:
+	@echo "Cleaning build..."
 	-rm -rf $(BUILDDIR)/*
-	-rm -rf figures/images/*
 
 html: generate_css
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
@@ -157,11 +159,11 @@ doctest:
 
 figures:
 	@echo "Generating figures..."
-	(cd figures; mkdir img; ./generate-images.sh)
+	(cd figures; mkdir -p img; ./generate-images.sh)
 
 clean_figures:
 	@echo "Cleaning figures..."
-	rm -rf figures/img/*
+	-rm -rf figures/img/*
 
 generate_css:
 	@echo "Generating CSS files..."
@@ -175,9 +177,10 @@ examples:
 	(cd examples; ./generate-examples.sh)
 
 copy_examples:
-	mkdir $(BUILDDIR)/dirhtml/examples/pdf/
-	mkdir $(BUILDDIR)/dirhtml/examples/png/
-	mkdir $(BUILDDIR)/dirhtml/examples/svg/
+	@echo "Copying examples..."
+	mkdir -p $(BUILDDIR)/dirhtml/examples/pdf/
+	mkdir -p $(BUILDDIR)/dirhtml/examples/png/
+	mkdir -p $(BUILDDIR)/dirhtml/examples/svg/
 	cp examples/pdf/*.pdf $(BUILDDIR)/dirhtml/examples/pdf/
 	cp examples/png/*.png $(BUILDDIR)/dirhtml/examples/png/
 	cp examples/svg/*.svg $(BUILDDIR)/dirhtml/examples/svg/

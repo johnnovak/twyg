@@ -21,7 +21,11 @@ The following master task will generate the full HTML documentation in
 
     make dirhtml_all
 
-This consists of the following subtasks.
+Alternatively, you can just run `generate-docs.sh`. This will get rid of all
+previously generated output first (including figures) and then generate the
+docs from scratch.
+
+The `dirhtml_all` task consists of the following subtasks:
 
 1. Generate the CSS from the Sass files:
 
