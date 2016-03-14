@@ -49,7 +49,7 @@ html: generate_css
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
-dirhtml_all: figures dirhtml examples copy_examples
+dirhtml_all: figures dirhtml
 
 dirhtml: generate_css
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
