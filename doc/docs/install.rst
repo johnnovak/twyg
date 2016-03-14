@@ -80,7 +80,8 @@ default installation:
 
 .. code-block:: bash
 
-    sudo port select --set python python27
+    sudo port select python python27
+    sudo port select pip pip27
 
 .. note:: If you wish to use an earlier Python version, change all occurences
   of ``27`` to ``26`` or ``25`` in the above commands.
