@@ -6,6 +6,7 @@
 *.egg
 *.egg-info
 *sass-cache*
+*.css.map
 MANIFEST
 dist
 env
