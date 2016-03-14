@@ -30,7 +30,7 @@ body {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   background: #fff;
-  color: #444444;
+  color: #444;
   font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
   font-size: 18px; }
 
@@ -75,7 +75,7 @@ ul {
     margin-left: 0; }
 
 li {
-  color: #444444; }
+  color: #444; }
 
 dd {
   margin-bottom: 1em; }
@@ -477,3 +477,5 @@ blockquote {
 
 #mathematical-functions dl {
   margin: 0; }
+
+/*# sourceMappingURL=main.css.map */
